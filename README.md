@@ -1,6 +1,9 @@
-semed
+SEMED
 =====
 
-semed contratos
+Sistema SEMED.
+Modulo de contratos.
 
-teste
+Copyright 2014
+Jonathan Eli Suptitz
+Roberto Luiz Debarba
