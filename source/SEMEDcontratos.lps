@@ -4,12 +4,18 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="3">
+    <Units Count="5">
       <Unit0>
         <Filename Value="SEMEDcontratos.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SEMEDcontratos"/>
-        <UsageCount Value="21"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="56" Y="14"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="umain.pas"/>
@@ -18,12 +24,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Umain"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="43"/>
-        <CursorPos X="6" Y="49"/>
-        <UsageCount Value="21"/>
+        <TopLine Value="14"/>
+        <CursorPos X="43" Y="31"/>
+        <UsageCount Value="23"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -31,21 +36,49 @@
         <Filename Value="ucontrato.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmContrato"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ucontrato"/>
+        <EditorIndex Value="4"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="15"/>
+        <CursorPos X="47" Y="24"/>
+        <UsageCount Value="23"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="ucadastropessoas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroPessoas"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroPessoas"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="27"/>
-        <CursorPos X="9" Y="37"/>
+        <TopLine Value="1"/>
+        <CursorPos X="30" Y="13"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="dmmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DM1"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="dmMain"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="56" Y="15"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
-      </Unit2>
+      </Unit4>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="13" HistoryIndex="12">
+    <JumpHistory Count="22" HistoryIndex="21">
       <Position1>
         <Filename Value="umain.pas"/>
         <Caret Line="1" Column="1" TopLine="1"/>
@@ -98,6 +131,42 @@
         <Filename Value="ucontrato.pas"/>
         <Caret Line="36" Column="9" TopLine="26"/>
       </Position13>
+      <Position14>
+        <Filename Value="umain.pas"/>
+        <Caret Line="41" Column="41" TopLine="31"/>
+      </Position14>
+      <Position15>
+        <Filename Value="umain.pas"/>
+        <Caret Line="42" Column="41" TopLine="32"/>
+      </Position15>
+      <Position16>
+        <Filename Value="umain.pas"/>
+        <Caret Line="43" Column="41" TopLine="33"/>
+      </Position16>
+      <Position17>
+        <Filename Value="umain.pas"/>
+        <Caret Line="42" Column="41" TopLine="32"/>
+      </Position17>
+      <Position18>
+        <Filename Value="umain.pas"/>
+        <Caret Line="44" Column="41" TopLine="34"/>
+      </Position18>
+      <Position19>
+        <Filename Value="umain.pas"/>
+        <Caret Line="49" Column="51" TopLine="36"/>
+      </Position19>
+      <Position20>
+        <Filename Value="umain.pas"/>
+        <Caret Line="54" Column="45" TopLine="39"/>
+      </Position20>
+      <Position21>
+        <Filename Value="umain.pas"/>
+        <Caret Line="46" Column="24" TopLine="38"/>
+      </Position21>
+      <Position22>
+        <Filename Value="dmmain.pas"/>
+        <Caret Line="2" Column="5" TopLine="1"/>
+      </Position22>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

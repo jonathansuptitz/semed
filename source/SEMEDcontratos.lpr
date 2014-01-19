@@ -7,13 +7,13 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Umain, ucontrato
-  { you can add units after this };
+  Forms, zcomponent, Umain, ucontrato, uCadastroPessoas, dmMain;
 
 {$R *.res}
 
 begin
   RequireDerivedFormResource := True;
+  Application.CreateForm(TDM1, DM1);
   Application.Initialize;
   Application.CreateForm(TFrmMain, FrmMain);
   Application.Run;

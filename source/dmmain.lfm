@@ -1,0 +1,23 @@
+object DM1: TDM1
+  OldCreateOrder = False
+  Height = 263
+  HorizontalOffset = 505
+  VerticalOffset = 192
+  Width = 316
+  object SEMEDconnection: TZConnection
+    ControlsCodePage = cCP_UTF8
+    UTF8StringsAsWideField = False
+    AutoEncodeStrings = False
+    Properties.Strings = (
+      'controls_cp=CP_UTF8'
+    )
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'semedcontratos'
+    User = 'root'
+    Password = '12345678'
+    Protocol = 'mysql'
+    left = 48
+    top = 32
+  end
+end

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls,
-  ExtCtrls, StdCtrls, Calendar, Menus;
+  ExtCtrls, StdCtrls, Menus;
 
 type
 
@@ -17,11 +17,13 @@ type
     MainMenu1: TMainMenu;
     Memo1: TMemo;
     MenuItem1: TMenuItem;
+    MenuCadastrar: TMenuItem;
+    CadastrarPessoas: TMenuItem;
     MenuNovoContrato: TMenuItem;
     Panel1: TPanel;
     Panel2: TPanel;
     StatusBar1: TStatusBar;
-    procedure MenuItem1Click(Sender: TObject);
+    procedure CadastrarPessoasClick(Sender: TObject);
     procedure MenuNovoContratoClick(Sender: TObject);
   private
     { private declarations }
@@ -35,18 +37,22 @@ var
 implementation
 
 uses
-  ucontrato;
+  ucontrato, ucadastropessoas;
 
 {$R *.lfm}
 
 { TFrmMain }
 
-procedure TFrmMain.MenuItem1Click(Sender: TObject);
-begin
+// MENU ------------------------------------------------------------------------
 
+procedure TFrmMain.CadastrarPessoasClick(Sender: TObject);  // Cadastrar Pessoas
+begin
+  Application.CreateForm(TfrmCadastroPessoas, frmCadastroPessoas);
+  frmCadastroPessoas.ShowModal;
+  frmCadastroPessoas.Free;
 end;
 
-procedure TFrmMain.MenuNovoContratoClick(Sender: TObject);
+procedure TFrmMain.MenuNovoContratoClick(Sender: TObject);  // Novo Contrato
 begin
   Application.CreateForm(TfrmContrato, frmContrato);
   frmContrato.ShowModal;

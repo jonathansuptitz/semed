@@ -1,0 +1,10 @@
+object frmCadastroPessoas: TfrmCadastroPessoas
+  Left = 497
+  Height = 240
+  Top = 263
+  Width = 320
+  BorderIcons = [biSystemMenu]
+  Caption = 'frmCadastroPessoas'
+  LCLVersion = '1.0.14.0'
+  WindowState = wsMaximized
+end

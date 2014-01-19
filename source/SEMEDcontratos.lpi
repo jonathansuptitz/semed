@@ -30,12 +30,15 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="1">
+    <RequiredPackages Count="2">
       <Item1>
-        <PackageName Value="LCL"/>
+        <PackageName Value="zcomponent"/>
       </Item1>
+      <Item2>
+        <PackageName Value="LCL"/>
+      </Item2>
     </RequiredPackages>
-    <Units Count="3">
+    <Units Count="5">
       <Unit0>
         <Filename Value="SEMEDcontratos.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -53,9 +56,24 @@
         <Filename Value="ucontrato.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmContrato"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ucontrato"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="ucadastropessoas.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroPessoas"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroPessoas"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="dmmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DM1"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="dmMain"/>
+      </Unit4>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
