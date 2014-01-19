@@ -1,7 +1,7 @@
 object frmCadastroPessoas: TfrmCadastroPessoas
-  Left = 497
+  Left = 499
   Height = 240
-  Top = 263
+  Top = 265
   Width = 320
   BorderIcons = [biSystemMenu]
   Caption = 'frmCadastroPessoas'

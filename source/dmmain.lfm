@@ -1,8 +1,9 @@
 object DM1: TDM1
+  OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 263
-  HorizontalOffset = 505
-  VerticalOffset = 192
+  HorizontalOffset = 653
+  VerticalOffset = 382
   Width = 316
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -19,5 +20,11 @@ object DM1: TDM1
     Protocol = 'mysql'
     left = 48
     top = 32
+  end
+  object tb_pessoas: TZTable
+    Connection = SEMEDconnection
+    TableName = 'tb_pessoas'
+    left = 48
+    top = 92
   end
 end
