@@ -5,10 +5,18 @@ unit ucontrato;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Buttons,
+  ExtCtrls;
 
 type
+
+  { TfrmContrato }
+
   TfrmContrato = class(TForm)
+    BtnVoltar: TBitBtn;
+    Panelprincipal: TPanel;
+    PanelBotoes: TPanel;
+    procedure BtnVoltarClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -21,6 +29,13 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TfrmContrato }
+
+procedure TfrmContrato.BtnVoltarClick(Sender: TObject);
+begin
+  close;
+end;
 
 end.
 
