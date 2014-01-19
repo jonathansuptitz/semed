@@ -5,7 +5,7 @@ unit dmMain;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, ZConnection, ZDataset,
+  Classes, SysUtils, db, FileUtil, ZConnection, ZDataset,
   Forms, Controls, Graphics, Dialogs;
 
 type
@@ -15,6 +15,38 @@ type
   TDM1 = class(TDataModule)
     SEMEDconnection: TZConnection;
     tb_pessoas: TZTable;
+    tb_pessoasano_doutorado_pessoa: TLongintField;
+    tb_pessoasano_graduacao1_pessoa: TLongintField;
+    tb_pessoasano_graduacao2_pessoa: TLongintField;
+    tb_pessoasano_medio_pessoa: TLongintField;
+    tb_pessoasano_mestrado_pessoa: TLongintField;
+    tb_pessoasano_pos1_pessoa: TLongintField;
+    tb_pessoasano_pos2_pessoa: TLongintField;
+    tb_pessoasbairro_pessoa: TStringField;
+    tb_pessoascodigo_cidade: TLongintField;
+    tb_pessoascodigo_pessoa: TLongintField;
+    tb_pessoascpf_pessoa: TStringField;
+    tb_pessoasdesc_doutorado_pessoa: TStringField;
+    tb_pessoasdesc_graduacao1_pessoa: TStringField;
+    tb_pessoasdesc_graduacao2_pessoa: TStringField;
+    tb_pessoasdesc_mestrado_pessoa: TStringField;
+    tb_pessoasdesc_pos1_pessoa: TStringField;
+    tb_pessoasdesc_pos2_pessoa: TStringField;
+    tb_pessoasemail_pessoa: TStringField;
+    tb_pessoasendereco_pessoa: TStringField;
+    tb_pessoasestado_civil_pessoa: TStringField;
+    tb_pessoasinst_doutorado_pessoa: TStringField;
+    tb_pessoasinst_graduacao1_pessoa: TStringField;
+    tb_pessoasinst_graduacao2_pessoa: TStringField;
+    tb_pessoasinst_medio_pessoa: TStringField;
+    tb_pessoasinst_mestrado_pessoa: TStringField;
+    tb_pessoasinst_pos1_pessoa: TStringField;
+    tb_pessoasinst_pos2_pessoa: TStringField;
+    tb_pessoasnacionalidade_pessoa: TStringField;
+    tb_pessoasnome_pessoa: TStringField;
+    tb_pessoasrg_pessoa: TStringField;
+    tb_pessoastelefone1_pessoa: TStringField;
+    tb_pessoastelefone2_pessoa: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { private declarations }

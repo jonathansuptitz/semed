@@ -1,9 +1,9 @@
 object DM1: TDM1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 263
-  HorizontalOffset = 653
-  VerticalOffset = 382
+  Height = 262
+  HorizontalOffset = 351
+  VerticalOffset = 129
   Width = 316
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -12,6 +12,7 @@ object DM1: TDM1
     Properties.Strings = (
       'controls_cp=CP_UTF8'
     )
+    Connected = True
     HostName = 'localhost'
     Port = 3306
     Database = 'semedcontratos'
@@ -26,5 +27,348 @@ object DM1: TDM1
     TableName = 'tb_pessoas'
     left = 48
     top = 92
+    object tb_pessoascodigo_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_pessoa'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object tb_pessoasnome_pessoa: TStringField
+      DisplayWidth = 200
+      FieldKind = fkData
+      FieldName = 'nome_pessoa'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 200
+    end
+    object tb_pessoascpf_pessoa: TStringField
+      DisplayWidth = 64
+      FieldKind = fkData
+      FieldName = 'cpf_pessoa'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 64
+    end
+    object tb_pessoasrg_pessoa: TStringField
+      DisplayWidth = 80
+      FieldKind = fkData
+      FieldName = 'rg_pessoa'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
+    end
+    object tb_pessoasnacionalidade_pessoa: TStringField
+      DisplayWidth = 80
+      FieldKind = fkData
+      FieldName = 'nacionalidade_pessoa'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
+    end
+    object tb_pessoasestado_civil_pessoa: TStringField
+      DisplayWidth = 80
+      FieldKind = fkData
+      FieldName = 'estado_civil_pessoa'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
+    end
+    object tb_pessoasbairro_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'bairro_pessoa'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
+    object tb_pessoasendereco_pessoa: TStringField
+      DisplayWidth = 1000
+      FieldKind = fkData
+      FieldName = 'endereco_pessoa'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 1000
+    end
+    object tb_pessoasemail_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'email_pessoa'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoastelefone1_pessoa: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'telefone1_pessoa'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 60
+    end
+    object tb_pessoastelefone2_pessoa: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'telefone2_pessoa'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object tb_pessoasinst_medio_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_medio_pessoa'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasano_medio_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_medio_pessoa'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object tb_pessoasdesc_graduacao1_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_graduacao1_pessoa'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasinst_graduacao1_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_graduacao1_pessoa'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasano_graduacao1_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_graduacao1_pessoa'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object tb_pessoasdesc_graduacao2_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_graduacao2_pessoa'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasinst_graduacao2_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_graduacao2_pessoa'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasano_graduacao2_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_graduacao2_pessoa'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object tb_pessoasdesc_pos1_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_pos1_pessoa'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasinst_pos1_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_pos1_pessoa'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasano_pos1_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_pos1_pessoa'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object tb_pessoasdesc_pos2_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_pos2_pessoa'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasinst_pos2_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_pos2_pessoa'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasano_pos2_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_pos2_pessoa'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object tb_pessoasdesc_mestrado_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_mestrado_pessoa'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasinst_mestrado_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_mestrado_pessoa'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasano_mestrado_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_mestrado_pessoa'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object tb_pessoasdesc_doutorado_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_doutorado_pessoa'
+      Index = 28
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasinst_doutorado_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_doutorado_pessoa'
+      Index = 29
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_pessoasano_doutorado_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_doutorado_pessoa'
+      Index = 30
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object tb_pessoascodigo_cidade: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_cidade'
+      Index = 31
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
   end
 end
