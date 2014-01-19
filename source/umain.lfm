@@ -1,24 +1,24 @@
-object Form1: TForm1
+object FrmMain: TFrmMain
   Left = 344
   Height = 607
-  Top = 33
+  Top = 38
   Width = 974
-  Caption = 'Form1'
-  ClientHeight = 587
+  Caption = 'FrmMain'
+  ClientHeight = 588
   ClientWidth = 974
   Menu = MainMenu1
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object StatusBar1: TStatusBar
     Left = 0
-    Height = 23
-    Top = 564
+    Height = 20
+    Top = 568
     Width = 974
     Panels = <>
   end
   object Panel1: TPanel
     Left = 0
-    Height = 564
+    Height = 568
     Top = 0
     Width = 170
     Align = alLeft
@@ -26,11 +26,11 @@ object Form1: TForm1
   end
   object Panel2: TPanel
     Left = 170
-    Height = 564
+    Height = 568
     Top = 0
     Width = 804
     Align = alClient
-    ClientHeight = 564
+    ClientHeight = 568
     ClientWidth = 804
     TabOrder = 2
     object Memo1: TMemo
@@ -40,7 +40,7 @@ object Form1: TForm1
       AnchorSideBottom.Control = Panel2
       AnchorSideBottom.Side = asrBottom
       Left = 471
-      Height = 357
+      Height = 361
       Top = 201
       Width = 327
       Anchors = [akTop, akRight, akBottom]
@@ -75,6 +75,10 @@ object Form1: TForm1
     object MenuItem1: TMenuItem
       Caption = 'Menu'
       OnClick = MenuItem1Click
+      object MenuNovoContrato: TMenuItem
+        Caption = 'Novo Contrato'
+        OnClick = MenuNovoContratoClick
+      end
     end
   end
 end

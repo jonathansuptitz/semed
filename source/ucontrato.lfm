@@ -1,0 +1,10 @@
+object frmContrato: TfrmContrato
+  Left = 320
+  Height = 600
+  Top = 14
+  Width = 900
+  BorderStyle = bsDialog
+  Caption = 'Contrato'
+  Position = poScreenCenter
+  LCLVersion = '1.0.14.0'
+end

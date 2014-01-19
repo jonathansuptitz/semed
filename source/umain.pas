@@ -10,17 +10,19 @@ uses
 
 type
 
-  { TForm1 }
+  { TFrmMain }
 
-  TForm1 = class(TForm)
+  TFrmMain = class(TForm)
     Label1: TLabel;
     MainMenu1: TMainMenu;
     Memo1: TMemo;
     MenuItem1: TMenuItem;
+    MenuNovoContrato: TMenuItem;
     Panel1: TPanel;
     Panel2: TPanel;
     StatusBar1: TStatusBar;
     procedure MenuItem1Click(Sender: TObject);
+    procedure MenuNovoContratoClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -28,17 +30,27 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FrmMain: TFrmMain;
 
 implementation
 
+uses
+  ucontrato;
+
 {$R *.lfm}
 
-{ TForm1 }
+{ TFrmMain }
 
-procedure TForm1.MenuItem1Click(Sender: TObject);
+procedure TFrmMain.MenuItem1Click(Sender: TObject);
 begin
 
+end;
+
+procedure TFrmMain.MenuNovoContratoClick(Sender: TObject);
+begin
+  Application.CreateForm(TfrmContrato, frmContrato);
+  frmContrato.ShowModal;
+  frmContrato.Free;
 end;
 
 end.
