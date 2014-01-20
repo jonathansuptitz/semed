@@ -4,7 +4,7 @@ object DM1: TDM1
   Height = 262
   HorizontalOffset = 351
   VerticalOffset = 129
-  Width = 316
+  Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
     UTF8StringsAsWideField = False
@@ -24,9 +24,10 @@ object DM1: TDM1
   end
   object tb_pessoas: TZTable
     Connection = SEMEDconnection
+    Active = True
     TableName = 'tb_pessoas'
     left = 48
-    top = 92
+    top = 96
     object tb_pessoascodigo_pessoa: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -370,5 +371,26 @@ object DM1: TDM1
       ReadOnly = False
       Required = True
     end
+    object tb_pessoasnascimento_pessoa: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'nascimento_pessoa'
+      Index = 32
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+  end
+  object queryCADASTROPESSOAScidades: TZReadOnlyQuery
+    Connection = SEMEDconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM tb_cidades'
+    )
+    Params = <>
+    left = 256
+    top = 32
   end
 end

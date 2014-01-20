@@ -43,10 +43,12 @@ type
     tb_pessoasinst_pos1_pessoa: TStringField;
     tb_pessoasinst_pos2_pessoa: TStringField;
     tb_pessoasnacionalidade_pessoa: TStringField;
+    tb_pessoasnascimento_pessoa: TStringField;
     tb_pessoasnome_pessoa: TStringField;
     tb_pessoasrg_pessoa: TStringField;
     tb_pessoastelefone1_pessoa: TStringField;
     tb_pessoastelefone2_pessoa: TStringField;
+    queryCADASTROPESSOAScidades: TZReadOnlyQuery;
     procedure DataModuleCreate(Sender: TObject);
   private
     { private declarations }
@@ -62,25 +64,6 @@ implementation
 {$R *.lfm}
 
 { TDM1 }
-
-
-{
-procedure TDM1.DataModuleCreate(Sender: TObject);
-begin
-  try
-    SEMEDconnection.Connect;
-  except
-    on E: Exception do
-    begin
-        if (E.ClassName = 'EZSQLException') then
-        begin
-          E.Message:='Erro ao conectar ao Banco de dados! Contate o administrador do sistema.';
-          ShowMessage('teste');
-        end;
-    end;
-  end;
-end;
-}
 
 procedure TDM1.DataModuleCreate(Sender: TObject);
 var

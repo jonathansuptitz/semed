@@ -1,4 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `semedcontratos` /*!40100 DEFAULT CHARACTER SET latin1 */;
+﻿CREATE DATABASE  IF NOT EXISTS `semedcontratos` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `semedcontratos`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
@@ -243,6 +243,7 @@ CREATE TABLE `tb_pessoas` (
   `nome_pessoa` varchar(50) NOT NULL,
   `cpf_pessoa` varchar(16) NOT NULL,
   `rg_pessoa` varchar(20) NOT NULL,
+  `nascimento_pessoa` varchar(10) NOT NULL,
   `nacionalidade_pessoa` varchar(20) NOT NULL,
   `estado_civil_pessoa` varchar(20) NOT NULL,
   `bairro_pessoa` varchar(45) NOT NULL,
@@ -295,4 +296,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-01-19 21:29:52
+-- Dump completed on 2014-01-19 22:03:43
