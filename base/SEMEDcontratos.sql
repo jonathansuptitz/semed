@@ -78,7 +78,8 @@ DROP TABLE IF EXISTS `tb_contratos`;
 CREATE TABLE `tb_contratos` (
   `codigo_contrato` int(11) NOT NULL,
   `justificativa_contrato` varchar(100) NOT NULL,
-  `periodo_contrato` varchar(30) NOT NULL,
+  `periodo_inicial_contrato` varchar(10) NOT NULL,
+  `periodo_final_contrato` varchar(10) NOT NULL,
   `salario_contrato` float NOT NULL,
   `data_contrato` varchar(10) NOT NULL,
   `ano_seletivo_contrato` int(4) NOT NULL,
@@ -272,6 +273,7 @@ CREATE TABLE `tb_pessoas` (
   `inst_doutorado_pessoa` varchar(45) DEFAULT NULL,
   `ano_doutorado_pessoa` int(4) DEFAULT NULL,
   `codigo_cidade` int(11) NOT NULL,
+  `cep_pessoa` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`codigo_pessoa`),
   KEY `fk_tb_pessoas_tb_cidades_idx` (`codigo_cidade`),
   CONSTRAINT `fk_tb_pessoas_tb_cidades` FOREIGN KEY (`codigo_cidade`) REFERENCES `tb_cidades` (`codigo_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION

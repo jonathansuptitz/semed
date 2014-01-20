@@ -23,6 +23,7 @@ type
     tb_pessoasano_pos1_pessoa: TLongintField;
     tb_pessoasano_pos2_pessoa: TLongintField;
     tb_pessoasbairro_pessoa: TStringField;
+    tb_pessoascep_pessoa: TStringField;
     tb_pessoascodigo_cidade: TLongintField;
     tb_pessoascodigo_pessoa: TLongintField;
     tb_pessoascpf_pessoa: TStringField;

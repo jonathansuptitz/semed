@@ -382,6 +382,17 @@ object DM1: TDM1
       Required = True
       Size = 40
     end
+    object tb_pessoascep_pessoa: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'cep_pessoa'
+      Index = 33
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
   end
   object queryCADASTROPESSOAScidades: TZReadOnlyQuery
     Connection = SEMEDconnection

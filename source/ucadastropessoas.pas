@@ -15,6 +15,7 @@ type
   TfrmCadastroPessoas = class(TForm)
     BtnVoltar: TBitBtn;
     comboUF: TComboBox;
+    DBEdit32: TDBEdit;
     DBMemo1: TDBMemo;
     dsCidades: TDatasource;
     DBComboBox1: TDBComboBox;
@@ -88,6 +89,8 @@ type
     Label32: TLabel;
     Label33: TLabel;
     Label34: TLabel;
+    Label35: TLabel;
+    Label36: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
@@ -97,6 +100,7 @@ type
     Panel1: TPanel;
     procedure BtnVoltarClick(Sender: TObject);
     procedure comboUFChange(Sender: TObject);
+    procedure GroupBox3Click(Sender: TObject);
   private
     { private declarations }
   public
