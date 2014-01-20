@@ -2,8 +2,8 @@ object DM1: TDM1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 262
-  HorizontalOffset = 351
-  VerticalOffset = 129
+  HorizontalOffset = 489
+  VerticalOffset = 233
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8

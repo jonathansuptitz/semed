@@ -13,7 +13,13 @@ type
   { TfrmCadastroPessoas }
 
   TfrmCadastroPessoas = class(TForm)
+    BtnPesquisar: TBitBtn;
     BtnVoltar: TBitBtn;
+    BtnEditar: TBitBtn;
+    BtnNovo: TBitBtn;
+    BtnSalvar: TBitBtn;
+    BtnCancelar: TBitBtn;
+    BtnApagar: TBitBtn;
     comboUF: TComboBox;
     DBEdit32: TDBEdit;
     DBMemo1: TDBMemo;
@@ -98,9 +104,14 @@ type
     Label8: TLabel;
     Label9: TLabel;
     Panel1: TPanel;
+    procedure BtnApagarClick(Sender: TObject);
+    procedure BtnCancelarClick(Sender: TObject);
+    procedure BtnEditarClick(Sender: TObject);
+    procedure BtnNovoClick(Sender: TObject);
+    procedure BtnPesquisarClick(Sender: TObject);
+    procedure BtnSalvarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure comboUFChange(Sender: TObject);
-    procedure GroupBox3Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -113,7 +124,7 @@ var
 implementation
 
 uses
-  dmMain;
+  dmMain, uPesquisaPessoas;
 
 {$R *.lfm}
 
@@ -139,10 +150,44 @@ begin
   end;
 end;
 
-procedure TfrmCadastroPessoas.BtnVoltarClick(Sender: TObject);
+// BOTOES MENU -----------------------------------------------------------------
+procedure TfrmCadastroPessoas.BtnVoltarClick(Sender: TObject);      // Voltar
 begin
+  dsPessoas.DataSet.Cancel; // Cancela insert (se houver)
   self.Close;
 end;
+
+procedure TfrmCadastroPessoas.BtnNovoClick(Sender: TObject);        // Novo
+begin
+  dsPessoas.DataSet.Insert;
+end;
+
+procedure TfrmCadastroPessoas.BtnPesquisarClick(Sender: TObject);   // Pesquisar
+begin
+  frmPesquisaPessoas.ShowModal;
+  frmPesquisaPessoas.Free;
+end;
+
+procedure TfrmCadastroPessoas.BtnSalvarClick(Sender: TObject);      // Salvar
+begin
+  dsPessoas.DataSet.Post;
+end;
+
+procedure TfrmCadastroPessoas.BtnEditarClick(Sender: TObject);      // Editar
+begin
+  dsPessoas.DataSet.Edit;
+end;
+
+procedure TfrmCadastroPessoas.BtnApagarClick(Sender: TObject);      // Apagar
+begin
+  dsPessoas.DataSet.Delete;
+end;
+
+procedure TfrmCadastroPessoas.BtnCancelarClick(Sender: TObject);    // Cancelar
+begin
+  dsPessoas.DataSet.Cancel;
+end;
+// -----------------------------------------------------------------------------
 
 end.
 
