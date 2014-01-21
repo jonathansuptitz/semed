@@ -2,7 +2,7 @@ object DM1: TDM1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 262
-  HorizontalOffset = 489
+  HorizontalOffset = 491
   VerticalOffset = 233
   Width = 535
   object SEMEDconnection: TZConnection
@@ -402,6 +402,16 @@ object DM1: TDM1
     )
     Params = <>
     left = 256
+    top = 32
+  end
+  object querycontratos: TZQuery
+    Connection = SEMEDconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM tb_contratos'
+    )
+    Params = <>
+    left = 412
     top = 32
   end
 end
