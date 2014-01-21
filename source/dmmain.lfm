@@ -366,7 +366,7 @@ object DM1: TDM1
       FieldKind = fkData
       FieldName = 'codigo_cidade'
       Index = 31
-      LookupCache = False
+      LookupCache = True
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = True

@@ -14,6 +14,9 @@ type
 
   TDM1 = class(TDataModule)
     SEMEDconnection: TZConnection;
+    tb_cidadescodigo_cidade: TLongintField;
+    tb_cidadesnome_cidade: TStringField;
+    tb_cidadesuf_cidade: TStringField;
     tb_pessoas: TZTable;
     tb_pessoasano_doutorado_pessoa: TLongintField;
     tb_pessoasano_graduacao1_pessoa: TLongintField;
@@ -50,6 +53,9 @@ type
     tb_pessoastelefone1_pessoa: TStringField;
     tb_pessoastelefone2_pessoa: TStringField;
     queryCADASTROPESSOAScidades: TZReadOnlyQuery;
+    ZReadOnlyQuery1codigo_cidade: TLongintField;
+    ZReadOnlyQuery1nome_cidade: TStringField;
+    ZReadOnlyQuery1uf_cidade: TStringField;
     procedure DataModuleCreate(Sender: TObject);
   private
     { private declarations }
@@ -81,6 +87,9 @@ begin
     SEMEDconnection.Password := SLcfg[3];
     // Conecta ao banco
     SEMEDconnection.Connected := true;
+
+    tb_pessoas.Active := true;
+    queryCADASTROPESSOAScidades.Active := true;
   finally
     SLcfg.Free;
   end;
