@@ -164,6 +164,7 @@ end;
 
 procedure TfrmCadastroPessoas.BtnPesquisarClick(Sender: TObject);   // Pesquisar
 begin
+  Application.CreateForm(TfrmPesquisaPessoas, frmPesquisaPessoas);
   frmPesquisaPessoas.ShowModal;
   frmPesquisaPessoas.Free;
 end;

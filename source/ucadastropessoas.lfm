@@ -1014,7 +1014,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 180
+      MaxLength = 60
       ParentFont = False
       TabOrder = 4
     end

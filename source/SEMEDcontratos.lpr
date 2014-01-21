@@ -7,25 +7,14 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, zcomponent, Umain, ucontrato, uCadastroPessoas, dmMain,
-  SysUtils, Dialogs, uPesquisaPessoas;
+  Forms, Umain, dmMain;
 
 {$R *.res}
 
 begin
   RequireDerivedFormResource := True;
-  try
-    Application.CreateForm(TDM1, DM1);
-    Application.Initialize;
-    Application.CreateForm(TFrmMain, FrmMain);
-  Application.CreateForm(TfrmPesquisaPessoas, frmPesquisaPessoas);
-    Application.Run;
-  except
-    on E: exception do
-    begin
-      ShowMessage('Erro ao abrir sistema! Contate o administrador.');
-      Application.Terminate;
-    end;
-  end;
+  Application.CreateForm(TDM1, DM1);
+  Application.Initialize;
+  Application.CreateForm(TFrmMain, FrmMain);
+  Application.Run;
 end.
-
