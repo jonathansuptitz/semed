@@ -11,8 +11,13 @@
         <UnitName Value="SEMEDcontratos"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
+<<<<<<< Updated upstream
         <CursorPos X="29" Y="2"/>
         <UsageCount Value="69"/>
+=======
+        <CursorPos X="28" Y="10"/>
+        <UsageCount Value="31"/>
+>>>>>>> Stashed changes
       </Unit0>
       <Unit1>
         <Filename Value="umain.pas"/>
@@ -23,9 +28,15 @@
         <UnitName Value="Umain"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
+<<<<<<< Updated upstream
         <TopLine Value="41"/>
         <CursorPos X="41" Y="51"/>
         <UsageCount Value="69"/>
+=======
+        <TopLine Value="28"/>
+        <CursorPos X="43" Y="51"/>
+        <UsageCount Value="31"/>
+>>>>>>> Stashed changes
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -36,10 +47,21 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ucontrato"/>
+<<<<<<< Updated upstream
         <WindowIndex Value="0"/>
         <TopLine Value="15"/>
         <CursorPos X="106" Y="27"/>
         <UsageCount Value="69"/>
+=======
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="26"/>
+        <CursorPos X="106" Y="40"/>
+        <UsageCount Value="31"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+>>>>>>> Stashed changes
       </Unit2>
       <Unit3>
         <Filename Value="ucadastropessoas.pas"/>
@@ -48,12 +70,20 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroPessoas"/>
+<<<<<<< Updated upstream
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="153"/>
         <CursorPos X="38" Y="168"/>
         <UsageCount Value="68"/>
+=======
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="122"/>
+        <CursorPos X="14" Y="140"/>
+        <UsageCount Value="30"/>
+>>>>>>> Stashed changes
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -66,9 +96,15 @@
         <UnitName Value="dmMain"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
+<<<<<<< Updated upstream
         <TopLine Value="5"/>
         <CursorPos X="26" Y="61"/>
         <UsageCount Value="67"/>
+=======
+        <TopLine Value="55"/>
+        <CursorPos X="33" Y="70"/>
+        <UsageCount Value="29"/>
+>>>>>>> Stashed changes
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit4>
@@ -129,6 +165,7 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="ucadastropessoas.pas"/>
+<<<<<<< Updated upstream
         <Caret Line="155" Column="29" TopLine="128"/>
       </Position1>
       <Position2>
@@ -246,6 +283,125 @@
       <Position30>
         <Filename Value="upesquisapessoas.pas"/>
         <Caret Line="41" Column="19" TopLine="37"/>
+=======
+        <Caret Line="115" Column="40" TopLine="105"/>
+      </Position1>
+      <Position2>
+        <Filename Value="ucadastropessoas.pas"/>
+        <Caret Line="114" Column="40" TopLine="104"/>
+      </Position2>
+      <Position3>
+        <Filename Value="ucadastropessoas.pas"/>
+        <Caret Line="108" Column="71" TopLine="105"/>
+      </Position3>
+      <Position4>
+        <Filename Value="ucadastropessoas.pas"/>
+        <Caret Line="109" Column="71" TopLine="106"/>
+      </Position4>
+      <Position5>
+        <Filename Value="ucadastropessoas.pas"/>
+        <Caret Line="108" Column="71" TopLine="105"/>
+      </Position5>
+      <Position6>
+        <Filename Value="ucadastropessoas.pas"/>
+        <Caret Line="109" Column="71" TopLine="106"/>
+      </Position6>
+      <Position7>
+        <Filename Value="ucadastropessoas.pas"/>
+        <Caret Line="111" Column="71" TopLine="108"/>
+      </Position7>
+      <Position8>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="27" Column="106" TopLine="15"/>
+      </Position8>
+      <Position9>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="28" Column="106" TopLine="15"/>
+      </Position9>
+      <Position10>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="29" Column="106" TopLine="15"/>
+      </Position10>
+      <Position11>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="30" Column="106" TopLine="16"/>
+      </Position11>
+      <Position12>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="31" Column="106" TopLine="17"/>
+      </Position12>
+      <Position13>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="32" Column="106" TopLine="18"/>
+      </Position13>
+      <Position14>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="31" Column="106" TopLine="17"/>
+      </Position14>
+      <Position15>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="32" Column="106" TopLine="18"/>
+      </Position15>
+      <Position16>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="33" Column="106" TopLine="19"/>
+      </Position16>
+      <Position17>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="34" Column="106" TopLine="20"/>
+      </Position17>
+      <Position18>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="33" Column="106" TopLine="19"/>
+      </Position18>
+      <Position19>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="34" Column="106" TopLine="20"/>
+      </Position19>
+      <Position20>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="33" Column="106" TopLine="19"/>
+      </Position20>
+      <Position21>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="34" Column="106" TopLine="20"/>
+      </Position21>
+      <Position22>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="33" Column="106" TopLine="19"/>
+      </Position22>
+      <Position23>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="34" Column="106" TopLine="20"/>
+      </Position23>
+      <Position24>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="35" Column="106" TopLine="21"/>
+      </Position24>
+      <Position25>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="36" Column="106" TopLine="22"/>
+      </Position25>
+      <Position26>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="37" Column="106" TopLine="23"/>
+      </Position26>
+      <Position27>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="38" Column="106" TopLine="24"/>
+      </Position27>
+      <Position28>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="37" Column="106" TopLine="23"/>
+      </Position28>
+      <Position29>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="38" Column="106" TopLine="24"/>
+      </Position29>
+      <Position30>
+        <Filename Value="ucontrato.pas"/>
+        <Caret Line="39" Column="106" TopLine="25"/>
+>>>>>>> Stashed changes
       </Position30>
     </JumpHistory>
   </ProjectSession>
