@@ -416,7 +416,6 @@ object frmContrato: TfrmContrato
   object frDBDataSet1: TfrDBDataSet
     CloseDataSource = True
     DataSet = DM1.querycontratos
-    DataSource = dsContratos
     left = 717
     top = 117
   end

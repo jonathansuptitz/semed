@@ -39,7 +39,7 @@ var
 implementation
 
 uses
-  dmMain;
+  dmMain, ucontrato;
 
 // INICIO ----------------------------------------------------------------------
 procedure TfrmPesquisaPessoas.FormCreate(Sender: TObject);    // Atribui valor a var
@@ -92,6 +92,13 @@ procedure TfrmPesquisaPessoas.FormClose(Sender: TObject;  // Desativa filtro da 
   var CloseAction: TCloseAction);                         // para nao afetar outros processos.
 begin                                                     // O registro continua no selecionado.
   DM1.tb_pessoas.Filtered := false;
+
+  //caso o frmcontrato esteje aberto manda o codigo da pessoa para o campo nele
+  if not(frmContrato = nil) then
+  begin
+    frmContrato.dsContratos.DataSet.FieldByName('codigo_pessoa').value := dsPessoas.DataSet.FieldByName('codigo_pessoa').value ;
+  end;
+
 end;
 
 {$R *.lfm}
