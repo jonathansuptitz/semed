@@ -112,9 +112,20 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure comboUFChange(Sender: TObject);
+    procedure DBEdit11KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit15KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit16KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit20KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit23KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit26KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit29KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit2Exit(Sender: TObject);
     procedure DBEdit2KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit32KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit4KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit6KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit7KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit8KeyPress(Sender: TObject; var Key: char);
   private
     { private declarations }
   public
@@ -139,17 +150,72 @@ begin
   utilidades.VerifCPF(DBEdit2);
 end;
 
-procedure TfrmCadastroPessoas.DBEdit2KeyPress(Sender: TObject; var Key: char);
-begin                                                        // CPF - masc
+procedure TfrmCadastroPessoas.DBEdit2KeyPress(Sender: TObject; var Key: char);  //CPF
+begin
   utilidades.MascCPF(DBEdit2, Key);
 end;
 
-procedure TfrmCadastroPessoas.DBEdit7KeyPress(Sender: TObject; var Key: char);
-begin                                                        // Fone1 - masc
+procedure TfrmCadastroPessoas.DBEdit32KeyPress(Sender: TObject; var Key: char); //CEP
+begin
+  Utilidades.MascCEP(DBEdit32, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit4KeyPress(Sender: TObject; var Key: char);  //RG
+begin
+  Utilidades.MascRG(DBEdit4, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit6KeyPress(Sender: TObject; var Key: char);  //Nascimento
+begin
+  Utilidades.MascData(DBEdit6, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit7KeyPress(Sender: TObject; var Key: char);  // Fone 1
+begin
   utilidades.MascFone(DBEdit7, Key);
 end;
 
-// Carrega Lista de Cidades comforme UF
+procedure TfrmCadastroPessoas.DBEdit8KeyPress(Sender: TObject; var Key: char);  // Fone 2
+begin
+  Utilidades.MascFone(DBEdit8, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit11KeyPress(Sender: TObject; var Key: char); //Ano medio
+begin
+  Utilidades.MascAno(DBEdit11, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit15KeyPress(Sender: TObject; var Key: char); // Ano grad 1
+begin
+  Utilidades.MascAno(DBEdit15, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit16KeyPress(Sender: TObject; var Key: char); // Ano grad 2
+begin
+  Utilidades.MascAno(DBEdit16, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit20KeyPress(Sender: TObject; var Key: char); // Ano pos 1
+begin
+  Utilidades.MascAno(DBEdit20, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit23KeyPress(Sender: TObject; var Key: char); // Ano pos 2
+begin
+  Utilidades.MascAno(DBEdit23, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit26KeyPress(Sender: TObject; var Key: char); // Ano mestrado
+begin
+  Utilidades.MascAno(DBEdit26, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit29KeyPress(Sender: TObject; var Key: char); // Ano doutorado
+begin
+  Utilidades.MascAno(DBEdit29, Key);
+end;
+
+// Carrega Lista de Cidades comforme UF ----------------------------------------
 procedure TfrmCadastroPessoas.comboUFChange(Sender: TObject);
 begin
   try

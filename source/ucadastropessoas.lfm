@@ -1,12 +1,12 @@
 object frmCadastroPessoas: TfrmCadastroPessoas
-  Left = 484
-  Height = 462
-  Top = 114
-  Width = 680
+  Left = 394
+  Height = 638
+  Top = 2
+  Width = 1296
   BorderIcons = [biSystemMenu]
   Caption = 'frmCadastroPessoas'
-  ClientHeight = 462
-  ClientWidth = 680
+  ClientHeight = 638
+  ClientWidth = 1296
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object GroupBox1: TGroupBox
@@ -78,6 +78,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       MaxLength = 80
       ParentFont = False
       TabOrder = 3
+      OnKeyPress = DBEdit4KeyPress
     end
     object DBEdit5: TDBEdit
       Left = 110
@@ -121,6 +122,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       MaxLength = 60
       ParentFont = False
       TabOrder = 6
+      OnKeyPress = DBEdit8KeyPress
     end
     object DBEdit9: TDBEdit
       Left = 110
@@ -269,6 +271,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       MaxLength = 40
       ParentFont = False
       TabOrder = 9
+      OnKeyPress = DBEdit6KeyPress
     end
     object Label10: TLabel
       Left = 11
@@ -330,6 +333,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         MaxLength = 0
         ParentFont = False
         TabOrder = 1
+        OnKeyPress = DBEdit11KeyPress
       end
       object Label12: TLabel
         Left = 188
@@ -437,6 +441,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         MaxLength = 0
         ParentFont = False
         TabOrder = 2
+        OnKeyPress = DBEdit15KeyPress
       end
     end
     object GroupBox6: TGroupBox
@@ -522,6 +527,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         MaxLength = 0
         ParentFont = False
         TabOrder = 2
+        OnKeyPress = DBEdit16KeyPress
       end
     end
     object GroupBox7: TGroupBox
@@ -607,6 +613,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         MaxLength = 0
         ParentFont = False
         TabOrder = 2
+        OnKeyPress = DBEdit20KeyPress
       end
     end
     object GroupBox8: TGroupBox
@@ -692,6 +699,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         MaxLength = 0
         ParentFont = False
         TabOrder = 2
+        OnKeyPress = DBEdit23KeyPress
       end
     end
     object GroupBox9: TGroupBox
@@ -777,6 +785,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         MaxLength = 0
         ParentFont = False
         TabOrder = 2
+        OnKeyPress = DBEdit26KeyPress
       end
     end
     object GroupBox10: TGroupBox
@@ -862,6 +871,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         MaxLength = 0
         ParentFont = False
         TabOrder = 2
+        OnKeyPress = DBEdit29KeyPress
       end
     end
   end
@@ -1020,6 +1030,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       MaxLength = 60
       ParentFont = False
       TabOrder = 4
+      OnKeyPress = DBEdit32KeyPress
     end
     object Label36: TLabel
       Left = 14
@@ -1034,12 +1045,12 @@ object frmCadastroPessoas: TfrmCadastroPessoas
     end
   end
   object Panel1: TPanel
-    Left = 546
-    Height = 462
+    Left = 1162
+    Height = 638
     Top = 0
     Width = 134
     Align = alRight
-    ClientHeight = 462
+    ClientHeight = 638
     ClientWidth = 134
     TabOrder = 3
     object BtnVoltar: TBitBtn
@@ -1049,7 +1060,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       AnchorSideBottom.Side = asrBottom
       Left = 6
       Height = 40
-      Top = 414
+      Top = 590
       Width = 120
       Anchors = [akRight, akBottom]
       BorderSpacing.Right = 7

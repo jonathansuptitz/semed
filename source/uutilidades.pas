@@ -29,6 +29,26 @@ type
                                                               ex: utilidades.MascFone(Edit2, Key);
                                                               }
 
+      procedure MascRG(campo : Tcomponent; var Key : char);   {Mascara RG, parametros: componente,
+                Utilizar no evento "OnKeyPress"               Key do procedure.
+                                                              ex: utilidades.MascRG(Edit2, Key);
+                                                              }
+
+      procedure MascData(campo : Tcomponent; var key : char); {Mascara Data, parametros: componente,
+                Utilizar no evento "OnKeyPress"               Key do procedure.
+                                                              ex: utilidades.MascDATA(Edit2, Key);
+                                                              }
+
+      procedure MascAno(campo : Tcomponent; var key : char); {Mascara Ano, parametros: componente,
+                Utilizar no evento "OnKeyPress"               Key do procedure.
+                                                              ex: utilidades.MascAno(Edit2, Key);
+                                                              }
+
+      procedure MascCEP(campo : Tcomponent; var key : char); {Mascara CEP, parametros: componente,
+                Utilizar no evento "OnKeyPress"               Key do procedure.
+                                                              ex: utilidades.MascCEP(Edit2, Key);
+                                                              }
+
   end;
 
 var
@@ -168,49 +188,29 @@ begin
   if (Key <> #8{backspace}) then
   begin
     if campo.ClassName = 'TDBEdit' then                         // Verifica tipo de campo : DBEdit
-      begin
+    begin
       if LengTh((campo as TDBEdit).text) = 3 then
-      begin
-        (campo as TDBEdit).text := (campo as TDBEdit).text + '.';
-        (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
-      end
+        (campo as TDBEdit).text := (campo as TDBEdit).text + '.'
       else if LengTh((campo as TDBEdit).text) = 7 then
-      begin
-        (campo as TDBEdit).text := (campo as TDBEdit).text + '.';
-        (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
-      end
+        (campo as TDBEdit).text := (campo as TDBEdit).text + '.'
       else if LengTh((campo as TDBEdit).text) = 11 then
-      begin
-        (campo as TDBEdit).text := (campo as TDBEdit).text + '-';
-        (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
-      end
+        (campo as TDBEdit).text := (campo as TDBEdit).text + '-'
       else if (LengTh((campo as TDBEdit).text) = 14) then
-      begin
         Key := #0{nil};
-      end;
     end
-    else if campo.ClassName = 'TEdit' then                        // Edit
-      begin
+    else if campo.ClassName = 'TEdit' then                      // Edit
+    begin
       if LengTh((campo as TEdit).text) = 3 then
-      begin
-        (campo as TEdit).text := (campo as TEdit).text + '.';
-        (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
-      end
+        (campo as TEdit).text := (campo as TEdit).text + '.'
       else if LengTh((campo as TEdit).text) = 7 then
-      begin
-        (campo as TEdit).text := (campo as TEdit).text + '.';
-        (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
-      end
+        (campo as TEdit).text := (campo as TEdit).text + '.'
       else if LengTh((campo as TEdit).text) = 11 then
-      begin
-        (campo as TEdit).text := (campo as TEdit).text + '-';
-        (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
-      end
+        (campo as TEdit).text := (campo as TEdit).text + '-'
       else if (LengTh((campo as TEdit).text) = 14) then
-      begin
         Key := #0{nil};
-      end;
     end;
+
+    (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
   end;
 end;
 
@@ -224,47 +224,108 @@ begin
     if campo.ClassName = 'TDBEdit' then
     begin
       if LengTh((campo as TDBEdit).text) = 0 then
-      begin
-        (campo as TDBEdit).text := (campo as TDBEdit).text + '(';
-        (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
-      end
+        (campo as TDBEdit).text := (campo as TDBEdit).text + '('
       else if LengTh((campo as TDBEdit).text) = 3 then
-      begin
-        (campo as TDBEdit).text := (campo as TDBEdit).text + ')';
-        (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
-      end
+        (campo as TDBEdit).text := (campo as TDBEdit).text + ')'
       else if LengTh((campo as TDBEdit).text) = 8 then
-      begin
-        (campo as TDBEdit).text := (campo as TDBEdit).text + '-';
-        (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
-      end
+        (campo as TDBEdit).text := (campo as TDBEdit).text + '-'
       else if LengTh((campo as TDBEdit).text) = 14 then
-      begin
         Key := #0 {nil};
-      end;
-    end;
-  end
-  else if campo.ClassName = 'TEdit' then
-  begin
+    end
+    else if campo.ClassName = 'TEdit' then
+    begin
       if LengTh((campo as TEdit).text) = 0 then
-      begin
-        (campo as TEdit).text := (campo as TEdit).text + '(';
-        (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
-      end
+        (campo as TEdit).text := (campo as TEdit).text + '('
       else if LengTh((campo as TEdit).text) = 3 then
-      begin
-        (campo as TEdit).text := (campo as TEdit).text + ')';
-        (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
-      end
+        (campo as TEdit).text := (campo as TEdit).text + ')'
       else if LengTh((campo as TEdit).text) = 8 then
-      begin
-        (campo as TEdit).text := (campo as TEdit).text + '-';
-        (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
-      end
+        (campo as TEdit).text := (campo as TEdit).text + '-'
       else if LengTh((campo as TEdit).text) = 14 then
-      begin
         Key := #0 {nil};
-      end;
+    end;
+
+    (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
+  end;
+end;
+
+procedure TUtilidades.MascRG(campo : Tcomponent; var Key : char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}, '.', '-', '/']) then
+    Key := #0{nil};
+end;
+
+procedure TUtilidades.MascData(campo : Tcomponent; var key : char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+  //
+  if (Key <> #8{backspace}) then
+  begin
+    if campo.ClassName = 'TDBEdit' then
+    begin
+      if LengTh((campo as TDBEdit).text) = 2 then
+        (campo as TDBEdit).text := (campo as TDBEdit).text + '/'
+      else if LengTh((campo as TDBEdit).text) = 5 then
+        (campo as TDBEdit).text := (campo as TDBEdit).text + '/'
+      else if LengTh((campo as TDBEdit).text) = 10 then
+        Key := #0 {nil};
+    end
+    else if campo.ClassName = 'TEdit' then
+    begin
+      if LengTh((campo as TEdit).text) = 2 then
+        (campo as TEdit).text := (campo as TEdit).text + '/'
+      else if LengTh((campo as TEdit).text) = 5 then
+        (campo as TEdit).text := (campo as TEdit).text + '/'
+      else if LengTh((campo as TEdit).text) = 10 then
+        Key := #0 {nil};
+    end;
+
+    (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
+  end;
+end;
+
+procedure TUtilidades.MascAno(campo : Tcomponent; var key : char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil}
+  else
+  begin
+    if campo.ClassName = 'TDBEdit' then
+    begin
+      if LengTh((campo as TDBEdit).text) = 4 then
+        Key := #0{nil};
+    end
+    else if campo.ClassName = 'TEdit' then
+    begin
+      if LengTh((campo as TEdit).text) = 4 then
+        Key := #0{nil};
+    end;
+  end;
+end;
+
+procedure TUtilidades.MascCEP(campo : Tcomponent; var key : char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+  //
+  if (Key <> #8{backspace}) then
+  begin
+    if campo.ClassName = 'TDBEdit' then
+    begin
+      if LengTh((campo as TDBEdit).text) = 5 then
+        (campo as TDBEdit).text := (campo as TDBEdit).text + '-'
+      else if (LengTh((campo as TDBEdit).text) = 9) then
+        Key := #0{nil};
+    end
+    else if campo.ClassName = 'TEdit' then
+    begin
+      if LengTh((campo as TEdit).text) = 5 then
+        (campo as TEdit).text := (campo as TEdit).text + '-'
+      else if (LengTh((campo as TEdit).text) = 9) then
+        Key := #0{nil};
+    end;
+
+    (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
   end;
 end;
 
