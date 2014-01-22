@@ -1,12 +1,12 @@
 object frmCadastroPessoas: TfrmCadastroPessoas
-  Left = 70
-  Height = 581
-  Top = 133
-  Width = 1016
+  Left = 484
+  Height = 462
+  Top = 114
+  Width = 680
   BorderIcons = [biSystemMenu]
   Caption = 'frmCadastroPessoas'
-  ClientHeight = 581
-  ClientWidth = 1016
+  ClientHeight = 462
+  ClientWidth = 680
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object GroupBox1: TGroupBox
@@ -48,6 +48,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       MaxLength = 64
       ParentFont = False
       TabOrder = 1
+      OnExit = DBEdit2Exit
+      OnKeyPress = DBEdit2KeyPress
     end
     object DBEdit3: TDBEdit
       Left = 110
@@ -104,6 +106,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       MaxLength = 60
       ParentFont = False
       TabOrder = 5
+      OnKeyPress = DBEdit7KeyPress
     end
     object DBEdit8: TDBEdit
       Left = 110
@@ -1031,12 +1034,12 @@ object frmCadastroPessoas: TfrmCadastroPessoas
     end
   end
   object Panel1: TPanel
-    Left = 882
-    Height = 581
+    Left = 546
+    Height = 462
     Top = 0
     Width = 134
     Align = alRight
-    ClientHeight = 581
+    ClientHeight = 462
     ClientWidth = 134
     TabOrder = 3
     object BtnVoltar: TBitBtn
@@ -1046,7 +1049,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       AnchorSideBottom.Side = asrBottom
       Left = 6
       Height = 40
-      Top = 533
+      Top = 414
       Width = 120
       Anchors = [akRight, akBottom]
       BorderSpacing.Right = 7

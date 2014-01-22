@@ -13,6 +13,7 @@ type
   { TDM1 }
 
   TDM1 = class(TDataModule)
+    querycontratos: TZQuery;
     SEMEDconnection: TZConnection;
     tb_cidadescodigo_cidade: TLongintField;
     tb_cidadesnome_cidade: TStringField;
@@ -53,6 +54,7 @@ type
     tb_pessoastelefone1_pessoa: TStringField;
     tb_pessoastelefone2_pessoa: TStringField;
     queryCADASTROPESSOAScidades: TZReadOnlyQuery;
+    ZQuery1: TZQuery;
     ZReadOnlyQuery1codigo_cidade: TLongintField;
     ZReadOnlyQuery1nome_cidade: TStringField;
     ZReadOnlyQuery1uf_cidade: TStringField;

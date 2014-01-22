@@ -1,13 +1,13 @@
 object frmPesquisaPessoas: TfrmPesquisaPessoas
-  Left = 397
+  Left = 438
   Height = 435
-  Top = 210
-  Width = 862
+  Top = 212
+  Width = 682
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Pesquisa de Pessoas'
   ClientHeight = 435
-  ClientWidth = 862
+  ClientWidth = 682
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poDesktopCenter
@@ -16,10 +16,10 @@ object frmPesquisaPessoas: TfrmPesquisaPessoas
     Left = 0
     Height = 50
     Top = 0
-    Width = 862
+    Width = 682
     Align = alTop
     ClientHeight = 50
-    ClientWidth = 862
+    ClientWidth = 682
     TabOrder = 0
     object editPesquisa: TEdit
       Left = 16
@@ -59,7 +59,7 @@ object frmPesquisaPessoas: TfrmPesquisaPessoas
       AnchorSideTop.Control = Panel1
       AnchorSideRight.Control = Panel1
       AnchorSideRight.Side = asrBottom
-      Left = 691
+      Left = 511
       Height = 37
       Top = 6
       Width = 163
@@ -114,7 +114,7 @@ object frmPesquisaPessoas: TfrmPesquisaPessoas
     Left = 0
     Height = 385
     Top = 50
-    Width = 862
+    Width = 682
     Align = alClient
     Color = clWindow
     Columns = <    

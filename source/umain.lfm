@@ -1,24 +1,24 @@
 object FrmMain: TFrmMain
-  Left = 446
+  Left = 468
   Height = 423
-  Top = 137
+  Top = 220
   Width = 682
   Caption = 'FrmMain'
-  ClientHeight = 404
+  ClientHeight = 403
   ClientWidth = 682
   Menu = MainMenu1
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object StatusBar1: TStatusBar
     Left = 0
-    Height = 20
-    Top = 384
+    Height = 23
+    Top = 380
     Width = 682
     Panels = <>
   end
   object Panel1: TPanel
     Left = 0
-    Height = 384
+    Height = 380
     Top = 0
     Width = 170
     Align = alLeft
@@ -26,11 +26,11 @@ object FrmMain: TFrmMain
   end
   object Panel2: TPanel
     Left = 170
-    Height = 384
+    Height = 380
     Top = 0
     Width = 512
     Align = alClient
-    ClientHeight = 384
+    ClientHeight = 380
     ClientWidth = 512
     TabOrder = 2
     object Memo1: TMemo
@@ -40,7 +40,7 @@ object FrmMain: TFrmMain
       AnchorSideBottom.Control = Panel2
       AnchorSideBottom.Side = asrBottom
       Left = 179
-      Height = 177
+      Height = 173
       Top = 201
       Width = 327
       Anchors = [akTop, akRight, akBottom]

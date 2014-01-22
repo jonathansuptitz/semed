@@ -112,6 +112,9 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure comboUFChange(Sender: TObject);
+    procedure DBEdit2Exit(Sender: TObject);
+    procedure DBEdit2KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit7KeyPress(Sender: TObject; var Key: char);
   private
     { private declarations }
   public
@@ -124,11 +127,27 @@ var
 implementation
 
 uses
-  dmMain, uPesquisaPessoas;
+  dmMain, uPesquisaPessoas, uUtilidades;
 
 {$R *.lfm}
 
 { TfrmCadastroPessoas }
+
+// MASCARAS E VERIFICADORES ----------------------------------------------------
+procedure TfrmCadastroPessoas.DBEdit2Exit(Sender: TObject);  // CPF - verif
+begin
+  utilidades.VerifCPF(DBEdit2);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit2KeyPress(Sender: TObject; var Key: char);
+begin                                                        // CPF - masc
+  utilidades.MascCPF(DBEdit2, Key);
+end;
+
+procedure TfrmCadastroPessoas.DBEdit7KeyPress(Sender: TObject; var Key: char);
+begin                                                        // Fone1 - masc
+  utilidades.MascFone(DBEdit7, Key);
+end;
 
 // Carrega Lista de Cidades comforme UF
 procedure TfrmCadastroPessoas.comboUFChange(Sender: TObject);

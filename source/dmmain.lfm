@@ -2,8 +2,8 @@ object DM1: TDM1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 262
-  HorizontalOffset = 491
-  VerticalOffset = 233
+  HorizontalOffset = 291
+  VerticalOffset = 236
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -413,5 +413,10 @@ object DM1: TDM1
     Params = <>
     left = 412
     top = 32
+  end
+  object ZQuery1: TZQuery
+    Params = <>
+    left = 300
+    top = 149
   end
 end
