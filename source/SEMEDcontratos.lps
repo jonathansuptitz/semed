@@ -4,15 +4,18 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="10">
+    <Units Count="11">
       <Unit0>
         <Filename Value="SEMEDcontratos.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SEMEDcontratos"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="29" Y="2"/>
+        <CursorPos X="23" Y="10"/>
         <UsageCount Value="75"/>
+        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="umain.pas"/>
@@ -63,7 +66,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmMain"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="78"/>
         <CursorPos X="47" Y="81"/>
@@ -78,7 +81,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uPesquisaPessoas"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="80"/>
@@ -88,6 +90,17 @@
         <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
+        <Filename Value="uutilidades.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UUtilidades"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="14"/>
+        <CursorPos X="41" Y="15"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit6>
+      <Unit7>
         <Filename Value="C:\lazarus\Componentes externos\zeos\src\dbc\ZDbcMySqlUtils.pas"/>
         <UnitName Value="ZDbcMySqlUtils"/>
         <WindowIndex Value="0"/>
@@ -95,8 +108,8 @@
         <CursorPos X="1" Y="442"/>
         <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit6>
-      <Unit7>
+      </Unit7>
+      <Unit8>
         <Filename Value="C:\lazarus\Componentes externos\zeos\src\component\ZAbstractRODataset.pas"/>
         <UnitName Value="ZAbstractRODataset"/>
         <WindowIndex Value="0"/>
@@ -104,8 +117,8 @@
         <CursorPos X="30" Y="2803"/>
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit7>
-      <Unit8>
+      </Unit8>
+      <Unit9>
         <Filename Value="C:\lazarus\Componentes externos\zeos\src\core\ZExprParser.pas"/>
         <UnitName Value="ZExprParser"/>
         <WindowIndex Value="0"/>
@@ -113,15 +126,15 @@
         <CursorPos X="26" Y="618"/>
         <UsageCount Value="9"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit8>
-      <Unit9>
+      </Unit9>
+      <Unit10>
         <Filename Value="C:\lazarus\lcl\interfaces\win32\win32wscontrols.pp"/>
         <UnitName Value="Win32WSControls"/>
         <WindowIndex Value="0"/>
         <TopLine Value="249"/>
         <CursorPos X="36" Y="260"/>
         <UsageCount Value="9"/>
-      </Unit9>
+      </Unit10>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
