@@ -102,6 +102,7 @@
         <Filename Value="ucadastrolocaltrabalho.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmCadastroLocalTrabalho"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UCadastroLocalTrabalho"/>
       </Unit7>

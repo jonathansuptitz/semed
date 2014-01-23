@@ -1,9 +1,9 @@
 object DM1: TDM1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 343
-  HorizontalOffset = 403
-  VerticalOffset = 226
+  Height = 262
+  HorizontalOffset = 496
+  VerticalOffset = 228
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -423,12 +423,13 @@ object DM1: TDM1
     Params = <>
     left = 412
     top = 96
+  end
   object tb_local_trabalho: TZTable
     Connection = SEMEDconnection
     Active = True
     TableName = 'tb_local_trabalho'
     left = 48
-    top = 157
+    top = 160
     object tb_local_trabalhocodigo_local_trabalho: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -479,7 +480,7 @@ object DM1: TDM1
       Index = 4
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = True
+      ReadOnly = False
       Required = False
       Size = 60
     end
@@ -490,7 +491,7 @@ object DM1: TDM1
       Index = 5
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = True
+      ReadOnly = False
       Required = False
       Size = 60
     end
@@ -501,7 +502,7 @@ object DM1: TDM1
       Index = 6
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = True
+      ReadOnly = False
       Required = False
       Size = 60
     end

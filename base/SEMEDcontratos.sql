@@ -1,4 +1,4 @@
-﻿CREATE DATABASE  IF NOT EXISTS `semedcontratos` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE  IF NOT EXISTS `semedcontratos` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `semedcontratos`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
@@ -90,8 +90,8 @@ CREATE TABLE `tb_contratos` (
   PRIMARY KEY (`codigo_contrato`),
   KEY `fk_tb_contratos_tb_pessoas1_idx` (`codigo_pessoa`),
   KEY `fk_tb_contratos_tb_cargos1_idx` (`codigo_cargo`),
-  CONSTRAINT `fk_tb_contratos_tb_pessoas1` FOREIGN KEY (`codigo_pessoa`) REFERENCES `tb_pessoas` (`codigo_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tb_contratos_tb_cargos1` FOREIGN KEY (`codigo_cargo`) REFERENCES `tb_cargos` (`codigo_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_contratos_tb_cargos1` FOREIGN KEY (`codigo_cargo`) REFERENCES `tb_cargos` (`codigo_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_tb_contratos_tb_pessoas1` FOREIGN KEY (`codigo_pessoa`) REFERENCES `tb_pessoas` (`codigo_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -132,57 +132,6 @@ LOCK TABLES `tb_contratos_local_trabalho` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tb_horarios`
---
-
-DROP TABLE IF EXISTS `tb_horarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_horarios` (
-  `codigo_horario` int(11) NOT NULL AUTO_INCREMENT,
-  `horario_periodo_horario` varchar(15) NOT NULL,
-  `descricao_periodo_horario` varchar(15) NOT NULL,
-  PRIMARY KEY (`codigo_horario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_horarios`
---
-
-LOCK TABLES `tb_horarios` WRITE;
-/*!40000 ALTER TABLE `tb_horarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_horarios` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tb_horarios_local_trabalho`
---
-
-DROP TABLE IF EXISTS `tb_horarios_local_trabalho`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tb_horarios_local_trabalho` (
-  `codigo_horario` int(11) NOT NULL,
-  `codigo_local_trabalho` int(11) NOT NULL,
-  PRIMARY KEY (`codigo_horario`,`codigo_local_trabalho`),
-  KEY `fk_tb_horarios_local_trabalho_tb_local_trabalho1_idx` (`codigo_horario`),
-  KEY `fk_tb_horarios_local_trabalho_tb_horarios1_idx` (`codigo_local_trabalho`),
-  CONSTRAINT `fk_tb_horarios_local_trabalho_tb_local_trabalho1` FOREIGN KEY (`codigo_horario`) REFERENCES `tb_local_trabalho` (`codigo_local_trabalho`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tb_horarios_local_trabalho_tb_horarios1` FOREIGN KEY (`codigo_local_trabalho`) REFERENCES `tb_horarios` (`codigo_horario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `tb_horarios_local_trabalho`
---
-
-LOCK TABLES `tb_horarios_local_trabalho` WRITE;
-/*!40000 ALTER TABLE `tb_horarios_local_trabalho` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_horarios_local_trabalho` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tb_local_trabalho`
 --
 
@@ -194,6 +143,9 @@ CREATE TABLE `tb_local_trabalho` (
   `nome_local_trabalho` varchar(45) NOT NULL,
   `responsavel_local_trabalho` varchar(45) DEFAULT NULL,
   `telefone_local_trabalho` varchar(15) DEFAULT NULL,
+  `horario_matutino_trabalho` varchar(15) DEFAULT NULL,
+  `horario_vespertino_trabalho` varchar(15) DEFAULT NULL,
+  `horario_noturno_trabalho` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`codigo_local_trabalho`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -277,7 +229,7 @@ CREATE TABLE `tb_pessoas` (
   PRIMARY KEY (`codigo_pessoa`),
   KEY `fk_tb_pessoas_tb_cidades_idx` (`codigo_cidade`),
   CONSTRAINT `fk_tb_pessoas_tb_cidades` FOREIGN KEY (`codigo_cidade`) REFERENCES `tb_cidades` (`codigo_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -286,6 +238,7 @@ CREATE TABLE `tb_pessoas` (
 
 LOCK TABLES `tb_pessoas` WRITE;
 /*!40000 ALTER TABLE `tb_pessoas` DISABLE KEYS */;
+INSERT INTO `tb_pessoas` VALUES (1,'Roberto Luiz Debarba','154,138,45-52','44944844','24/03/1995','Brasileiro','Solteiro(a)','Nações','Rua Egito, 574. Casa.\r\nEm frente ao residencial Egito.','roberto.debarba@gmail.com','(47)3382-1947',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4681,'89120000'),(2,'4494','3454','449','191','449','Casado(a)','1919','9919','4949','49','494',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,221,'94944');
 /*!40000 ALTER TABLE `tb_pessoas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -298,4 +251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-01-19 22:03:43
+-- Dump completed on 2014-01-23 21:21:20
