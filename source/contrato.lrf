@@ -102,8 +102,8 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value="VarDatainicial&#xD;&#xA;"/>
-            <Script Value=""/>
+            <Memo Value="&#xD;&#xA;"/>
+            <Script Value="text := VarDatainicial&#xD;&#xA;"/>
           </Data>
           <Font>
             <Name Value="Arial"/>

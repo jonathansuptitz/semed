@@ -47,7 +47,6 @@ type
     procedure BtnVoltarClick(Sender: TObject);
     procedure edtFuncionarioButtonClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure frReport1GetValue(const ParName: String; var ParValue: Variant);
     procedure SpeedButton2Click(Sender: TObject);
   private
     { private declarations }
@@ -101,13 +100,6 @@ procedure TfrmContrato.FormShow(Sender: TObject);
 begin
   dsContratos.DataSet.Active := true;
   dsContratos.DataSet.Insert;
-end;
-
-procedure TfrmContrato.frReport1GetValue(const ParName: String;
-  var ParValue: Variant);
-begin
-    if ParName = 'VarDatainicial' then
-      ParValue := DateEditinicial.text;
 end;
 
 procedure TfrmContrato.SpeedButton2Click(Sender: TObject);

@@ -3,7 +3,7 @@ object DM1: TDM1
   OldCreateOrder = False
   Height = 262
   HorizontalOffset = 291
-  VerticalOffset = 236
+  VerticalOffset = 238
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
