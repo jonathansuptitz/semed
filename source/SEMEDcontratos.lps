@@ -4,21 +4,16 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="13">
+    <Units Count="11">
       <Unit0>
         <Filename Value="SEMEDcontratos.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SEMEDcontratos"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-<<<<<<< 50e4ec9c5a7fe37a41ac471478bc451189699839
         <CursorPos X="23" Y="10"/>
         <UsageCount Value="77"/>
-=======
-        <CursorPos X="43" Y="10"/>
-        <UsageCount Value="76"/>
->>>>>>> 1f1e21c5bf2e0f4c5e7c7e9bda081c2545f24e32
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -32,11 +27,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="41"/>
         <CursorPos X="41" Y="51"/>
-<<<<<<< 50e4ec9c5a7fe37a41ac471478bc451189699839
         <UsageCount Value="77"/>
-=======
-        <UsageCount Value="76"/>
->>>>>>> 1f1e21c5bf2e0f4c5e7c7e9bda081c2545f24e32
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -47,20 +38,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ucontrato"/>
-<<<<<<< 50e4ec9c5a7fe37a41ac471478bc451189699839
         <EditorIndex Value="5"/>
         <WindowIndex Value="0"/>
         <TopLine Value="15"/>
         <CursorPos X="35" Y="25"/>
         <UsageCount Value="77"/>
-=======
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="6"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="111"/>
-        <CursorPos X="16" Y="123"/>
-        <UsageCount Value="76"/>
->>>>>>> 1f1e21c5bf2e0f4c5e7c7e9bda081c2545f24e32
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit2>
@@ -74,15 +56,9 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-<<<<<<< 50e4ec9c5a7fe37a41ac471478bc451189699839
         <TopLine Value="115"/>
         <CursorPos X="63" Y="123"/>
         <UsageCount Value="76"/>
-=======
-        <TopLine Value="159"/>
-        <CursorPos X="23" Y="112"/>
-        <UsageCount Value="75"/>
->>>>>>> 1f1e21c5bf2e0f4c5e7c7e9bda081c2545f24e32
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -93,15 +69,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmMain"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="77"/>
+        <TopLine Value="78"/>
         <CursorPos X="47" Y="81"/>
-<<<<<<< 50e4ec9c5a7fe37a41ac471478bc451189699839
         <UsageCount Value="75"/>
-=======
-        <UsageCount Value="74"/>
->>>>>>> 1f1e21c5bf2e0f4c5e7c7e9bda081c2545f24e32
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit4>
@@ -116,11 +88,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="87"/>
         <CursorPos X="38" Y="99"/>
-<<<<<<< 50e4ec9c5a7fe37a41ac471478bc451189699839
         <UsageCount Value="30"/>
-=======
-        <UsageCount Value="29"/>
->>>>>>> 1f1e21c5bf2e0f4c5e7c7e9bda081c2545f24e32
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -128,18 +96,12 @@
         <Filename Value="uutilidades.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UUtilidades"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-<<<<<<< 50e4ec9c5a7fe37a41ac471478bc451189699839
         <TopLine Value="45"/>
         <CursorPos X="80" Y="217"/>
         <FoldState Value=" T3iF0{f4 pjAmD0H1x"/>
         <UsageCount Value="22"/>
-=======
-        <TopLine Value="31"/>
-        <CursorPos X="41" Y="15"/>
-        <UsageCount Value="21"/>
->>>>>>> 1f1e21c5bf2e0f4c5e7c7e9bda081c2545f24e32
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -177,34 +139,12 @@
         <CursorPos X="36" Y="260"/>
         <UsageCount Value="9"/>
       </Unit10>
-      <Unit11>
-        <Filename Value="C:\lazarus\lcl\lresources.pp"/>
-        <UnitName Value="LResources"/>
-        <EditorIndex Value="7"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="3100"/>
-        <CursorPos X="1" Y="3109"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-      </Unit11>
-      <Unit12>
-        <Filename Value="\\VBOXSVR\Documentos\zeos\src\dbc\ZDbcMySqlUtils.pas"/>
-        <UnitName Value="ZDbcMySqlUtils"/>
-        <EditorIndex Value="3"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="433"/>
-        <CursorPos X="1" Y="443"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
-      </Unit12>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-<<<<<<< 50e4ec9c5a7fe37a41ac471478bc451189699839
         <Filename Value="upesquisapessoas.pas"/>
         <Caret Line="72" Column="83" TopLine="67"/>
       </Position1>
@@ -219,29 +159,12 @@
       <Position4>
         <Filename Value="ucontrato.pas"/>
         <Caret Line="26" Column="35" TopLine="15"/>
-=======
-        <Filename Value="dmmain.pas"/>
-        <Caret Line="83" Column="93" TopLine="78"/>
-      </Position1>
-      <Position2>
-        <Filename Value="dmmain.pas"/>
-        <Caret Line="82" Column="93" TopLine="77"/>
-      </Position2>
-      <Position3>
-        <Filename Value="dmmain.pas"/>
-        <Caret Line="81" Column="93" TopLine="76"/>
-      </Position3>
-      <Position4>
-        <Filename Value="dmmain.pas"/>
-        <Caret Line="80" Column="93" TopLine="75"/>
->>>>>>> 1f1e21c5bf2e0f4c5e7c7e9bda081c2545f24e32
       </Position4>
       <Position5>
         <Filename Value="ucontrato.pas"/>
         <Caret Line="25" Column="35" TopLine="15"/>
       </Position5>
       <Position6>
-<<<<<<< 50e4ec9c5a7fe37a41ac471478bc451189699839
         <Filename Value="uutilidades.pas"/>
         <Caret Line="268" Column="4" TopLine="244"/>
       </Position6>
@@ -340,106 +263,6 @@
       <Position30>
         <Filename Value="uutilidades.pas"/>
         <Caret Line="33" Column="85" TopLine="26"/>
-=======
-        <Filename Value="upesquisapessoas.pas"/>
-        <Caret Line="86" Column="1" TopLine="46"/>
-      </Position6>
-      <Position7>
-        <Filename Value="upesquisapessoas.pas"/>
-        <Caret Line="93" Column="1" TopLine="71"/>
-      </Position7>
-      <Position8>
-        <Filename Value="upesquisapessoas.pas"/>
-        <Caret Line="73" Column="83" TopLine="68"/>
-      </Position8>
-      <Position9>
-        <Filename Value="upesquisapessoas.pas"/>
-        <Caret Line="72" Column="83" TopLine="67"/>
-      </Position9>
-      <Position10>
-        <Filename Value="upesquisapessoas.pas"/>
-        <Caret Line="79" Column="5" TopLine="67"/>
-      </Position10>
-      <Position11>
-        <Filename Value="upesquisapessoas.pas"/>
-        <Caret Line="100" Column="63" TopLine="81"/>
-      </Position11>
-      <Position12>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="26" Column="35" TopLine="15"/>
-      </Position12>
-      <Position13>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="25" Column="35" TopLine="15"/>
-      </Position13>
-      <Position14>
-        <Filename Value="upesquisapessoas.pas"/>
-        <Caret Line="99" Column="38" TopLine="87"/>
-      </Position14>
-      <Position15>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="25" Column="35" TopLine="15"/>
-      </Position15>
-      <Position16>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="9" Column="77" TopLine="1"/>
-      </Position16>
-      <Position17>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="50" Column="46" TopLine="39"/>
-      </Position17>
-      <Position18>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="49" Column="46" TopLine="38"/>
-      </Position18>
-      <Position19>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="48" Column="46" TopLine="38"/>
-      </Position19>
-      <Position20>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="47" Column="46" TopLine="37"/>
-      </Position20>
-      <Position21>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="48" Column="46" TopLine="38"/>
-      </Position21>
-      <Position22>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="49" Column="46" TopLine="39"/>
-      </Position22>
-      <Position23>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="48" Column="46" TopLine="38"/>
-      </Position23>
-      <Position24>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="49" Column="46" TopLine="39"/>
-      </Position24>
-      <Position25>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="48" Column="46" TopLine="38"/>
-      </Position25>
-      <Position26>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="49" Column="46" TopLine="39"/>
-      </Position26>
-      <Position27>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="88" Column="20" TopLine="76"/>
-      </Position27>
-      <Position28>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="91" Column="32" TopLine="78"/>
-      </Position28>
-      <Position29>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="92" Column="3" TopLine="81"/>
-      </Position29>
-      <Position30>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="114" Column="1" TopLine="111"/>
->>>>>>> 1f1e21c5bf2e0f4c5e7c7e9bda081c2545f24e32
       </Position30>
     </JumpHistory>
   </ProjectSession>

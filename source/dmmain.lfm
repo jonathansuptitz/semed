@@ -26,8 +26,8 @@ object DM1: TDM1
     Connection = SEMEDconnection
     Active = True
     TableName = 'tb_pessoas'
-    left = 412
-    top = 168
+    left = 48
+    top = 96
     object tb_pessoascodigo_pessoa: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -404,7 +404,7 @@ object DM1: TDM1
     left = 256
     top = 32
   end
-  object tb_contratos: TZQuery
+  object querycontratos: TZQuery
     Connection = SEMEDconnection
     Active = True
     SQL.Strings = (
@@ -414,14 +414,9 @@ object DM1: TDM1
     left = 412
     top = 32
   end
-  object tb_cargos: TZQuery
-    Connection = SEMEDconnection
-    Active = True
-    SQL.Strings = (
-      'SELECT * FROM tb_cargos'
-    )
+  object ZQuery1: TZQuery
     Params = <>
-    left = 412
-    top = 96
+    left = 300
+    top = 149
   end
 end
