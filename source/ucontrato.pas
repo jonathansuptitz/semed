@@ -5,9 +5,9 @@ unit ucontrato;
 interface
 
 uses
-  Classes, SysUtils, db, FileUtil, LR_Class, LR_DBSet, LR_Desgn, Forms,
-  Controls, Graphics, Dialogs, Buttons, ExtCtrls, DbCtrls, StdCtrls, EditBtn,
-  Calendar, ZDataset;
+  Classes, SysUtils, db, FileUtil, LR_Class, LR_DBSet, LR_Desgn, lr_e_pdf,
+  Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls, DbCtrls, StdCtrls,
+  EditBtn;
 
 type
 
@@ -16,9 +16,9 @@ type
   TfrmContrato = class(TForm)
     BtnGerarcontrato: TBitBtn;
     BtnVoltar: TBitBtn;
-    Button1: TButton;
+    DBComboBox1: TDBComboBox;
+    dscargos: TDatasource;
     DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     DBEdit4: TDBEdit;
     DBMemo2: TDBMemo;
@@ -30,6 +30,7 @@ type
     frDBDataSet1: TfrDBDataSet;
     frDesigner1: TfrDesigner;
     frReport1: TfrReport;
+    frTNPDFExport1: TfrTNPDFExport;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -41,12 +42,13 @@ type
     Label9: TLabel;
     Panelprincipal: TPanel;
     PanelBotoes: TPanel;
-    SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure edtFuncionarioButtonClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
   private
@@ -73,16 +75,22 @@ end;
 
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 begin
+  //adiciona periodos do contrato
   dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.GetDateFormat;
   dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.GetDateFormat;
-  //dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime(Now);
+
+  //pegar ano atual
+  dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('aaaa', Date);
 
   dsContratos.DataSet.Post;
 
-  dsContratos.DataSet.Filter := 'seila';
-
-  //frReport1.LoadFromFile();
+  //cria o contrato
+  frReport1.LoadFromFile('contrato.lrf');
+  frReport1.PrepareReport;
   frReport1.ShowPreparedReport;
+
+  //salva copia pdf
+  frReport1.SavePreparedReport(frmPesquisaPessoas.dsPessoas.DataSet.FieldByName('nome_pessoa').value + FormatDateTime('aaaa', Date)+'.pdf');
 end;
 
 procedure TfrmContrato.Button1Click(Sender: TObject);
@@ -97,10 +105,23 @@ begin
   frmPesquisaPessoas.free;
 end;
 
+procedure TfrmContrato.FormClose(Sender: TObject; var CloseAction: TCloseAction
+  );
+begin
+  dsContratos.DataSet.Cancel;
+end;
+
+procedure TfrmContrato.FormCreate(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmContrato.FormShow(Sender: TObject);
 begin
   dsContratos.DataSet.Active := true;
-  dsContratos.DataSet.Insert;
+  dsContratos.DataSet.Append;
+
+  DBEdit4.Text := '2012'; //ano padrao seletivo
 end;
 
 procedure TfrmContrato.SpeedButton2Click(Sender: TObject);
