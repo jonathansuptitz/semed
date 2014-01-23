@@ -5,9 +5,9 @@ unit ucontrato;
 interface
 
 uses
-  Classes, SysUtils, db, FileUtil, LR_Class, LR_DBSet, LR_Desgn, Forms,
-  Controls, Graphics, Dialogs, Buttons, ExtCtrls, DbCtrls, StdCtrls, EditBtn,
-  Calendar, ZDataset;
+  Classes, SysUtils, db, FileUtil, LR_Class, LR_DBSet, LR_Desgn, lr_e_pdf,
+  Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls, DbCtrls, StdCtrls,
+  EditBtn, Calendar, ZDataset;
 
 type
 
@@ -16,9 +16,9 @@ type
   TfrmContrato = class(TForm)
     BtnGerarcontrato: TBitBtn;
     BtnVoltar: TBitBtn;
-    Button1: TButton;
+    DBComboBox1: TDBComboBox;
+    dscargos: TDatasource;
     DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     DBEdit4: TDBEdit;
     DBMemo2: TDBMemo;
@@ -30,6 +30,7 @@ type
     frDBDataSet1: TfrDBDataSet;
     frDesigner1: TfrDesigner;
     frReport1: TfrReport;
+    frTNPDFExport1: TfrTNPDFExport;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -41,13 +42,12 @@ type
     Label9: TLabel;
     Panelprincipal: TPanel;
     PanelBotoes: TPanel;
-    SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure edtFuncionarioButtonClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure frReport1GetValue(const ParName: String; var ParValue: Variant);
     procedure SpeedButton2Click(Sender: TObject);
   private
     { private declarations }
@@ -73,21 +73,21 @@ end;
 
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 begin
-  dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.GetDateFormat;
-  dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.GetDateFormat;
-  //dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime(Now);
+  //adiciona demais campos tabela contrato
+  //dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.GetDateFormat;
+  //dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.GetDateFormat;
+  //dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('aaaa', Date);
 
-  dsContratos.DataSet.Post;
+  //dsContratos.DataSet.Post; //posta
 
-  dsContratos.DataSet.Filter := 'seila';
+  frReport1.Variables.Add('VarDatainicial');
+  frVariables['VarDatainicial']:= DateEditinicial.text;
 
-  //frReport1.LoadFromFile();
+  frReport1.LoadFromFile('contrato.lrf');
+  frReport1.PrepareReport;
+  //frReport1.SavePreparedReport(frmPesquisaPessoas.dsPessoas.DataSet.FieldByName('nome_pessoa').Value+'.pdf');
   frReport1.ShowPreparedReport;
-end;
 
-procedure TfrmContrato.Button1Click(Sender: TObject);
-begin
-  frReport1.DesignReport;
 end;
 
 procedure TfrmContrato.edtFuncionarioButtonClick(Sender: TObject);
@@ -101,6 +101,13 @@ procedure TfrmContrato.FormShow(Sender: TObject);
 begin
   dsContratos.DataSet.Active := true;
   dsContratos.DataSet.Insert;
+end;
+
+procedure TfrmContrato.frReport1GetValue(const ParName: String;
+  var ParValue: Variant);
+begin
+    if ParName = 'VarDatainicial' then
+      ParValue := DateEditinicial.text;
 end;
 
 procedure TfrmContrato.SpeedButton2Click(Sender: TObject);

@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
-  Left = 119
+  Left = 204
   Height = 600
-  Top = 39
+  Top = 58
   Width = 900
   BorderStyle = bsDialog
   Caption = 'Contrato'
@@ -27,10 +27,16 @@ object frmContrato: TfrmContrato
     ClientWidth = 130
     TabOrder = 0
     object BtnVoltar: TBitBtn
-      Left = 6
+      AnchorSideLeft.Control = PanelBotoes
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideBottom.Control = PanelBotoes
+      AnchorSideBottom.Side = asrBottom
+      Left = 5
       Height = 40
-      Top = 552
+      Top = 549
       Width = 120
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Bottom = 10
       Caption = 'Voltar'
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
@@ -75,7 +81,7 @@ object frmContrato: TfrmContrato
     object BtnGerarcontrato: TBitBtn
       Left = 6
       Height = 40
-      Top = 488
+      Top = 10
       Width = 120
       Caption = 'Finalizar'
       Glyph.Data = {
@@ -116,15 +122,6 @@ object frmContrato: TfrmContrato
       }
       OnClick = BtnGerarcontratoClick
       TabOrder = 1
-    end
-    object Button1: TButton
-      Left = 30
-      Height = 25
-      Top = 368
-      Width = 75
-      Caption = 'Button1'
-      OnClick = Button1Click
-      TabOrder = 2
     end
   end
   object Panelprincipal: TPanel
@@ -327,12 +324,12 @@ object frmContrato: TfrmContrato
       Left = 24
       Height = 19
       Top = 152
-      Width = 58
-      Caption = 'Jornada'
+      Width = 121
+      Caption = 'Jornada semanal'
       ParentColor = False
     end
     object DBEdit1: TDBEdit
-      Left = 119
+      Left = 176
       Height = 26
       Top = 145
       Width = 80
@@ -342,29 +339,47 @@ object frmContrato: TfrmContrato
       MaxLength = 0
       TabOrder = 5
     end
-    object DBEdit2: TDBEdit
-      Left = 119
-      Height = 26
-      Top = 106
-      Width = 120
-      DataField = 'codigo_cargo'
-      DataSource = dsContratos
-      CharCase = ecNormal
-      MaxLength = 0
-      TabOrder = 6
-    end
-    object SpeedButton1: TSpeedButton
-      Left = 240
-      Height = 22
-      Top = 108
-      Width = 24
-      NumGlyphs = 0
-    end
     object SpeedButton2: TSpeedButton
       Left = 273
       Height = 22
       Top = 68
       Width = 23
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000070707210505051700000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000013131336868686EE3F3F3FE303030318000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000000013131336898989EE5D5D5DFF3E3E3EDD03030315000000000000
+        0000000000000000000000000000000000010000000200000000000000000000
+        000013131336898989EE5D5D5DFF3F3F3FDD0909091F00000000000000000000
+        000000000000171512355B51499785796DC68D8175C96D645CA1252220480000
+        0005868381D55D5D5DFF3F3F3FDD0909091F0000000000000000000000000000
+        00034D443B8EA08E7CFDC5BAAFFFDCD3CCFFE1D4CBFFD9C9BDFFC9B9AAFE7D70
+        64D2AD9D90FD454241B60909091F000000000000000000000000000000004A41
+        3987AB9A8BFFEEEBE9FFFFFEFEFFFFFBF9FFFFF7F4FFFFEFE8FFF6E1D7FFCDBB
+        ACFF80756BC6000000040000000000000000000000000000000012100E279D8A
+        79FBECE7E3FFFFFDFDFFFFFCFBFFFFF9F7FFFFF7F3FFFFF3EDFFFFE9DFFFF5DB
+        CEFFBEAC9CFE23201D4B0000000000000000000000000000000049403880BBAB
+        9EFEFFF8F5FFFFF9F7FFFFF9F6FFFFF7F4FFFFF5F0FFFFF2ECFFFFEBE2FFFEE3
+        D6FFCBB3A2FF62594FA6000000000000000000000000000000006D6155ABCEC0
+        B5FEFFF4F0FFFFF6F1FFFFF6F1FFFFF5EFFFFFF3EDFFFFEFE7FFFFE6DAFFFFE1
+        D3FFD1B4A2FF7A6C5FCE00000002000000000000000000000000776C61AAD4C5
+        BAFEFFF1EAFFFFF2ECFFFFF2ECFFFFF0E8FFFFEBE1FFFFE6DBFFFFE9DEFFFEE1
+        D2FFCBAC98FF746659CC0000000200000000000000000000000059524B7CD1C0
+        B4FFFFEEE6FFFFEBE1FFFFE8DDFFFFE8DDFFFFEBE1FFFFECE4FFFFEBE2FFF9D8
+        C7FFB69A85FF544A409E0000000000000000000000000000000015131221C8BB
+        ACF9EEDCD3FFFFEAE0FFFFECE3FFFFEDE4FFFFECE3FFFFEAE1FFFDE6DBFFD8B2
+        9CFF9E8A78FE1916133C00000000000000000000000000000000000000005E58
+        527AD7C8BBFFECD9CDFFFDE9DFFFFEEAE0FFFDE8DEFFF9E2D6FFDABCAAFFA68E
+        7AFF50463D980000000100000000000000000000000000000000000000000000
+        0000605A547BD3C5B8FAD7C6B8FFD8C3B6FFD3BEAFFFC5B0A0FFA99786FD4F46
+        3D92010101050000000000000000000000000000000000000000000000000000
+        00000000000017161523655F58818B8279B0887E75B35D554E891816142F0000
+        0000000000000000000000000000000000000000000000000000
+      }
       NumGlyphs = 0
       OnClick = SpeedButton2Click
     end
@@ -377,7 +392,7 @@ object frmContrato: TfrmContrato
       DataSource = dsContratos
       CharCase = ecNormal
       MaxLength = 0
-      TabOrder = 7
+      TabOrder = 6
     end
     object Label9: TLabel
       Left = 24
@@ -396,6 +411,17 @@ object frmContrato: TfrmContrato
       DataSource = dsContratos
       CharCase = ecNormal
       MaxLength = 0
+      TabOrder = 7
+    end
+    object DBComboBox1: TDBComboBox
+      Left = 119
+      Height = 26
+      Top = 104
+      Width = 156
+      DataField = 'nome_cargo'
+      DataSource = dscargos
+      ItemHeight = 18
+      MaxLength = 0
       TabOrder = 8
     end
   end
@@ -410,6 +436,7 @@ object frmContrato: TfrmContrato
     Options = []
     PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
     DataType = dtDataSource
+    OnGetValue = frReport1GetValue
     left = 717
     top = 192
   end
@@ -417,10 +444,19 @@ object frmContrato: TfrmContrato
     CloseDataSource = True
     DataSet = DM1.querycontratos
     left = 717
-    top = 117
+    top = 104
   end
   object frDesigner1: TfrDesigner
     left = 717
     top = 264
+  end
+  object dscargos: TDatasource
+    DataSet = DM1.tb_cargos
+    left = 640
+    top = 24
+  end
+  object frTNPDFExport1: TfrTNPDFExport
+    left = 640
+    top = 104
   end
 end

@@ -414,9 +414,14 @@ object DM1: TDM1
     left = 412
     top = 32
   end
-  object ZQuery1: TZQuery
+  object tb_cargos: TZQuery
+    Connection = SEMEDconnection
+    Active = True
+    SQL.Strings = (
+      'SELECT * FROM tb_cargos'
+    )
     Params = <>
-    left = 300
-    top = 149
+    left = 412
+    top = 96
   end
 end
