@@ -18,6 +18,18 @@ type
     tb_cidadescodigo_cidade: TLongintField;
     tb_cidadesnome_cidade: TStringField;
     tb_cidadesuf_cidade: TStringField;
+    tb_horarioscodigo_horario: TLongintField;
+    tb_horariosdescricao_periodo_horario: TStringField;
+    tb_horarioshorario_periodo_horario: TStringField;
+    tb_horarios_local_trabalhocodigo_horario: TLongintField;
+    tb_horarios_local_trabalhocodigo_local_trabalho: TLongintField;
+    tb_local_trabalhocodigo_local_trabalho: TLongintField;
+    tb_local_trabalhohorario_matutino_trabalho: TStringField;
+    tb_local_trabalhohorario_noturno_trabalho: TStringField;
+    tb_local_trabalhohorario_vespertino_trabalho: TStringField;
+    tb_local_trabalhonome_local_trabalho: TStringField;
+    tb_local_trabalhoresponsavel_local_trabalho: TStringField;
+    tb_local_trabalhotelefone_local_trabalho: TStringField;
     tb_pessoas: TZTable;
     tb_pessoasano_doutorado_pessoa: TLongintField;
     tb_pessoasano_graduacao1_pessoa: TLongintField;
@@ -58,6 +70,7 @@ type
     ZReadOnlyQuery1codigo_cidade: TLongintField;
     ZReadOnlyQuery1nome_cidade: TStringField;
     ZReadOnlyQuery1uf_cidade: TStringField;
+    tb_local_trabalho: TZTable;
     procedure DataModuleCreate(Sender: TObject);
   private
     { private declarations }
@@ -91,6 +104,9 @@ begin
     SEMEDconnection.Connected := true;
 
     tb_pessoas.Active := true;
+    tb_pessoas.Active := true;
+    tb_local_trabalho.Active := true;
+    querycontratos.Active := true;
     queryCADASTROPESSOAScidades.Active := true;
   finally
     SLcfg.Free;

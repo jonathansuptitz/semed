@@ -1,11 +1,11 @@
 object frmCadastroPessoas: TfrmCadastroPessoas
-  Left = 62
-  Height = 615
-  Top = 0
+  Left = 153
+  Height = 638
+  Top = 50
   Width = 1296
   BorderIcons = [biSystemMenu]
   Caption = 'frmCadastroPessoas'
-  ClientHeight = 615
+  ClientHeight = 638
   ClientWidth = 1296
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
@@ -1046,11 +1046,11 @@ object frmCadastroPessoas: TfrmCadastroPessoas
   end
   object Panel1: TPanel
     Left = 1162
-    Height = 615
+    Height = 638
     Top = 0
     Width = 134
     Align = alRight
-    ClientHeight = 615
+    ClientHeight = 638
     ClientWidth = 134
     TabOrder = 3
     object BtnVoltar: TBitBtn
@@ -1060,7 +1060,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       AnchorSideBottom.Side = asrBottom
       Left = 6
       Height = 40
-      Top = 567
+      Top = 590
       Width = 120
       Anchors = [akRight, akBottom]
       BorderSpacing.Right = 7

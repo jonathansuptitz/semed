@@ -1,9 +1,9 @@
 object DM1: TDM1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 262
-  HorizontalOffset = 291
-  VerticalOffset = 238
+  Height = 343
+  HorizontalOffset = 403
+  VerticalOffset = 226
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -423,5 +423,87 @@ object DM1: TDM1
     Params = <>
     left = 412
     top = 96
+  object tb_local_trabalho: TZTable
+    Connection = SEMEDconnection
+    Active = True
+    TableName = 'tb_local_trabalho'
+    left = 48
+    top = 157
+    object tb_local_trabalhocodigo_local_trabalho: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_local_trabalho'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object tb_local_trabalhonome_local_trabalho: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'nome_local_trabalho'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
+    object tb_local_trabalhoresponsavel_local_trabalho: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'responsavel_local_trabalho'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object tb_local_trabalhotelefone_local_trabalho: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'telefone_local_trabalho'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object tb_local_trabalhohorario_matutino_trabalho: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'horario_matutino_trabalho'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 60
+    end
+    object tb_local_trabalhohorario_vespertino_trabalho: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'horario_vespertino_trabalho'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 60
+    end
+    object tb_local_trabalhohorario_noturno_trabalho: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'horario_noturno_trabalho'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 60
+    end
   end
 end
