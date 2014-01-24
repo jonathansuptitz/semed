@@ -89,6 +89,10 @@ object FrmMain: TFrmMain
         Caption = 'Local de Trabalho'
         OnClick = CadastrarLocalTrabalhoClick
       end
+      object CadastrarCargo: TMenuItem
+        Caption = 'Cargo'
+        OnClick = CadastrarCargoClick
+      end
     end
   end
 end

@@ -15,6 +15,11 @@ type
   TDM1 = class(TDataModule)
     querycontratos: TZQuery;
     SEMEDconnection: TZConnection;
+    tb_cargosclausula_primeira_cargo: TStringField;
+    tb_cargoscodigo_cargo: TLongintField;
+    tb_cargosgrupo_ocupacional_cargo: TStringField;
+    tb_cargosnome_cargo: TStringField;
+    tb_cargossalario_hora_cargo: TFloatField;
     tb_cidadescodigo_cidade: TLongintField;
     tb_cidadesnome_cidade: TStringField;
     tb_cidadesuf_cidade: TStringField;
@@ -66,11 +71,11 @@ type
     tb_pessoastelefone1_pessoa: TStringField;
     tb_pessoastelefone2_pessoa: TStringField;
     queryCADASTROPESSOAScidades: TZReadOnlyQuery;
-    tb_cargos: TZQuery;
     ZReadOnlyQuery1codigo_cidade: TLongintField;
     ZReadOnlyQuery1nome_cidade: TStringField;
     ZReadOnlyQuery1uf_cidade: TStringField;
     tb_local_trabalho: TZTable;
+    tb_cargos: TZTable;
     procedure DataModuleCreate(Sender: TObject);
   private
     { private declarations }

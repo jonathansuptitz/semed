@@ -47,7 +47,7 @@
         <PackageName Value="LCL"/>
       </Item5>
     </RequiredPackages>
-    <Units Count="8">
+    <Units Count="9">
       <Unit0>
         <Filename Value="SEMEDcontratos.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -106,6 +106,13 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UCadastroLocalTrabalho"/>
       </Unit7>
+      <Unit8>
+        <Filename Value="ucadastrocargos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroCargos"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="uCadastroCargos"/>
+      </Unit8>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
