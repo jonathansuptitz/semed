@@ -110,6 +110,7 @@
         <Filename Value="ucadastrocargos.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmCadastroCargos"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroCargos"/>
       </Unit8>

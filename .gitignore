@@ -1,3 +1,4 @@
 source/backup
 source/lib
 source/*.exe
+source/clp/*.*
