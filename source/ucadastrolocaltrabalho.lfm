@@ -1,11 +1,13 @@
 object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
-  Left = 261
+  Left = 292
   Height = 521
-  Top = 104
+  Top = 123
   Width = 1058
   Caption = 'frmCadastroLocalTrabalho'
   ClientHeight = 521
   ClientWidth = 1058
+  OnClose = FormClose
+  OnCreate = FormCreate
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object Label1: TLabel
@@ -238,6 +240,8 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
         FieldName = 'nome_local_trabalho'
       end>
     DataSource = dsLocal_trabalho
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
     TabOrder = 2
   end
   object Panel1: TPanel
@@ -300,6 +304,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
       }
+      OnClick = BtnVoltarClick
       ParentFont = False
       TabOrder = 0
     end
@@ -356,6 +361,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
       }
+      OnClick = BtnNovoClick
       ParentFont = False
       TabOrder = 1
     end
@@ -412,6 +418,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
       }
+      OnClick = BtnEditarClick
       ParentFont = False
       TabOrder = 2
     end
@@ -468,6 +475,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
         3690BC6B36CCBC6B36EEBC6B36FABB6B36FEBB6B36FFBB6A36FFBB6A36FFBC6C
         39FFBD6E3BFFBB6D3AFFBB6B38EFBB703ECBB6693554FFFFFF00
       }
+      OnClick = BtnSalvarClick
       ParentFont = False
       TabOrder = 3
     end
@@ -524,6 +532,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF006360F80AFFFFFF00FFFFFF00FFFFFF00
       }
+      OnClick = BtnCancelarClick
       ParentFont = False
       TabOrder = 4
     end
@@ -580,6 +589,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
       }
+      OnClick = BtnApagarClick
       ParentFont = False
       TabOrder = 5
     end
@@ -598,6 +608,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
       BorderSpacing.Right = 7
       BorderSpacing.Bottom = 7
       Caption = 'Selecionar'
+      Enabled = False
       Font.Height = -15
       Font.Name = 'Arial'
       Glyph.Data = {
@@ -636,6 +647,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00069A4EFF069A4EFF
       }
+      OnClick = BtnSelecionarClick
       ParentFont = False
       TabOrder = 6
     end
@@ -647,13 +659,15 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
     Width = 222
     Font.Height = -15
     Font.Name = 'Arial'
+    OnChange = editPesquisaChange
+    OnKeyPress = editPesquisaKeyPress
     ParentFont = False
     TabOrder = 4
     Text = 'Digite para pesquisar...'
   end
   object ComboBox1: TComboBox
     Left = 325
-    Height = 21
+    Height = 25
     Top = 52
     Width = 140
     Font.Height = -15
@@ -664,6 +678,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
       'Código'
       'Nome'
     )
+    OnChange = ComboBox1Change
     ParentFont = False
     TabOrder = 5
     Text = 'Nome'

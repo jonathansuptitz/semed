@@ -19,10 +19,12 @@ type
     MenuItem1: TMenuItem;
     MenuCadastrar: TMenuItem;
     CadastrarPessoas: TMenuItem;
+    CadastrarLocalTrabalho: TMenuItem;
     MenuNovoContrato: TMenuItem;
     Panel1: TPanel;
     Panel2: TPanel;
     StatusBar1: TStatusBar;
+    procedure CadastrarLocalTrabalhoClick(Sender: TObject);
     procedure CadastrarPessoasClick(Sender: TObject);
     procedure MenuNovoContratoClick(Sender: TObject);
   private
@@ -37,7 +39,7 @@ var
 implementation
 
 uses
-  ucontrato, ucadastropessoas;
+  ucontrato, ucadastropessoas, UCadastroLocalTrabalho;
 
 {$R *.lfm}
 
@@ -50,6 +52,13 @@ begin
   Application.CreateForm(TfrmCadastroPessoas, frmCadastroPessoas);
   frmCadastroPessoas.ShowModal;
   frmCadastroPessoas.Free;
+end;
+
+procedure TFrmMain.CadastrarLocalTrabalhoClick(Sender: TObject);// Cadastrar local de trabalho
+begin
+  Application.CreateForm(TfrmCadastroLocalTrabalho, frmCadastroLocalTrabalho);
+  frmCadastroLocalTrabalho.ShowModal;
+  frmCadastroLocalTrabalho.Free;
 end;
 
 procedure TFrmMain.MenuNovoContratoClick(Sender: TObject);  // Novo Contrato
