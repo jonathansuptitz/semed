@@ -130,6 +130,9 @@ procedure TfrmCadastroCargos.BtnSalvarClick(Sender: TObject);       // Salvar
 var
   SLtrans: TStringList;
 begin
+  //salva o caminho da clausula no banco
+  dsCargos.DataSet.FieldByName('clausula_primeira_cargo').value := 'clp/clp'+DBEdit1.Text+'.txt';
+
   dsCargos.DataSet.Post;  // Salvar registro
   SLtrans := TStringList.Create;
   SLtrans.Clear;
