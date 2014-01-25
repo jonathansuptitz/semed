@@ -413,6 +413,7 @@ object frmCadastroCargos: TfrmCadastroCargos
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00069A4EFF069A4EFF
       }
+      OnClick = BtnSelecionarClick
       ParentFont = False
       TabOrder = 6
     end

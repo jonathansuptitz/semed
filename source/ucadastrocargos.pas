@@ -43,6 +43,7 @@ type
     procedure BtnEditarClick(Sender: TObject);
     procedure BtnNovoClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
+    procedure BtnSelecionarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure DBEdit1Change(Sender: TObject);
@@ -133,11 +134,18 @@ begin
   SLtrans := TStringList.Create;
   SLtrans.Clear;
 
+  SLtrans.SaveToFile('clp/clp'+DBEdit1.Text+'.txt');  //salva a stringlist direto
+
   //memoClau.Lines.save(Sltrans); // Salva memo com base no codigo do registro
-  memoClau.Lines.SaveToFile('clp/clp'+DBEdit1.Text+'.txt');
+  //memoClau.Lines.SaveToFile('clp/clp'+DBEdit1.Text+'.txt');
   SLtrans.Free;
   ScreenMode := 'mdNormal';
   //memoClau.Lines.LoadFromFile('clp/clp'+DBEdit1.Text+'.txt')
+end;
+
+procedure TfrmCadastroCargos.BtnSelecionarClick(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmCadastroCargos.BtnNovoClick(Sender: TObject);         // Novo
