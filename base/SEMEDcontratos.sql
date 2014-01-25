@@ -28,8 +28,8 @@ CREATE TABLE `tb_cargos` (
   `codigo_cargo` int(11) NOT NULL AUTO_INCREMENT,
   `nome_cargo` varchar(45) NOT NULL,
   `salario_hora_cargo` float NOT NULL,
-  `grupo_ocupacional_cargo` varchar(15) NOT NULL,
-  `clausula_primeira_cargo` varchar(7) NOT NULL,
+  `grupo_ocupacional_cargo` varchar(45) NOT NULL,
+  `clausula_primeira_cargo` varchar(20) NOT NULL,
   PRIMARY KEY (`codigo_cargo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
