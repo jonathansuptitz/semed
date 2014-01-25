@@ -134,15 +134,19 @@ begin
   dsCargos.DataSet.FieldByName('clausula_primeira_cargo').value := 'clp/clp'+DBEdit1.Text+'.txt';
 
   dsCargos.DataSet.Post;  // Salvar registro
-  SLtrans := TStringList.Create;
-  SLtrans.Clear;
 
-  SLtrans.SaveToFile('clp/clp'+DBEdit1.Text+'.txt');  //salva a stringlist direto
+  try
+    SLtrans := TStringList.Create;
 
-  //memoClau.Lines.save(Sltrans); // Salva memo com base no codigo do registro
-  //memoClau.Lines.SaveToFile('clp/clp'+DBEdit1.Text+'.txt');
-  SLtrans.Free;
+    SLtrans.Assign(memoClau.Lines);//atribui memo na stringlist
+
+    SLtrans.SaveToFile('clp/clp'+DBEdit1.Text+'.txt');  //salva a stringlist direto no arquivo
+
+  finally
+    SLtrans.Free;//libera stringlist da memoria
+
   ScreenMode := 'mdNormal';
+
   //memoClau.Lines.LoadFromFile('clp/clp'+DBEdit1.Text+'.txt')
 end;
 
