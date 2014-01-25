@@ -16,7 +16,9 @@ type
   TfrmContrato = class(TForm)
     BtnGerarcontrato: TBitBtn;
     BtnVoltar: TBitBtn;
-    DBComboBox1: TDBComboBox;
+    dslocal: TDatasource;
+    DBBoxCargo: TDBComboBox;
+    DBLookupBoxLocal: TDBLookupComboBox;
     dscargos: TDatasource;
     DBEdit1: TDBEdit;
     DBEdit3: TDBEdit;
@@ -32,6 +34,7 @@ type
     frReport1: TfrReport;
     frTNPDFExport1: TfrTNPDFExport;
     Label1: TLabel;
+    Label10: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -42,12 +45,12 @@ type
     Label9: TLabel;
     Panelprincipal: TPanel;
     PanelBotoes: TPanel;
-    SpeedButton2: TSpeedButton;
+    btnBuscarpessoa: TSpeedButton;
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
-    procedure edtFuncionarioButtonClick(Sender: TObject);
+    procedure DBBoxCargoChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
+    procedure btnBuscarpessoaClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -70,40 +73,47 @@ begin
   close;
 end;
 
+procedure TfrmContrato.DBBoxCargoChange(Sender: TObject);
+begin
+  dscargos.DataSet.Filtered := true;
+  dscargos.DataSet.Filter := 'nome_cargo like '+ DBBoxCargo.text;
+end;
+
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 begin
   //adiciona demais campos tabela contrato
-  //dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.GetDateFormat;
-  //dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.GetDateFormat;
-  //dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('aaaa', Date);
+  dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.GetDateFormat;
+  dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.GetDateFormat;
+  dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('aaaa', Date);
+  dsContratos.DataSet.Post; //posta
 
-  //dsContratos.DataSet.Post; //posta
+  frReport1.Variables.Add('VarDatainicial');//criar variavel data inicial
+  frReport1.Variables.Add('VarDatafinal');//criar variavel data final
 
-  frReport1.Variables.Add('VarDatainicial');
-  frVariables['VarDatainicial']:= DateEditinicial.text;
+  frVariables['VarDatainicial']:= DateEditinicial.text; //atribui valor a variavel
+  frVariables['VarDatafinal']:= DateEditinicial.text; //atribui valor a variavel
 
-  frReport1.LoadFromFile('contrato.lrf');
-  frReport1.PrepareReport;
-  //frReport1.SavePreparedReport(frmPesquisaPessoas.dsPessoas.DataSet.FieldByName('nome_pessoa').Value+'.pdf');
-  frReport1.ShowPreparedReport;
 
-end;
+  frReport1.LoadFromFile('contrato.lrf');//carrega o contrato padrão
 
-procedure TfrmContrato.edtFuncionarioButtonClick(Sender: TObject);
-begin
-  application.CreateForm(TfrmPesquisaPessoas, frmPesquisaPessoas);
-  frmPesquisaPessoas.showmodal;
-  frmPesquisaPessoas.free;
+  frReport1.PrepareReport;//prepara o contrato
+
+  // salva em pdf
+  frReport1.SavePreparedReport('contratos/'+ frmPesquisaPessoas.dsPessoas.DataSet.FieldByName('nome_pessoa').Value+'.pdf');
+
+  frReport1.ShowPreparedReport;//exibi preview do contrato
 end;
 
 procedure TfrmContrato.FormShow(Sender: TObject);
 begin
+  //ativa query e coloca em mode de inserção
   dsContratos.DataSet.Active := true;
   dsContratos.DataSet.Insert;
 end;
 
-procedure TfrmContrato.SpeedButton2Click(Sender: TObject);
+procedure TfrmContrato.btnBuscarpessoaClick(Sender: TObject);
 begin
+  //chama a pesquisa de pessoa
   Application.CreateForm(TfrmPesquisaPessoas, frmPesquisaPessoas);
   frmPesquisaPessoas.showmodal;
   frmPesquisaPessoas.free;

@@ -163,7 +163,7 @@ object frmContrato: TfrmContrato
     object Label3: TLabel
       Left = 24
       Height = 19
-      Top = 191
+      Top = 230
       Width = 99
       Caption = 'Período Inicial'
       ParentColor = False
@@ -171,7 +171,7 @@ object frmContrato: TfrmContrato
     object DateEditinicial: TDateEdit
       Left = 144
       Height = 26
-      Top = 184
+      Top = 223
       Width = 120
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
@@ -222,7 +222,7 @@ object frmContrato: TfrmContrato
     object Label4: TLabel
       Left = 24
       Height = 19
-      Top = 231
+      Top = 270
       Width = 94
       Caption = 'Período Final'
       ParentColor = False
@@ -230,7 +230,7 @@ object frmContrato: TfrmContrato
     object DateEditfinal: TDateEdit
       Left = 144
       Height = 26
-      Top = 224
+      Top = 263
       Width = 120
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
@@ -281,7 +281,7 @@ object frmContrato: TfrmContrato
     object Label5: TLabel
       Left = 24
       Height = 19
-      Top = 272
+      Top = 312
       Width = 67
       Caption = 'Vacância'
       ParentColor = False
@@ -289,7 +289,7 @@ object frmContrato: TfrmContrato
     object DBMemo1: TDBMemo
       Left = 119
       Height = 50
-      Top = 263
+      Top = 302
       Width = 352
       DataField = 'justificativa_contrato'
       DataSource = dsContratos
@@ -306,7 +306,7 @@ object frmContrato: TfrmContrato
     object Label7: TLabel
       Left = 24
       Height = 19
-      Top = 336
+      Top = 375
       Width = 86
       Caption = 'Observação'
       ParentColor = False
@@ -314,7 +314,7 @@ object frmContrato: TfrmContrato
     object DBMemo2: TDBMemo
       Left = 120
       Height = 49
-      Top = 327
+      Top = 366
       Width = 351
       DataField = 'obs_contrato'
       DataSource = dsContratos
@@ -323,7 +323,7 @@ object frmContrato: TfrmContrato
     object Label8: TLabel
       Left = 24
       Height = 19
-      Top = 152
+      Top = 191
       Width = 121
       Caption = 'Jornada semanal'
       ParentColor = False
@@ -331,7 +331,7 @@ object frmContrato: TfrmContrato
     object DBEdit1: TDBEdit
       Left = 176
       Height = 26
-      Top = 145
+      Top = 184
       Width = 80
       DataField = 'jornada_trabalho_contrato'
       DataSource = dsContratos
@@ -339,7 +339,7 @@ object frmContrato: TfrmContrato
       MaxLength = 0
       TabOrder = 5
     end
-    object SpeedButton2: TSpeedButton
+    object btnBuscarpessoa: TSpeedButton
       Left = 273
       Height = 22
       Top = 68
@@ -381,7 +381,7 @@ object frmContrato: TfrmContrato
         0000000000000000000000000000000000000000000000000000
       }
       NumGlyphs = 0
-      OnClick = SpeedButton2Click
+      OnClick = btnBuscarpessoaClick
     end
     object DBEdit3: TDBEdit
       Left = 176
@@ -397,7 +397,7 @@ object frmContrato: TfrmContrato
     object Label9: TLabel
       Left = 24
       Height = 19
-      Top = 397
+      Top = 436
       Width = 111
       Caption = 'Ano do Seletivo'
       ParentColor = False
@@ -405,7 +405,7 @@ object frmContrato: TfrmContrato
     object DBEdit4: TDBEdit
       Left = 144
       Height = 26
-      Top = 390
+      Top = 429
       Width = 80
       DataField = 'ano_seletivo_contrato'
       DataSource = dsContratos
@@ -413,8 +413,8 @@ object frmContrato: TfrmContrato
       MaxLength = 0
       TabOrder = 7
     end
-    object DBComboBox1: TDBComboBox
-      Left = 119
+    object DBBoxCargo: TDBComboBox
+      Left = 120
       Height = 26
       Top = 104
       Width = 156
@@ -422,7 +422,30 @@ object frmContrato: TfrmContrato
       DataSource = dscargos
       ItemHeight = 18
       MaxLength = 0
+      OnChange = DBBoxCargoChange
       TabOrder = 8
+    end
+    object Label10: TLabel
+      Left = 24
+      Height = 19
+      Top = 152
+      Width = 121
+      Caption = 'Local de trabalho'
+      ParentColor = False
+    end
+    object DBLookupBoxLocal: TDBLookupComboBox
+      Left = 176
+      Height = 26
+      Top = 144
+      Width = 292
+      DataField = 'codigo_local_trabalho'
+      DataSource = dslocal
+      KeyField = 'codigo_local_trabalho'
+      ListField = 'nome_local_trabalho'
+      ListFieldIndex = 0
+      ListSource = dslocal
+      LookupCache = False
+      TabOrder = 9
     end
   end
   object dsContratos: TDatasource
@@ -457,5 +480,10 @@ object frmContrato: TfrmContrato
   object frTNPDFExport1: TfrTNPDFExport
     left = 640
     top = 104
+  end
+  object dslocal: TDatasource
+    DataSet = DM1.tb_local_trabalho
+    left = 560
+    top = 24
   end
 end
