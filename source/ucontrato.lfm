@@ -428,7 +428,7 @@ object frmContrato: TfrmContrato
       Height = 26
       Top = 144
       Width = 295
-      DataField = 'nome_local_trabalho'
+      DataField = 'codigo_local_trabalho'
       DataSource = dslocal
       KeyField = 'codigo_local_trabalho'
       ListField = 'nome_local_trabalho'
@@ -494,6 +494,6 @@ object frmContrato: TfrmContrato
     DataSet = DM1.tb_pessoas
     OnDataChange = dspessoaDataChange
     left = 495
-    top = 22
+    top = 24
   end
 end

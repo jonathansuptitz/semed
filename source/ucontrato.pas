@@ -109,6 +109,7 @@ end;
 procedure TfrmContrato.FormShow(Sender: TObject);
 begin
   //ativa query e coloca em mode de inserção
+  dsContratos.DataSet.Active := true;
   dsContratos.DataSet.Insert;
 end;
 
