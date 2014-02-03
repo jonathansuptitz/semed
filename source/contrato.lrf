@@ -15,7 +15,7 @@
       <PrintToDefault Value="False"/>
       <DoublePass Value="False"/>
       <SelectedPrinter Value="Default printer"/>
-      <PageCount Value="2"/>
+      <PageCount Value="1"/>
       <Page1>
         <Name Value="Page1"/>
         <ClassName Value="TfrPageReport"/>
@@ -143,9 +143,9 @@
             <FrameBorders Value=""/>
           </Frames>
           <Data>
-            <Format Value="556"/>
-            <FormatStr Value=""/>
-            <Memo Value="ÓRGÃO SOLICITANTE:  Secretaria Municipal de Educação&#xD;&#xA;&#xD;&#xA;CARGO REQUERIDO: [dscargos.&quot;nome_cargo&quot;].&#xD;&#xA;&#xD;&#xA;PERÍODO DA CONTRATAÇÃO: De [dsContratos.&quot;periodo_inicial_contrato&quot;]   à  [dsContratos.&quot;periodo_final_contrato&quot;].&#xD;&#xA;"/>
+            <Format Value="33685548"/>
+            <FormatStr Value="dd/mm/yyyy"/>
+            <Memo Value="ÓRGÃO SOLICITANTE:  Secretaria Municipal de Educação.&#xD;&#xA;&#xD;&#xA;CARGO REQUERIDO: [dscargos.&quot;nome_cargo&quot;].&#xD;&#xA;&#xD;&#xA;PERÍODO DA CONTRATAÇÃO: De [dsContratos.&quot;periodo_inicial_contrato&quot;]   à  [dsContratos.&quot;periodo_final_contrato&quot;].&#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -175,9 +175,9 @@
             <Left Value="92"/>
             <Top Value="296"/>
             <Width Value="584"/>
-            <Height Value="88"/>
+            <Height Value="80"/>
           </Size>
-          <Flags Value="11"/>
+          <Flags Value="3"/>
           <FillColor Value="clNone"/>
           <Frames>
             <FrameColor Value="clBlack"/>
@@ -188,7 +188,7 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value="JUSTIFICATIVA: Considerando-se necessidade temporária de excepcional interesse publico previsto no inciso IV, do art. 2º da Lei nº. 2.045 de 22/12/98, com redação dada pela Lei nº 2.439, de 02/12/2009, – [dsContratos.&quot;justificativa_contrato&quot;].&#xD;&#xA;&#xD;&#xA;"/>
+            <Memo Value="JUSTIFICATIVA: Considerando-se necessidade temporária de excepcional interesse publico previsto no inciso IV, do art. 2º da Lei nº. 2.045 de 22/12/98, com redação dada pela Lei nº 2.439, de 02/12/2009, – [dsContratos.&quot;justificativa_contrato&quot;].&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -220,7 +220,7 @@
             <Width Value="588"/>
             <Height Value="72"/>
           </Size>
-          <Flags Value="11"/>
+          <Flags Value="3"/>
           <FillColor Value="clNone"/>
           <Frames>
             <FrameColor Value="clBlack"/>
@@ -263,7 +263,7 @@
             <Width Value="588"/>
             <Height Value="86"/>
           </Size>
-          <Flags Value="11"/>
+          <Flags Value="3"/>
           <FillColor Value="clNone"/>
           <Frames>
             <FrameColor Value="clBlack"/>
@@ -274,8 +274,8 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value=" &#xD;&#xA;"/>
-            <Script Value="  if [dsContratos.&quot;obs_contrato&quot;] = null then begin&#xD;&#xA;     text := 'OBS:____________________________________________________________________________________________________';&#xD;&#xA;"/>
+            <Memo Value=" Obs&#xD;&#xA;"/>
+            <Script Value="&#xD;&#xA;"/>
           </Data>
           <Font>
             <Name Value="Arial"/>
@@ -403,7 +403,7 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value="NOME DO CANDIDATO: Diego Francisco Catão&#xD;&#xA;&#xD;&#xA;Forma de Seleção: (   )Processo Seletivo nº 01/2012;      (   ) Cadastro no RH;  &#xD;&#xA;                             (   ) Contratação Direta.&#xD;&#xA;    &#xD;&#xA;REFERÊNCIA SALARIAL [dscargos.&quot;nome_cargo&quot;]  [dscargos.&quot;salario_hora_cargo&quot;]. GRUPO OCUPACIONAL: [dscargos.&quot;grupo_ocupacional_cargo&quot;] &#xD;&#xA;"/>
+            <Memo Value="NOME DO CANDIDATO: [dspessoa.&quot;nome_pessoa&quot;]&#xD;&#xA;&#xD;&#xA;Forma de Seleção: (   )Processo Seletivo nº 01/[dsContratos.&quot;ano_seletivo_contrato&quot;];      (   ) Cadastro no RH;  &#xD;&#xA;                             (   ) Contratação Direta.&#xD;&#xA;    &#xD;&#xA;REFERÊNCIA SALARIAL:  [dscargos.&quot;nome_cargo&quot;] R$ [dscargos.&quot;salario_hora_cargo&quot;]. GRUPO OCUPACIONAL: [dscargos.&quot;grupo_ocupacional_cargo&quot;]. &#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -493,7 +493,7 @@
             <Script Value=""/>
           </Data>
           <Font>
-            <Name Value="Times New Roman"/>
+            <Name Value="Arial"/>
             <Size Value="10"/>
             <Color Value="clBlack"/>
             <Charset Value="0"/>
@@ -505,7 +505,7 @@
             <FillColor Value="clWhite"/>
             <HighlightStr Value=""/>
           </Highlight>
-          <Alignment Value="Classes"/>
+          <Alignment Value="taLeftJustify"/>
           <Layout Value="tlTop"/>
           <Angle Value="0"/>
         </Object11>
@@ -536,7 +536,7 @@
             <Script Value=""/>
           </Data>
           <Font>
-            <Name Value="Times New Roman"/>
+            <Name Value="Arial"/>
             <Size Value="10"/>
             <Color Value="clBlack"/>
             <Charset Value="0"/>
@@ -548,32 +548,11 @@
             <FillColor Value="clWhite"/>
             <HighlightStr Value=""/>
           </Highlight>
-          <Alignment Value="Classes"/>
+          <Alignment Value="taLeftJustify"/>
           <Layout Value="tlTop"/>
           <Angle Value="0"/>
         </Object12>
       </Page1>
-      <Page2>
-        <Name Value="Page2"/>
-        <ClassName Value="TfrPageReport"/>
-        <Visible Value="1"/>
-        <Width Value="2100"/>
-        <Height Value="2970" PageType="0"/>
-        <PgSize Value="9"/>
-        <Margins>
-          <left Value="0"/>
-          <Top Value="0"/>
-          <Right Value="0"/>
-          <Bottom Value="0"/>
-        </Margins>
-        <Orientation Value="poPortrait"/>
-        <UseMargins Value="True"/>
-        <PrintToPrevPage Value="False"/>
-        <ColCount Value="1"/>
-        <ColGap Value="0"/>
-        <LayoutOrder Value="loColumns"/>
-        <ObjectCount Value="0"/>
-      </Page2>
       <FVal>
         <Count Value="0"/>
       </FVal>

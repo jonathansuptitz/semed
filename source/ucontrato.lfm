@@ -3,6 +3,7 @@ object frmContrato: TfrmContrato
   Height = 600
   Top = 15
   Width = 900
+  AutoSize = True
   BorderStyle = bsDialog
   Caption = 'Contrato'
   ClientHeight = 600
@@ -133,6 +134,7 @@ object frmContrato: TfrmContrato
     ClientHeight = 600
     ClientWidth = 770
     TabOrder = 1
+    OnClick = PanelprincipalClick
     object DBEdtCodcontrato: TDBEdit
       Left = 176
       Height = 26
@@ -328,11 +330,11 @@ object frmContrato: TfrmContrato
       Caption = 'Jornada semanal'
       ParentColor = False
     end
-    object DBEdit1: TDBEdit
+    object DBEdtJornada: TDBEdit
       Left = 176
       Height = 26
       Top = 184
-      Width = 80
+      Width = 88
       DataField = 'jornada_trabalho_contrato'
       DataSource = dsContratos
       CharCase = ecNormal
@@ -340,7 +342,7 @@ object frmContrato: TfrmContrato
       TabOrder = 5
     end
     object btnBuscarpessoa: TSpeedButton
-      Left = 273
+      Left = 264
       Height = 22
       Top = 68
       Width = 23
@@ -383,11 +385,11 @@ object frmContrato: TfrmContrato
       NumGlyphs = 0
       OnClick = btnBuscarpessoaClick
     end
-    object DBEdit3: TDBEdit
+    object DBEdtFuncionario: TDBEdit
       Left = 176
       Height = 26
       Top = 64
-      Width = 96
+      Width = 88
       DataField = 'codigo_pessoa'
       DataSource = dsContratos
       CharCase = ecNormal
@@ -402,7 +404,7 @@ object frmContrato: TfrmContrato
       Caption = 'Ano do Seletivo'
       ParentColor = False
     end
-    object DBEdit4: TDBEdit
+    object DBEdtAnoseletivo: TDBEdit
       Left = 144
       Height = 26
       Top = 429
@@ -412,18 +414,6 @@ object frmContrato: TfrmContrato
       CharCase = ecNormal
       MaxLength = 0
       TabOrder = 7
-    end
-    object DBBoxCargo: TDBComboBox
-      Left = 120
-      Height = 26
-      Top = 104
-      Width = 156
-      DataField = 'nome_cargo'
-      DataSource = dscargos
-      ItemHeight = 18
-      MaxLength = 0
-      OnChange = DBBoxCargoChange
-      TabOrder = 8
     end
     object Label10: TLabel
       Left = 24
@@ -437,13 +427,27 @@ object frmContrato: TfrmContrato
       Left = 176
       Height = 26
       Top = 144
-      Width = 292
-      DataField = 'codigo_local_trabalho'
+      Width = 295
+      DataField = 'nome_local_trabalho'
       DataSource = dslocal
       KeyField = 'codigo_local_trabalho'
       ListField = 'nome_local_trabalho'
       ListFieldIndex = 0
       ListSource = dslocal
+      LookupCache = False
+      TabOrder = 8
+    end
+    object DBBoxCargo: TDBLookupComboBox
+      Left = 80
+      Height = 26
+      Top = 104
+      Width = 184
+      DataField = 'codigo_cargo'
+      DataSource = dsContratos
+      KeyField = 'codigo_cargo'
+      ListField = 'nome_cargo'
+      ListFieldIndex = 0
+      ListSource = dscargos
       LookupCache = False
       TabOrder = 9
     end
@@ -485,5 +489,11 @@ object frmContrato: TfrmContrato
     DataSet = DM1.tb_local_trabalho
     left = 560
     top = 24
+  end
+  object dspessoa: TDatasource
+    DataSet = DM1.tb_pessoas
+    OnDataChange = dspessoaDataChange
+    left = 495
+    top = 22
   end
 end

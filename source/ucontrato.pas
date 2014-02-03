@@ -16,13 +16,14 @@ type
   TfrmContrato = class(TForm)
     BtnGerarcontrato: TBitBtn;
     BtnVoltar: TBitBtn;
+    DBBoxCargo: TDBLookupComboBox;
+    dspessoa: TDatasource;
     dslocal: TDatasource;
-    DBBoxCargo: TDBComboBox;
     DBLookupBoxLocal: TDBLookupComboBox;
     dscargos: TDatasource;
-    DBEdit1: TDBEdit;
-    DBEdit3: TDBEdit;
-    DBEdit4: TDBEdit;
+    DBEdtJornada: TDBEdit;
+    DBEdtFuncionario: TDBEdit;
+    DBEdtAnoseletivo: TDBEdit;
     DBMemo2: TDBMemo;
     dsContratos: TDatasource;
     DateEditfinal: TDateEdit;
@@ -48,9 +49,10 @@ type
     btnBuscarpessoa: TSpeedButton;
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
-    procedure DBBoxCargoChange(Sender: TObject);
+    procedure dspessoaDataChange(Sender: TObject; Field: TField);
     procedure FormShow(Sender: TObject);
     procedure btnBuscarpessoaClick(Sender: TObject);
+    procedure PanelprincipalClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -73,41 +75,40 @@ begin
   close;
 end;
 
-procedure TfrmContrato.DBBoxCargoChange(Sender: TObject);
+procedure TfrmContrato.dspessoaDataChange(Sender: TObject; Field: TField);
 begin
-  dscargos.DataSet.Filtered := true;
-  dscargos.DataSet.Filter := 'nome_cargo like '+ DBBoxCargo.text;
+
 end;
 
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 begin
-  //adiciona demais campos tabela contrato
-  dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.GetDateFormat;
-  dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.GetDateFormat;
-  dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('aaaa', Date);
-  dsContratos.DataSet.Post; //posta
+  if not((DBEdtJornada.text = '') or (DBEdtCodcontrato.text = '') or
+        (DBEdtAnoseletivo.text = '') or (DBEdtJornada.text = '') or
+        (DBEdtFuncionario.text = '')) then
+  begin
 
-  frReport1.Variables.Add('VarDatainicial');//criar variavel data inicial
-  frReport1.Variables.Add('VarDatafinal');//criar variavel data final
+    //adiciona demais campos tabela contrato
+    dsContratos.DataSet.FieldByName('codigo_cargo').Value := dscargos.DataSet.FieldByName('codigo_cargo').value;
+    dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
+    dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.Text;
+    dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('yyyy', Date);
+    dsContratos.DataSet.FieldByName('salario_contrato').Value := dscargos.DataSet.FieldByName('salario_hora_cargo').value;
+    dsContratos.DataSet.Post; //posta
 
-  frVariables['VarDatainicial']:= DateEditinicial.text; //atribui valor a variavel
-  frVariables['VarDatafinal']:= DateEditinicial.text; //atribui valor a variavel
+    frReport1.LoadFromFile('contrato.lrf');//carrega o contrato padrão
 
+    frReport1.PrepareReport;//prepara o contrato
 
-  frReport1.LoadFromFile('contrato.lrf');//carrega o contrato padrão
+    // salva em pdf
+    //frReport1.SavePreparedReport('contrato' + dsContratos.DataSet.FieldByName('codigo_contrato').Value + '.pdf');
+    frReport1.ShowPreparedReport;//exibi preview do contrato
 
-  frReport1.PrepareReport;//prepara o contrato
-
-  // salva em pdf
-  frReport1.SavePreparedReport('contratos/'+ frmPesquisaPessoas.dsPessoas.DataSet.FieldByName('nome_pessoa').Value+'.pdf');
-
-  frReport1.ShowPreparedReport;//exibi preview do contrato
+  end;
 end;
 
 procedure TfrmContrato.FormShow(Sender: TObject);
 begin
   //ativa query e coloca em mode de inserção
-  dsContratos.DataSet.Active := true;
   dsContratos.DataSet.Insert;
 end;
 
@@ -117,6 +118,15 @@ begin
   Application.CreateForm(TfrmPesquisaPessoas, frmPesquisaPessoas);
   frmPesquisaPessoas.showmodal;
   frmPesquisaPessoas.free;
+
+  //filtra o dspessoa para o contrato
+  dspessoa.DataSet.Filter := 'codigo_pessoa = ' + DBEdtFuncionario.text;
+  dspessoa.DataSet.Filtered := true;
+end;
+
+procedure TfrmContrato.PanelprincipalClick(Sender: TObject);
+begin
+
 end;
 
 end.

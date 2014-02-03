@@ -1,7 +1,7 @@
 object frmCadastroCargos: TfrmCadastroCargos
   Left = 269
   Height = 466
-  Top = 121
+  Top = 127
   Width = 985
   Caption = 'frmCadastroCargos'
   ClientHeight = 466
