@@ -1,7 +1,7 @@
 object frmCadastroCargos: TfrmCadastroCargos
   Left = 269
   Height = 466
-  Top = 128
+  Top = 147
   Width = 985
   Caption = 'frmCadastroCargos'
   ClientHeight = 466
@@ -454,7 +454,7 @@ object frmCadastroCargos: TfrmCadastroCargos
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 180
+      MaxLength = 0
       ParentFont = False
       TabOrder = 1
     end
@@ -468,7 +468,7 @@ object frmCadastroCargos: TfrmCadastroCargos
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 60
+      MaxLength = 0
       ParentFont = False
       TabOrder = 2
     end

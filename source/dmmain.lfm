@@ -3,7 +3,7 @@ object DM1: TDM1
   OldCreateOrder = False
   Height = 328
   HorizontalOffset = 496
-  VerticalOffset = 209
+  VerticalOffset = 228
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -24,7 +24,6 @@ object DM1: TDM1
   end
   object tb_pessoas: TZTable
     Connection = SEMEDconnection
-    Active = True
     TableName = 'tb_pessoas'
     left = 48
     top = 96
@@ -396,7 +395,6 @@ object DM1: TDM1
   end
   object queryCADASTROPESSOAScidades: TZReadOnlyQuery
     Connection = SEMEDconnection
-    Active = True
     SQL.Strings = (
       'SELECT * FROM tb_cidades'
     )
@@ -406,7 +404,6 @@ object DM1: TDM1
   end
   object querycontratos: TZQuery
     Connection = SEMEDconnection
-    Active = True
     SQL.Strings = (
       'SELECT * FROM tb_contratos'
     )
@@ -414,12 +411,76 @@ object DM1: TDM1
     left = 412
     top = 32
   end
-  object tb_local_trabalho: TZTable
+  object tb_cargos: TZTable
     Connection = SEMEDconnection
-    Active = True
-    TableName = 'tb_local_trabalho'
+    TableName = 'tb_cargos'
     left = 48
-    top = 160
+    top = 224
+    object tb_cargoscodigo_cargo: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_cargo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object tb_cargosnome_cargo: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'nome_cargo'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
+    object tb_cargossalario_hora_cargo: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'salario_hora_cargo'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      MaxValue = 0
+      MinValue = 0
+      Precision = 12
+    end
+    object tb_cargosgrupo_ocupacional_cargo: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'grupo_ocupacional_cargo'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 60
+    end
+    object tb_cargosclausula_primeira_cargo: TStringField
+      DisplayWidth = 28
+      FieldKind = fkData
+      FieldName = 'clausula_primeira_cargo'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 28
+    end
+  end
+  object tb_local_trabalho: TZQuery
+    Connection = SEMEDconnection
+    SQL.Strings = (
+      'select * from tb_local_trabalho'
+    )
+    Params = <>
+    left = 49
+    top = 165
     object tb_local_trabalhocodigo_local_trabalho: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -495,69 +556,6 @@ object DM1: TDM1
       ReadOnly = False
       Required = False
       Size = 60
-    end
-  end
-  object tb_cargos: TZTable
-    Connection = SEMEDconnection
-    Active = True
-    TableName = 'tb_cargos'
-    left = 48
-    top = 224
-    object tb_cargoscodigo_cargo: TLongintField
-      DisplayWidth = 10
-      FieldKind = fkData
-      FieldName = 'codigo_cargo'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object tb_cargosnome_cargo: TStringField
-      DisplayWidth = 180
-      FieldKind = fkData
-      FieldName = 'nome_cargo'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 180
-    end
-    object tb_cargossalario_hora_cargo: TFloatField
-      DisplayWidth = 10
-      FieldKind = fkData
-      FieldName = 'salario_hora_cargo'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      MaxValue = 0
-      MinValue = 0
-      Precision = 12
-    end
-    object tb_cargosgrupo_ocupacional_cargo: TStringField
-      DisplayWidth = 60
-      FieldKind = fkData
-      FieldName = 'grupo_ocupacional_cargo'
-      Index = 3
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 60
-    end
-    object tb_cargosclausula_primeira_cargo: TStringField
-      DisplayWidth = 28
-      FieldKind = fkData
-      FieldName = 'clausula_primeira_cargo'
-      Index = 4
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 28
     end
   end
 end

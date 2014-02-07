@@ -43,7 +43,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 60
+      MaxLength = 0
       ParentFont = False
       TabOrder = 0
     end
@@ -57,7 +57,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 60
+      MaxLength = 0
       ParentFont = False
       TabOrder = 1
     end
@@ -71,7 +71,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 60
+      MaxLength = 0
       ParentFont = False
       TabOrder = 2
     end
@@ -145,7 +145,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 180
+      MaxLength = 0
       ParentFont = False
       TabOrder = 1
     end
@@ -159,7 +159,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 60
+      MaxLength = 0
       ParentFont = False
       TabOrder = 2
     end
@@ -173,7 +173,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 180
+      MaxLength = 0
       ParentFont = False
       TabOrder = 3
     end
@@ -695,7 +695,6 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
     ParentFont = False
   end
   object dsLocal_trabalho: TDatasource
-    DataSet = DM1.tb_local_trabalho
     left = 608
     top = 8
   end

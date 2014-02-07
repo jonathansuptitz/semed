@@ -1,13 +1,12 @@
 object frmContrato: TfrmContrato
-  Left = 204
+  Left = 240
   Height = 600
-  Top = 15
-  Width = 900
-  AutoSize = True
+  Top = 2
+  Width = 1067
   BorderStyle = bsDialog
   Caption = 'Contrato'
   ClientHeight = 600
-  ClientWidth = 900
+  ClientWidth = 1067
   Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
   Font.Height = -16
@@ -19,7 +18,7 @@ object frmContrato: TfrmContrato
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object PanelBotoes: TPanel
-    Left = 770
+    Left = 937
     Height = 600
     Top = 0
     Width = 130
@@ -129,12 +128,11 @@ object frmContrato: TfrmContrato
     Left = 0
     Height = 600
     Top = 0
-    Width = 770
+    Width = 937
     Align = alClient
     ClientHeight = 600
-    ClientWidth = 770
+    ClientWidth = 937
     TabOrder = 1
-    OnClick = PanelprincipalClick
     object DBEdtCodcontrato: TDBEdit
       Left = 176
       Height = 26
@@ -165,7 +163,7 @@ object frmContrato: TfrmContrato
     object Label3: TLabel
       Left = 24
       Height = 19
-      Top = 230
+      Top = 190
       Width = 99
       Caption = 'Período Inicial'
       ParentColor = False
@@ -173,7 +171,7 @@ object frmContrato: TfrmContrato
     object DateEditinicial: TDateEdit
       Left = 144
       Height = 26
-      Top = 223
+      Top = 183
       Width = 120
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
@@ -224,7 +222,7 @@ object frmContrato: TfrmContrato
     object Label4: TLabel
       Left = 24
       Height = 19
-      Top = 270
+      Top = 230
       Width = 94
       Caption = 'Período Final'
       ParentColor = False
@@ -232,7 +230,7 @@ object frmContrato: TfrmContrato
     object DateEditfinal: TDateEdit
       Left = 144
       Height = 26
-      Top = 263
+      Top = 223
       Width = 120
       CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
       OKCaption = 'OK'
@@ -281,17 +279,17 @@ object frmContrato: TfrmContrato
       TabOrder = 2
     end
     object Label5: TLabel
-      Left = 24
+      Left = 472
       Height = 19
-      Top = 312
+      Top = 146
       Width = 67
       Caption = 'Vacância'
       ParentColor = False
     end
     object DBMemo1: TDBMemo
-      Left = 119
+      Left = 567
       Height = 50
-      Top = 302
+      Top = 64
       Width = 352
       DataField = 'justificativa_contrato'
       DataSource = dsContratos
@@ -306,17 +304,17 @@ object frmContrato: TfrmContrato
       ParentColor = False
     end
     object Label7: TLabel
-      Left = 24
+      Left = 472
       Height = 19
-      Top = 375
+      Top = 74
       Width = 86
       Caption = 'Observação'
       ParentColor = False
     end
     object DBMemo2: TDBMemo
-      Left = 120
+      Left = 568
       Height = 49
-      Top = 366
+      Top = 128
       Width = 351
       DataField = 'obs_contrato'
       DataSource = dsContratos
@@ -325,7 +323,7 @@ object frmContrato: TfrmContrato
     object Label8: TLabel
       Left = 24
       Height = 19
-      Top = 191
+      Top = 151
       Width = 121
       Caption = 'Jornada semanal'
       ParentColor = False
@@ -333,7 +331,7 @@ object frmContrato: TfrmContrato
     object DBEdtJornada: TDBEdit
       Left = 176
       Height = 26
-      Top = 184
+      Top = 144
       Width = 88
       DataField = 'jornada_trabalho_contrato'
       DataSource = dsContratos
@@ -397,17 +395,17 @@ object frmContrato: TfrmContrato
       TabOrder = 6
     end
     object Label9: TLabel
-      Left = 24
+      Left = 472
       Height = 19
-      Top = 436
+      Top = 198
       Width = 111
       Caption = 'Ano do Seletivo'
       ParentColor = False
     end
     object DBEdtAnoseletivo: TDBEdit
-      Left = 144
+      Left = 592
       Height = 26
-      Top = 429
+      Top = 191
       Width = 80
       DataField = 'ano_seletivo_contrato'
       DataSource = dsContratos
@@ -418,24 +416,10 @@ object frmContrato: TfrmContrato
     object Label10: TLabel
       Left = 24
       Height = 19
-      Top = 152
+      Top = 272
       Width = 121
       Caption = 'Local de trabalho'
       ParentColor = False
-    end
-    object DBLookupBoxLocal: TDBLookupComboBox
-      Left = 176
-      Height = 26
-      Top = 144
-      Width = 295
-      DataField = 'codigo_local_trabalho'
-      DataSource = dslocal
-      KeyField = 'codigo_local_trabalho'
-      ListField = 'nome_local_trabalho'
-      ListFieldIndex = 0
-      ListSource = dslocal
-      LookupCache = False
-      TabOrder = 8
     end
     object DBBoxCargo: TDBLookupComboBox
       Left = 80
@@ -449,13 +433,105 @@ object frmContrato: TfrmContrato
       ListFieldIndex = 0
       ListSource = dscargos
       LookupCache = False
+      TabOrder = 8
+    end
+    object Label11: TLabel
+      Left = 176
+      Height = 19
+      Top = 312
+      Width = 53
+      Caption = 'Horario'
+      ParentColor = False
+    end
+    object RadioGroup1: TRadioGroup
+      Left = 19
+      Height = 124
+      Top = 312
+      Width = 122
+      AutoFill = True
+      Caption = 'Periodo'
+      ChildSizing.LeftRightSpacing = 6
+      ChildSizing.TopBottomSpacing = 6
+      ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+      ChildSizing.EnlargeVertical = crsHomogenousChildResize
+      ChildSizing.ShrinkHorizontal = crsScaleChilds
+      ChildSizing.ShrinkVertical = crsScaleChilds
+      ChildSizing.Layout = cclLeftToRightThenTopToBottom
+      ChildSizing.ControlsPerLine = 1
+      ClientHeight = 106
+      ClientWidth = 118
       TabOrder = 9
+      object Radiomanha: TRadioButton
+        Left = 6
+        Height = 32
+        Top = 6
+        Width = 106
+        Caption = 'Matutino'
+        OnChange = RadiomanhaChange
+        TabOrder = 0
+      end
+      object Radiotarde: TRadioButton
+        Left = 6
+        Height = 32
+        Top = 38
+        Width = 106
+        Caption = 'Verpertino'
+        OnChange = RadiotardeChange
+        TabOrder = 1
+      end
+      object Radionoite: TRadioButton
+        Left = 6
+        Height = 30
+        Top = 70
+        Width = 106
+        Caption = 'Noturno'
+        OnChange = RadionoiteChange
+        TabOrder = 2
+      end
+    end
+    object DBGrid1: TDBGrid
+      Left = 198
+      Height = 84
+      Top = 472
+      Width = 530
+      Color = clWindow
+      Columns = <>
+      DataSource = dslocal
+      TabOrder = 10
+      TitleFont.CharSet = ANSI_CHARSET
+      TitleFont.Color = clBlack
+      TitleFont.Height = -16
+      TitleFont.Name = 'Arial'
+      TitleFont.Pitch = fpVariable
+      TitleFont.Quality = fqDraft
+    end
+    object DBEdthorario: TDBEdit
+      Left = 176
+      Height = 26
+      Top = 344
+      Width = 120
+      DataSource = dslocal
+      CharCase = ecNormal
+      MaxLength = 0
+      TabOrder = 11
+    end
+    object DBBoxlocal: TComboBox
+      Left = 176
+      Height = 26
+      Top = 272
+      Width = 276
+      ItemHeight = 18
+      OnChange = DBBoxlocalChange
+      OnChangeBounds = DBBoxlocalChangeBounds
+      OnClick = DBBoxlocalClick
+      TabOrder = 12
+      Text = 'DBBoxlocal'
     end
   end
   object dsContratos: TDatasource
     DataSet = DM1.querycontratos
-    left = 717
-    top = 24
+    left = 886
+    top = 320
   end
   object frReport1: TfrReport
     Dataset = frDBDataSet1
@@ -463,37 +539,36 @@ object frmContrato: TfrmContrato
     Options = []
     PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
     DataType = dtDataSource
-    left = 717
-    top = 192
+    left = 886
+    top = 488
   end
   object frDBDataSet1: TfrDBDataSet
     CloseDataSource = True
     DataSet = DM1.querycontratos
-    left = 717
-    top = 104
+    left = 886
+    top = 400
   end
   object frDesigner1: TfrDesigner
-    left = 717
-    top = 264
+    left = 809
+    top = 488
   end
   object dscargos: TDatasource
     DataSet = DM1.tb_cargos
-    left = 640
-    top = 24
+    left = 809
+    top = 320
   end
   object frTNPDFExport1: TfrTNPDFExport
-    left = 640
-    top = 104
+    left = 809
+    top = 400
   end
   object dslocal: TDatasource
     DataSet = DM1.tb_local_trabalho
-    left = 560
-    top = 24
+    left = 728
+    top = 320
   end
   object dspessoa: TDatasource
     DataSet = DM1.tb_pessoas
-    OnDataChange = dspessoaDataChange
-    left = 495
-    top = 24
+    left = 664
+    top = 320
   end
 end

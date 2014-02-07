@@ -71,10 +71,10 @@ type
     tb_pessoastelefone1_pessoa: TStringField;
     tb_pessoastelefone2_pessoa: TStringField;
     queryCADASTROPESSOAScidades: TZReadOnlyQuery;
+    tb_local_trabalho: TZQuery;
     ZReadOnlyQuery1codigo_cidade: TLongintField;
     ZReadOnlyQuery1nome_cidade: TStringField;
     ZReadOnlyQuery1uf_cidade: TStringField;
-    tb_local_trabalho: TZTable;
     tb_cargos: TZTable;
     procedure DataModuleCreate(Sender: TObject);
   private
@@ -109,9 +109,9 @@ begin
     SEMEDconnection.Connected := true;
 
     tb_pessoas.Active := true;
-    tb_pessoas.Active := true;
     tb_local_trabalho.Active := true;
     querycontratos.Active := true;
+    tb_cargos.Active := true;
     queryCADASTROPESSOAScidades.Active := true;
   finally
     SLcfg.Free;
