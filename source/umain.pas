@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls,
-  ExtCtrls, StdCtrls, Menus, ZConnection, ZDataset;
+  ExtCtrls, StdCtrls, Menus;
 
 type
 
@@ -34,7 +34,6 @@ type
     procedure CadastrarPessoasClick(Sender: TObject);
     procedure BtnAtualizarClick(Sender: TObject);
     procedure MenuNovoContratoClick(Sender: TObject);
-    procedure AtualizarMural;
   private
     { private declarations }
   public
@@ -47,7 +46,7 @@ var
 implementation
 
 uses
-  ucontrato, ucadastropessoas, UCadastroLocalTrabalho, uCadastroCargos, dmMain,
+  ucontrato, ucadastropessoas, UCadastroLocalTrabalho, uCadastroCargos,
   Ucadastromural;
 
 {$R *.lfm}
@@ -56,36 +55,16 @@ uses
 
 // MURAL DE RECADOS ------------------------------------------------------------
 
-procedure TFrmMain.AtualizarMural;
-begin
- { dsMural.DataSet.First;
-
-  memoMural.Lines.Clear;        // Limpa MEMO
-  memoMural.Lines.Add('----- INICIO DOS REGISTROS -----');
-  memoMural.Lines.Add('');
-
-  while not (dsMural.DataSet.EOF) do  //Enquanto nao for fim dos registros
-  begin
-    memoMural.Lines.Add('* ' + dsMural.DataSet.FieldByName('data_mural').Value +   // Escreve data e nome
-                        ', por ' + dsMural.DataSet.FieldByName('usuario_mural').Value + ':');
-    memoMural.Lines.Add(dsMural.DataSet.FieldByName('conteudo_mural').Value);  // Escreve conteudo
-    memoMural.Lines.Add('');                                                   // Pula linha
-
-    if not (dsMural.DataSet.EOF) then   // Se nao for ultimo registro, passa para proximo
-      dsMural.DataSet.Next;
-  end;  }
-end;
-
 procedure TFrmMain.BtnAtualizarClick(Sender: TObject);   // Botão Atualizar
 begin
- // AtualizarMural;
+  frmCadastroMural.AtualizarMural;
 end;
 
-procedure TFrmMain.BtnNovoClick(Sender: TObject);
+procedure TFrmMain.BtnNovoClick(Sender: TObject);        // Botão Novo Recado
 begin
- { Application.CreateForm(TfrmCadastroMural, frmCadastroMural);
+  Application.CreateForm(TfrmCadastroMural, frmCadastroMural);
   frmCadastroMural.ShowModal;
-  frmCadastroMural.Free;  }
+  frmCadastroMural.Free;
 end;
 
 // MENU ------------------------------------------------------------------------

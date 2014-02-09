@@ -121,7 +121,9 @@
       <Unit10>
         <Filename Value="ucadastromural.pas"/>
         <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmCadastroMural"/>
         <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
         <UnitName Value="UCadastroMural"/>
       </Unit10>
     </Units>

@@ -167,9 +167,9 @@ DROP TABLE IF EXISTS `tb_mural`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tb_mural` (
-  `codigo_mural` int(11) NOT NULL,
+  `codigo_mural` int(11) NOT NULL AUTO_INCREMENT,
   `usuario_mural` varchar(45) NOT NULL,
-  `data_mural` varchar(15) NOT NULL,
+  `data_mural` varchar(20) NOT NULL,
   `conteudo_mural` varchar(200) NOT NULL,
   PRIMARY KEY (`codigo_mural`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
