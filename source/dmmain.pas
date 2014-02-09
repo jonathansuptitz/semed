@@ -35,6 +35,10 @@ type
     tb_local_trabalhonome_local_trabalho: TStringField;
     tb_local_trabalhoresponsavel_local_trabalho: TStringField;
     tb_local_trabalhotelefone_local_trabalho: TStringField;
+    tb_muralcodigo_mural: TLongintField;
+    tb_muralconteudo_mural: TStringField;
+    tb_muraldata_mural: TStringField;
+    tb_muralusuario_mural: TStringField;
     tb_pessoas: TZTable;
     tb_pessoasano_doutorado_pessoa: TLongintField;
     tb_pessoasano_graduacao1_pessoa: TLongintField;
@@ -76,6 +80,7 @@ type
     ZReadOnlyQuery1nome_cidade: TStringField;
     ZReadOnlyQuery1uf_cidade: TStringField;
     tb_cargos: TZTable;
+    tb_mural: TZTable;
     procedure DataModuleCreate(Sender: TObject);
   private
     { private declarations }

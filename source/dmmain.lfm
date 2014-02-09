@@ -1,7 +1,7 @@
 object DM1: TDM1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 328
+  Height = 395
   HorizontalOffset = 496
   VerticalOffset = 228
   Width = 535
@@ -556,6 +556,56 @@ object DM1: TDM1
       ReadOnly = False
       Required = False
       Size = 60
+    end
+  end
+  object tb_mural: TZTable
+    Connection = SEMEDconnection
+    Active = True
+    TableName = 'tb_mural'
+    left = 48
+    top = 283
+    object tb_muralcodigo_mural: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_mural'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object tb_muralusuario_mural: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'usuario_mural'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
+    object tb_muraldata_mural: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'data_mural'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 60
+    end
+    object tb_muralconteudo_mural: TStringField
+      DisplayWidth = 800
+      FieldKind = fkData
+      FieldName = 'conteudo_mural'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 800
     end
   end
 end

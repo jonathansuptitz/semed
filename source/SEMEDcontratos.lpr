@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Umain, dmMain, lazreportpdfexport, uCadastroCargos;
+  Forms, Umain, dmMain, lazreportpdfexport, uCadastroCargos, UCadastroMural;
 
 {$R *.res}
 
