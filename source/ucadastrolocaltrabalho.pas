@@ -66,6 +66,8 @@ type
     procedure editPesquisaKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure EditON;
+    procedure EditOFF;
   private
     { private declarations }
   public
@@ -94,6 +96,46 @@ procedure TfrmCadastroLocalTrabalho.editPesquisaKeyPress(Sender: TObject;
 begin                                                        // começa a digitar
   if (editPesquisa.Text = 'Digite para pesquisar...') then
     editPesquisa.Text := '';
+end;
+
+// PREVISAO DE ERROS -----------------------------------------------------------
+procedure TfrmCadastroLocalTrabalho.EditON;        // Habilitar Edição
+begin
+  DBEdit2.ReadOnly := false;
+  DBEdit3.ReadOnly := false;
+  DBEdit4.ReadOnly := false;
+  DBEdit5.ReadOnly := false;
+  DBEdit6.ReadOnly := false;
+  DBEdit7.ReadOnly := false;
+
+  BtnSalvar.Enabled := true;
+  BtnCancelar.Enabled := true;
+  BtnNovo.Enabled := false;
+  BtnEditar.Enabled := false;
+  BtnApagar.Enabled := false;
+  BtnSelecionar.Enabled := false;
+  BtnVoltar.Enabled := false;
+  if BtnSelecionar.Enabled then
+    SelecionarAtivo := true; // Marca estado inicial do BtnSelecionar
+end;
+
+procedure TfrmCadastroLocalTrabalho.EditOFF;       // Desabilitar Edição
+begin
+  DBEdit2.ReadOnly := true;
+  DBEdit3.ReadOnly := true;
+  DBEdit4.ReadOnly := true;
+  DBEdit5.ReadOnly := true;
+  DBEdit6.ReadOnly := true;
+  DBEdit7.ReadOnly := true;
+
+  BtnSalvar.Enabled := false;
+  BtnCancelar.Enabled := false;
+  BtnNovo.Enabled := true;
+  BtnEditar.Enabled := true;
+  BtnApagar.Enabled := true;
+  BtnVoltar.Enabled := true;
+  if SelecionarAtivo then  // Verifica se BtnSelecionar esava ativo inicialmente
+    BtnSelecionar.Enabled := true;
 end;
 
 // PESQUISA --------------------------------------------------------------------

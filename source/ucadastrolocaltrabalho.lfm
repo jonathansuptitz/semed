@@ -128,6 +128,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
       Width = 100
       DataField = 'codigo_local_trabalho'
       DataSource = dsLocal_trabalho
+      ReadOnly = True
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
