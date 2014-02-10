@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, DbCtrls,
-  DBGrids, StdCtrls, ExtCtrls, Buttons;
+  DBGrids, StdCtrls, ExtCtrls, Buttons, Menus, LCLType;
 
 type
 
@@ -53,7 +53,12 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
+    MenuItem1: TMenuItem;
     Panel1: TPanel;
+    popMenuHorario: TPopupMenu;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
     procedure BtnApagarClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
@@ -62,12 +67,17 @@ type
     procedure BtnSelecionarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
+    procedure DBEdit3KeyPress(Sender: TObject; var Key: char);
+    procedure DBGrid1Enter(Sender: TObject);
     procedure editPesquisaChange(Sender: TObject);
     procedure editPesquisaKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure EditON;
     procedure EditOFF;
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -77,11 +87,12 @@ type
 var
   frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho;
   campoBusca: string;
+  SelecionarAtivo: boolean;
 
 implementation
 
 uses
-  dmMain;
+  dmMain, UUtilidades;
 
 { TfrmCadastroLocalTrabalho }
 
@@ -89,6 +100,8 @@ uses
 procedure TfrmCadastroLocalTrabalho.FormCreate(Sender: TObject);  // Atribui valor
 begin                                                             // inicial a pesquisa
   campoBusca := 'nome_local_trabalho';
+  SelecionarAtivo := false;    // Atribui valor inicial para depois verificar
+  EditOFF;
 end;
 
 procedure TfrmCadastroLocalTrabalho.editPesquisaKeyPress(Sender: TObject;
@@ -138,6 +151,32 @@ begin
     BtnSelecionar.Enabled := true;
 end;
 
+procedure TfrmCadastroLocalTrabalho.DBGrid1Enter(Sender: TObject); // Ao entrar GRID
+begin
+  EditOFF;
+end;
+
+procedure TfrmCadastroLocalTrabalho.SpeedButton1Click(Sender: TObject); // Info horario
+begin
+  popMenuHorario.PopUp;
+end;
+
+procedure TfrmCadastroLocalTrabalho.SpeedButton2Click(Sender: TObject); // Info horario
+begin
+  popMenuHorario.PopUp;
+end;
+
+procedure TfrmCadastroLocalTrabalho.SpeedButton3Click(Sender: TObject); // Info horario
+begin
+  popMenuHorario.PopUp;
+end;
+
+procedure TfrmCadastroLocalTrabalho.DBEdit3KeyPress(Sender: TObject; // Masc Telefone
+  var Key: char);
+begin
+  Utilidades.MascFone(DBEdit3, Key);
+end;
+
 // PESQUISA --------------------------------------------------------------------
 procedure TfrmCadastroLocalTrabalho.editPesquisaChange(Sender: TObject); // Atualiza pesquisa
 begin
@@ -156,6 +195,8 @@ begin
     DM1.tb_local_trabalho.Filter := campoBusca+' LIKE '+ QuotedStr('*' + editPesquisa.Text + '*');
     DM1.tb_local_trabalho.Filtered := true;
   end;
+
+  EditOFF;
 end;
 
 procedure TfrmCadastroLocalTrabalho.ComboBox1Change(Sender: TObject);
@@ -164,6 +205,8 @@ begin
     campoBusca := 'nome_local_trabalho'            // campo a ser pesquisado quando
   else                                             // usuario muda comboBox
     campoBusca := 'codigo_local_trabalho';
+
+  EditOFF;
 end;
 
 //MENU -------------------------------------------------------------------------
@@ -175,11 +218,23 @@ end;
 procedure TfrmCadastroLocalTrabalho.BtnNovoClick(Sender: TObject);    // Novo
 begin
   dsLocal_trabalho.DataSet.Insert;
+
+  EditON;
 end;
 
 procedure TfrmCadastroLocalTrabalho.BtnSalvarClick(Sender: TObject);  // Salvar
 begin
-  dsLocal_trabalho.DataSet.Post;
+  if (DBEdit2.Text = '') or (DBEdit3.Text = '') or (DBEdit4.Text = '') then  // Se campos principais nao
+    ShowMessage('Os campos * são obrigatorios!')                             // estiverem preenchidos
+  else if (DBEdit5.Text = '') or (DBEdit6.Text = '') or (DBEdit7.Text = '') then  // Se nenhum campo de horario
+    ShowMessage('No minimo um campo de horário deve ser preenchido!')             // estiver preenchido
+  else
+  begin
+    dsLocal_trabalho.DataSet.Post;    // Salva
+    ShowMessage('Registro salvo com sucesso!');
+
+    EditOFF;
+  end;
 end;
 
 procedure TfrmCadastroLocalTrabalho.BtnVoltarClick(Sender: TObject);  // Voltar
@@ -190,16 +245,26 @@ end;
 procedure TfrmCadastroLocalTrabalho.BtnEditarClick(Sender: TObject);  //Editar
 begin
   dsLocal_trabalho.DataSet.Edit;
+
+  EditON;
 end;
 
 procedure TfrmCadastroLocalTrabalho.BtnApagarClick(Sender: TObject);  // Apagar
 begin
-  dsLocal_trabalho.DataSet.Delete;
+  if Application.MessageBox('Deseja realmente apagar o registro?','Apagar registro', MB_YESNO) = idYES then
+  begin
+    dsLocal_trabalho.DataSet.Delete;
+    ShowMessage('Registro apagado com sucesso!');
+
+    EditOFF;
+  end;
 end;
 
 procedure TfrmCadastroLocalTrabalho.BtnCancelarClick(Sender: TObject);// Cancelar
 begin
   dsLocal_trabalho.DataSet.Cancel;
+
+  EditOFF;
 end;
 
 // FIM -------------------------------------------------------------------------
