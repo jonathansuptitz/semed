@@ -617,7 +617,7 @@ object frmCadastroCargos: TfrmCadastroCargos
     Top = 236
     Width = 400
     Lines.Strings = (
-      'memoClau'
+      ''
     )
     TabOrder = 4
   end

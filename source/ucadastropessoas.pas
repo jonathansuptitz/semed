@@ -112,6 +112,7 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure comboUFChange(Sender: TObject);
+    procedure comboUFExit(Sender: TObject);
     procedure DBEdit11KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit15KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit16KeyPress(Sender: TObject; var Key: char);
@@ -213,6 +214,16 @@ end;
 procedure TfrmCadastroPessoas.DBEdit29KeyPress(Sender: TObject; var Key: char); // Ano doutorado
 begin
   Utilidades.MascAno(DBEdit29, Key);
+end;
+
+// PREVISAO DE ERROS -----------------------------------------------------------
+
+procedure TfrmCadastroPessoas.comboUFExit(Sender: TObject);  // Ao selecionar UF
+begin
+  if self.Text = '' then
+    DBLookupComboBox1.Enabled := false
+  else
+    DBLookupComboBox1.Enabled := true;
 end;
 
 // Carrega Lista de Cidades comforme UF ----------------------------------------

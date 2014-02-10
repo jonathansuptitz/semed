@@ -1,7 +1,7 @@
 object frmCadastroPessoas: TfrmCadastroPessoas
-  Left = 153
+  Left = 366
   Height = 638
-  Top = 50
+  Top = 94
   Width = 1296
   BorderIcons = [biSystemMenu]
   Caption = 'frmCadastroPessoas'
@@ -28,6 +28,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Width = 235
       DataField = 'codigo_pessoa'
       DataSource = dsPessoas
+      ReadOnly = True
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
@@ -61,7 +62,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 200
+      MaxLength = 50
       ParentFont = False
       TabOrder = 2
     end
@@ -75,7 +76,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 80
+      MaxLength = 20
       ParentFont = False
       TabOrder = 3
       OnKeyPress = DBEdit4KeyPress
@@ -90,9 +91,9 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 80
+      MaxLength = 20
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 5
     end
     object DBEdit7: TDBEdit
       Left = 110
@@ -106,7 +107,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Font.Name = 'Arial'
       MaxLength = 60
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 7
       OnKeyPress = DBEdit7KeyPress
     end
     object DBEdit8: TDBEdit
@@ -121,7 +122,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Font.Name = 'Arial'
       MaxLength = 60
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 8
       OnKeyPress = DBEdit8KeyPress
     end
     object DBEdit9: TDBEdit
@@ -134,9 +135,9 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 180
+      MaxLength = 45
       ParentFont = False
-      TabOrder = 7
+      TabOrder = 9
     end
     object Label1: TLabel
       Left = 11
@@ -153,8 +154,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Left = 11
       Height = 18
       Top = 71
-      Width = 35
-      Caption = 'CPF:'
+      Width = 45
+      Caption = 'CPF *:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -164,8 +165,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Left = 11
       Height = 18
       Top = 112
-      Width = 44
-      Caption = 'Nome:'
+      Width = 54
+      Caption = 'Nome *:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -175,8 +176,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Left = 11
       Height = 18
       Top = 150
-      Width = 27
-      Caption = 'RG:'
+      Width = 37
+      Caption = 'RG *:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -186,8 +187,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Left = 11
       Height = 18
       Top = 225
-      Width = 96
-      Caption = 'Nacionalidade:'
+      Width = 102
+      Caption = 'Nacionalidade*:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -197,8 +198,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Left = 11
       Height = 18
       Top = 267
-      Width = 82
-      Caption = 'Estado Civil:'
+      Width = 92
+      Caption = 'Estado Civil *:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -208,8 +209,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Left = 11
       Height = 18
       Top = 308
-      Width = 73
-      Caption = 'Telefone 1:'
+      Width = 83
+      Caption = 'Telefone 1 *:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -256,7 +257,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       )
       MaxLength = 0
       ParentFont = False
-      TabOrder = 8
+      ReadOnly = True
+      TabOrder = 6
     end
     object DBEdit6: TDBEdit
       Left = 110
@@ -270,15 +272,15 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Font.Name = 'Arial'
       MaxLength = 40
       ParentFont = False
-      TabOrder = 9
+      TabOrder = 4
       OnKeyPress = DBEdit6KeyPress
     end
     object Label10: TLabel
       Left = 11
       Height = 18
       Top = 188
-      Width = 83
-      Caption = 'Nascimento:'
+      Width = 93
+      Caption = 'Nascimento *:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -296,7 +298,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
     Font.Height = -15
     Font.Name = 'Arial'
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 2
     object GroupBox4: TGroupBox
       Left = 14
       Height = 65
@@ -316,7 +318,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 0
       end
@@ -330,7 +332,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 0
+        MaxLength = 4
         ParentFont = False
         TabOrder = 1
         OnKeyPress = DBEdit11KeyPress
@@ -377,7 +379,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 0
       end
@@ -413,7 +415,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 1
       end
@@ -438,7 +440,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 0
+        MaxLength = 4
         ParentFont = False
         TabOrder = 2
         OnKeyPress = DBEdit15KeyPress
@@ -496,7 +498,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 0
       end
@@ -510,7 +512,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 1
       end
@@ -524,7 +526,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 0
+        MaxLength = 4
         ParentFont = False
         TabOrder = 2
         OnKeyPress = DBEdit16KeyPress
@@ -582,7 +584,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 0
       end
@@ -596,7 +598,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 1
       end
@@ -610,7 +612,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 0
+        MaxLength = 4
         ParentFont = False
         TabOrder = 2
         OnKeyPress = DBEdit20KeyPress
@@ -668,7 +670,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 0
       end
@@ -682,7 +684,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 1
       end
@@ -696,7 +698,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 0
+        MaxLength = 4
         ParentFont = False
         TabOrder = 2
         OnKeyPress = DBEdit23KeyPress
@@ -754,7 +756,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 0
       end
@@ -768,7 +770,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 1
       end
@@ -782,7 +784,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 0
+        MaxLength = 4
         ParentFont = False
         TabOrder = 2
         OnKeyPress = DBEdit26KeyPress
@@ -840,7 +842,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 0
       end
@@ -854,7 +856,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 180
+        MaxLength = 45
         ParentFont = False
         TabOrder = 1
       end
@@ -868,7 +870,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         CharCase = ecNormal
         Font.Height = -15
         Font.Name = 'Arial'
-        MaxLength = 0
+        MaxLength = 4
         ParentFont = False
         TabOrder = 2
         OnKeyPress = DBEdit29KeyPress
@@ -886,7 +888,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
     Font.Height = -15
     Font.Name = 'Arial'
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
     object DBEdit31: TDBEdit
       Left = 86
       Height = 25
@@ -897,16 +899,16 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 180
+      MaxLength = 45
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 1
     end
     object Label31: TLabel
       Left = 14
       Height = 18
       Top = 31
-      Width = 68
-      Caption = 'Endereço:'
+      Width = 74
+      Caption = 'Endereço*:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -916,8 +918,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Left = 14
       Height = 18
       Top = 188
-      Width = 44
-      Caption = 'Bairro:'
+      Width = 54
+      Caption = 'Bairro *:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -927,8 +929,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Left = 14
       Height = 18
       Top = 267
-      Width = 51
-      Caption = 'Cidade:'
+      Width = 61
+      Caption = 'Cidade *:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -942,7 +944,6 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Font.Height = -15
       Font.Name = 'Arial'
       ItemHeight = 17
-      ItemIndex = 0
       Items.Strings = (
         'AC'
         'AL'
@@ -973,16 +974,17 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         'TO'
       )
       OnChange = comboUFChange
+      OnExit = comboUFExit
       ParentFont = False
-      TabOrder = 1
-      Text = 'AC'
+      Style = csDropDownList
+      TabOrder = 2
     end
     object Label34: TLabel
       Left = 14
       Height = 18
       Top = 228
-      Width = 24
-      Caption = 'UF:'
+      Width = 34
+      Caption = 'UF *:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -995,6 +997,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Width = 255
       DataField = 'codigo_cidade'
       DataSource = dsPessoas
+      Enabled = False
       Font.Height = -15
       Font.Name = 'Arial'
       KeyField = 'codigo_cidade'
@@ -1003,7 +1006,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       ListSource = dsCidades
       LookupCache = False
       ParentFont = False
-      TabOrder = 2
+      TabOrder = 3
     end
     object DBMemo1: TDBMemo
       Left = 86
@@ -1014,8 +1017,9 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       DataSource = dsPessoas
       Font.Height = -15
       Font.Name = 'Arial'
+      MaxLength = 250
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 0
     end
     object DBEdit32: TDBEdit
       Left = 86
@@ -1027,7 +1031,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 60
+      MaxLength = 15
       ParentFont = False
       TabOrder = 4
       OnKeyPress = DBEdit32KeyPress
@@ -1036,8 +1040,8 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       Left = 14
       Height = 18
       Top = 307
-      Width = 36
-      Caption = 'CEP:'
+      Width = 46
+      Caption = 'CEP *:'
       Font.Height = -15
       Font.Name = 'Arial'
       ParentColor = False
@@ -1106,7 +1110,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       }
       OnClick = BtnVoltarClick
       ParentFont = False
-      TabOrder = 0
+      TabOrder = 6
     end
     object BtnNovo: TBitBtn
       AnchorSideTop.Control = Panel1
@@ -1277,7 +1281,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       }
       OnClick = BtnSalvarClick
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 4
     end
     object BtnCancelar: TBitBtn
       AnchorSideTop.Control = Panel1
@@ -1334,7 +1338,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       }
       OnClick = BtnCancelarClick
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 5
     end
     object BtnApagar: TBitBtn
       AnchorSideTop.Control = Panel1
@@ -1391,7 +1395,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       }
       OnClick = BtnApagarClick
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 3
     end
     object BtnPesquisar: TBitBtn
       AnchorSideTop.Control = Panel1
@@ -1448,7 +1452,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       }
       OnClick = BtnPesquisarClick
       ParentFont = False
-      TabOrder = 6
+      TabOrder = 0
     end
   end
   object Label35: TLabel
