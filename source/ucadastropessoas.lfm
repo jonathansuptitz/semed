@@ -1,12 +1,13 @@
 object frmCadastroPessoas: TfrmCadastroPessoas
-  Left = 366
+  Left = 174
   Height = 638
-  Top = 94
+  Top = 58
   Width = 1296
   BorderIcons = [biSystemMenu]
   Caption = 'frmCadastroPessoas'
   ClientHeight = 638
   ClientWidth = 1296
+  OnCreate = FormCreate
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object GroupBox1: TGroupBox

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, DbCtrls,
-  StdCtrls, ExtCtrls, Buttons;
+  StdCtrls, ExtCtrls, Buttons, LCLType;
 
 type
 
@@ -127,6 +127,9 @@ type
     procedure DBEdit6KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit7KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit8KeyPress(Sender: TObject; var Key: char);
+    procedure EditON;
+    procedure EditOff;
+    procedure FormCreate(Sender: TObject);
   private
     { private declarations }
   public
@@ -144,6 +147,13 @@ uses
 {$R *.lfm}
 
 { TfrmCadastroPessoas }
+
+// INICIO ----------------------------------------------------------------------
+
+procedure TfrmCadastroPessoas.FormCreate(Sender: TObject);
+begin
+  EditOff;
+end;
 
 // MASCARAS E VERIFICADORES ----------------------------------------------------
 procedure TfrmCadastroPessoas.DBEdit2Exit(Sender: TObject);  // CPF - verif
@@ -226,6 +236,58 @@ begin
     DBLookupComboBox1.Enabled := true;
 end;
 
+procedure TfrmCadastroPessoas.EditON;        // Habilitar Edição
+var
+  componente: TComponent;
+  i: integer;
+begin
+  for i := 2 to 29 do
+  begin
+    componente := FindComponent('DBEdit' + IntToStr(i));
+    (componente as TDBEdit).ReadOnly := false;
+  end;
+  DBEdit31.ReadOnly := false;
+  DBEdit32.ReadOnly := false;
+  DBComboBox1.Enabled := true;
+  comboUF.Enabled := true;
+  DBMemo1.ReadOnly := false;
+  DBLookupComboBox1.Enabled := true;
+
+  BtnSalvar.Enabled := true;
+  BtnCancelar.Enabled := true;
+  BtnNovo.Enabled := false;
+  BtnEditar.Enabled := false;
+  BtnApagar.Enabled := false;
+  BtnVoltar.Enabled := false;
+  BtnPesquisar.Enabled := false;
+end;
+
+procedure TfrmCadastroPessoas.EditOFF;       // Desabilitar Edição
+var
+  componente: TComponent;
+  i: integer;
+begin
+  for i := 2 to 29 do
+  begin
+    componente := FindComponent('DBEdit' + IntToStr(i));
+    (componente as TDBEdit).ReadOnly := true;
+  end;
+  DBEdit31.ReadOnly := true;
+  DBEdit32.ReadOnly := true;
+  DBComboBox1.Enabled := false;
+  comboUF.Enabled := false;
+  DBMemo1.ReadOnly := true;
+  DBLookupComboBox1.Enabled := false;
+
+  BtnSalvar.Enabled := false;
+  BtnCancelar.Enabled := false;
+  BtnNovo.Enabled := true;
+  BtnEditar.Enabled := true;
+  BtnApagar.Enabled := true;
+  BtnVoltar.Enabled := true;
+  BtnPesquisar.Enabled := true;
+end;
+
 // Carrega Lista de Cidades comforme UF ----------------------------------------
 procedure TfrmCadastroPessoas.comboUFChange(Sender: TObject);
 begin
@@ -256,33 +318,74 @@ end;
 procedure TfrmCadastroPessoas.BtnNovoClick(Sender: TObject);        // Novo
 begin
   dsPessoas.DataSet.Insert;
+
+  EditON;
 end;
 
 procedure TfrmCadastroPessoas.BtnPesquisarClick(Sender: TObject);   // Pesquisar
 begin
+  EditOff;
   Application.CreateForm(TfrmPesquisaPessoas, frmPesquisaPessoas);
   frmPesquisaPessoas.ShowModal;
   frmPesquisaPessoas.Free;
 end;
 
 procedure TfrmCadastroPessoas.BtnSalvarClick(Sender: TObject);      // Salvar
+var
+  componente: TComponent;
+  i: integer;
+  editFormacaoLimpos: boolean;
 begin
-  dsPessoas.DataSet.Post;
+  editFormacaoLimpos := true;
+
+  for i := 10 to 29 do             // Verrifica de se pelo menos 1 campo de formação
+  begin                            // academica foi preenchido
+    componente := FindComponent('DBEdit' + IntToStr(i));
+    if (componente as TDBEdit).Text <> '' then
+      editFormacaoLimpos := false;
+  end;
+
+  if (DBEdit2.Text = '') or (DBEdit3.Text = '') or (DBEdit4.Text = '') or       // Se campos principais nao
+      (DBEdit5.Text = '') or (DBEdit6.Text = '') or (DBEdit7.Text = '') or      // estiverem preenchidos
+      (DBEdit31.Text = '') or (DBEdit32.Text = '') or (DBComboBox1.Text = '') or
+      (comboUF.Text = '') or (DBLookupComboBox1.Text = '') then
+    ShowMessage('Os campos * são obrigatorios!')
+  else if editFormacaoLimpos then                                               // Se nenhum campo de formacao
+  begin                                                                         // estiver preenchido
+    if Application.MessageBox('É recomendado preencher os campos sobre "Formação Academica".'+
+                              'Deseja continuar mesmo assim?','Formação Academica', MB_YESNO) = idYES then
+    begin
+      dsPessoas.DataSet.Post;
+      EditOff;
+    end
+    else
+      abort;
+  end;
 end;
 
 procedure TfrmCadastroPessoas.BtnEditarClick(Sender: TObject);      // Editar
 begin
   dsPessoas.DataSet.Edit;
+
+  EditON;
 end;
 
 procedure TfrmCadastroPessoas.BtnApagarClick(Sender: TObject);      // Apagar
 begin
-  dsPessoas.DataSet.Delete;
+  if Application.MessageBox('Deseja realmente apagar o registro?','Apagar registro', MB_YESNO) = idYES then
+  begin
+    dsPessoas.DataSet.Delete;
+    ShowMessage('Registro apagado com sucesso!');
+
+    EditOff;
+  end;
 end;
 
 procedure TfrmCadastroPessoas.BtnCancelarClick(Sender: TObject);    // Cancelar
 begin
   dsPessoas.DataSet.Cancel;
+
+  EditOff;
 end;
 // -----------------------------------------------------------------------------
 
