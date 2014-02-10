@@ -94,7 +94,7 @@ end;
 
 procedure TfrmCadastroCargos.DBEdit4KeyPress(Sender: TObject; var Key: char); //Masc Moeda
 begin
-  if not (Key in ['0'..'9', '.', #8{backspace}]) then
+  if not (Key in ['0'..'9', chr(8){backspace}, DecimalSeparator]) then
     Key := #0{nil};
 end;
 
