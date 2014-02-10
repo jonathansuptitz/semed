@@ -35,7 +35,7 @@
         <ColCount Value="1"/>
         <ColGap Value="0"/>
         <LayoutOrder Value="loColumns"/>
-        <ObjectCount Value="12"/>
+        <ObjectCount Value="13"/>
         <Object1>
           <Name Value="Memo1"/>
           <ClassName Value="TfrMemoView"/>
@@ -218,7 +218,7 @@
             <Left Value="92"/>
             <Top Value="396"/>
             <Width Value="588"/>
-            <Height Value="72"/>
+            <Height Value="48"/>
           </Size>
           <Flags Value="3"/>
           <FillColor Value="clNone"/>
@@ -231,7 +231,7 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value="LOCAL DE TRABALHO: &#xD;&#xA;&#xD;&#xA;JORNADA SEMANAL: [dsContratos.&quot;jornada_trabalho_contrato&quot;] h    &#xD;&#xA;HORÁRIO:  &#xD;&#xA;"/>
+            <Memo Value="LOCAL DE TRABALHO:  [dslocal.&quot;nome_local_trabalho&quot;].&#xD;&#xA;&#xD;&#xA;JORNADA SEMANAL: [dsContratos.&quot;jornada_trabalho_contrato&quot;] h    &#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -315,9 +315,9 @@
             <FrameBorders Value=""/>
           </Frames>
           <Data>
-            <Format Value="33816620"/>
+            <Format Value="33554476"/>
             <FormatStr Value="15/11/1998"/>
-            <Memo Value="DATA: [DATE].                                    &#xD;&#xA;                                                          __________________________________________&#xD;&#xA;                                                         Assinatura do Responsável legal do órgão solicitante&#xD;&#xA;"/>
+            <Memo Value="DATA: [dsContratos.&quot;data_contrato&quot;]                                    &#xD;&#xA;                                                          __________________________________________&#xD;&#xA;                                                         Assinatura do Responsável legal do órgão solicitante&#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -403,7 +403,7 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value="NOME DO CANDIDATO: [dspessoa.&quot;nome_pessoa&quot;]&#xD;&#xA;&#xD;&#xA;Forma de Seleção: (   )Processo Seletivo nº 01/[dsContratos.&quot;ano_seletivo_contrato&quot;];      (   ) Cadastro no RH;  &#xD;&#xA;                             (   ) Contratação Direta.&#xD;&#xA;    &#xD;&#xA;REFERÊNCIA SALARIAL:  [dscargos.&quot;nome_cargo&quot;] R$ [dscargos.&quot;salario_hora_cargo&quot;]. GRUPO OCUPACIONAL: [dscargos.&quot;grupo_ocupacional_cargo&quot;]. &#xD;&#xA;"/>
+            <Memo Value="NOME DO CANDIDATO: [dspessoa.&quot;nome_pessoa&quot;]&#xD;&#xA;&#xD;&#xA;Forma de Seleção: (   )Processo Seletivo nº 01/[dsContratos.&quot;ano_seletivo_contrato&quot;];      (   ) Cadastro no RH;  &#xD;&#xA;                             (   ) Contratação Direta.&#xD;&#xA;    &#xD;&#xA;REFERÊNCIA SALARIAL: R$ [dscargos.&quot;salario_hora_cargo&quot;]. GRUPO OCUPACIONAL: [dscargos.&quot;grupo_ocupacional_cargo&quot;]. &#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -530,9 +530,9 @@
             <FrameBorders Value=""/>
           </Frames>
           <Data>
-            <Format Value="33816620"/>
-            <FormatStr Value="15/11/1998"/>
-            <Memo Value="DATA: [DATE]                                                             &#xD;&#xA;                                                                                     _________________________&#xD;&#xA;                                                                                      Assinatura do Chefe do Poder&#xD;&#xA;"/>
+            <Format Value="44"/>
+            <FormatStr Value=""/>
+            <Memo Value="DATA: [dsContratos.&quot;data_contrato&quot;]                                                             &#xD;&#xA;                                                                                     _________________________&#xD;&#xA;                                                                                      Assinatura do Chefe do Poder&#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -552,6 +552,49 @@
           <Layout Value="tlTop"/>
           <Angle Value="0"/>
         </Object12>
+        <Object13>
+          <Name Value="Memo13"/>
+          <ClassName Value="TfrMemoView"/>
+          <Visible Value="1"/>
+          <Typ Value="gtMemo"/>
+          <StreamMode Value="0"/>
+          <Size>
+            <Left Value="92"/>
+            <Top Value="448"/>
+            <Width Value="584"/>
+            <Height Value="20"/>
+          </Size>
+          <Flags Value="3"/>
+          <FillColor Value="clNone"/>
+          <Frames>
+            <FrameColor Value="clBlack"/>
+            <FrameStyle Value="frsSolid"/>
+            <FrameWidth Value="1"/>
+            <FrameBorders Value=""/>
+          </Frames>
+          <Data>
+            <Format Value="556"/>
+            <FormatStr Value=""/>
+            <Memo Value=""/>
+            <Script Value="text := varhora;&#xD;&#xA;"/>
+          </Data>
+          <Font>
+            <Name Value="Arial"/>
+            <Size Value="10"/>
+            <Color Value="clBlack"/>
+            <Charset Value="0"/>
+            <Style Value=""/>
+          </Font>
+          <Highlight>
+            <FontStyle Value="2"/>
+            <FontColor Value="clBlack"/>
+            <FillColor Value="clWhite"/>
+            <HighlightStr Value=""/>
+          </Highlight>
+          <Alignment Value="taLeftJustify"/>
+          <Layout Value="tlTop"/>
+          <Angle Value="0"/>
+        </Object13>
       </Page1>
       <FVal>
         <Count Value="0"/>

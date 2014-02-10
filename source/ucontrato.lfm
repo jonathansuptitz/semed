@@ -286,12 +286,12 @@ object frmContrato: TfrmContrato
       Caption = 'Vacância'
       ParentColor = False
     end
-    object DBMemo1: TDBMemo
+    object DBMemoobs: TDBMemo
       Left = 567
       Height = 50
       Top = 64
       Width = 352
-      DataField = 'justificativa_contrato'
+      DataField = 'obs_contrato'
       DataSource = dsContratos
       TabOrder = 3
     end
@@ -311,12 +311,12 @@ object frmContrato: TfrmContrato
       Caption = 'Observação'
       ParentColor = False
     end
-    object DBMemo2: TDBMemo
+    object DBMemovacancia: TDBMemo
       Left = 568
       Height = 49
       Top = 128
       Width = 351
-      DataField = 'obs_contrato'
+      DataField = 'justificativa_contrato'
       DataSource = dsContratos
       TabOrder = 4
     end
@@ -539,6 +539,7 @@ object frmContrato: TfrmContrato
     Options = []
     PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
     DataType = dtDataSource
+    OnGetValue = frReport1GetValue
     left = 886
     top = 488
   end

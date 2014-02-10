@@ -26,12 +26,12 @@ type
     DBEdtJornada: TDBEdit;
     DBEdtFuncionario: TDBEdit;
     DBEdtAnoseletivo: TDBEdit;
-    DBMemo2: TDBMemo;
+    DBMemovacancia: TDBMemo;
     dsContratos: TDatasource;
     DateEditfinal: TDateEdit;
     DateEditinicial: TDateEdit;
     DBEdtCodcontrato: TDBEdit;
-    DBMemo1: TDBMemo;
+    DBMemoobs: TDBMemo;
     frDBDataSet1: TfrDBDataSet;
     frDesigner1: TfrDesigner;
     frReport1: TfrReport;
@@ -61,6 +61,7 @@ type
     procedure DBBoxlocalClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnBuscarpessoaClick(Sender: TObject);
+    procedure frReport1GetValue(const ParName: String; var ParValue: Variant);
     procedure RadiomanhaChange(Sender: TObject);
     procedure RadionoiteChange(Sender: TObject);
     procedure RadiotardeChange(Sender: TObject);
@@ -108,22 +109,26 @@ begin
         (DBEdtAnoseletivo.text = '') or (DBEdtJornada.text = '') or
         (DBEdtFuncionario.text = '')) then
   begin
+    try
+      //adiciona demais campos tabela contrato
+      dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
+      dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.Text;
+      dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('yyyy', Date);
+      dsContratos.DataSet.FieldByName('salario_contrato').Value := dscargos.DataSet.FieldByName('salario_hora_cargo').value;
 
-    //adiciona demais campos tabela contrato
-    dsContratos.DataSet.FieldByName('codigo_cargo').Value := dscargos.DataSet.FieldByName('codigo_cargo').value;
-    dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
-    dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.Text;
-    dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('yyyy', Date);
-    dsContratos.DataSet.FieldByName('salario_contrato').Value := dscargos.DataSet.FieldByName('salario_hora_cargo').value;
-    dsContratos.DataSet.Post; //posta
+      dsContratos.DataSet.Post; //posta
+    finally
+      Application.ProcessMessages;
 
-    frReport1.LoadFromFile('contrato.lrf');//carrega o contrato padrão
+      frReport1.LoadFromFile('contrato.lrf');//carrega o contrato padrão
 
-    frReport1.PrepareReport;//prepara o contrato
+      frReport1.PrepareReport;//prepara o contrato
 
-    // salva em pdf
-    //frReport1.SavePreparedReport('contrato' + dsContratos.DataSet.FieldByName('codigo_contrato').Value + '.pdf');
-    frReport1.ShowPreparedReport;//exibi preview do contrato
+      // salva em pdf
+      //frReport1.SavePreparedReport('contrato' + dsContratos.DataSet.FieldByName('codigo_contrato').Value + '.pdf');
+
+      frReport1.ShowPreparedReport;//exibi preview do contrato
+    end;
   end
   else
     Raise Exception.Create('Preencha todos os campos!');
@@ -148,15 +153,15 @@ begin
   end;
 
   //preenche combo box cargos
-  begin
-    DBBoxCargo.Clear;
-    dscargos.DataSet.First;
-    for i := 1 to dscargos.DataSet.RecordCount do
-    begin
-      DBBoxcargo.Items.Add(dscargos.DataSet.FieldByName('nome_cargo').value);
-      dscargos.DataSet.Next;
-    end;
-  end;
+  //begin
+    //DBBoxCargo.Clear;
+    //dscargos.DataSet.First;
+    //for i := 1 to dscargos.DataSet.RecordCount do
+    //begin
+      //DBBoxcargo.Items.Add(dscargos.DataSet.FieldByName('nome_cargo').value);
+      //dscargos.DataSet.Next;
+    //end;
+  //end;
 
   dsContratos.DataSet.Insert;
 end;
@@ -171,6 +176,13 @@ begin
   //filtra o dspessoa para o contrato
   dspessoa.DataSet.Filter := 'codigo_pessoa = ''' + DBEdtFuncionario.text + '''';
   dspessoa.DataSet.Filtered := true;
+end;
+
+procedure TfrmContrato.frReport1GetValue(const ParName: String;
+  var ParValue: Variant);
+begin
+ // if ParName = 'Varhora' then
+   //  ParValue := 'Horario: ' + DBEdthorario.text;
 end;
 
 procedure TfrmContrato.RadiomanhaChange(Sender: TObject);

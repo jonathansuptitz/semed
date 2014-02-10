@@ -1,7 +1,7 @@
 object frmCadastroCargos: TfrmCadastroCargos
-  Left = 286
+  Left = 269
   Height = 466
-  Top = 161
+  Top = 149
   Width = 985
   Caption = 'frmCadastroCargos'
   ClientHeight = 466
@@ -203,7 +203,6 @@ object frmCadastroCargos: TfrmCadastroCargos
       BorderSpacing.Right = 7
       BorderSpacing.Bottom = 7
       Caption = 'Salvar'
-      Enabled = False
       Font.Height = -15
       Font.Name = 'Arial'
       Glyph.Data = {
@@ -261,7 +260,6 @@ object frmCadastroCargos: TfrmCadastroCargos
       BorderSpacing.Right = 7
       BorderSpacing.Bottom = 7
       Caption = 'Cancelar'
-      Enabled = False
       Font.Height = -15
       Font.Name = 'Arial'
       Glyph.Data = {
@@ -438,7 +436,6 @@ object frmCadastroCargos: TfrmCadastroCargos
       Width = 100
       DataField = 'codigo_cargo'
       DataSource = dsCargos
-      ReadOnly = True
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
@@ -457,7 +454,7 @@ object frmCadastroCargos: TfrmCadastroCargos
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 45
+      MaxLength = 180
       ParentFont = False
       TabOrder = 1
     end
@@ -471,7 +468,7 @@ object frmCadastroCargos: TfrmCadastroCargos
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 15
+      MaxLength = 60
       ParentFont = False
       TabOrder = 2
     end
@@ -488,7 +485,6 @@ object frmCadastroCargos: TfrmCadastroCargos
       MaxLength = 0
       ParentFont = False
       TabOrder = 3
-      OnKeyPress = DBEdit4KeyPress
     end
     object Label1: TLabel
       Left = 11
@@ -570,7 +566,6 @@ object frmCadastroCargos: TfrmCadastroCargos
       end>
     DataSource = dsCargos
     TabOrder = 2
-    OnEnter = DBGrid1Enter
   end
   object editPesquisa: TEdit
     Left = 92
@@ -620,6 +615,9 @@ object frmCadastroCargos: TfrmCadastroCargos
     Height = 217
     Top = 236
     Width = 400
+    Lines.Strings = (
+      'memoClau'
+    )
     TabOrder = 5
   end
   object Label8: TLabel

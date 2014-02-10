@@ -3,7 +3,7 @@ object DM1: TDM1
   OldCreateOrder = False
   Height = 395
   HorizontalOffset = 496
-  VerticalOffset = 228
+  VerticalOffset = 232
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -404,15 +404,135 @@ object DM1: TDM1
   end
   object querycontratos: TZQuery
     Connection = SEMEDconnection
+    Active = True
     SQL.Strings = (
       'SELECT * FROM tb_contratos'
     )
     Params = <>
     left = 412
     top = 32
+    object querycontratoscodigo_contrato: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_contrato'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object querycontratosjustificativa_contrato: TStringField
+      DisplayWidth = 400
+      FieldKind = fkData
+      FieldName = 'justificativa_contrato'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 400
+    end
+    object querycontratosperiodo_inicial_contrato: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'periodo_inicial_contrato'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object querycontratosperiodo_final_contrato: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'periodo_final_contrato'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object querycontratossalario_contrato: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'salario_contrato'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      MaxValue = 0
+      MinValue = 0
+      Precision = 12
+    end
+    object querycontratosdata_contrato: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'data_contrato'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object querycontratosano_seletivo_contrato: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_seletivo_contrato'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object querycontratosobs_contrato: TStringField
+      DisplayWidth = 1000
+      FieldKind = fkData
+      FieldName = 'obs_contrato'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1000
+    end
+    object querycontratosjornada_trabalho_contrato: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'jornada_trabalho_contrato'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object querycontratoscodigo_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_pessoa'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object querycontratoscodigo_cargo: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_cargo'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
   end
   object tb_cargos: TZTable
     Connection = SEMEDconnection
+    Active = True
     TableName = 'tb_cargos'
     left = 48
     top = 224
@@ -475,6 +595,7 @@ object DM1: TDM1
   end
   object tb_local_trabalho: TZQuery
     Connection = SEMEDconnection
+    Active = True
     SQL.Strings = (
       'select * from tb_local_trabalho'
     )

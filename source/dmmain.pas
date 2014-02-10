@@ -14,6 +14,17 @@ type
 
   TDM1 = class(TDataModule)
     querycontratos: TZQuery;
+    querycontratosano_seletivo_contrato: TLongintField;
+    querycontratoscodigo_cargo: TLongintField;
+    querycontratoscodigo_contrato: TLongintField;
+    querycontratoscodigo_pessoa: TLongintField;
+    querycontratosdata_contrato: TStringField;
+    querycontratosjornada_trabalho_contrato: TLongintField;
+    querycontratosjustificativa_contrato: TStringField;
+    querycontratosobs_contrato: TStringField;
+    querycontratosperiodo_final_contrato: TStringField;
+    querycontratosperiodo_inicial_contrato: TStringField;
+    querycontratossalario_contrato: TFloatField;
     SEMEDconnection: TZConnection;
     tb_cargosclausula_primeira_cargo: TStringField;
     tb_cargoscodigo_cargo: TLongintField;
