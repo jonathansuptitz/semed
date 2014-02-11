@@ -35,7 +35,7 @@
         <ColCount Value="1"/>
         <ColGap Value="0"/>
         <LayoutOrder Value="loColumns"/>
-        <ObjectCount Value="13"/>
+        <ObjectCount Value="14"/>
         <Object1>
           <Name Value="Memo1"/>
           <ClassName Value="TfrMemoView"/>
@@ -132,7 +132,7 @@
             <Left Value="92"/>
             <Top Value="188"/>
             <Width Value="588"/>
-            <Height Value="98"/>
+            <Height Value="46"/>
           </Size>
           <Flags Value="3"/>
           <FillColor Value="clNone"/>
@@ -143,9 +143,9 @@
             <FrameBorders Value=""/>
           </Frames>
           <Data>
-            <Format Value="33685548"/>
+            <Format Value="33751084"/>
             <FormatStr Value="dd/mm/yyyy"/>
-            <Memo Value="ÓRGÃO SOLICITANTE:  Secretaria Municipal de Educação.&#xD;&#xA;&#xD;&#xA;CARGO REQUERIDO: [dscargos.&quot;nome_cargo&quot;].&#xD;&#xA;&#xD;&#xA;PERÍODO DA CONTRATAÇÃO: De [dsContratos.&quot;periodo_inicial_contrato&quot;]   à  [dsContratos.&quot;periodo_final_contrato&quot;].&#xD;&#xA;"/>
+            <Memo Value="ÓRGÃO SOLICITANTE:  Secretaria Municipal de Educação.&#xD;&#xA;&#xD;&#xA;CARGO REQUERIDO: [dscargos.&quot;nome_cargo&quot;].&#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -173,7 +173,7 @@
           <StreamMode Value="0"/>
           <Size>
             <Left Value="92"/>
-            <Top Value="296"/>
+            <Top Value="288"/>
             <Width Value="584"/>
             <Height Value="80"/>
           </Size>
@@ -216,7 +216,7 @@
           <StreamMode Value="0"/>
           <Size>
             <Left Value="92"/>
-            <Top Value="396"/>
+            <Top Value="388"/>
             <Width Value="588"/>
             <Height Value="48"/>
           </Size>
@@ -315,7 +315,7 @@
             <FrameBorders Value=""/>
           </Frames>
           <Data>
-            <Format Value="33554476"/>
+            <Format Value="33751084"/>
             <FormatStr Value="15/11/1998"/>
             <Memo Value="DATA: [dsContratos.&quot;data_contrato&quot;]                                    &#xD;&#xA;                                                          __________________________________________&#xD;&#xA;                                                         Assinatura do Responsável legal do órgão solicitante&#xD;&#xA;"/>
             <Script Value=""/>
@@ -530,7 +530,7 @@
             <FrameBorders Value=""/>
           </Frames>
           <Data>
-            <Format Value="44"/>
+            <Format Value="33751084"/>
             <FormatStr Value=""/>
             <Memo Value="DATA: [dsContratos.&quot;data_contrato&quot;]                                                             &#xD;&#xA;                                                                                     _________________________&#xD;&#xA;                                                                                      Assinatura do Chefe do Poder&#xD;&#xA;"/>
             <Script Value=""/>
@@ -576,7 +576,7 @@
             <Format Value="556"/>
             <FormatStr Value=""/>
             <Memo Value=""/>
-            <Script Value="text := varhora;&#xD;&#xA;"/>
+            <Script Value="varhora;&#xD;&#xA;"/>
           </Data>
           <Font>
             <Name Value="Arial"/>
@@ -595,6 +595,49 @@
           <Layout Value="tlTop"/>
           <Angle Value="0"/>
         </Object13>
+        <Object14>
+          <Name Value="Memo14"/>
+          <ClassName Value="TfrMemoView"/>
+          <Visible Value="1"/>
+          <Typ Value="gtMemo"/>
+          <StreamMode Value="0"/>
+          <Size>
+            <Left Value="92"/>
+            <Top Value="248"/>
+            <Width Value="588"/>
+            <Height Value="32"/>
+          </Size>
+          <Flags Value="3"/>
+          <FillColor Value="clNone"/>
+          <Frames>
+            <FrameColor Value="clBlack"/>
+            <FrameStyle Value="frsSolid"/>
+            <FrameWidth Value="1"/>
+            <FrameBorders Value=""/>
+          </Frames>
+          <Data>
+            <Format Value="556"/>
+            <FormatStr Value=""/>
+            <Memo Value="PERÍODO DA CONTRATAÇÃO: De [dsContratos.&quot;periodo_inicial_contrato&quot;]   à  [dsContratos.&quot;periodo_final_contrato&quot;].&#xD;&#xA;"/>
+            <Script Value=""/>
+          </Data>
+          <Font>
+            <Name Value="Arial"/>
+            <Size Value="10"/>
+            <Color Value="clBlack"/>
+            <Charset Value="0"/>
+            <Style Value=""/>
+          </Font>
+          <Highlight>
+            <FontStyle Value="2"/>
+            <FontColor Value="clBlack"/>
+            <FillColor Value="clWhite"/>
+            <HighlightStr Value=""/>
+          </Highlight>
+          <Alignment Value="taLeftJustify"/>
+          <Layout Value="tlTop"/>
+          <Angle Value="0"/>
+        </Object14>
       </Page1>
       <FVal>
         <Count Value="0"/>

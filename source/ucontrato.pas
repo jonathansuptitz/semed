@@ -59,6 +59,7 @@ type
     procedure DBBoxlocalChange(Sender: TObject);
     procedure DBBoxlocalChangeBounds(Sender: TObject);
     procedure DBBoxlocalClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnBuscarpessoaClick(Sender: TObject);
     procedure frReport1GetValue(const ParName: String; var ParValue: Variant);
@@ -103,6 +104,11 @@ begin
       dslocal.DataSet.Filtered := false;
 end;
 
+procedure TfrmContrato.FormCreate(Sender: TObject);
+begin
+
+end;
+
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 begin
   if not((DBEdtJornada.text = '') or (DBEdtCodcontrato.text = '') or
@@ -113,7 +119,7 @@ begin
       //adiciona demais campos tabela contrato
       dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
       dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.Text;
-      dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('yyyy', Date);
+      dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('dd/mm/yyyy', Date);
       dsContratos.DataSet.FieldByName('salario_contrato').Value := dscargos.DataSet.FieldByName('salario_hora_cargo').value;
 
       dsContratos.DataSet.Post; //posta
@@ -152,17 +158,6 @@ begin
     end;
   end;
 
-  //preenche combo box cargos
-  //begin
-    //DBBoxCargo.Clear;
-    //dscargos.DataSet.First;
-    //for i := 1 to dscargos.DataSet.RecordCount do
-    //begin
-      //DBBoxcargo.Items.Add(dscargos.DataSet.FieldByName('nome_cargo').value);
-      //dscargos.DataSet.Next;
-    //end;
-  //end;
-
   dsContratos.DataSet.Insert;
 end;
 
@@ -181,8 +176,8 @@ end;
 procedure TfrmContrato.frReport1GetValue(const ParName: String;
   var ParValue: Variant);
 begin
- // if ParName = 'Varhora' then
-   //  ParValue := 'Horario: ' + DBEdthorario.text;
+  if ParName = 'Varhora' then
+     ParValue := 'Horario: ' + DBEdthorario.text;
 end;
 
 procedure TfrmContrato.RadiomanhaChange(Sender: TObject);

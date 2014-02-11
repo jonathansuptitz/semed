@@ -3,7 +3,7 @@ object DM1: TDM1
   OldCreateOrder = False
   Height = 395
   HorizontalOffset = 496
-  VerticalOffset = 232
+  VerticalOffset = 220
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -24,6 +24,7 @@ object DM1: TDM1
   end
   object tb_pessoas: TZTable
     Connection = SEMEDconnection
+    Active = True
     TableName = 'tb_pessoas'
     left = 48
     top = 96
@@ -600,7 +601,7 @@ object DM1: TDM1
       'select * from tb_local_trabalho'
     )
     Params = <>
-    left = 49
+    left = 48
     top = 165
     object tb_local_trabalhocodigo_local_trabalho: TLongintField
       DisplayWidth = 10
@@ -681,7 +682,6 @@ object DM1: TDM1
   end
   object tb_mural: TZTable
     Connection = SEMEDconnection
-    Active = True
     TableName = 'tb_mural'
     left = 48
     top = 283

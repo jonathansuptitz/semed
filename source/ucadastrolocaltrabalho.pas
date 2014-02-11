@@ -129,7 +129,7 @@ begin
   BtnSelecionar.Enabled := false;
   BtnVoltar.Enabled := false;
   if BtnSelecionar.Enabled then
-    SelecionarAtivo := true; // Marca estado inicial do BtnSelecionar
+    //SelecionarAtivo := true; // Marca estado inicial do BtnSelecionar
 end;
 
 procedure TfrmCadastroLocalTrabalho.EditOFF;       // Desabilitar Edição
@@ -147,7 +147,7 @@ begin
   BtnEditar.Enabled := true;
   BtnApagar.Enabled := true;
   BtnVoltar.Enabled := true;
-  if SelecionarAtivo then  // Verifica se BtnSelecionar esava ativo inicialmente
+  //if SelecionarAtivo then  // Verifica se BtnSelecionar esava ativo inicialmente
     BtnSelecionar.Enabled := true;
 end;
 
