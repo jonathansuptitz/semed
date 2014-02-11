@@ -7,19 +7,20 @@ interface
 uses
   Classes, SysUtils, db, FileUtil, LR_Class, LR_DBSet, LR_Desgn, lr_e_pdf,
   Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls, DbCtrls, StdCtrls,
-  EditBtn, Calendar, DBGrids, ZDataset;
+  EditBtn, Calendar, DBGrids, Grids, ZDataset;
 
 type
 
   { TfrmContrato }
 
   TfrmContrato = class(TForm)
+    btnlimparlocais: TBitBtn;
+    Btnadicionalocal: TBitBtn;
     BtnGerarcontrato: TBitBtn;
     BtnVoltar: TBitBtn;
-    DBBoxlocal: TComboBox;
     DBBoxCargo: TDBLookupComboBox;
+    DBBoxlocal: TComboBox;
     DBEdthorario: TDBEdit;
-    DBGrid1: TDBGrid;
     dspessoa: TDatasource;
     dslocal: TDatasource;
     dscargos: TDatasource;
@@ -47,14 +48,18 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
+    Panel1: TPanel;
     Panelprincipal: TPanel;
     PanelBotoes: TPanel;
     btnBuscarpessoa: TSpeedButton;
-    Radiomanha: TRadioButton;
     RadioGroup1: TRadioGroup;
+    Radiomanha: TRadioButton;
     Radionoite: TRadioButton;
     Radiotarde: TRadioButton;
+    StringGrid1: TStringGrid;
+    procedure BtnadicionalocalClick(Sender: TObject);
     procedure BtnGerarcontratoClick(Sender: TObject);
+    procedure btnlimparlocaisClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure DBBoxlocalChange(Sender: TObject);
     procedure DBBoxlocalChangeBounds(Sender: TObject);
@@ -78,6 +83,9 @@ var
 implementation
 uses
   uPesquisaPessoas;
+
+var
+  linhas, numlocal: integer;
 
 {$R *.lfm}
 
@@ -111,33 +119,59 @@ end;
 
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 begin
-  if not((DBEdtJornada.text = '') or (DBEdtCodcontrato.text = '') or
-        (DBEdtAnoseletivo.text = '') or (DBEdtJornada.text = '') or
-        (DBEdtFuncionario.text = '')) then
+  dsContratos.DataSet.Filter := 'codigo_contrato = ' + DBEdtCodcontrato.text;
+  dsContratos.DataSet.Filtered := true;
+
+  if not(dsContratos.DataSet.FieldCount = 0) then
   begin
-    try
-      //adiciona demais campos tabela contrato
-      dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
-      dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.Text;
-      dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('dd/mm/yyyy', Date);
-      dsContratos.DataSet.FieldByName('salario_contrato').Value := dscargos.DataSet.FieldByName('salario_hora_cargo').value;
 
-      dsContratos.DataSet.Post; //posta
-    finally
-      Application.ProcessMessages;
+    if not((DBEdtJornada.text = '') or (DBEdtCodcontrato.text = '') or
+          (DBEdtAnoseletivo.text = '') or (DBEdtJornada.text = '') or
+          (DBEdtFuncionario.text = '')) then
+    begin
+      try
+        //adiciona demais campos tabela contrato
+        dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
+        dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.Text;
+        dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('dd/mm/yyyy', Date);
+        dsContratos.DataSet.FieldByName('salario_contrato').Value := dscargos.DataSet.FieldByName('salario_hora_cargo').value;
 
-      frReport1.LoadFromFile('contrato.lrf');//carrega o contrato padrão
+        dsContratos.DataSet.Post; //posta
+      finally
+        Application.ProcessMessages;
 
-      frReport1.PrepareReport;//prepara o contrato
+        frReport1.LoadFromFile('contrato.lrf');//carrega o contrato padrão
 
-      // salva em pdf
-      //frReport1.SavePreparedReport('contrato' + dsContratos.DataSet.FieldByName('codigo_contrato').Value + '.pdf');
+        frReport1.PrepareReport;//prepara o contrato
 
-      frReport1.ShowPreparedReport;//exibi preview do contrato
-    end;
-  end
+        // salva em pdf
+        //frReport1.SavePreparedReport('contrato' + dsContratos.DataSet.FieldByName('codigo_contrato').Value + '.pdf');
+
+        frReport1.ShowPreparedReport;//exibi preview do contrato
+      end;
+    end
+    else
+      ShowMessage('Preencha todos os campos!');
+  end;
+end;
+
+procedure TfrmContrato.btnlimparlocaisClick(Sender: TObject);
+begin
+  StringGrid1.Clean(0,1,1,3,[gznormal]);
+end;
+
+procedure TfrmContrato.BtnadicionalocalClick(Sender: TObject);
+begin
+  //adiociona mais locais de trabalho
+  StringGrid1.Cells[0,linhas] := DBBoxlocal.text;
+  StringGrid1.Cells[1,linhas] := DBEdthorario.text;
+
+  if linhas = 3 then
+    linhas := 1
   else
-    Raise Exception.Create('Preencha todos os campos!');
+    inc(linhas);
+
+  inc(numlocal);
 end;
 
 procedure TfrmContrato.FormShow(Sender: TObject);
@@ -146,6 +180,8 @@ var
 begin
   //ativa query e coloca em mode de inserção
   dsContratos.DataSet.Active := true;
+  linhas := 1;
+  numlocal := 0;
 
   //prenche combobox local
   begin
@@ -177,7 +213,15 @@ procedure TfrmContrato.frReport1GetValue(const ParName: String;
   var ParValue: Variant);
 begin
   if ParName = 'Varhora' then
-     ParValue := 'Horario: ' + DBEdthorario.text;
+  begin
+    if numlocal = 1 then
+      ParValue := 'Horario: ' + StringGrid1.Cells[1,1]
+    else if numlocal = 2 then
+      ParValue := 'Horario: ' + StringGrid1.Cells[1,1] +', '+ StringGrid1.Cells[1,2]
+    else if numlocal = 2 then
+      ParValue := 'Horario: ' + StringGrid1.Cells[1,1] +', '
+      + StringGrid1.Cells[1,2] + ', ' + StringGrid1.Cells[1,3];
+  end;
 end;
 
 procedure TfrmContrato.RadiomanhaChange(Sender: TObject);

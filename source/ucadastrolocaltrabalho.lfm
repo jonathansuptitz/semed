@@ -1,7 +1,7 @@
 object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
   Left = 298
   Height = 521
-  Top = 133
+  Top = 94
   Width = 1058
   Caption = 'frmCadastroLocalTrabalho'
   ClientHeight = 521
