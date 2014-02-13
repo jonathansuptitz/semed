@@ -13,7 +13,6 @@ object frmContrato: TfrmContrato
   Font.Name = 'Arial'
   Font.Pitch = fpVariable
   Font.Quality = fqDraft
-  OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
   LCLVersion = '1.0.14.0'
@@ -134,6 +133,7 @@ object frmContrato: TfrmContrato
     ClientHeight = 600
     ClientWidth = 937
     TabOrder = 1
+    OnClick = PanelprincipalClick
     object DBEdtCodcontrato: TDBEdit
       Left = 176
       Height = 26
@@ -319,6 +319,7 @@ object frmContrato: TfrmContrato
       Width = 351
       DataField = 'justificativa_contrato'
       DataSource = dsContratos
+      MaxLength = 100
       TabOrder = 4
     end
     object Label8: TLabel
@@ -516,7 +517,6 @@ object frmContrato: TfrmContrato
       Width = 323
       ItemHeight = 18
       OnChange = DBBoxlocalChange
-      OnChangeBounds = DBBoxlocalChangeBounds
       OnClick = DBBoxlocalClick
       TabOrder = 2
       Text = 'DBBoxlocal'
@@ -580,6 +580,7 @@ object frmContrato: TfrmContrato
     Options = []
     PreviewButtons = [pbZoom, pbLoad, pbSave, pbPrint, pbFind, pbHelp, pbExit]
     DataType = dtDataSource
+    Title = 'Recibo de locação'
     OnGetValue = frReport1GetValue
     left = 886
     top = 488

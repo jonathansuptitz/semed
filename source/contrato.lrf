@@ -2,7 +2,7 @@
 <CONFIG>
   <LazReport>
     <Version Value="25"/>
-    <Title Value=""/>
+    <Title Value="Recibo de locação"/>
     <Subject Value=""/>
     <KeyWords Value=""/>
     <Comments Value=""/>
@@ -27,7 +27,7 @@
           <left Value="90"/>
           <Top Value="108"/>
           <Right Value="72"/>
-          <Bottom Value="108"/>
+          <Bottom Value="72"/>
         </Margins>
         <Orientation Value="poPortrait"/>
         <UseMargins Value="True"/>
@@ -35,7 +35,7 @@
         <ColCount Value="1"/>
         <ColGap Value="0"/>
         <LayoutOrder Value="loColumns"/>
-        <ObjectCount Value="14"/>
+        <ObjectCount Value="16"/>
         <Object1>
           <Name Value="Memo1"/>
           <ClassName Value="TfrMemoView"/>
@@ -174,7 +174,7 @@
           <Size>
             <Left Value="92"/>
             <Top Value="288"/>
-            <Width Value="584"/>
+            <Width Value="588"/>
             <Height Value="80"/>
           </Size>
           <Flags Value="3"/>
@@ -204,7 +204,7 @@
             <FillColor Value="clWhite"/>
             <HighlightStr Value=""/>
           </Highlight>
-          <Alignment Value="taLeftJustify"/>
+          <Alignment Value="Classes"/>
           <Layout Value="tlTop"/>
           <Angle Value="0"/>
         </Object4>
@@ -231,7 +231,7 @@
           <Data>
             <Format Value="44"/>
             <FormatStr Value=""/>
-            <Memo Value="LOCAL DE TRABALHO:  [dslocal.&quot;nome_local_trabalho&quot;].&#xD;&#xA;&#xD;&#xA;JORNADA SEMANAL: [dsContratos.&quot;jornada_trabalho_contrato&quot;] h    &#xD;&#xA;"/>
+            <Memo Value="LOCAL DE TRABALHO:  [Varlocais].&#xD;&#xA;&#xD;&#xA;JORNADA SEMANAL: [dsContratos.&quot;jornada_trabalho_contrato&quot;] h    &#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -274,7 +274,7 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value=" Obs&#xD;&#xA;"/>
+            <Memo Value=" Obs: [Varobs]&#xD;&#xA;"/>
             <Script Value="&#xD;&#xA;"/>
           </Data>
           <Font>
@@ -304,7 +304,7 @@
             <Left Value="92"/>
             <Top Value="576"/>
             <Width Value="588"/>
-            <Height Value="50"/>
+            <Height Value="18"/>
           </Size>
           <Flags Value="3"/>
           <FillColor Value="clNone"/>
@@ -316,8 +316,8 @@
           </Frames>
           <Data>
             <Format Value="33751084"/>
-            <FormatStr Value="15/11/1998"/>
-            <Memo Value="DATA: [dsContratos.&quot;data_contrato&quot;]                                    &#xD;&#xA;                                                          __________________________________________&#xD;&#xA;                                                         Assinatura do Responsável legal do órgão solicitante&#xD;&#xA;"/>
+            <FormatStr Value=""/>
+            <Memo Value="DATA: [dsContratos.&quot;data_contrato&quot;] &#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -519,7 +519,7 @@
             <Left Value="92"/>
             <Top Value="908"/>
             <Width Value="584"/>
-            <Height Value="54"/>
+            <Height Value="18"/>
           </Size>
           <Flags Value="3"/>
           <FillColor Value="clNone"/>
@@ -532,7 +532,7 @@
           <Data>
             <Format Value="33751084"/>
             <FormatStr Value=""/>
-            <Memo Value="DATA: [dsContratos.&quot;data_contrato&quot;]                                                             &#xD;&#xA;                                                                                     _________________________&#xD;&#xA;                                                                                      Assinatura do Chefe do Poder&#xD;&#xA;"/>
+            <Memo Value="DATA: [dsContratos.&quot;data_contrato&quot;]                       &#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>
@@ -575,8 +575,8 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value=""/>
-            <Script Value="text := Varhora&#xD;&#xA;"/>
+            <Memo Value="HORARIO: [Varhora]&#xD;&#xA;"/>
+            <Script Value="&#xD;&#xA;"/>
           </Data>
           <Font>
             <Name Value="Arial"/>
@@ -638,11 +638,118 @@
           <Layout Value="tlTop"/>
           <Angle Value="0"/>
         </Object14>
+        <Object15>
+          <Name Value="Memo15"/>
+          <ClassName Value="TfrMemoView"/>
+          <Visible Value="1"/>
+          <Typ Value="gtMemo"/>
+          <StreamMode Value="0"/>
+          <Size>
+            <Left Value="92"/>
+            <Top Value="600"/>
+            <Width Value="588"/>
+            <Height Value="38"/>
+          </Size>
+          <Flags Value="3"/>
+          <FillColor Value="clNone"/>
+          <Frames>
+            <FrameColor Value="clBlack"/>
+            <FrameStyle Value="frsSolid"/>
+            <FrameWidth Value="1"/>
+            <FrameBorders Value=""/>
+          </Frames>
+          <Data>
+            <Format Value="556"/>
+            <FormatStr Value=""/>
+            <Memo Value="                                                          __________________________________________&#xD;&#xA;                                                         Assinatura do Responsável legal do órgão solicitante&#xD;&#xA;"/>
+            <Script Value=""/>
+          </Data>
+          <Font>
+            <Name Value="Arial"/>
+            <Size Value="10"/>
+            <Color Value="clBlack"/>
+            <Charset Value="0"/>
+            <Style Value=""/>
+          </Font>
+          <Highlight>
+            <FontStyle Value="2"/>
+            <FontColor Value="clBlack"/>
+            <FillColor Value="clWhite"/>
+            <HighlightStr Value=""/>
+          </Highlight>
+          <Alignment Value="taLeftJustify"/>
+          <Layout Value="tlTop"/>
+          <Angle Value="0"/>
+        </Object15>
+        <Object16>
+          <Name Value="Memo16"/>
+          <ClassName Value="TfrMemoView"/>
+          <Visible Value="1"/>
+          <Typ Value="gtMemo"/>
+          <StreamMode Value="0"/>
+          <Size>
+            <Left Value="92"/>
+            <Top Value="948"/>
+            <Width Value="588"/>
+            <Height Value="30"/>
+          </Size>
+          <Flags Value="3"/>
+          <FillColor Value="clNone"/>
+          <Frames>
+            <FrameColor Value="clBlack"/>
+            <FrameStyle Value="frsSolid"/>
+            <FrameWidth Value="1"/>
+            <FrameBorders Value=""/>
+          </Frames>
+          <Data>
+            <Format Value="556"/>
+            <FormatStr Value=""/>
+            <Memo Value="                                                                                      _________________________&#xD;&#xA;                                                                                      Assinatura do Chefe do Poder&#xD;&#xA;"/>
+            <Script Value=""/>
+          </Data>
+          <Font>
+            <Name Value="Arial"/>
+            <Size Value="10"/>
+            <Color Value="clBlack"/>
+            <Charset Value="0"/>
+            <Style Value=""/>
+          </Font>
+          <Highlight>
+            <FontStyle Value="2"/>
+            <FontColor Value="clBlack"/>
+            <FillColor Value="clWhite"/>
+            <HighlightStr Value=""/>
+          </Highlight>
+          <Alignment Value="Classes"/>
+          <Layout Value="tlTop"/>
+          <Angle Value="0"/>
+        </Object16>
       </Page1>
       <FVal>
-        <Count Value="0"/>
+        <Count Value="3"/>
+        <Objects1>
+          <Typ Value="0"/>
+          <OtherKind Value="0"/>
+          <Dataset Value=""/>
+          <Field Value=""/>
+          <Item Value="Varhora"/>
+        </Objects1>
+        <Objects2>
+          <Typ Value="0"/>
+          <OtherKind Value="0"/>
+          <Dataset Value=""/>
+          <Field Value=""/>
+          <Item Value="Varobs"/>
+        </Objects2>
+        <Objects3>
+          <Typ Value="0"/>
+          <OtherKind Value="0"/>
+          <Dataset Value=""/>
+          <Field Value=""/>
+          <Item Value="Varlocais"/>
+        </Objects3>
       </FVal>
-      <ParentVars Value=""/>
+      <ParentVars Value="demo Variables&#xD;&#xA; Varhora&#xD;&#xA; Varobs&#xD;&#xA; Varlocais&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;"/>
     </Pages>
   </LazReport>
 </CONFIG>

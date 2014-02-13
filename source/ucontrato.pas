@@ -62,12 +62,11 @@ type
     procedure btnlimparlocaisClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure DBBoxlocalChange(Sender: TObject);
-    procedure DBBoxlocalChangeBounds(Sender: TObject);
     procedure DBBoxlocalClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnBuscarpessoaClick(Sender: TObject);
     procedure frReport1GetValue(const ParName: String; var ParValue: Variant);
+    procedure PanelprincipalClick(Sender: TObject);
     procedure RadiomanhaChange(Sender: TObject);
     procedure RadionoiteChange(Sender: TObject);
     procedure RadiotardeChange(Sender: TObject);
@@ -82,7 +81,7 @@ var
 
 implementation
 uses
-  uPesquisaPessoas;
+  uPesquisaPessoas,dmMain;
 
 var
   linhas, numlocal: integer;
@@ -102,29 +101,13 @@ begin
   dslocal.DataSet.Filtered := true;
 end;
 
-procedure TfrmContrato.DBBoxlocalChangeBounds(Sender: TObject);
-begin
-
-end ;
-
 procedure TfrmContrato.DBBoxlocalClick(Sender: TObject);
 begin
       dslocal.DataSet.Filtered := false;
 end;
 
-procedure TfrmContrato.FormCreate(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 begin
-  dsContratos.DataSet.Filter := 'codigo_contrato = ' + DBEdtCodcontrato.text;
-  dsContratos.DataSet.Filtered := true;
-
-  if not(dsContratos.DataSet.FieldCount = 0) then
-  begin
-
     if not((DBEdtJornada.text = '') or (DBEdtCodcontrato.text = '') or
           (DBEdtAnoseletivo.text = '') or (DBEdtJornada.text = '') or
           (DBEdtFuncionario.text = '')) then
@@ -132,7 +115,7 @@ begin
       try
         //adiciona demais campos tabela contrato
         dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
-        dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditinicial.Text;
+        dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditfinal.Text;
         dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('dd/mm/yyyy', Date);
         dsContratos.DataSet.FieldByName('salario_contrato').Value := dscargos.DataSet.FieldByName('salario_hora_cargo').value;
 
@@ -144,20 +127,17 @@ begin
 
         frReport1.PrepareReport;//prepara o contrato
 
-        // salva em pdf
-        //frReport1.SavePreparedReport('contrato' + dsContratos.DataSet.FieldByName('codigo_contrato').Value + '.pdf');
-
         frReport1.ShowPreparedReport;//exibi preview do contrato
       end;
     end
     else
       ShowMessage('Preencha todos os campos!');
-  end;
 end;
 
 procedure TfrmContrato.btnlimparlocaisClick(Sender: TObject);
 begin
   StringGrid1.Clean(0,1,1,3,[gznormal]);
+  numlocal := 0;
 end;
 
 procedure TfrmContrato.BtnadicionalocalClick(Sender: TObject);
@@ -215,13 +195,35 @@ begin
   if ParName = 'Varhora' then
   begin
     if numlocal = 1 then
-      ParValue := 'Horario: ' + StringGrid1.Cells[1,1]
+      ParValue := StringGrid1.Cells[1,1]
     else if numlocal = 2 then
-      ParValue := 'Horario: ' + StringGrid1.Cells[1,1] +', '+ StringGrid1.Cells[1,2]
-    else if numlocal = 2 then
-      ParValue := 'Horario: ' + StringGrid1.Cells[1,1] +', '
-      + StringGrid1.Cells[1,2] + ', ' + StringGrid1.Cells[1,3];
+      ParValue := StringGrid1.Cells[1,1] +', '+ StringGrid1.Cells[1,2]
+    else if numlocal = 3 then
+      ParValue := StringGrid1.Cells[1,1] +', '+ StringGrid1.Cells[1,2]
+      + ', ' + StringGrid1.Cells[1,3];
   end;
+  if ParName = 'Varobs' then
+  begin
+    ParValue:= '                                                             ' +
+    '                                                                        ' +
+    '                                                                        ' +
+    '                                                                        ';
+  end;
+  if ParName = 'Varlocais' then
+  begin
+    if numlocal = 1 then
+      ParValue := StringGrid1.Cells[0,1]
+    else if numlocal = 2 then
+      ParValue := StringGrid1.Cells[0,1] +', '+ StringGrid1.Cells[0,2]
+    else if numlocal = 3 then
+      ParValue := StringGrid1.Cells[0,1] +', '+ StringGrid1.Cells[0,2]
+      + ', ' + StringGrid1.Cells[0,3];
+  end;
+end;
+
+procedure TfrmContrato.PanelprincipalClick(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmContrato.RadiomanhaChange(Sender: TObject);
