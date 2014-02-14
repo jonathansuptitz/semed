@@ -3,7 +3,7 @@ object DM1: TDM1
   OldCreateOrder = False
   Height = 395
   HorizontalOffset = 496
-  VerticalOffset = 220
+  VerticalOffset = 259
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -682,6 +682,7 @@ object DM1: TDM1
   end
   object tb_mural: TZTable
     Connection = SEMEDconnection
+    Active = True
     TableName = 'tb_mural'
     left = 48
     top = 283
