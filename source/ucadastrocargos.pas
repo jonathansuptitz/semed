@@ -68,7 +68,7 @@ var
 implementation
 
 uses
-  dmMain;
+  dmMain, ucontrato;
 
 {$R *.lfm}
 
@@ -258,6 +258,12 @@ procedure TfrmCadastroCargos.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
   dsCargos.DataSet.Cancel;      // Cancela INSERT se houver
+
+  //caso o frmcontrato esteje aberto manda o codigo do cargo para o campo nele
+  if not(frmContrato = nil) then
+  begin
+    frmContrato.dsContratos.DataSet.FieldByName('codigo_cargo').value := dsCargos.DataSet.FieldByName('codigo_cargo').value ;
+  end;
 end;
 
 end.

@@ -18,7 +18,13 @@ type
     Btnadicionalocal: TBitBtn;
     BtnGerarcontrato: TBitBtn;
     BtnVoltar: TBitBtn;
-    DBBoxCargo: TDBLookupComboBox;
+    Datasource1: TDatasource;
+    DBEdtcargo: TDBEdit;
+    DBEdtcpftest2: TDBEdit;
+    DBEdtcpfteste1: TDBEdit;
+    DBEdttest2: TDBEdit;
+    DBEdtteste1: TDBEdit;
+    dscidades: TDatasource;
     DBBoxlocal: TComboBox;
     DBEdthorario: TDBEdit;
     dspessoa: TDatasource;
@@ -40,6 +46,10 @@ type
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -49,6 +59,7 @@ type
     Label8: TLabel;
     Label9: TLabel;
     Panel1: TPanel;
+    Panel2: TPanel;
     Panelprincipal: TPanel;
     PanelBotoes: TPanel;
     btnBuscarpessoa: TSpeedButton;
@@ -56,6 +67,7 @@ type
     Radiomanha: TRadioButton;
     Radionoite: TRadioButton;
     Radiotarde: TRadioButton;
+    SpeedButton1: TSpeedButton;
     StringGrid1: TStringGrid;
     procedure BtnadicionalocalClick(Sender: TObject);
     procedure BtnGerarcontratoClick(Sender: TObject);
@@ -70,6 +82,7 @@ type
     procedure RadiomanhaChange(Sender: TObject);
     procedure RadionoiteChange(Sender: TObject);
     procedure RadiotardeChange(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -81,7 +94,7 @@ var
 
 implementation
 uses
-  uPesquisaPessoas,dmMain;
+  uPesquisaPessoas,dmMain, uCadastroCargos;
 
 var
   linhas, numlocal: integer;
@@ -242,6 +255,18 @@ procedure TfrmContrato.RadiotardeChange(Sender: TObject);
 begin
     if Radiotarde.Checked then
       DBedtHorario.DataField:= 'horario_vespertino_trabalho';
+end;
+
+procedure TfrmContrato.SpeedButton1Click(Sender: TObject);
+begin
+   //chama a pesquisa de local
+  Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
+  frmCadastroCargos.showmodal;
+  frmCadastroCargos.free;
+
+  //filtra o dspessoa para o contrato
+  dscargos.DataSet.Filter := 'codigo_cargo = ''' + DBEdtcargo.text + '''';
+  dscargos.DataSet.Filtered := true;
 end;
 
 end.

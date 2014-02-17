@@ -2,8 +2,8 @@ object DM1: TDM1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 395
-  HorizontalOffset = 496
-  VerticalOffset = 259
+  HorizontalOffset = 586
+  VerticalOffset = 160
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -402,6 +402,38 @@ object DM1: TDM1
     Params = <>
     left = 256
     top = 32
+    object queryCADASTROPESSOAScidadescodigo_cidade: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_cidade'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object queryCADASTROPESSOAScidadesnome_cidade: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'nome_cidade'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
+    object queryCADASTROPESSOAScidadesuf_cidade: TStringField
+      DisplayWidth = 8
+      FieldKind = fkData
+      FieldName = 'uf_cidade'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 8
+    end
   end
   object querycontratos: TZQuery
     Connection = SEMEDconnection

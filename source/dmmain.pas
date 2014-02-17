@@ -13,6 +13,9 @@ type
   { TDM1 }
 
   TDM1 = class(TDataModule)
+    queryCADASTROPESSOAScidadescodigo_cidade: TLongintField;
+    queryCADASTROPESSOAScidadesnome_cidade: TStringField;
+    queryCADASTROPESSOAScidadesuf_cidade: TStringField;
     querycontratos: TZQuery;
     querycontratosano_seletivo_contrato: TLongintField;
     querycontratoscodigo_cargo: TLongintField;
