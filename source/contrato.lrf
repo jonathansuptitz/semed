@@ -2250,7 +2250,7 @@
           <Data>
             <Format Value="556"/>
             <FormatStr Value=""/>
-            <Memo Value="Testemunhas:&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;1 -           ass.: _______________________&#xD;&#xA;     CPF nº&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;2 -          ass.: _______________________&#xD;&#xA;     CPF nº &#xD;&#xA;"/>
+            <Memo Value="Testemunhas:&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;1 - [dsContratos.&quot;testemunha_1_contrato&quot;]          ass.: _______________________&#xD;&#xA;     CPF nº [dsContratos.&quot;cpf_teste_1_contrato&quot;]&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;2 -  [dsContratos.&quot;testemunha_2_contrato&quot;]        ass.: _______________________&#xD;&#xA;     CPF nº [dsContratos.&quot;cpf_teste_2_contrato&quot;] &#xD;&#xA;"/>
             <Script Value=""/>
           </Data>
           <Font>

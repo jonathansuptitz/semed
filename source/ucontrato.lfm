@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
-  Left = 93
+  Left = 115
   Height = 600
-  Top = 95
+  Top = 8
   Width = 1218
   BorderStyle = bsDialog
   Caption = 'Contrato'
@@ -436,8 +436,10 @@ object frmContrato: TfrmContrato
         Height = 26
         Top = 16
         Width = 367
+        DataField = 'testemunha_1_contrato'
+        DataSource = dsContratos
         CharCase = ecNormal
-        MaxLength = 0
+        MaxLength = 400
         TabOrder = 0
       end
       object Label13: TLabel
@@ -453,8 +455,10 @@ object frmContrato: TfrmContrato
         Height = 26
         Top = 128
         Width = 398
+        DataField = 'testemunha_2_contrato'
+        DataSource = dsContratos
         CharCase = ecNormal
-        MaxLength = 0
+        MaxLength = 400
         TabOrder = 1
       end
       object Label14: TLabel
@@ -470,8 +474,10 @@ object frmContrato: TfrmContrato
         Height = 26
         Top = 60
         Width = 200
+        DataField = 'cpf_teste_1_contrato'
+        DataSource = dsContratos
         CharCase = ecNormal
-        MaxLength = 0
+        MaxLength = 64
         TabOrder = 2
       end
       object Label15: TLabel
@@ -487,8 +493,10 @@ object frmContrato: TfrmContrato
         Height = 26
         Top = 167
         Width = 200
+        DataField = 'cpf_teste_2_contrato'
+        DataSource = dsContratos
         CharCase = ecNormal
-        MaxLength = 0
+        MaxLength = 64
         TabOrder = 3
       end
     end

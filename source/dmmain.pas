@@ -21,6 +21,8 @@ type
     querycontratoscodigo_cargo: TLongintField;
     querycontratoscodigo_contrato: TLongintField;
     querycontratoscodigo_pessoa: TLongintField;
+    querycontratoscpf_teste_1_contrato: TStringField;
+    querycontratoscpf_teste_2_contrato: TStringField;
     querycontratosdata_contrato: TStringField;
     querycontratosjornada_trabalho_contrato: TLongintField;
     querycontratosjustificativa_contrato: TStringField;
@@ -28,6 +30,8 @@ type
     querycontratosperiodo_final_contrato: TStringField;
     querycontratosperiodo_inicial_contrato: TStringField;
     querycontratossalario_contrato: TFloatField;
+    querycontratostestemunha_1_contrato: TStringField;
+    querycontratostestemunha_2_contrato: TStringField;
     SEMEDconnection: TZConnection;
     tb_cargosclausula_primeira_cargo: TStringField;
     tb_cargoscodigo_cargo: TLongintField;

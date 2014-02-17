@@ -562,6 +562,50 @@ object DM1: TDM1
       ReadOnly = False
       Required = True
     end
+    object querycontratostestemunha_1_contrato: TStringField
+      DisplayWidth = 400
+      FieldKind = fkData
+      FieldName = 'testemunha_1_contrato'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 400
+    end
+    object querycontratoscpf_teste_1_contrato: TStringField
+      DisplayWidth = 64
+      FieldKind = fkData
+      FieldName = 'cpf_teste_1_contrato'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 64
+    end
+    object querycontratostestemunha_2_contrato: TStringField
+      DisplayWidth = 400
+      FieldKind = fkData
+      FieldName = 'testemunha_2_contrato'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 400
+    end
+    object querycontratoscpf_teste_2_contrato: TStringField
+      DisplayWidth = 64
+      FieldKind = fkData
+      FieldName = 'cpf_teste_2_contrato'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 64
+    end
   end
   object tb_cargos: TZTable
     Connection = SEMEDconnection
