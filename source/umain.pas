@@ -6,13 +6,18 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls,
-  ExtCtrls, StdCtrls, Menus;
+  ExtCtrls, StdCtrls, Menus, Buttons, LCLType;
 
 type
 
   { TFrmMain }
 
   TFrmMain = class(TForm)
+    BtnContratos: TBitBtn;
+    BtnPessoas: TBitBtn;
+    BtnCargos: TBitBtn;
+    BtnLocaisdeTrabalho: TBitBtn;
+    BtnSair: TBitBtn;
     dsMural: TDatasource;
     BtnNovo: TImage;
     BtnAtualizar: TImage;
@@ -29,12 +34,17 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     StatusBar1: TStatusBar;
+    StatusBar: TStatusBar;
+    Timer1: TTimer;
     procedure BtnNovoClick(Sender: TObject);
+    procedure BtnSairClick(Sender: TObject);
     procedure CadastrarCargoClick(Sender: TObject);
     procedure CadastrarLocalTrabalhoClick(Sender: TObject);
     procedure CadastrarPessoasClick(Sender: TObject);
     procedure BtnAtualizarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure MenuNovoContratoClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { private declarations }
   public
@@ -68,7 +78,14 @@ begin
   frmCadastroMural.Free;
 end;
 
-// MENU ------------------------------------------------------------------------
+// INTERFACE -------------------------------------------------------------------
+
+procedure TFrmMain.Timer1Timer(Sender: TObject);         // Atualiza data e hora do barra inferior
+begin
+  StatusBar.Panels[3].Text := TimeToStr(Time)+'  -  '+ DateToStr(Date)+'  ';
+end;
+
+// MENU SUPERIOR ---------------------------------------------------------------
 
 procedure TFrmMain.CadastrarPessoasClick(Sender: TObject);  // Cadastrar Pessoas
 begin
@@ -96,6 +113,23 @@ begin
   Application.CreateForm(TfrmContrato, frmContrato);
   frmContrato.ShowModal;
   frmContrato.Free;
+end;
+
+// MENU ------------------------------------------------------------------------
+
+procedure TFrmMain.BtnSairClick(Sender: TObject);
+begin
+  Close;
+end;
+
+// FIM -------------------------------------------------------------------------
+
+procedure TFrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  if Application.MessageBox('Deseja realmente sair?','Sair', MB_OKCANCEL) = idOK then
+    Application.Terminate
+  else
+    abort;
 end;
 
 end.
