@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
-  Left = 115
+  Left = 262
   Height = 600
-  Top = 8
+  Top = 95
   Width = 1218
   BorderStyle = bsDialog
   Caption = 'Contrato'

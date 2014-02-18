@@ -21,10 +21,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Umain"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="82"/>
+        <TopLine Value="79"/>
         <CursorPos X="7" Y="83"/>
         <UsageCount Value="217"/>
         <Loaded Value="True"/>
@@ -64,12 +63,14 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmMain"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="122"/>
-        <CursorPos X="9" Y="135"/>
+        <TopLine Value="128"/>
+        <CursorPos X="51" Y="134"/>
         <UsageCount Value="215"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="upesquisapessoas.pas"/>
