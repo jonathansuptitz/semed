@@ -16,6 +16,7 @@ type
     dsMural: TDatasource;
     BtnNovo: TImage;
     BtnAtualizar: TImage;
+    Image1: TImage;
     Label1: TLabel;
     MainMenu1: TMainMenu;
     memoMural: TMemo;

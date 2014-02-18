@@ -10,6 +10,7 @@ object frmCadastroCargos: TfrmCadastroCargos
   OnCreate = FormCreate
   Position = poDesktopCenter
   LCLVersion = '1.0.14.0'
+  WindowState = wsMaximized
   object Panel1: TPanel
     Left = 851
     Height = 466
