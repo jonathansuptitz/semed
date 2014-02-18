@@ -1,13 +1,13 @@
 object frmPesquisaPessoas: TfrmPesquisaPessoas
-  Left = 438
+  Left = 271
   Height = 435
-  Top = 173
-  Width = 682
+  Top = 168
+  Width = 849
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'Pesquisa de Pessoas'
   ClientHeight = 435
-  ClientWidth = 682
+  ClientWidth = 849
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poDesktopCenter
@@ -16,10 +16,10 @@ object frmPesquisaPessoas: TfrmPesquisaPessoas
     Left = 0
     Height = 50
     Top = 0
-    Width = 682
+    Width = 849
     Align = alTop
     ClientHeight = 50
-    ClientWidth = 682
+    ClientWidth = 849
     TabOrder = 0
     object editPesquisa: TEdit
       Left = 16
@@ -47,8 +47,6 @@ object frmPesquisaPessoas: TfrmPesquisaPessoas
         'Nome'
         'CPF'
         'RG'
-        'Cidade'
-        'Bairro'
       )
       OnChange = ComboBox1Change
       ParentFont = False
@@ -59,7 +57,7 @@ object frmPesquisaPessoas: TfrmPesquisaPessoas
       AnchorSideTop.Control = Panel1
       AnchorSideRight.Control = Panel1
       AnchorSideRight.Side = asrBottom
-      Left = 511
+      Left = 678
       Height = 37
       Top = 6
       Width = 163
@@ -114,7 +112,7 @@ object frmPesquisaPessoas: TfrmPesquisaPessoas
     Left = 0
     Height = 385
     Top = 50
-    Width = 682
+    Width = 849
     Align = alClient
     Color = clWindow
     Columns = <    
@@ -5708,6 +5706,7 @@ object frmPesquisaPessoas: TfrmPesquisaPessoas
         )
         Title.Caption = 'Cidade'
         Width = 170
+        FieldName = 'nome_cidade'
       end>
     DataSource = dsPessoas
     Font.Height = -13

@@ -1,9 +1,9 @@
 object DM1: TDM1
   OnCreate = DataModuleCreate
   OldCreateOrder = False
-  Height = 395
-  HorizontalOffset = 586
-  VerticalOffset = 160
+  Height = 422
+  HorizontalOffset = 715
+  VerticalOffset = 133
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -24,7 +24,6 @@ object DM1: TDM1
   end
   object tb_pessoas: TZTable
     Connection = SEMEDconnection
-    Active = True
     TableName = 'tb_pessoas'
     left = 48
     top = 96
@@ -393,6 +392,21 @@ object DM1: TDM1
       Required = False
       Size = 60
     end
+    object StringField1: TStringField
+      DisplayWidth = 180
+      FieldKind = fkLookup
+      FieldName = 'nome_cidade'
+      Index = 34
+      KeyFields = 'codigo_cidade'
+      LookupCache = False
+      LookupDataSet = tb_cidades
+      LookupKeyFields = 'codigo_cidade'
+      LookupResultField = 'nome_cidade'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
   end
   object queryCADASTROPESSOAScidades: TZReadOnlyQuery
     Connection = SEMEDconnection
@@ -609,7 +623,6 @@ object DM1: TDM1
   end
   object tb_cargos: TZTable
     Connection = SEMEDconnection
-    Active = True
     TableName = 'tb_cargos'
     left = 48
     top = 224
@@ -672,7 +685,6 @@ object DM1: TDM1
   end
   object tb_local_trabalho: TZQuery
     Connection = SEMEDconnection
-    Active = True
     SQL.Strings = (
       'select * from tb_local_trabalho'
     )
@@ -758,7 +770,6 @@ object DM1: TDM1
   end
   object tb_mural: TZTable
     Connection = SEMEDconnection
-    Active = True
     TableName = 'tb_mural'
     left = 48
     top = 283
@@ -804,6 +815,44 @@ object DM1: TDM1
       ReadOnly = False
       Required = True
       Size = 800
+    end
+  end
+  object tb_cidades: TZTable
+    Connection = SEMEDconnection
+    TableName = 'tb_cidades'
+    left = 48
+    top = 344
+    object tb_cidadescodigo_cidade: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_cidade'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object tb_cidadesnome_cidade: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'nome_cidade'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
+    object tb_cidadesuf_cidade: TStringField
+      DisplayWidth = 8
+      FieldKind = fkData
+      FieldName = 'uf_cidade'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 8
     end
   end
 end

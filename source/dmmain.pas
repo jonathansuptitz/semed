@@ -33,6 +33,7 @@ type
     querycontratostestemunha_1_contrato: TStringField;
     querycontratostestemunha_2_contrato: TStringField;
     SEMEDconnection: TZConnection;
+    StringField1: TStringField;
     tb_cargosclausula_primeira_cargo: TStringField;
     tb_cargoscodigo_cargo: TLongintField;
     tb_cargosgrupo_ocupacional_cargo: TStringField;
@@ -99,6 +100,7 @@ type
     ZReadOnlyQuery1uf_cidade: TStringField;
     tb_cargos: TZTable;
     tb_mural: TZTable;
+    tb_cidades: TZTable;
     procedure DataModuleCreate(Sender: TObject);
   private
     { private declarations }
@@ -131,10 +133,13 @@ begin
     // Conecta ao banco
     SEMEDconnection.Connected := true;
 
+    //Habilita tabelas
+    tb_cidades.Active := true;
     tb_pessoas.Active := true;
     tb_local_trabalho.Active := true;
     querycontratos.Active := true;
     tb_cargos.Active := true;
+    tb_mural.Active := true;
     queryCADASTROPESSOAScidades.Active := true;
   finally
     SLcfg.Free;

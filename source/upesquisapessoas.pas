@@ -67,10 +67,6 @@ begin                                                            // usuario troc
     campoBusca := 'nome_pessoa'
   else if ComboBox1.Text = 'CPF' then
     campoBusca := 'cpf_pessoa'
-  else if ComboBox1.Text = 'Cidade' then
-    campoBusca := 'cidade_pessoa'
-  else if ComboBox1.Text = 'Bairro' then
-    campoBusca := 'bairro_pessoa'
   else if ComboBox1.Text = 'RG' then
     campoBusca := 'rg_pessoa';
 

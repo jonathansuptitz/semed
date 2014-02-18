@@ -21,7 +21,6 @@ type
     Label1: TLabel;
     Label2: TLabel;
     labelRestantes: TLabel;
-    Timer1: TTimer;
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure DBMemo1Change(Sender: TObject);
@@ -135,7 +134,7 @@ begin
     ShowMessage('Todos os campos são obrigatorios!')
   else
   begin
-    if Application.MessageBox('O recado não pode ser apagado! Deseja continuar?','Inserir recado', MB_YESNO) = idYES then
+    if Application.MessageBox('O recado não poderá ser alterado/apagado! Deseja continuar?','Inserir recado', MB_YESNO) = idYES then
     begin
       dsMural.DataSet.FieldByName('codigo_mural').Value := UltimoRegistro + 1;
       dsMural.DataSet.FieldByName('data_mural').Value := DateToStr(Date) + ' ' + TimeToStr(Time); //Insere data e hora

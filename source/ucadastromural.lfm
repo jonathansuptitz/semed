@@ -143,8 +143,4 @@ object frmCadastroMural: TfrmCadastroMural
     DataSet = DM1.tb_mural
     left = 184
   end
-  object Timer1: TTimer
-    left = 234
-    top = 12
-  end
 end
