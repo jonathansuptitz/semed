@@ -5,9 +5,9 @@ unit ucontrato;
 interface
 
 uses
-  Classes, SysUtils, db, FileUtil, LR_Class, LR_DBSet, LR_Desgn, lr_e_pdf,
-  Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls, DbCtrls, StdCtrls,
-  EditBtn, Calendar, DBGrids, Grids, ZDataset;
+  Classes, SysUtils, db, FileUtil, Ipfilebroker, IpHtml, LR_Class, LR_DBSet,
+  LR_Desgn, lr_e_pdf, Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls,
+  DbCtrls, StdCtrls, EditBtn, Grids;
 
 type
 
@@ -25,7 +25,6 @@ type
     DBEdttest2: TDBEdit;
     DBEdtteste1: TDBEdit;
     dscidades: TDatasource;
-    DBBoxlocal: TComboBox;
     DBEdthorario: TDBEdit;
     dspessoa: TDatasource;
     dslocal: TDatasource;
@@ -39,10 +38,13 @@ type
     DateEditinicial: TDateEdit;
     DBEdtCodcontrato: TDBEdit;
     DBMemoobs: TDBMemo;
+    edtlocal: TEdit;
     frDBDataSet1: TfrDBDataSet;
     frDesigner1: TfrDesigner;
     frReport1: TfrReport;
     frTNPDFExport1: TfrTNPDFExport;
+    IpFileDataProvider1: TIpFileDataProvider;
+    IpHtmlPanel1: TIpHtmlPanel;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
@@ -68,13 +70,13 @@ type
     Radionoite: TRadioButton;
     Radiotarde: TRadioButton;
     SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
     StringGrid1: TStringGrid;
+    procedure editahtml;
     procedure BtnadicionalocalClick(Sender: TObject);
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure btnlimparlocaisClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
-    procedure DBBoxlocalChange(Sender: TObject);
-    procedure DBBoxlocalClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnBuscarpessoaClick(Sender: TObject);
     procedure frReport1GetValue(const ParName: String; var ParValue: Variant);
@@ -83,6 +85,7 @@ type
     procedure RadionoiteChange(Sender: TObject);
     procedure RadiotardeChange(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -94,7 +97,7 @@ var
 
 implementation
 uses
-  uPesquisaPessoas,dmMain, uCadastroCargos;
+  uPesquisaPessoas,UCadastroLocalTrabalho, uCadastroCargos;
 
 var
   linhas, numlocal: integer;
@@ -106,17 +109,6 @@ var
 procedure TfrmContrato.BtnVoltarClick(Sender: TObject);
 begin
   close;
-end;
-
-procedure TfrmContrato.DBBoxlocalChange(Sender: TObject);
-begin
-  dslocal.DataSet.Filter:= 'nome_local_trabalho = '''+ DBBoxlocal.Text + '''';
-  dslocal.DataSet.Filtered := true;
-end;
-
-procedure TfrmContrato.DBBoxlocalClick(Sender: TObject);
-begin
-      dslocal.DataSet.Filtered := false;
 end;
 
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
@@ -134,13 +126,7 @@ begin
 
         dsContratos.DataSet.Post; //posta
       finally
-        Application.ProcessMessages;
-
-        frReport1.LoadFromFile('contrato.lrf');//carrega o contrato padrão
-
-        frReport1.PrepareReport;//prepara o contrato
-
-        frReport1.ShowPreparedReport;//exibi preview do contrato
+        editahtml; //chama o preenchimento do html
       end;
     end
     else
@@ -156,7 +142,7 @@ end;
 procedure TfrmContrato.BtnadicionalocalClick(Sender: TObject);
 begin
   //adiociona mais locais de trabalho
-  StringGrid1.Cells[0,linhas] := DBBoxlocal.text;
+  StringGrid1.Cells[0,linhas] := edtlocal.text;
   StringGrid1.Cells[1,linhas] := DBEdthorario.text;
 
   if linhas = 3 then
@@ -168,26 +154,16 @@ begin
 end;
 
 procedure TfrmContrato.FormShow(Sender: TObject);
-var
-  i: integer;
 begin
   //ativa query e coloca em mode de inserção
   dsContratos.DataSet.Active := true;
+
+  //para varios locais
   linhas := 1;
   numlocal := 0;
+  //--
 
-  //prenche combobox local
-  begin
-    DBBoxlocal.Clear;
-    dslocal.DataSet.First;
-    for i:= 1 to dslocal.DataSet.RecordCount do
-    begin
-      DBBoxlocal.Items.Add(dslocal.DataSet.FieldByName('nome_local_trabalho').value);
-      dslocal.DataSet.Next;
-    end;
-  end;
-
-  dsContratos.DataSet.Insert;
+  dsContratos.DataSet.Insert;//contro em modo de insecao
 end;
 
 procedure TfrmContrato.btnBuscarpessoaClick(Sender: TObject);
@@ -259,14 +235,49 @@ end;
 
 procedure TfrmContrato.SpeedButton1Click(Sender: TObject);
 begin
-   //chama a pesquisa de local
+   //chama a pesquisa de cargo
   Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
   frmCadastroCargos.showmodal;
   frmCadastroCargos.free;
 
-  //filtra o dspessoa para o contrato
+  //filtra o dscargo para o contrato
   dscargos.DataSet.Filter := 'codigo_cargo = ''' + DBEdtcargo.text + '''';
   dscargos.DataSet.Filtered := true;
+end;
+
+procedure TfrmContrato.SpeedButton2Click(Sender: TObject);
+begin
+  //chama a pesquisa de local
+  Application.CreateForm(TfrmCadastroLocalTrabalho, frmCadastroLocalTrabalho);
+  frmCadastroLocalTrabalho.showmodal;
+  frmCadastroLocalTrabalho.free;
+
+  //filtra o dslocal para o contrato
+  dslocal.DataSet.Filter := 'nome_local = ''' + edtlocal.text + '''';
+  dslocal.DataSet.Filtered := true;
+end;
+
+
+//prenche contrato em html
+procedure TfrmContrato.editahtml;
+var
+  texto : TStringList;
+  pstl : string;
+  y : integer;
+begin
+  try
+    texto := TStringList.Create;
+    texto.LoadFromFile('contrato.html');
+    for y := 0 to texto.Count-1 do
+    begin
+      pstl := texto[y];
+      texto[y] := StringReplace(pstl,'varnome',dspessoa.DataSet.FieldByName('nome_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+    end;
+    texto.SaveToFile('contratoteste.html');
+    //IpHtmlPanel1.OpenURL(ExpandLocalHtmlFileName('contratoteste.html'));
+  finally
+    texto.Free;
+  end;
 end;
 
 end.
