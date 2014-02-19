@@ -133,7 +133,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="332"/>
         <CursorPos X="32" Y="392"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="33"/>
       </Unit11>
       <Unit12>
         <Filename Value="C:\lazarus\lcl\dbctrls.pp"/>
@@ -141,7 +141,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="34"/>
+        <UsageCount Value="33"/>
       </Unit12>
       <Unit13>
         <Filename Value="\\VBOXSVR\Documentos\zeos\src\dbc\ZDbcMySqlUtils.pas"/>
@@ -149,7 +149,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="433"/>
         <CursorPos X="1" Y="443"/>
-        <UsageCount Value="3"/>
+        <UsageCount Value="2"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit13>
       <Unit14>
@@ -158,7 +158,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="8198"/>
         <CursorPos X="1" Y="8209"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="24"/>
       </Unit14>
     </Units>
     <General>
