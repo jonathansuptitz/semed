@@ -1,0 +1,18 @@
+object frmSobre: TfrmSobre
+  Left = 520
+  Height = 268
+  Top = 210
+  Width = 487
+  Caption = 'Sobre'
+  ClientHeight = 268
+  ClientWidth = 487
+  LCLVersion = '1.0.14.0'
+  object Label1: TLabel
+    Left = 126
+    Height = 14
+    Top = 33
+    Width = 29
+    Caption = 'Sobre'
+    ParentColor = False
+  end
+end

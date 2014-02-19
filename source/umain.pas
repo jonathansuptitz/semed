@@ -26,25 +26,32 @@ type
     MainMenu1: TMainMenu;
     memoMural: TMemo;
     MenuItem1: TMenuItem;
-    MenuCadastrar: TMenuItem;
-    CadastrarPessoas: TMenuItem;
-    CadastrarLocalTrabalho: TMenuItem;
-    CadastrarCargo: TMenuItem;
-    MenuNovoContrato: TMenuItem;
+    CadastroLocalTrabalho: TMenuItem;
+    CadastroCargos: TMenuItem;
+    CadastroPessoas: TMenuItem;
+    CadastroSeparador1: TMenuItem;
+    MenuSuporte: TMenuItem;
+    MenuSobre: TMenuItem;
+    CadastroContrato: TMenuItem;
     Panel1: TPanel;
     Panel2: TPanel;
-    StatusBar1: TStatusBar;
     StatusBar: TStatusBar;
     Timer1: TTimer;
-    procedure BtnNovoClick(Sender: TObject);
+    procedure BtnCargosClick(Sender: TObject);
+    procedure BtnContratosClick(Sender: TObject);
+    procedure BtnLocaisdeTrabalhoClick(Sender: TObject);
+    procedure BtnPessoasClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
-    procedure CadastrarCargoClick(Sender: TObject);
-    procedure CadastrarLocalTrabalhoClick(Sender: TObject);
-    procedure CadastrarPessoasClick(Sender: TObject);
-    procedure BtnAtualizarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure MenuNovoContratoClick(Sender: TObject);
+    procedure CadastroLocalTrabalhoClick(Sender: TObject);
+    procedure CadastroCargosClick(Sender: TObject);
+    procedure CadastroPessoasClick(Sender: TObject);
+    procedure CadastroContratoClick(Sender: TObject);
+    procedure MenuSobreClick(Sender: TObject);
+    procedure MenuSuporteClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure BtnAtualizarClick(Sender: TObject);
+    procedure BtnNovoClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
   private
     { private declarations }
   public
@@ -58,7 +65,7 @@ implementation
 
 uses
   ucontrato, ucadastropessoas, UCadastroLocalTrabalho, uCadastroCargos,
-  Ucadastromural;
+  Ucadastromural, usuporte, usobre;
 
 {$R *.lfm}
 
@@ -87,37 +94,79 @@ end;
 
 // MENU SUPERIOR ---------------------------------------------------------------
 
-procedure TFrmMain.CadastrarPessoasClick(Sender: TObject);  // Cadastrar Pessoas
-begin
-  Application.CreateForm(TfrmCadastroPessoas, frmCadastroPessoas);
-  frmCadastroPessoas.ShowModal;
-  frmCadastroPessoas.Free;
-end;
-
-procedure TFrmMain.CadastrarLocalTrabalhoClick(Sender: TObject);// Cadastrar local de trabalho
-begin
-  Application.CreateForm(TfrmCadastroLocalTrabalho, frmCadastroLocalTrabalho);
-  frmCadastroLocalTrabalho.ShowModal;
-  frmCadastroLocalTrabalho.Free;
-end;
-
-procedure TFrmMain.CadastrarCargoClick(Sender: TObject);   // Cadastrar Cargo
-begin
-  Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
-  frmCadastroCargos.ShowModal;
-  frmCadastroCargos.Free;
-end;
-
-procedure TFrmMain.MenuNovoContratoClick(Sender: TObject);  // Novo Contrato
+procedure TFrmMain.CadastroContratoClick(Sender: TObject);             // Contrato
 begin
   Application.CreateForm(TfrmContrato, frmContrato);
   frmContrato.ShowModal;
   frmContrato.Free;
 end;
 
+procedure TFrmMain.CadastroPessoasClick(Sender: TObject);              // Pessoas
+begin
+  Application.CreateForm(TfrmCadastroPessoas, frmCadastroPessoas);
+  frmCadastroPessoas.ShowModal;
+  frmCadastroPessoas.Free;
+end;
+
+procedure TFrmMain.CadastroCargosClick(Sender: TObject);               // Cargos
+begin
+  Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
+  frmCadastroCargos.ShowModal;
+  frmCadastroCargos.Free;
+end;
+
+procedure TFrmMain.CadastroLocalTrabalhoClick(Sender: TObject);        // Locais de Trabalho
+begin
+  Application.CreateForm(TfrmCadastroLocalTrabalho, frmCadastroLocalTrabalho);
+  frmCadastroLocalTrabalho.ShowModal;
+  frmCadastroLocalTrabalho.Free;
+end;
+
+procedure TFrmMain.MenuSuporteClick(Sender: TObject);                  // Suporte
+begin
+  Application.CreateForm(TfrmSuporte, frmSuporte);
+  frmSuporte.ShowModal;
+  frmSuporte.Free;
+end;
+
+procedure TFrmMain.MenuSobreClick(Sender: TObject);                    // Sobre
+begin
+  Application.CreateForm(TfrmSobre, frmSobre);
+  frmSobre.ShowModal;
+  frmSobre.Free;
+end;
+
 // MENU ------------------------------------------------------------------------
 
-procedure TFrmMain.BtnSairClick(Sender: TObject);
+procedure TFrmMain.BtnContratosClick(Sender: TObject);         // Contratos
+begin
+  Application.CreateForm(TfrmContrato, frmContrato);
+  frmContrato.ShowModal;
+  frmContrato.Free;
+end;
+
+procedure TFrmMain.BtnPessoasClick(Sender: TObject);           // Pessoas
+begin
+  Application.CreateForm(TfrmCadastroPessoas, frmCadastroPessoas);
+  frmCadastroPessoas.ShowModal;
+  frmCadastroPessoas.Free;
+end;
+
+procedure TFrmMain.BtnCargosClick(Sender: TObject);            // Cargos
+begin
+  Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
+  frmCadastroCargos.ShowModal;
+  frmCadastroCargos.Free;
+end;
+
+procedure TFrmMain.BtnLocaisdeTrabalhoClick(Sender: TObject);  // Locais de Trabalho
+begin
+  Application.CreateForm(TfrmCadastroLocalTrabalho, frmCadastroLocalTrabalho);
+  frmCadastroLocalTrabalho.ShowModal;
+  frmCadastroLocalTrabalho.Free;
+end;
+
+procedure TFrmMain.BtnSairClick(Sender: TObject);              // Sair
 begin
   Close;
 end;

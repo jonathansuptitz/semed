@@ -7,15 +7,14 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, Umain, dmMain, lazreportpdfexport, uCadastroCargos, UCadastroMural;
+  Forms, umain, dmMain, lazreportpdfexport;
 
 {$R *.res}
 
 begin
+  Application.Initialize;
   RequireDerivedFormResource := True;
   Application.CreateForm(TDM1, DM1);
-  Application.Initialize;
   Application.CreateForm(TFrmMain, FrmMain);
-  Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
   Application.Run;
 end.

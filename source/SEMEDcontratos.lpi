@@ -50,7 +50,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="11">
+    <Units Count="13">
       <Unit0>
         <Filename Value="SEMEDcontratos.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -129,6 +129,20 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UCadastroMural"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="usobre.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSobre"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="USobre"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="usuporte.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmSuporte"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="USuporte"/>
+      </Unit12>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
