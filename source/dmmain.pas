@@ -122,7 +122,7 @@ procedure TDM1.DataModuleCreate(Sender: TObject);
 var
   SLcfg : TStringList;
 begin
-  try
+  {try
     // Carrega arquivo cfg
     SLcfg := TStringList.Create;
     SLcfg.LoadFromFile('conf/db.cfg');
@@ -144,7 +144,7 @@ begin
     queryCADASTROPESSOAScidades.Active := true;
   finally
     SLcfg.Free;
-  end;
+  end;       }
 end;
 
 end.
