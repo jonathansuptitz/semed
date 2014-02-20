@@ -93,7 +93,7 @@ var
 implementation
 
 uses
-  dmMain, UUtilidades;
+  dmMain,ucontrato, UUtilidades;
 
 { TfrmCadastroLocalTrabalho }
 
@@ -215,7 +215,7 @@ end;
 //MENU -------------------------------------------------------------------------
 procedure TfrmCadastroLocalTrabalho.BtnSelecionarClick(Sender: TObject);  // Selecionar
 begin     // Trocar linha por comando valido
-  //frmContrato.dsContratos.DataSet.FieldByName('codigo_').value := dsCargos.DataSet.FieldByName('codigo_cargo').value;
+  frmContrato.edtlocal.text := dsLocal_trabalho.DataSet.FieldByName('nome_local_trabalho').value;
   Close;
 end;
 

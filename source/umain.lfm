@@ -1,7 +1,7 @@
 object FrmMain: TFrmMain
-  Left = 288
+  Left = 283
   Height = 578
-  Top = 84
+  Top = 30
   Width = 1075
   BorderStyle = bsSingle
   Caption = 'SEMED | Módulo de Contratos'
@@ -1224,6 +1224,7 @@ object FrmMain: TFrmMain
       Caption = 'Cadastro e Pesquisa'
       object CadastroContrato: TMenuItem
         Caption = 'Contratos'
+        OnClick = CadastroContratoClick
       end
       object CadastroSeparador1: TMenuItem
         Caption = '-'

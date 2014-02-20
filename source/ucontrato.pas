@@ -5,8 +5,9 @@ unit ucontrato;
 interface
 
 uses
-  Classes, SysUtils, db, FileUtil, Ipfilebroker, IpHtml, LR_Class, LR_DBSet,
-  LR_Desgn, lr_e_pdf, Forms, Controls, Graphics, Dialogs, Buttons, ExtCtrls,
+  Classes, SysUtils, db, FileUtil, Ipfilebroker,
+ Forms, Controls, Graphics,
+  Dialogs, Buttons, ExtCtrls,
   DbCtrls, StdCtrls, EditBtn, Grids;
 
 type
@@ -14,11 +15,11 @@ type
   { TfrmContrato }
 
   TfrmContrato = class(TForm)
+    BtnGerarcontrato: TBitBtn;
     btnlimparlocais: TBitBtn;
     Btnadicionalocal: TBitBtn;
-    BtnGerarcontrato: TBitBtn;
     BtnVoltar: TBitBtn;
-    Datasource1: TDatasource;
+    DBComboBox1: TDBComboBox;
     DBEdtcargo: TDBEdit;
     DBEdtcpftest2: TDBEdit;
     DBEdtcpfteste1: TDBEdit;
@@ -39,12 +40,6 @@ type
     DBEdtCodcontrato: TDBEdit;
     DBMemoobs: TDBMemo;
     edtlocal: TEdit;
-    frDBDataSet1: TfrDBDataSet;
-    frDesigner1: TfrDesigner;
-    frReport1: TfrReport;
-    frTNPDFExport1: TfrTNPDFExport;
-    IpFileDataProvider1: TIpFileDataProvider;
-    IpHtmlPanel1: TIpHtmlPanel;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
@@ -52,6 +47,7 @@ type
     Label13: TLabel;
     Label14: TLabel;
     Label15: TLabel;
+    Label16: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -64,29 +60,27 @@ type
     Panel2: TPanel;
     Panelprincipal: TPanel;
     PanelBotoes: TPanel;
-    btnBuscarpessoa: TSpeedButton;
+    sbtpessoa: TSpeedButton;
     RadioGroup1: TRadioGroup;
     Radiomanha: TRadioButton;
     Radionoite: TRadioButton;
     Radiotarde: TRadioButton;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
+    sbtcargo: TSpeedButton;
+    sbtlocal: TSpeedButton;
     StringGrid1: TStringGrid;
     procedure editahtml;
     procedure BtnadicionalocalClick(Sender: TObject);
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure btnlimparlocaisClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
-    procedure btnBuscarpessoaClick(Sender: TObject);
-    procedure frReport1GetValue(const ParName: String; var ParValue: Variant);
+    procedure sbtpessoaClick(Sender: TObject);
     procedure PanelprincipalClick(Sender: TObject);
     procedure RadiomanhaChange(Sender: TObject);
     procedure RadionoiteChange(Sender: TObject);
     procedure RadiotardeChange(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
+    procedure sbtcargoClick(Sender: TObject);
+    procedure sbtlocalClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -164,10 +158,18 @@ begin
   numlocal := 0;
   //--
 
+  with DBComboBox1 do
+  begin
+    clear;
+    Items.Add('Seletivo');
+    Items.Add('cadastro RH');
+    Items.Add('Contratação direta');
+  end;
+
   dsContratos.DataSet.Insert;//contro em modo de insecao
 end;
 
-procedure TfrmContrato.btnBuscarpessoaClick(Sender: TObject);
+procedure TfrmContrato.sbtpessoaClick(Sender: TObject);
 begin
   //chama a pesquisa de pessoa
   Application.CreateForm(TfrmPesquisaPessoas, frmPesquisaPessoas);
@@ -177,38 +179,6 @@ begin
   //filtra o dspessoa para o contrato
   dspessoa.DataSet.Filter := 'codigo_pessoa = ''' + DBEdtFuncionario.text + '''';
   dspessoa.DataSet.Filtered := true;
-end;
-
-procedure TfrmContrato.frReport1GetValue(const ParName: String;
-  var ParValue: Variant);
-begin
-  if ParName = 'Varhora' then
-  begin
-    if numlocal = 1 then
-      ParValue := StringGrid1.Cells[1,1]
-    else if numlocal = 2 then
-      ParValue := StringGrid1.Cells[1,1] +', '+ StringGrid1.Cells[1,2]
-    else if numlocal = 3 then
-      ParValue := StringGrid1.Cells[1,1] +', '+ StringGrid1.Cells[1,2]
-      + ', ' + StringGrid1.Cells[1,3];
-  end;
-  if ParName = 'Varobs' then
-  begin
-    ParValue:= '                                                             ' +
-    '                                                                        ' +
-    '                                                                        ' +
-    '                                                                        ';
-  end;
-  if ParName = 'Varlocais' then
-  begin
-    if numlocal = 1 then
-      ParValue := StringGrid1.Cells[0,1]
-    else if numlocal = 2 then
-      ParValue := StringGrid1.Cells[0,1] +', '+ StringGrid1.Cells[0,2]
-    else if numlocal = 3 then
-      ParValue := StringGrid1.Cells[0,1] +', '+ StringGrid1.Cells[0,2]
-      + ', ' + StringGrid1.Cells[0,3];
-  end;
 end;
 
 procedure TfrmContrato.PanelprincipalClick(Sender: TObject);
@@ -234,7 +204,7 @@ begin
       DBedtHorario.DataField:= 'horario_vespertino_trabalho';
 end;
 
-procedure TfrmContrato.SpeedButton1Click(Sender: TObject);
+procedure TfrmContrato.sbtcargoClick(Sender: TObject);
 begin
    //chama a pesquisa de cargo
   Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
@@ -247,7 +217,7 @@ begin
   dscargos.DataSet.Filtered := true;
 end;
 
-procedure TfrmContrato.SpeedButton2Click(Sender: TObject);
+procedure TfrmContrato.sbtlocalClick(Sender: TObject);
 begin
   //chama a pesquisa de local
   Application.CreateForm(TfrmCadastroLocalTrabalho, frmCadastroLocalTrabalho);
@@ -256,7 +226,7 @@ begin
   frmCadastroLocalTrabalho.free;
 
   //filtra o dslocal para o contrato
-  dslocal.DataSet.Filter := 'nome_local = ''' + edtlocal.text + '''';
+  dslocal.DataSet.Filter := 'nome_local_trabalho = ''' + edtlocal.text + '''';
   dslocal.DataSet.Filtered := true;
 end;
 
@@ -267,17 +237,64 @@ var
   texto : TStringList;
   pstl : string;
   y : integer;
+  varlocal, varhorario : string;
 begin
+  if numlocal = 1 then
+  begin
+      varhorario := StringGrid1.Cells[1,1];
+      varlocal := StringGrid1.Cells[0,1];
+  end
+  else if numlocal = 2 then
+  begin
+      varhorario := StringGrid1.Cells[1,1] +', '+ StringGrid1.Cells[1,2];
+      varlocal := StringGrid1.Cells[0,1] +', '+ StringGrid1.Cells[0,2];
+  end
+  else if numlocal = 3 then
+  begin
+      varhorario := StringGrid1.Cells[1,1] +', '+ StringGrid1.Cells[1,2]
+      + ', ' + StringGrid1.Cells[1,3];
+      varlocal := StringGrid1.Cells[0,1] +', '+ StringGrid1.Cells[0,2]
+      + ', ' + StringGrid1.Cells[0,3];
+  end;
+
   try
     texto := TStringList.Create;
     texto.LoadFromFile('contrato.html');
     for y := 0 to texto.Count-1 do
     begin
-      pstl := texto[y];
+      pstl := texto[y];//atribui uma linha da stringlist  na pstl
+
       texto[y] := StringReplace(pstl,'varnome',dspessoa.DataSet.FieldByName('nome_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcargo',dscargos.DataSet.FieldByName('nome_cargo').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varperiodoinicial',dsContratos.DataSet.FieldByName('periodo_inicial_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varperiodofinal',dsContratos.DataSet.FieldByName('periodo_final_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varlocal',varlocal,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varjornada',dsContratos.DataSet.FieldByName('jornada_trabalho_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'vardata',dsContratos.DataSet.FieldByName('data_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varanoseletivo',dsContratos.DataSet.FieldByName('ano_seletivo_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+
+      //observaçao contrato
+      if DBMemoobs.text = '' then
+        texto[y] := StringReplace(pstl,'varobs','______________________________'+
+        '______________________________________________________________________'+
+        '______________________________________________________________________'+
+        '______________________________________________________________________'+
+        '________',[rfIgnoreCase,rfReplaceAll])
+      else
+        texto[y] := StringReplace(pstl,'varobs',dsContratos.DataSet.FieldByName('obs_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      //----
+
+      texto[y] := StringReplace(pstl,'varhorario',varhorario,[rfIgnoreCase,rfReplaceAll]);
+
+      if DBComboBox1.Text = 'Seletivo' then
+        texto[y] := StringReplace(pstl,'var1','X',[rfIgnoreCase,rfReplaceAll])
+      else if DBComboBox1.Text = 'Cadastro RH' then
+        texto[y] := StringReplace(pstl,'var2','X',[rfIgnoreCase,rfReplaceAll])
+      else if DBComboBox1.Text = 'Contratação Direta' then
+        texto[y] := StringReplace(pstl,'var3','X',[rfIgnoreCase,rfReplaceAll]);
+
     end;
     texto.SaveToFile('contratoteste.html');
-    //IpHtmlPanel1.OpenURL(ExpandLocalHtmlFileName('contratoteste.html'));
   finally
     texto.Free;
   end;
@@ -285,11 +302,5 @@ end;
 
 // FIM -------------------------------------------------------------------------
 
-procedure TfrmContrato.FormClose(Sender: TObject; var CloseAction: TCloseAction
-  );
-begin
-  frmContrato := nil;       // Quando um form é fechado ele não recebe automaticamente
-end;                        // a propriedade nil. Adicionado para evitar erro em verificação
-                            // em forms com botão SELECIONAR
 end.
 

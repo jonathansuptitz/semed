@@ -91,6 +91,7 @@ CREATE TABLE `tb_contratos` (
   `cpf_teste_1_contrato` varchar(16) not null,
   `testemunha_2_contrato` varchar(100) not null,
   `cpf_teste_2_contrato` varchar(16) not null,
+  `tipo_contratacao_contrato` varchar(20) not null,
   PRIMARY KEY (`codigo_contrato`),
   KEY `fk_tb_contratos_tb_pessoas1_idx` (`codigo_pessoa`),
   KEY `fk_tb_contratos_tb_cargos1_idx` (`codigo_cargo`),

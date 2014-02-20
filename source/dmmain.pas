@@ -32,6 +32,7 @@ type
     querycontratossalario_contrato: TFloatField;
     querycontratostestemunha_1_contrato: TStringField;
     querycontratostestemunha_2_contrato: TStringField;
+    querycontratostipo_contratacao_contrato: TStringField;
     SEMEDconnection: TZConnection;
     StringField1: TStringField;
     tb_cargosclausula_primeira_cargo: TStringField;
