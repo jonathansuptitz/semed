@@ -77,6 +77,7 @@ type
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure btnlimparlocaisClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormShow(Sender: TObject);
     procedure btnBuscarpessoaClick(Sender: TObject);
     procedure frReport1GetValue(const ParName: String; var ParValue: Variant);
@@ -237,6 +238,7 @@ procedure TfrmContrato.SpeedButton1Click(Sender: TObject);
 begin
    //chama a pesquisa de cargo
   Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
+  frmCadastroCargos.SelecionarAtivo := true; // Habilita botão SELECIONAR
   frmCadastroCargos.showmodal;
   frmCadastroCargos.free;
 
@@ -249,6 +251,7 @@ procedure TfrmContrato.SpeedButton2Click(Sender: TObject);
 begin
   //chama a pesquisa de local
   Application.CreateForm(TfrmCadastroLocalTrabalho, frmCadastroLocalTrabalho);
+  frmCadastroLocalTrabalho.SelecionarAtivo := true;
   frmCadastroLocalTrabalho.showmodal;
   frmCadastroLocalTrabalho.free;
 
@@ -280,5 +283,13 @@ begin
   end;
 end;
 
+// FIM -------------------------------------------------------------------------
+
+procedure TfrmContrato.FormClose(Sender: TObject; var CloseAction: TCloseAction
+  );
+begin
+  frmContrato := nil;       // Quando um form é fechado ele não recebe automaticamente
+end;                        // a propriedade nil. Adicionado para evitar erro em verificação
+                            // em forms com botão SELECIONAR
 end.
 

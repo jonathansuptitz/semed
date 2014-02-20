@@ -8,6 +8,7 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
   ClientWidth = 1058
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object Label1: TLabel

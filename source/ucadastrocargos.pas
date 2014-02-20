@@ -10,6 +10,17 @@ uses
 
 type
 
+  {Quando esse form for chamado por outro por motivo de pesquisa(como buscar o codigo),
+   deve-se habilitar o botão "Selecionar", que passa o valor do código para o form
+   que o chamou (implementar para cada pesquisa).
+   ex: Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
+       frmCadastroCargos.SelecionarATIVO := true;
+       frmCadastroCargos.ShowModal;
+       frmCadastroCargos.Free;
+
+   Caso o form seja aberto pela tela
+   principal, o SELECIONAR deve permanecer desabilitado}
+
   { TfrmCadastroCargos }
 
   TfrmCadastroCargos = class(TForm)
@@ -43,6 +54,7 @@ type
     procedure BtnEditarClick(Sender: TObject);
     procedure BtnNovoClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
+    procedure BtnSelecionarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure DBEdit1Change(Sender: TObject);
@@ -54,16 +66,17 @@ type
     procedure FormCreate(Sender: TObject);
     procedure EditON;
     procedure EditOFF;
+    procedure FormShow(Sender: TObject);
   private
     { private declarations }
   public
     { public declarations }
+    SelecionarAtivo: boolean;
   end;
 
 var
   frmCadastroCargos: TfrmCadastroCargos;
   campoBusca, ScreenMode: string;
-  SelecionarAtivo: boolean;
 
 implementation
 
@@ -77,10 +90,14 @@ uses
 // INICIO ----------------------------------------------------------------------
 procedure TfrmCadastroCargos.FormCreate(Sender: TObject);
 begin
+  SelecionarAtivo := false;
+end;
+
+procedure TfrmCadastroCargos.FormShow(Sender: TObject);
+begin
   ScreenMode := 'mdNormal';
   campoBusca := 'nome_cargo';
   EditOFF;
-  SelecionarAtivo := false;
 end;
 
 procedure TfrmCadastroCargos.editPesquisaKeyPress(Sender: TObject; var Key: char
@@ -117,8 +134,6 @@ begin
   BtnApagar.Enabled := false;
   BtnSelecionar.Enabled := false;
   BtnVoltar.Enabled := false;
-  if BtnSelecionar.Enabled then
-    SelecionarAtivo := true; // Marca estado inicial do BtnSelecionar
 end;
 
 procedure TfrmCadastroCargos.EditOFF;       // Desabilitar Edição
@@ -184,6 +199,13 @@ begin                                                        // carrega Clau. pr
 end;
 
 // BOTOES ----------------------------------------------------------------------
+
+procedure TfrmCadastroCargos.BtnSelecionarClick(Sender: TObject);   // Selecionar
+begin                   // manda o codigo do cargo para o campo corespondente no form de Contratos
+  frmContrato.dsContratos.DataSet.FieldByName('codigo_cargo').value := dsCargos.DataSet.FieldByName('codigo_cargo').value;
+  Close;
+end;
+
 procedure TfrmCadastroCargos.BtnSalvarClick(Sender: TObject);       // Salvar
 var
   SLtrans: TStringList;
@@ -258,12 +280,6 @@ procedure TfrmCadastroCargos.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
   dsCargos.DataSet.Cancel;      // Cancela INSERT se houver
-
-  //caso o frmcontrato esteje aberto manda o codigo do cargo para o campo nele
-  if not(frmContrato = nil) then
-  begin
-    frmContrato.dsContratos.DataSet.FieldByName('codigo_cargo').value := dsCargos.DataSet.FieldByName('codigo_cargo').value ;
-  end;
 end;
 
 end.

@@ -8,6 +8,7 @@ object frmCadastroCargos: TfrmCadastroCargos
   ClientWidth = 985
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   Position = poDesktopCenter
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
@@ -414,6 +415,7 @@ object frmCadastroCargos: TfrmCadastroCargos
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00069A4EFF069A4EFF
       }
+      OnClick = BtnSelecionarClick
       ParentFont = False
       TabOrder = 0
     end
@@ -567,6 +569,7 @@ object frmCadastroCargos: TfrmCadastroCargos
         FieldName = 'grupo_ocupacional_cargo'
       end>
     DataSource = dsCargos
+    ReadOnly = True
     TabOrder = 2
   end
   object editPesquisa: TEdit

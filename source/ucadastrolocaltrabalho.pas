@@ -14,12 +14,12 @@ type
    deve-se habilitar o botão "Selecionar", que passa o valor do código para o form
    que o chamou (implementar para cada pesquisa).
    ex: Application.CreateForm(TfrmCadastroLocaltrabalho, frmCadastroLocaltrabalho);
-       frmCadastroLocaltrabalho.BtnSeleciona.Enable := true;
+       frmCadastroLocaltrabalho.SelecionarATIVO := true;
        frmCadastroLocaltrabalho.ShowModal;
        frmCadastroLocaltrabalho.Free;
 
    Caso o form seja aberto pela tela
-   principal, o mesmo deve permanecer desabilitado}
+   principal, o SELECIONAR deve permanecer desabilitado}
 
   { TfrmCadastroLocalTrabalho }
 
@@ -72,9 +72,10 @@ type
     procedure editPesquisaChange(Sender: TObject);
     procedure editPesquisaKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
-    procedure FormCreate(Sender: TObject);
     procedure EditON;
     procedure EditOFF;
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
@@ -82,12 +83,12 @@ type
     { private declarations }
   public
     { public declarations }
+    SelecionarAtivo: boolean;
   end;
 
 var
   frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho;
   campoBusca: string;
-  SelecionarAtivo: boolean;
 
 implementation
 
@@ -97,10 +98,14 @@ uses
 { TfrmCadastroLocalTrabalho }
 
 // INICIO ----------------------------------------------------------------------
-procedure TfrmCadastroLocalTrabalho.FormCreate(Sender: TObject);  // Atribui valor
-begin                                                             // inicial a pesquisa
-  campoBusca := 'nome_local_trabalho';
+procedure TfrmCadastroLocalTrabalho.FormCreate(Sender: TObject);
+begin
   SelecionarAtivo := false;    // Atribui valor inicial para depois verificar
+end;
+
+procedure TfrmCadastroLocalTrabalho.FormShow(Sender: TObject);
+begin
+  campoBusca := 'nome_local_trabalho';
   EditOFF;
 end;
 
@@ -128,8 +133,6 @@ begin
   BtnApagar.Enabled := false;
   BtnSelecionar.Enabled := false;
   BtnVoltar.Enabled := false;
-  if BtnSelecionar.Enabled then
-    //SelecionarAtivo := true; // Marca estado inicial do BtnSelecionar
 end;
 
 procedure TfrmCadastroLocalTrabalho.EditOFF;       // Desabilitar Edição
@@ -147,7 +150,7 @@ begin
   BtnEditar.Enabled := true;
   BtnApagar.Enabled := true;
   BtnVoltar.Enabled := true;
-  //if SelecionarAtivo then  // Verifica se BtnSelecionar esava ativo inicialmente
+  if SelecionarAtivo then  // Verifica se BtnSelecionar esava ativo inicialmente
     BtnSelecionar.Enabled := true;
 end;
 
@@ -210,9 +213,10 @@ begin
 end;
 
 //MENU -------------------------------------------------------------------------
-procedure TfrmCadastroLocalTrabalho.BtnSelecionarClick(Sender: TObject);   // Botão SELECIONAR
-begin                                                                      // Implementar conforme explicação
-                                                                           // no inicio do fonte.
+procedure TfrmCadastroLocalTrabalho.BtnSelecionarClick(Sender: TObject);  // Selecionar
+begin     // Trocar linha por comando valido
+  //frmContrato.dsContratos.DataSet.FieldByName('codigo_').value := dsCargos.DataSet.FieldByName('codigo_cargo').value;
+  Close;
 end;
 
 procedure TfrmCadastroLocalTrabalho.BtnNovoClick(Sender: TObject);    // Novo
