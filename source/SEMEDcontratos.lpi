@@ -147,6 +147,7 @@
         <Filename Value="ulogin.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmLogin"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ULogin"/>
       </Unit13>

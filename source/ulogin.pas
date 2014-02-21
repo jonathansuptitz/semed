@@ -6,16 +6,19 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls,
-  StdCtrls, ExtCtrls;
+  StdCtrls, ExtCtrls, Buttons, types;
 
 type
 
   { TfrmLogin }
 
   TfrmLogin = class(TForm)
+    BtnEntrar: TBitBtn;
+    BtnSair: TBitBtn;
     labelLoading: TLabel;
     ProgressBar1: TProgressBar;
-    procedure FormShow(Sender: TObject);
+    procedure BtnEntrarClick(Sender: TObject);
+    procedure BtnSairClick(Sender: TObject);
   private
     { private declarations }
     procedure IniciarSistema;
@@ -35,7 +38,12 @@ uses
 
 { TfrmLogin }
 
-procedure TfrmLogin.FormShow(Sender: TObject);      // On Show
+procedure TfrmLogin.BtnSairClick(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TfrmLogin.BtnEntrarClick(Sender: TObject);
 begin
   IniciarSistema;
 end;
@@ -47,6 +55,7 @@ begin
   // BANCO DE DADOS ------------------------------------------------------------
   ProgressBar1.StepBy(0);                                     // ---
   labelLoading.Caption := 'Conectando ao Banco de Dados...';
+  Update;
   Application.CreateForm(TDM1, DM1);
   with DM1 do
   begin
@@ -57,6 +66,7 @@ begin
 
       ProgressBar1.StepIt;                                    // ---
       labelLoading.Caption := 'Descriptografando tabelas...';
+      frmLogin.Update;
 
       // Le informações
       SEMEDconnection.Database := SLcfg[0];
@@ -71,6 +81,7 @@ begin
 
     ProgressBar1.StepIt;                                     // ---
     labelLoading.Caption := 'Realizando ligações...';
+    frmLogin.Update;
 
     //Habilita tabelas
     tb_cidades.Active := true;
@@ -85,6 +96,7 @@ begin
   // MURAL ---------------------------------------------------------------------
   ProgressBar1.StepIt;                                     // ---
   labelLoading.Caption := 'Atualizando Mural de Recados...';
+  Update;
 
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TfrmCadastroMural, frmCadastroMural);
@@ -93,6 +105,7 @@ begin
   // INICIAR -------------------------------------------------------------------
   ProgressBar1.StepIt;                                     // ---
   labelLoading.Caption := 'Criando Interface de usuário...';
+  Update;
 
   FrmMain.Show;
 

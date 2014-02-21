@@ -102,7 +102,6 @@ type
     tb_cargos: TZTable;
     tb_mural: TZTable;
     tb_cidades: TZTable;
-    procedure DataModuleCreate(Sender: TObject);
   private
     { private declarations }
   public
@@ -117,35 +116,6 @@ implementation
 {$R *.lfm}
 
 { TDM1 }
-
-procedure TDM1.DataModuleCreate(Sender: TObject);
-var
-  SLcfg : TStringList;
-begin
-  {try
-    // Carrega arquivo cfg
-    SLcfg := TStringList.Create;
-    SLcfg.LoadFromFile('conf/db.cfg');
-    // Le informações
-    SEMEDconnection.Database := SLcfg[0];
-    SEMEDconnection.HostName := SLcfg[1];
-    SEMEDconnection.User := SLcfg[2];
-    SEMEDconnection.Password := SLcfg[3];
-    // Conecta ao banco
-    SEMEDconnection.Connected := true;
-
-    //Habilita tabelas
-    tb_cidades.Active := true;
-    tb_pessoas.Active := true;
-    tb_local_trabalho.Active := true;
-    querycontratos.Active := true;
-    tb_cargos.Active := true;
-    tb_mural.Active := true;
-    queryCADASTROPESSOAScidades.Active := true;
-  finally
-    SLcfg.Free;
-  end;       }
-end;
 
 end.
 

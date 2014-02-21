@@ -7,7 +7,6 @@ object frmLogin: TfrmLogin
   Caption = 'frmLogin'
   ClientHeight = 319
   ClientWidth = 551
-  OnShow = FormShow
   LCLVersion = '1.0.14.0'
   object ProgressBar1: TProgressBar
     Left = 0
@@ -23,11 +22,35 @@ object frmLogin: TfrmLogin
     Left = 5
     Height = 17
     Top = 278
-    Width = 75
-    Caption = 'Caregando...'
+    Width = 117
+    Caption = 'Aguardando Login...'
     Font.Height = -13
     Font.Name = 'Arial'
     ParentColor = False
     ParentFont = False
+  end
+  object BtnEntrar: TBitBtn
+    Left = 352
+    Height = 54
+    Top = 224
+    Width = 90
+    Caption = 'Entrar'
+    Font.Height = -15
+    Font.Name = 'Arial'
+    OnClick = BtnEntrarClick
+    ParentFont = False
+    TabOrder = 1
+  end
+  object BtnSair: TBitBtn
+    Left = 448
+    Height = 54
+    Top = 224
+    Width = 90
+    Caption = 'Sair'
+    Font.Height = -15
+    Font.Name = 'Arial'
+    OnClick = BtnSairClick
+    ParentFont = False
+    TabOrder = 2
   end
 end
