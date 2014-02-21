@@ -89,7 +89,7 @@ end;
 
 procedure TFrmMain.Timer1Timer(Sender: TObject);         // Atualiza data e hora do barra inferior
 begin
-  StatusBar.Panels[3].Text := TimeToStr(Time)+'  -  '+ DateToStr(Date)+'  ';
+  StatusBar.Panels[4].Text := TimeToStr(Time)+'  -  '+ DateToStr(Date)+'  ';
 end;
 
 // MENU SUPERIOR ---------------------------------------------------------------

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls,
-  StdCtrls, ExtCtrls, Buttons, types;
+  StdCtrls, ExtCtrls, Buttons, types, db;
 
 type
 
@@ -15,6 +15,11 @@ type
   TfrmLogin = class(TForm)
     BtnEntrar: TBitBtn;
     BtnSair: TBitBtn;
+    dsUsuarios: TDatasource;
+    labelUsuario: TEdit;
+    labelSenha: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
     labelLoading: TLabel;
     ProgressBar1: TProgressBar;
     procedure BtnEntrarClick(Sender: TObject);
@@ -45,7 +50,25 @@ end;
 
 procedure TfrmLogin.BtnEntrarClick(Sender: TObject);
 begin
-  IniciarSistema;
+  // Cria DM e conecta tabela
+  Application.CreateForm(TDM1, DM1);
+  DM1.tb_usuarios.Active := true;
+
+  // Autentica usuário
+  if dsUsuarios.DataSet.Locate('login_usuario', labelUsuario.Text, []) then
+  begin
+    if (dsUsuarios.DataSet.FieldByName('senha_usuario').Value = labelSenha.Text) then
+    begin
+      ProgressBar1.StepBy(0);
+      labelLoading.Caption := 'Pesquisando usuário...';
+      Update;
+      IniciarSistema;
+    end
+    else
+      ShowMessage('Usuário ou senha não encontrado!');
+  end
+  else
+    ShowMessage('Usuário ou senha não encontrado!');
 end;
 
 procedure TfrmLogin.IniciarSistema;                 // Inicia Sistema
@@ -53,10 +76,9 @@ var
   SLcfg : TStringList;
 begin
   // BANCO DE DADOS ------------------------------------------------------------
-  ProgressBar1.StepBy(0);                                     // ---
+  ProgressBar1.StepIt;                                     // ---
   labelLoading.Caption := 'Conectando ao Banco de Dados...';
   Update;
-  Application.CreateForm(TDM1, DM1);
   with DM1 do
   begin
     try
@@ -101,6 +123,10 @@ begin
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TfrmCadastroMural, frmCadastroMural);
   frmCadastroMural.AtualizarMural;
+
+  // BARRA de STATUS -----------------------------------------------------------
+
+  FrmMain.StatusBar.Panels[3].Text := dsUsuarios.DataSet.FieldByName('nome_usuario').Value;
 
   // INICIAR -------------------------------------------------------------------
   ProgressBar1.StepIt;                                     // ---

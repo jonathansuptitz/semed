@@ -1,8 +1,8 @@
 object DM1: TDM1
   OldCreateOrder = False
   Height = 422
-  HorizontalOffset = 635
-  VerticalOffset = 125
+  HorizontalOffset = 419
+  VerticalOffset = 201
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -852,6 +852,55 @@ object DM1: TDM1
       ReadOnly = False
       Required = True
       Size = 8
+    end
+  end
+  object tb_usuarios: TZTable
+    Connection = SEMEDconnection
+    TableName = 'tb_usuarios'
+    left = 141
+    top = 96
+    object tb_usuarioscodigo_usuario: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_usuario'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object tb_usuarioslogin_usuario: TStringField
+      DisplayWidth = 80
+      FieldKind = fkData
+      FieldName = 'login_usuario'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
+    end
+    object tb_usuariossenha_usuario: TStringField
+      DisplayWidth = 80
+      FieldKind = fkData
+      FieldName = 'senha_usuario'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
+    end
+    object tb_usuariosnome_usuario: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'nome_usuario'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
     end
   end
 end

@@ -87,11 +87,11 @@ CREATE TABLE `tb_contratos` (
   `jornada_trabalho_contrato` int(3) NOT NULL,
   `codigo_pessoa` int(11) NOT NULL,
   `codigo_cargo` int(11) NOT NULL,
-  `testemunha_1_contrato` varchar(100) not null,
-  `cpf_teste_1_contrato` varchar(16) not null,
-  `testemunha_2_contrato` varchar(100) not null,
-  `cpf_teste_2_contrato` varchar(16) not null,
-  `tipo_contratacao_contrato` varchar(20) not null,
+  `testemunha_1_contrato` varchar(100) NOT NULL,
+  `cpf_teste_1_contrato` varchar(16) NOT NULL,
+  `testemunha_2_contrato` varchar(100) NOT NULL,
+  `cpf_teste_2_contrato` varchar(16) NOT NULL,
+  `tipo_contratacao_contrato` varchar(20) NOT NULL,
   PRIMARY KEY (`codigo_contrato`),
   KEY `fk_tb_contratos_tb_pessoas1_idx` (`codigo_pessoa`),
   KEY `fk_tb_contratos_tb_cargos1_idx` (`codigo_cargo`),
@@ -177,7 +177,7 @@ CREATE TABLE `tb_mural` (
   `data_mural` varchar(20) NOT NULL,
   `conteudo_mural` varchar(200) NOT NULL,
   PRIMARY KEY (`codigo_mural`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,6 +186,7 @@ CREATE TABLE `tb_mural` (
 
 LOCK TABLES `tb_mural` WRITE;
 /*!40000 ALTER TABLE `tb_mural` DISABLE KEYS */;
+INSERT INTO `tb_mural` VALUES (1,'Roberto Luiz Debarba','21/2/2014 00:42:09','Recado de Teste'),(2,'Roberto Luiz Debarba','21/2/2014 00:42:23','teste 2');
 /*!40000 ALTER TABLE `tb_mural` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,6 +247,32 @@ LOCK TABLES `tb_pessoas` WRITE;
 INSERT INTO `tb_pessoas` VALUES (1,'Roberto Luiz Debarba','154,138,45-52','44944844','24/03/1995','Brasileiro','Solteiro(a)','Nações','Rua Egito, 574. Casa.\r\nEm frente ao residencial Egito.','roberto.debarba@gmail.com','(47)3382-1947',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4681,'89120000'),(2,'4494','3454','449','191','449','Casado(a)','1919','9919','4949','49','494',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,221,'94944');
 /*!40000 ALTER TABLE `tb_pessoas` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tb_usuarios`
+--
+
+DROP TABLE IF EXISTS `tb_usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tb_usuarios` (
+  `codigo_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `login_usuario` varchar(20) NOT NULL,
+  `senha_usuario` varchar(20) NOT NULL,
+  `nome_usuario` varchar(45) NOT NULL,
+  PRIMARY KEY (`codigo_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tb_usuarios`
+--
+
+LOCK TABLES `tb_usuarios` WRITE;
+/*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
+INSERT INTO `tb_usuarios` VALUES (1,'roberto.debarba','luiz5505','Roberto Luiz Debarba'),(2,'1','1','Beta Tester');
+/*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -256,4 +283,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-01-23 21:21:20
+-- Dump completed on 2014-02-21  0:43:46

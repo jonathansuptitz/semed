@@ -1,7 +1,7 @@
 object FrmMain: TFrmMain
-  Left = 283
+  Left = 250
   Height = 578
-  Top = 30
+  Top = 105
   Width = 1075
   BorderStyle = bsSingle
   Caption = 'SEMED | Módulo de Contratos'
@@ -1210,6 +1210,10 @@ object FrmMain: TFrmMain
         Alignment = taCenter
         Text = 'Módulo de Contratos'
         Width = 200
+      end    
+      item
+        Alignment = taCenter
+        Width = 250
       end    
       item
         Alignment = taRightJustify

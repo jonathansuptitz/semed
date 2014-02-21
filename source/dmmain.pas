@@ -96,12 +96,17 @@ type
     tb_pessoastelefone2_pessoa: TStringField;
     queryCADASTROPESSOAScidades: TZReadOnlyQuery;
     tb_local_trabalho: TZQuery;
+    tb_usuarioscodigo_usuario: TLongintField;
+    tb_usuarioslogin_usuario: TStringField;
+    tb_usuariosnome_usuario: TStringField;
+    tb_usuariossenha_usuario: TStringField;
     ZReadOnlyQuery1codigo_cidade: TLongintField;
     ZReadOnlyQuery1nome_cidade: TStringField;
     ZReadOnlyQuery1uf_cidade: TStringField;
     tb_cargos: TZTable;
     tb_mural: TZTable;
     tb_cidades: TZTable;
+    tb_usuarios: TZTable;
   private
     { private declarations }
   public
