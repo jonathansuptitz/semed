@@ -133,7 +133,6 @@ object frmContrato: TfrmContrato
     ClientHeight = 600
     ClientWidth = 1088
     TabOrder = 1
-    OnClick = PanelprincipalClick
     object DBEdtCodcontrato: TDBEdit
       Left = 176
       Height = 26
@@ -767,7 +766,7 @@ object frmContrato: TfrmContrato
   object dslocal: TDatasource
     DataSet = DM1.tb_local_trabalho
     left = 1112
-    top = 208
+    top = 224
   end
   object dspessoa: TDatasource
     DataSet = DM1.tb_pessoas
@@ -775,8 +774,8 @@ object frmContrato: TfrmContrato
     top = 160
   end
   object dscidades: TDatasource
-    DataSet = DM1.queryCADASTROPESSOAScidades
-    left = 2754
-    top = 177
+    DataSet = DM1.tb_cidades
+    left = 1112
+    top = 336
   end
 end

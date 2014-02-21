@@ -1,0 +1,40 @@
+object frmhtml: Tfrmhtml
+  Left = 300
+  Height = 515
+  Top = 25
+  Width = 764
+  Caption = 'Visualizador'
+  ClientHeight = 515
+  ClientWidth = 764
+  OnShow = FormShow
+  LCLVersion = '1.0.14.0'
+  WindowState = wsMaximized
+  object Panel1: TPanel
+    Left = 632
+    Height = 515
+    Top = 0
+    Width = 132
+    Align = alRight
+    TabOrder = 0
+  end
+  object IpHtmlPanel1: TIpHtmlPanel
+    Left = 8
+    Height = 496
+    Top = 8
+    Width = 610
+    DataProvider = IpFileDataProvider1
+    FixedTypeface = 'Courier New'
+    DefaultTypeFace = 'default'
+    DefaultFontSize = 12
+    FlagErrors = False
+    PrintSettings.MarginLeft = 0.5
+    PrintSettings.MarginTop = 0.5
+    PrintSettings.MarginRight = 0.5
+    PrintSettings.MarginBottom = 0.5
+    TabOrder = 1
+  end
+  object IpFileDataProvider1: TIpFileDataProvider
+    left = 672
+    top = 368
+  end
+end

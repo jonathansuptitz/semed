@@ -50,7 +50,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="14">
+    <Units Count="16">
       <Unit0>
         <Filename Value="SEMEDcontratos.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -151,6 +151,16 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ULogin"/>
       </Unit13>
+      <Unit14>
+        <Filename Value="uhtml.lfm"/>
+        <IsPartOfProject Value="True"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="uhtml.pas"/>
+        <IsPartOfProject Value="True"/>
+        <HasResources Value="True"/>
+        <UnitName Value="uhtml"/>
+      </Unit15>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, db, FileUtil, Ipfilebroker,
  Forms, Controls, Graphics,
   Dialogs, Buttons, ExtCtrls,
-  DbCtrls, StdCtrls, EditBtn, Grids;
+  DbCtrls, StdCtrls, EditBtn, Grids, DBGrids;
 
 type
 
@@ -19,13 +19,13 @@ type
     btnlimparlocais: TBitBtn;
     Btnadicionalocal: TBitBtn;
     BtnVoltar: TBitBtn;
+    dscidades: TDatasource;
     DBComboBox1: TDBComboBox;
     DBEdtcargo: TDBEdit;
     DBEdtcpftest2: TDBEdit;
     DBEdtcpfteste1: TDBEdit;
     DBEdttest2: TDBEdit;
     DBEdtteste1: TDBEdit;
-    dscidades: TDatasource;
     DBEdthorario: TDBEdit;
     dspessoa: TDatasource;
     dslocal: TDatasource;
@@ -75,7 +75,6 @@ type
     procedure BtnVoltarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sbtpessoaClick(Sender: TObject);
-    procedure PanelprincipalClick(Sender: TObject);
     procedure RadiomanhaChange(Sender: TObject);
     procedure RadionoiteChange(Sender: TObject);
     procedure RadiotardeChange(Sender: TObject);
@@ -92,7 +91,7 @@ var
 
 implementation
 uses
-  uPesquisaPessoas,UCadastroLocalTrabalho, uCadastroCargos;
+  uPesquisaPessoas,uhtml ,UCadastroLocalTrabalho, uCadastroCargos;
 
 var
   linhas, numlocal: integer;
@@ -122,6 +121,10 @@ begin
         dsContratos.DataSet.Post; //posta
       finally
         editahtml; //chama o preenchimento do html
+
+        //exibe o preview do contrato
+        Application.CreateForm(tfrmhtml, frmhtml);
+        frmhtml.showmodal;
       end;
     end
     else
@@ -177,13 +180,14 @@ begin
   frmPesquisaPessoas.free;
 
   //filtra o dspessoa para o contrato
-  dspessoa.DataSet.Filter := 'codigo_pessoa = ''' + DBEdtFuncionario.text + '''';
-  dspessoa.DataSet.Filtered := true;
-end;
+  dspessoa.DataSet.Filtered:=false;
+  dspessoa.DataSet.Filter:='codigo_pessoa = '''+DBEdtFuncionario.text+'''';
+  dspessoa.DataSet.Filtered:=true;
 
-procedure TfrmContrato.PanelprincipalClick(Sender: TObject);
-begin
-
+  //filtra a cidade da pessoa
+  dscidades.DataSet.Filtered:=false;
+  dscidades.DataSet.Filter:='codigo_cidade = '''+dspessoa.DataSet.FieldByName('codigo_cidade').asstring+'''';
+  dscidades.DataSet.Filtered:=true;
 end;
 
 procedure TfrmContrato.RadiomanhaChange(Sender: TObject);
@@ -272,6 +276,21 @@ begin
       texto[y] := StringReplace(pstl,'varjornada',dsContratos.DataSet.FieldByName('jornada_trabalho_contrato').value,[rfIgnoreCase,rfReplaceAll]);
       texto[y] := StringReplace(pstl,'vardata',dsContratos.DataSet.FieldByName('data_contrato').value,[rfIgnoreCase,rfReplaceAll]);
       texto[y] := StringReplace(pstl,'varanoseletivo',dsContratos.DataSet.FieldByName('ano_seletivo_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varano',FormatDateTime('yyyy',now),[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcodigocontrato',dsContratos.DataSet.FieldByName('codigo_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varnacionalidade',dspessoa.DataSet.FieldByName('nacionalidade_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varestadocivil',dspessoa.DataSet.FieldByName('estado_civil_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varrg',dspessoa.DataSet.FieldByName('rg_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcpf',dspessoa.DataSet.FieldByName('cpf_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varendereco',dspessoa.DataSet.FieldByName('endereco_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varbairro',dspessoa.DataSet.FieldByName('bairro_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcidade',dscidades.DataSet.FieldByName('nome_cidade').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varjustificativa',dsContratos.DataSet.FieldByName('justificativa_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcargahoraria',dsContratos.DataSet.FieldByName('jornada_trabalho_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcpfteste1',dsContratos.DataSet.FieldByName('cpf_teste_1_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'vartestemunha1',dsContratos.DataSet.FieldByName('testemunha_1_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcpfteste2',dsContratos.DataSet.FieldByName('cpf_teste_2_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'vartestemunha2',dsContratos.DataSet.FieldByName('testemunha_2_contrato').value,[rfIgnoreCase,rfReplaceAll]);
 
       //observaçao contrato
       if DBMemoobs.text = '' then
@@ -299,7 +318,6 @@ begin
     texto.Free;
   end;
 end;
-
 // FIM -------------------------------------------------------------------------
 
 end.

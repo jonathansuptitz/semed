@@ -2,7 +2,7 @@ object DM1: TDM1
   OldCreateOrder = False
   Height = 422
   HorizontalOffset = 419
-  VerticalOffset = 201
+  VerticalOffset = 186
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -468,7 +468,7 @@ object DM1: TDM1
       Required = True
     end
     object querycontratosjustificativa_contrato: TStringField
-      DisplayWidth = 400
+      DisplayWidth = 1200
       FieldKind = fkData
       FieldName = 'justificativa_contrato'
       Index = 1
@@ -476,7 +476,7 @@ object DM1: TDM1
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = True
-      Size = 400
+      Size = 1200
     end
     object querycontratosperiodo_inicial_contrato: TStringField
       DisplayWidth = 40
@@ -618,6 +618,17 @@ object DM1: TDM1
       ReadOnly = False
       Required = True
       Size = 64
+    end
+    object querycontratostipo_contratacao_contrato: TStringField
+      DisplayWidth = 80
+      FieldKind = fkData
+      FieldName = 'tipo_contratacao_contrato'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
     end
   end
   object tb_cargos: TZTable
