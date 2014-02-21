@@ -1,12 +1,13 @@
 object frmContrato: TfrmContrato
-  Left = 140
+  Left = 135
   Height = 600
-  Top = 8
+  Top = 0
   Width = 1218
   BorderStyle = bsDialog
   Caption = 'Contrato'
   ClientHeight = 600
   ClientWidth = 1218
+  DefaultMonitor = dmMainForm
   Font.CharSet = ANSI_CHARSET
   Font.Color = clBlack
   Font.Height = -16
@@ -14,7 +15,7 @@ object frmContrato: TfrmContrato
   Font.Pitch = fpVariable
   Font.Quality = fqDraft
   OnShow = FormShow
-  Position = poScreenCenter
+  Position = poDefault
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object PanelBotoes: TPanel
@@ -79,7 +80,7 @@ object frmContrato: TfrmContrato
       TabOrder = 0
     end
     object BtnGerarcontrato: TBitBtn
-      Left = 6
+      Left = 5
       Height = 40
       Top = 10
       Width = 120
@@ -122,6 +123,15 @@ object frmContrato: TfrmContrato
       }
       OnClick = BtnGerarcontratoClick
       TabOrder = 1
+    end
+    object Button1: TButton
+      Left = 16
+      Height = 57
+      Top = 398
+      Width = 106
+      Caption = 'botao testes'
+      OnClick = Button1Click
+      TabOrder = 2
     end
   end
   object Panelprincipal: TPanel
@@ -573,6 +583,24 @@ object frmContrato: TfrmContrato
       Caption = 'Tipo de Contratação'
       ParentColor = False
     end
+    object IpHtmlPanel1: TIpHtmlPanel
+      Left = 936
+      Height = 114
+      Top = 200
+      Width = 128
+      DataProvider = IpFileDataProvider1
+      FixedTypeface = 'Courier New'
+      DefaultTypeFace = 'default'
+      DefaultFontSize = 12
+      FactBAParag = 2
+      FlagErrors = False
+      PrintSettings.MarginLeft = 0.5
+      PrintSettings.MarginTop = 0.5
+      PrintSettings.MarginRight = 0.5
+      PrintSettings.MarginBottom = 0.5
+      TabOrder = 11
+      WantTabs = False
+    end
   end
   object Panel1: TPanel
     Left = 16
@@ -777,5 +805,9 @@ object frmContrato: TfrmContrato
     DataSet = DM1.tb_cidades
     left = 1112
     top = 336
+  end
+  object IpFileDataProvider1: TIpFileDataProvider
+    left = 872
+    top = 304
   end
 end

@@ -5,10 +5,10 @@ unit ucontrato;
 interface
 
 uses
-  Classes, SysUtils, db, FileUtil, Ipfilebroker,
+  Classes, SysUtils, db, FileUtil, Ipfilebroker, IpHtml,
  Forms, Controls, Graphics,
   Dialogs, Buttons, ExtCtrls,
-  DbCtrls, StdCtrls, EditBtn, Grids, DBGrids;
+  DbCtrls, StdCtrls, EditBtn, Printers, Grids, LCLType;
 
 type
 
@@ -19,6 +19,7 @@ type
     btnlimparlocais: TBitBtn;
     Btnadicionalocal: TBitBtn;
     BtnVoltar: TBitBtn;
+    Button1: TButton;
     dscidades: TDatasource;
     DBComboBox1: TDBComboBox;
     DBEdtcargo: TDBEdit;
@@ -40,6 +41,8 @@ type
     DBEdtCodcontrato: TDBEdit;
     DBMemoobs: TDBMemo;
     edtlocal: TEdit;
+    IpFileDataProvider1: TIpFileDataProvider;
+    IpHtmlPanel1: TIpHtmlPanel;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
@@ -68,6 +71,7 @@ type
     sbtcargo: TSpeedButton;
     sbtlocal: TSpeedButton;
     StringGrid1: TStringGrid;
+    procedure Button1Click(Sender: TObject);
     procedure editahtml;
     procedure BtnadicionalocalClick(Sender: TObject);
     procedure BtnGerarcontratoClick(Sender: TObject);
@@ -91,7 +95,7 @@ var
 
 implementation
 uses
-  uPesquisaPessoas,uhtml ,UCadastroLocalTrabalho, uCadastroCargos;
+  uPesquisaPessoas,UCadastroLocalTrabalho, uCadastroCargos;
 
 var
   linhas, numlocal: integer;
@@ -111,21 +115,24 @@ begin
           (DBEdtAnoseletivo.text = '') or (DBEdtJornada.text = '') or
           (DBEdtFuncionario.text = '')) then
     begin
-      try
-        //adiciona demais campos tabela contrato
-        dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
-        dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditfinal.Text;
-        dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('dd/mm/yyyy', Date);
-        dsContratos.DataSet.FieldByName('salario_contrato').Value := dscargos.DataSet.FieldByName('salario_hora_cargo').value;
+      if Application.MessageBox('Tem certeza que os campos estão corretos?','Finalizar', MB_OKCANCEL) = idOK then
+      begin
+        try
+          //adiciona demais campos tabela contrato
+          dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
+          dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditfinal.Text;
+          dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('dd/mm/yyyy', Date);
+          dsContratos.DataSet.FieldByName('salario_contrato').Value := dscargos.DataSet.FieldByName('salario_hora_cargo').value;
 
-        dsContratos.DataSet.Post; //posta
-      finally
-        editahtml; //chama o preenchimento do html
+          dsContratos.DataSet.Post; //posta
+        finally
+          editahtml; //chama o preenchimento do html
 
-        //exibe o preview do contrato
-        Application.CreateForm(tfrmhtml, frmhtml);
-        frmhtml.showmodal;
-      end;
+          frmContrato.close;
+        end;
+      end
+      else
+        abort;
     end
     else
       ShowMessage('Preencha todos os campos!');
@@ -319,6 +326,10 @@ begin
   end;
 end;
 // FIM -------------------------------------------------------------------------
+procedure TfrmContrato.Button1Click(Sender: TObject);
+begin
+  IpHtmlPanel1.OpenURL(expandLocalHtmlFileName('contrato.html'));
+end;
 
 end.
 
