@@ -16,6 +16,7 @@ type
     BtnEntrar: TBitBtn;
     BtnSair: TBitBtn;
     dsUsuarios: TDatasource;
+    Image1: TImage;
     labelUsuario: TEdit;
     labelSenha: TEdit;
     Label1: TLabel;

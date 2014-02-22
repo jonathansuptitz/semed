@@ -136,6 +136,7 @@
         <Filename Value="usobre.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmSobre"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="USobre"/>
       </Unit11>

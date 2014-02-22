@@ -44,7 +44,8 @@ type
     editPesquisa: TEdit;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
-    Label1: TLabel;
+    Image1: TImage;
+    Label10: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -55,6 +56,7 @@ type
     Label9: TLabel;
     MenuItem1: TMenuItem;
     Panel1: TPanel;
+    Panel2: TPanel;
     popMenuHorario: TPopupMenu;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;

@@ -1,7 +1,7 @@
 object frmPesquisaPessoas: TfrmPesquisaPessoas
-  Left = 271
+  Left = 329
   Height = 435
-  Top = 168
+  Top = 145
   Width = 849
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
@@ -20,6 +20,8 @@ object frmPesquisaPessoas: TfrmPesquisaPessoas
     Align = alTop
     ClientHeight = 50
     ClientWidth = 849
+    Color = 3893827
+    ParentColor = False
     TabOrder = 0
     object editPesquisa: TEdit
       Left = 16

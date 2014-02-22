@@ -41,6 +41,7 @@ type
     DBEdtCodcontrato: TDBEdit;
     DBMemoobs: TDBMemo;
     edtlocal: TEdit;
+    Image1: TImage;
     IpFileDataProvider1: TIpFileDataProvider;
     IpHtmlPanel1: TIpHtmlPanel;
     Label1: TLabel;
@@ -51,6 +52,7 @@ type
     Label14: TLabel;
     Label15: TLabel;
     Label16: TLabel;
+    Label17: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -61,6 +63,7 @@ type
     Label9: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    Panel3: TPanel;
     Panelprincipal: TPanel;
     PanelBotoes: TPanel;
     sbtpessoa: TSpeedButton;

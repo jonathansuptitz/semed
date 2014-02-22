@@ -40,6 +40,7 @@ type
     dsCargos: TDatasource;
     editPesquisa: TEdit;
     GroupBox1: TGroupBox;
+    Image1: TImage;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
@@ -49,6 +50,7 @@ type
     Label8: TLabel;
     memoClau: TMemo;
     Panel1: TPanel;
+    Panel2: TPanel;
     procedure BtnApagarClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);

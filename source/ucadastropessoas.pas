@@ -67,6 +67,7 @@ type
     GroupBox7: TGroupBox;
     GroupBox8: TGroupBox;
     GroupBox9: TGroupBox;
+    Image1: TImage;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
@@ -104,6 +105,7 @@ type
     Label8: TLabel;
     Label9: TLabel;
     Panel1: TPanel;
+    Panel2: TPanel;
     procedure BtnApagarClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
