@@ -1,7 +1,7 @@
 object frmCadastroPessoas: TfrmCadastroPessoas
-  Left = 362
+  Left = -128
   Height = 638
-  Top = 102
+  Top = 68
   Width = 1296
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Pessoas'

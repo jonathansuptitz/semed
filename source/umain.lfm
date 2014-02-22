@@ -1374,9 +1374,16 @@ object FrmMain: TFrmMain
         OnClick = CadastroLocalTrabalhoClick
       end
     end
-    object MenuSuporte: TMenuItem
-      Caption = 'Suporte'
-      OnClick = MenuSuporteClick
+    object MenuGerenciar: TMenuItem
+      Caption = 'Gerenciar'
+      object GerenciarUsuarios: TMenuItem
+        Caption = 'Usuários'
+        OnClick = GerenciarUsuariosClick
+      end
+      object GerenciarSuporte: TMenuItem
+        Caption = 'Suporte'
+        OnClick = GerenciarSuporteClick
+      end
     end
     object MenuSobre: TMenuItem
       Caption = 'Sobre'

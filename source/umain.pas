@@ -30,7 +30,9 @@ type
     CadastroCargos: TMenuItem;
     CadastroPessoas: TMenuItem;
     CadastroSeparador1: TMenuItem;
-    MenuSuporte: TMenuItem;
+    GerenciarUsuarios: TMenuItem;
+    GerenciarSuporte: TMenuItem;
+    MenuGerenciar: TMenuItem;
     MenuSobre: TMenuItem;
     CadastroContrato: TMenuItem;
     Panel1: TPanel;
@@ -46,8 +48,10 @@ type
     procedure CadastroCargosClick(Sender: TObject);
     procedure CadastroPessoasClick(Sender: TObject);
     procedure CadastroContratoClick(Sender: TObject);
+    procedure GerenciarSuporteClick(Sender: TObject);
+    procedure GerenciarUsuariosClick(Sender: TObject);
     procedure MenuSobreClick(Sender: TObject);
-    procedure MenuSuporteClick(Sender: TObject);
+    procedure MenuGerenciarClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure BtnAtualizarClick(Sender: TObject);
     procedure BtnNovoClick(Sender: TObject);
@@ -65,7 +69,7 @@ implementation
 
 uses
   ucontrato, ucadastropessoas, UCadastroLocalTrabalho, uCadastroCargos,
-  Ucadastromural, usuporte, usobre;
+  Ucadastromural, usuporte, usobre, uUsuarios;
 
 {$R *.lfm}
 
@@ -122,7 +126,14 @@ begin
   frmCadastroLocalTrabalho.Free;
 end;
 
-procedure TFrmMain.MenuSuporteClick(Sender: TObject);                  // Suporte
+procedure TFrmMain.GerenciarUsuariosClick(Sender: TObject);            // Gerenciar usuarios
+begin
+    Application.CreateForm(TfrmUsuarios, frmUsuarios);
+    frmUsuarios.ShowModal;
+    frmUsuarios.Free;
+end;
+
+procedure TFrmMain.GerenciarSuporteClick(Sender: TObject);             // Gerenciar Suporte
 begin
   Application.CreateForm(TfrmSuporte, frmSuporte);
   frmSuporte.ShowModal;
@@ -134,6 +145,11 @@ begin
   Application.CreateForm(TfrmSobre, frmSobre);
   frmSobre.ShowModal;
   frmSobre.Free;
+end;
+
+procedure TFrmMain.MenuGerenciarClick(Sender: TObject);
+begin
+
 end;
 
 // MENU ------------------------------------------------------------------------
