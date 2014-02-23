@@ -7,6 +7,7 @@ object frmLogin: TfrmLogin
   Caption = 'frmLogin'
   ClientHeight = 346
   ClientWidth = 536
+  OnShow = FormShow
   Position = poDesktopCenter
   LCLVersion = '1.0.14.0'
   object Image1: TImage

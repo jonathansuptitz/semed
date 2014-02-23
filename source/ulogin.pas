@@ -25,6 +25,7 @@ type
     ProgressBar1: TProgressBar;
     procedure BtnEntrarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { private declarations }
     procedure IniciarSistema;
@@ -44,17 +45,19 @@ uses
 
 { TfrmLogin }
 
-procedure TfrmLogin.BtnSairClick(Sender: TObject);
-begin
-  Application.Terminate;
-end;
+// INICIO ----------------------------------------------------------------------
 
-procedure TfrmLogin.BtnEntrarClick(Sender: TObject);
+procedure TfrmLogin.FormShow(Sender: TObject);
 begin
   // Cria DM e conecta tabela
   Application.CreateForm(TDM1, DM1);
   DM1.tb_usuarios.Active := true;
+end;
 
+// BOTOES ----------------------------------------------------------------------
+
+procedure TfrmLogin.BtnEntrarClick(Sender: TObject);         // Entrar
+begin
   // Autentica usuário
   if dsUsuarios.DataSet.Locate('login_usuario', labelUsuario.Text, []) then
   begin
@@ -72,6 +75,13 @@ begin
   else
     ShowMessage('Usuário ou senha não encontrado!');
 end;
+
+procedure TfrmLogin.BtnSairClick(Sender: TObject);           // Sair
+begin
+  Application.Terminate;
+end;
+
+// INICIAR SISTEMA -------------------------------------------------------------
 
 procedure TfrmLogin.IniciarSistema;                 // Inicia Sistema
 var

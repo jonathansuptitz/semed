@@ -150,14 +150,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="USuporte"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="23" Y="6"/>
         <UsageCount Value="67"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="ulogin.pas"/>
@@ -166,10 +162,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ULogin"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="45"/>
-        <CursorPos X="28" Y="80"/>
+        <TopLine Value="1"/>
+        <CursorPos X="81" Y="84"/>
         <UsageCount Value="46"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -379,15 +376,55 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="2" HistoryIndex="1">
+    <JumpHistory Count="12" HistoryIndex="11">
       <Position1>
-        <Filename Value="usuporte.pas"/>
-        <Caret Line="1" Column="1" TopLine="1"/>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="76" Column="7" TopLine="56"/>
       </Position1>
       <Position2>
-        <Filename Value="usuporte.pas"/>
-        <Caret Line="6" Column="23" TopLine="1"/>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="53" Column="30" TopLine="42"/>
       </Position2>
+      <Position3>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="55" Column="1" TopLine="42"/>
+      </Position3>
+      <Position4>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="56" Column="1" TopLine="42"/>
+      </Position4>
+      <Position5>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="59" Column="1" TopLine="42"/>
+      </Position5>
+      <Position6>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="61" Column="1" TopLine="42"/>
+      </Position6>
+      <Position7>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="71" Column="1" TopLine="60"/>
+      </Position7>
+      <Position8>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="72" Column="1" TopLine="60"/>
+      </Position8>
+      <Position9>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="80" Column="1" TopLine="60"/>
+      </Position9>
+      <Position10>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="55" Column="1" TopLine="42"/>
+      </Position10>
+      <Position11>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="56" Column="1" TopLine="42"/>
+      </Position11>
+      <Position12>
+        <Filename Value="ulogin.pas"/>
+        <Caret Line="59" Column="6" TopLine="37"/>
+      </Position12>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>
