@@ -36,16 +36,21 @@ type
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     DBEdit4: TDBEdit;
-    DBEdit5: TDBEdit;
-    DBEdit6: TDBEdit;
-    DBEdit7: TDBEdit;
     DBGrid1: TDBGrid;
     dsLocal_trabalho: TDatasource;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Edit6: TEdit;
     editPesquisa: TEdit;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     Image1: TImage;
+    Label1: TLabel;
     Label10: TLabel;
+    Label11: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -54,13 +59,8 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
-    MenuItem1: TMenuItem;
     Panel1: TPanel;
     Panel2: TPanel;
-    popMenuHorario: TPopupMenu;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
     procedure BtnApagarClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
@@ -69,8 +69,15 @@ type
     procedure BtnSelecionarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
+    procedure DBEdit1Change(Sender: TObject);
     procedure DBEdit3KeyPress(Sender: TObject; var Key: char);
     procedure DBGrid1Enter(Sender: TObject);
+    procedure Edit1KeyPress(Sender: TObject; var Key: char);
+    procedure Edit2KeyPress(Sender: TObject; var Key: char);
+    procedure Edit3KeyPress(Sender: TObject; var Key: char);
+    procedure Edit4KeyPress(Sender: TObject; var Key: char);
+    procedure Edit5KeyPress(Sender: TObject; var Key: char);
+    procedure Edit6KeyPress(Sender: TObject; var Key: char);
     procedure editPesquisaChange(Sender: TObject);
     procedure editPesquisaKeyPress(Sender: TObject; var Key: char);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -78,9 +85,6 @@ type
     procedure EditOFF;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
-    procedure SpeedButton3Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -118,15 +122,91 @@ begin                                                        // começa a digita
     editPesquisa.Text := '';
 end;
 
+procedure TfrmCadastroLocalTrabalho.DBEdit1Change(Sender: TObject); // Carrega campos de horarios
+var
+  horario, hMat : string;
+  i : integer;
+begin
+  if (DBEdit1.Text <> '') then
+  begin
+    // Carrega horarios para campos
+      // Matutino
+    hMat := dsLocal_trabalho.DataSet.FieldByName('horario_matutino_trabalho').Value;
+
+    horario := '';
+    for i := 1 to Length(hMat) do
+    begin
+      if hmat[i] <> '-' then
+      begin
+        horario := horario + hMat[i];
+      end
+      else
+      begin
+        Edit1.Text := horario;
+        horario := '';
+      end;
+    end;
+    Edit2.Text := horario;
+
+      // Vespertino
+    hMat := dsLocal_trabalho.DataSet.FieldByName('horario_vespertino_trabalho').Value;
+
+    horario := '';
+    for i := 1 to Length(hMat) do
+    begin
+      if hmat[i] <> '-' then
+      begin
+        horario := horario + hMat[i];
+      end
+      else
+      begin
+        Edit3.Text := horario;
+        horario := '';
+      end;
+    end;
+    Edit4.Text := horario;
+
+      // Noturno
+    hMat := dsLocal_trabalho.DataSet.FieldByName('horario_noturno_trabalho').Value;
+
+    horario := '';
+    for i := 1 to Length(hMat) do
+    begin
+      if hmat[i] <> '-' then
+      begin
+        horario := horario + hMat[i];
+      end
+      else
+      begin
+        Edit5.Text := horario;
+        horario := '';
+      end;
+    end;
+    Edit6.Text := horario;
+  end
+  else
+  begin                    // Limpa campos
+    Edit1.Text := '';
+    Edit2.Text := '';
+    Edit3.Text := '';
+    Edit4.Text := '';
+    Edit5.Text := '';
+    Edit6.Text := '';
+  end;
+end;
+
 // PREVISAO DE ERROS -----------------------------------------------------------
 procedure TfrmCadastroLocalTrabalho.EditON;        // Habilitar Edição
 begin
   DBEdit2.ReadOnly := false;
   DBEdit3.ReadOnly := false;
   DBEdit4.ReadOnly := false;
-  DBEdit5.ReadOnly := false;
-  DBEdit6.ReadOnly := false;
-  DBEdit7.ReadOnly := false;
+  Edit1.ReadOnly := false;
+  Edit2.ReadOnly := false;
+  Edit3.ReadOnly := false;
+  Edit4.ReadOnly := false;
+  Edit5.ReadOnly := false;
+  Edit6.ReadOnly := false;
 
   BtnSalvar.Enabled := true;
   BtnCancelar.Enabled := true;
@@ -142,9 +222,12 @@ begin
   DBEdit2.ReadOnly := true;
   DBEdit3.ReadOnly := true;
   DBEdit4.ReadOnly := true;
-  DBEdit5.ReadOnly := true;
-  DBEdit6.ReadOnly := true;
-  DBEdit7.ReadOnly := true;
+  Edit1.ReadOnly := true;
+  Edit2.ReadOnly := true;
+  Edit3.ReadOnly := true;
+  Edit4.ReadOnly := true;
+  Edit5.ReadOnly := true;
+  Edit6.ReadOnly := true;
 
   BtnSalvar.Enabled := false;
   BtnCancelar.Enabled := false;
@@ -161,19 +244,40 @@ begin
   EditOFF;
 end;
 
-procedure TfrmCadastroLocalTrabalho.SpeedButton1Click(Sender: TObject); // Info horario
+procedure TfrmCadastroLocalTrabalho.Edit1KeyPress(Sender: TObject; var Key: char
+  );                                                               // MASC Horario
 begin
-  popMenuHorario.PopUp;
+  Utilidades.MascHorario(Edit1, Key);
 end;
 
-procedure TfrmCadastroLocalTrabalho.SpeedButton2Click(Sender: TObject); // Info horario
+procedure TfrmCadastroLocalTrabalho.Edit2KeyPress(Sender: TObject; var Key: char
+  );                                                               // MASC Horario
 begin
-  popMenuHorario.PopUp;
+  Utilidades.MascHorario(Edit2, Key);
 end;
 
-procedure TfrmCadastroLocalTrabalho.SpeedButton3Click(Sender: TObject); // Info horario
+procedure TfrmCadastroLocalTrabalho.Edit3KeyPress(Sender: TObject; var Key: char
+  );                                                               // MASC Horario
 begin
-  popMenuHorario.PopUp;
+  Utilidades.MascHorario(Edit3, Key);
+end;
+
+procedure TfrmCadastroLocalTrabalho.Edit4KeyPress(Sender: TObject; var Key: char
+  );                                                               // MASC Horario
+begin
+  Utilidades.MascHorario(Edit4, Key);
+end;
+
+procedure TfrmCadastroLocalTrabalho.Edit5KeyPress(Sender: TObject; var Key: char
+  );                                                               // MASC Horario
+begin
+  Utilidades.MascHorario(Edit5, Key);
+end;
+
+procedure TfrmCadastroLocalTrabalho.Edit6KeyPress(Sender: TObject; var Key: char
+  );                                                               // MASC Horario
+begin
+  Utilidades.MascHorario(Edit6, Key);
 end;
 
 procedure TfrmCadastroLocalTrabalho.DBEdit3KeyPress(Sender: TObject; // Masc Telefone
@@ -232,10 +336,18 @@ procedure TfrmCadastroLocalTrabalho.BtnSalvarClick(Sender: TObject);  // Salvar
 begin
   if (DBEdit2.Text = '') or (DBEdit3.Text = '') or (DBEdit4.Text = '') then  // Se campos principais nao
     ShowMessage('Os campos * são obrigatorios!')                             // estiverem preenchidos
-  else if (DBEdit5.Text = '') or (DBEdit6.Text = '') or (DBEdit7.Text = '') then  // Se nenhum campo de horario
-    ShowMessage('No minimo um campo de horário deve ser preenchido!')             // estiver preenchido
+  else if ((Edit1.Text = '') or (Edit2.Text = '')) and ((Edit3.Text = '') or (Edit4.Text = ''))
+            and ((Edit5.Text = '') or (Edit6.Text = '')) then                   // Se nenhum campo de horario
+    ShowMessage('No minimo um campo de horário deve ser preenchido!')        // estiver preenchido
   else
   begin
+    dsLocal_trabalho.DataSet.FieldByName('horario_matutino_trabalho').Value := Edit1.Text +
+                                          ' - ' + Edit2.Text;
+    dsLocal_trabalho.DataSet.FieldByName('horario_vespertino_trabalho').Value := Edit3.Text +
+                                          ' - ' + Edit4.Text;
+    dsLocal_trabalho.DataSet.FieldByName('horario_noturno_trabalho').Value := Edit5.Text +
+                                          ' - ' + Edit6.Text;
+
     dsLocal_trabalho.DataSet.Post;    // Salva
     ShowMessage('Registro salvo com sucesso!');
 

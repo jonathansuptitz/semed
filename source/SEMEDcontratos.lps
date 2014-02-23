@@ -85,8 +85,9 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="UUtilidades"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="171"/>
-        <CursorPos X="80" Y="217"/>
+        <TopLine Value="56"/>
+        <CursorPos X="32" Y="261"/>
+        <FoldState Value=" T3iK0{f4 pjJmM0H2Z"/>
         <UsageCount Value="210"/>
       </Unit6>
       <Unit7>
@@ -97,8 +98,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UCadastroLocalTrabalho"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="231"/>
-        <CursorPos X="3" Y="233"/>
+        <TopLine Value="181"/>
+        <CursorPos X="25" Y="193"/>
+        <FoldState Value=" T3lQ0J1,"/>
         <UsageCount Value="207"/>
       </Unit7>
       <Unit8>
@@ -109,7 +111,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroCargos"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="266"/>
+        <TopLine Value="265"/>
         <CursorPos X="44" Y="269"/>
         <UsageCount Value="205"/>
       </Unit8>
@@ -127,7 +129,7 @@
         <UnitName Value="UCadastroMural"/>
         <WindowIndex Value="0"/>
         <TopLine Value="42"/>
-        <CursorPos X="18" Y="46"/>
+        <CursorPos X="1" Y="54"/>
         <UsageCount Value="257"/>
       </Unit10>
       <Unit11>
@@ -140,7 +142,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="65"/>
+        <UsageCount Value="67"/>
       </Unit11>
       <Unit12>
         <Filename Value="usuporte.pas"/>
@@ -148,7 +150,7 @@
         <ComponentName Value="frmSuporte"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="USuporte"/>
-        <UsageCount Value="65"/>
+        <UsageCount Value="67"/>
       </Unit12>
       <Unit13>
         <Filename Value="ulogin.pas"/>
@@ -160,9 +162,9 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="67"/>
-        <CursorPos X="12" Y="185"/>
-        <UsageCount Value="44"/>
+        <TopLine Value="45"/>
+        <CursorPos X="28" Y="80"/>
+        <UsageCount Value="46"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit13>
@@ -176,7 +178,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="126"/>
         <CursorPos X="81" Y="66"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="28"/>
       </Unit14>
       <Unit15>
         <Filename Value="uhtml.lfm"/>
@@ -264,7 +266,7 @@
         <Filename Value="C:\lazarus\lcl\include\customedit.inc"/>
         <WindowIndex Value="0"/>
         <TopLine Value="519"/>
-        <CursorPos X="1" Y="530"/>
+        <CursorPos X="30" Y="528"/>
         <UsageCount Value="10"/>
       </Unit25>
       <Unit26>
@@ -371,127 +373,6 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="30" HistoryIndex="29">
-      <Position1>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="107" Column="1" TopLine="94"/>
-      </Position1>
-      <Position2>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="100" Column="1" TopLine="94"/>
-      </Position2>
-      <Position3>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="102" Column="1" TopLine="94"/>
-      </Position3>
-      <Position4>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="110" Column="1" TopLine="94"/>
-      </Position4>
-      <Position5>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="100" Column="1" TopLine="94"/>
-      </Position5>
-      <Position6>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="102" Column="1" TopLine="94"/>
-      </Position6>
-      <Position7>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="110" Column="1" TopLine="94"/>
-      </Position7>
-      <Position8>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="100" Column="1" TopLine="94"/>
-      </Position8>
-      <Position9>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="102" Column="1" TopLine="94"/>
-      </Position9>
-      <Position10>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="110" Column="1" TopLine="94"/>
-      </Position10>
-      <Position11>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="100" Column="1" TopLine="94"/>
-      </Position11>
-      <Position12>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="102" Column="1" TopLine="94"/>
-      </Position12>
-      <Position13>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="105" Column="1" TopLine="94"/>
-      </Position13>
-      <Position14>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="107" Column="1" TopLine="94"/>
-      </Position14>
-      <Position15>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="100" Column="1" TopLine="94"/>
-      </Position15>
-      <Position16>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="102" Column="1" TopLine="94"/>
-      </Position16>
-      <Position17>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="110" Column="1" TopLine="94"/>
-      </Position17>
-      <Position18>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="100" Column="1" TopLine="94"/>
-      </Position18>
-      <Position19>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="102" Column="1" TopLine="94"/>
-      </Position19>
-      <Position20>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="110" Column="1" TopLine="94"/>
-      </Position20>
-      <Position21>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="100" Column="1" TopLine="94"/>
-      </Position21>
-      <Position22>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="102" Column="1" TopLine="94"/>
-      </Position22>
-      <Position23>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="110" Column="1" TopLine="94"/>
-      </Position23>
-      <Position24>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="100" Column="1" TopLine="94"/>
-      </Position24>
-      <Position25>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="102" Column="1" TopLine="94"/>
-      </Position25>
-      <Position26>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="105" Column="30" TopLine="94"/>
-      </Position26>
-      <Position27>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="130" Column="18" TopLine="109"/>
-      </Position27>
-      <Position28>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="89" Column="17" TopLine="75"/>
-      </Position28>
-      <Position29>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="146" Column="42" TopLine="132"/>
-      </Position29>
-      <Position30>
-        <Filename Value="ulogin.pas"/>
-        <Caret Line="91" Column="14" TopLine="80"/>
-      </Position30>
-    </JumpHistory>
+    <JumpHistory Count="0" HistoryIndex="-1"/>
   </ProjectSession>
 </CONFIG>

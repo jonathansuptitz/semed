@@ -2079,9 +2079,11 @@ object frmLogin: TfrmLogin
     Height = 25
     Top = 284
     Width = 215
+    EchoMode = emPassword
     Font.Height = -15
     Font.Name = 'Arial'
     ParentFont = False
+    PasswordChar = '*'
     TabOrder = 1
   end
   object Label1: TLabel

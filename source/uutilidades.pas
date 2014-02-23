@@ -49,6 +49,11 @@ type
                                                               ex: utilidades.MascCEP(Edit2, Key);
                                                               }
 
+      procedure MascHorario(campo : Tcomponent; var key : char); {Mascara Horario, parametros: componente,
+                Utilizar no evento "OnKeyPress"               Key do procedure.
+                                                              ex: utilidades.MascHorario(Edit2, Key);
+                                                              }
+
   end;
 
 var
@@ -210,7 +215,10 @@ begin
         Key := #0{nil};
     end;
 
-    (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
+    if campo.ClassName = 'TDBEdit' then
+      (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text)
+    else if campo.ClassName = 'TEdit' then
+      (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
   end;
 end;
 
@@ -244,7 +252,10 @@ begin
         Key := #0 {nil};
     end;
 
-    (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
+    if campo.ClassName = 'TDBEdit' then
+      (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text)
+    else if campo.ClassName = 'TEdit' then
+      (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
   end;
 end;
 
@@ -280,7 +291,10 @@ begin
         Key := #0 {nil};
     end;
 
-    (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
+    if campo.ClassName = 'TDBEdit' then
+      (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text)
+    else if campo.ClassName = 'TEdit' then
+      (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
   end;
 end;
 
@@ -325,9 +339,40 @@ begin
         Key := #0{nil};
     end;
 
-    (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text);
+    if campo.ClassName = 'TDBEdit' then
+      (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text)
+    else if campo.ClassName = 'TEdit' then
+      (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
   end;
 end;
 
+procedure TUtilidades.MascHorario(campo : Tcomponent; var key : char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+  //
+  if (Key <> #8{backspace}) then
+  begin
+    if campo.ClassName = 'TDBEdit' then
+    begin
+      if LengTh((campo as TDBEdit).text) = 2 then
+        (campo as TDBEdit).text := (campo as TDBEdit).text + ':'
+      else if LengTh((campo as TDBEdit).text) = 5 then
+        Key := #0 {nil};
+    end
+    else if campo.ClassName = 'TEdit' then
+    begin
+      if LengTh((campo as TEdit).text) = 2 then
+        (campo as TEdit).text := (campo as TEdit).text + ':'
+      else if LengTh((campo as TEdit).text) = 5 then
+        Key := #0 {nil};
+    end;
+
+    if campo.ClassName = 'TDBEdit' then
+      (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text)
+    else if campo.ClassName = 'TEdit' then
+      (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
+  end;
+end;
 end.
 
