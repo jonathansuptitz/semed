@@ -144,6 +144,7 @@
         <Filename Value="usuporte.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmSuporte"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="USuporte"/>
       </Unit12>
