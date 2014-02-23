@@ -1,7 +1,7 @@
 object FrmMain: TFrmMain
-  Left = 310
+  Left = 48
   Height = 578
-  Top = 94
+  Top = 76
   Width = 1075
   BorderStyle = bsSingle
   Caption = 'SEMED | Módulo de Contratos'
@@ -9,6 +9,7 @@ object FrmMain: TFrmMain
   ClientWidth = 1075
   Menu = MainMenu1
   OnClose = FormClose
+  ShowInTaskBar = stAlways
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object Panel1: TPanel

@@ -63,6 +63,7 @@ begin
       ProgressBar1.StepBy(0);
       labelLoading.Caption := 'Pesquisando usuário...';
       Update;
+      Sleep(500);
       IniciarSistema;
     end
     else
@@ -74,37 +75,84 @@ end;
 
 procedure TfrmLogin.IniciarSistema;                 // Inicia Sistema
 var
-  SLcfg : TStringList;
+  SL, SLdescript : TStringList;
+  i, x : integer;
+  caracCript, linha, linhaDescript : string;
+  caracDescript : char;
+
+  DBnome, DBip, DBusu, DBsenha : string;
 begin
   // BANCO DE DADOS ------------------------------------------------------------
+  // Ler CFG --------------------------
+  ProgressBar1.StepIt;
+  labelLoading.Caption := 'Descriptografando arquivos de configuração...';
+  Update;
+  Sleep(500);
+  try
+      // Cria SL
+      SLdescript := TStringList.Create;
+      SL := TStringList.Create;
+      // Carrega arquivo cfg
+      SL.LoadFromFile('conf/db.cfg');
+
+      // Descriptografa
+      for x := 0 to SL.Count - 1 do // Varre linha a linha
+      begin
+        caracCript := '';
+        caracDescript := #0;
+        linhaDescript := '';
+        for i := 1 to Length(SL[x]) do  // Varre caracter a caracter
+        begin
+          linha := SL[x];
+
+          if linha[i] = ';' then   // Se for ";" converte para char
+          begin
+            // Descriptografa caractere
+            caracDescript := Char(trunc((StrToInt(caracCript) / 3) - 3));
+            //Adiciona a linha geral
+            linhaDescript := linhaDescript + caracDescript;
+            // Zera var que junta numeros que formam asc
+            caracCript := '';
+          end
+          else
+          begin
+            caracCript := caracCript + linha[i]; // junta numeros ate encontrar ";"
+          end;
+        end;
+        SLDescript.Add(linhaDescript);
+      end;
+
+      // Grava informações na memoria
+      DBnome := SLdescript[0];
+      DBip := SLdescript[0];
+      DBusu := SLdescript[0];
+      DBsenha := SLdescript[0];
+
+    finally
+      SL.Free;
+      SLDescript.Free;
+    end;
+
+
+  // Conectar -------------------------
   ProgressBar1.StepIt;                                     // ---
   labelLoading.Caption := 'Conectando ao Banco de Dados...';
   Update;
+  Sleep(500);
   with DM1 do
   begin
-    try
-      // Carrega arquivo cfg
-      SLcfg := TStringList.Create;
-      SLcfg.LoadFromFile('conf/db.cfg');
-
-      ProgressBar1.StepIt;                                    // ---
-      labelLoading.Caption := 'Descriptografando tabelas...';
-      frmLogin.Update;
-
-      // Le informações
-      SEMEDconnection.Database := SLcfg[0];
-      SEMEDconnection.HostName := SLcfg[1];
-      SEMEDconnection.User := SLcfg[2];
-      SEMEDconnection.Password := SLcfg[3];
-      // Conecta ao banco
-      SEMEDconnection.Connected := true;
-    finally
-      SLcfg.Free;
-    end;
+    // Le informações
+    SEMEDconnection.Database := DBnome;
+    SEMEDconnection.HostName := DBip;
+    SEMEDconnection.User := DBusu;
+    SEMEDconnection.Password := DBsenha;
+    // Conecta ao banco
+    SEMEDconnection.Connected := true;
 
     ProgressBar1.StepIt;                                     // ---
     labelLoading.Caption := 'Realizando ligações...';
     frmLogin.Update;
+    Sleep(500);
 
     //Habilita tabelas
     tb_cidades.Active := true;
@@ -120,6 +168,7 @@ begin
   ProgressBar1.StepIt;                                     // ---
   labelLoading.Caption := 'Atualizando Mural de Recados...';
   Update;
+  Sleep(500);
 
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TfrmCadastroMural, frmCadastroMural);
@@ -133,6 +182,7 @@ begin
   ProgressBar1.StepIt;                                     // ---
   labelLoading.Caption := 'Criando Interface de usuário...';
   Update;
+  Sleep(500);
 
   FrmMain.Show;
 

@@ -159,6 +159,7 @@
         <Filename Value="uusuarios.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frmUsuarios"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uusuarios"/>
       </Unit14>

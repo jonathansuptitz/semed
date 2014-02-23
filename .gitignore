@@ -1,3 +1,8 @@
 source/backup
 source/lib
-source/*.exe
+source/SEMEDcontratos.exe
+source/clp/
+source/contratoteste.html
+sourceConfig/backup
+sourceConfig/lib
+sourceConfig/*.exe

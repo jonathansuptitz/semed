@@ -1,11 +1,11 @@
 object frmLogin: TfrmLogin
   Left = 504
-  Height = 352
-  Top = 194
+  Height = 346
+  Top = 195
   Width = 536
   BorderStyle = bsNone
   Caption = 'frmLogin'
-  ClientHeight = 352
+  ClientHeight = 346
   ClientWidth = 536
   Position = poDesktopCenter
   LCLVersion = '1.0.14.0'
@@ -2021,7 +2021,7 @@ object frmLogin: TfrmLogin
   end
   object ProgressBar1: TProgressBar
     Left = 0
-    Height = 24
+    Height = 18
     Top = 328
     Width = 536
     Align = alBottom
