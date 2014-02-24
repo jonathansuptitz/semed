@@ -1,8 +1,13 @@
 object frmCadastroPessoas: TfrmCadastroPessoas
-  Left = -128
+  Left = -215
   Height = 638
-  Top = 68
+  Top = 144
   Width = 1296
+  HorzScrollBar.Page = 1279
+  HorzScrollBar.Range = 877
+  VertScrollBar.Page = 638
+  VertScrollBar.Range = 1072
+  VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Pessoas'
   ClientHeight = 638
@@ -10,1045 +15,6 @@ object frmCadastroPessoas: TfrmCadastroPessoas
   OnCreate = FormCreate
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
-  object GroupBox1: TGroupBox
-    Left = 8
-    Height = 560
-    Top = 68
-    Width = 360
-    Caption = 'Informações Pessoais'
-    ClientHeight = 542
-    ClientWidth = 356
-    Font.Height = -15
-    Font.Name = 'Arial'
-    ParentFont = False
-    TabOrder = 0
-    object DBEdit1: TDBEdit
-      Left = 110
-      Height = 25
-      Top = 24
-      Width = 235
-      DataField = 'codigo_pessoa'
-      DataSource = dsPessoas
-      ReadOnly = True
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 0
-      ParentFont = False
-      TabOrder = 0
-    end
-    object DBEdit2: TDBEdit
-      Left = 110
-      Height = 25
-      Top = 64
-      Width = 235
-      DataField = 'cpf_pessoa'
-      DataSource = dsPessoas
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 64
-      ParentFont = False
-      TabOrder = 1
-      OnExit = DBEdit2Exit
-      OnKeyPress = DBEdit2KeyPress
-    end
-    object DBEdit3: TDBEdit
-      Left = 110
-      Height = 25
-      Top = 104
-      Width = 235
-      DataField = 'nome_pessoa'
-      DataSource = dsPessoas
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 50
-      ParentFont = False
-      TabOrder = 2
-    end
-    object DBEdit4: TDBEdit
-      Left = 110
-      Height = 25
-      Top = 143
-      Width = 235
-      DataField = 'rg_pessoa'
-      DataSource = dsPessoas
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 20
-      ParentFont = False
-      TabOrder = 3
-      OnKeyPress = DBEdit4KeyPress
-    end
-    object DBEdit5: TDBEdit
-      Left = 110
-      Height = 25
-      Top = 221
-      Width = 235
-      DataField = 'nacionalidade_pessoa'
-      DataSource = dsPessoas
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 20
-      ParentFont = False
-      TabOrder = 5
-    end
-    object DBEdit7: TDBEdit
-      Left = 110
-      Height = 25
-      Top = 301
-      Width = 235
-      DataField = 'telefone1_pessoa'
-      DataSource = dsPessoas
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 60
-      ParentFont = False
-      TabOrder = 7
-      OnKeyPress = DBEdit7KeyPress
-    end
-    object DBEdit8: TDBEdit
-      Left = 110
-      Height = 25
-      Top = 341
-      Width = 235
-      DataField = 'telefone2_pessoa'
-      DataSource = dsPessoas
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 60
-      ParentFont = False
-      TabOrder = 8
-      OnKeyPress = DBEdit8KeyPress
-    end
-    object DBEdit9: TDBEdit
-      Left = 110
-      Height = 25
-      Top = 378
-      Width = 235
-      DataField = 'email_pessoa'
-      DataSource = dsPessoas
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 45
-      ParentFont = False
-      TabOrder = 9
-    end
-    object Label1: TLabel
-      Left = 11
-      Height = 18
-      Top = 31
-      Width = 51
-      Caption = 'Código:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object Label2: TLabel
-      Left = 11
-      Height = 18
-      Top = 71
-      Width = 45
-      Caption = 'CPF *:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object Label3: TLabel
-      Left = 11
-      Height = 18
-      Top = 112
-      Width = 54
-      Caption = 'Nome *:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object Label4: TLabel
-      Left = 11
-      Height = 18
-      Top = 150
-      Width = 37
-      Caption = 'RG *:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object Label5: TLabel
-      Left = 11
-      Height = 18
-      Top = 225
-      Width = 102
-      Caption = 'Nacionalidade*:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object Label6: TLabel
-      Left = 11
-      Height = 18
-      Top = 267
-      Width = 92
-      Caption = 'Estado Civil *:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object Label7: TLabel
-      Left = 11
-      Height = 18
-      Top = 308
-      Width = 83
-      Caption = 'Telefone 1 *:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object Label8: TLabel
-      Left = 11
-      Height = 18
-      Top = 348
-      Width = 73
-      Caption = 'Telefone 2:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object Label9: TLabel
-      Left = 11
-      Height = 18
-      Top = 385
-      Width = 47
-      Caption = 'E-mail:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object DBComboBox1: TDBComboBox
-      Left = 110
-      Height = 25
-      Top = 261
-      Width = 235
-      DataField = 'estado_civil_pessoa'
-      DataSource = dsPessoas
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ItemHeight = 17
-      Items.Strings = (
-        'Solteiro(a)'
-        'Casado(a)'
-        'Separado(a)'
-        'Divorciado(a)'
-        'Viúvo(a)'
-      )
-      MaxLength = 0
-      ParentFont = False
-      ReadOnly = True
-      TabOrder = 6
-    end
-    object DBEdit6: TDBEdit
-      Left = 110
-      Height = 25
-      Top = 181
-      Width = 235
-      DataField = 'nascimento_pessoa'
-      DataSource = dsPessoas
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 40
-      ParentFont = False
-      TabOrder = 4
-      OnKeyPress = DBEdit6KeyPress
-    end
-    object Label10: TLabel
-      Left = 11
-      Height = 18
-      Top = 188
-      Width = 93
-      Caption = 'Nascimento *:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-  end
-  object GroupBox2: TGroupBox
-    Left = 744
-    Height = 561
-    Top = 68
-    Width = 465
-    Caption = 'Formação Academida'
-    ClientHeight = 543
-    ClientWidth = 461
-    Font.Height = -15
-    Font.Name = 'Arial'
-    ParentFont = False
-    TabOrder = 2
-    object GroupBox4: TGroupBox
-      Left = 14
-      Height = 65
-      Top = 15
-      Width = 433
-      Caption = 'Ensino Médio'
-      ClientHeight = 47
-      ClientWidth = 429
-      TabOrder = 0
-      object DBEdit10: TDBEdit
-        Left = 14
-        Height = 25
-        Top = 16
-        Width = 170
-        DataField = 'inst_medio_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 0
-      end
-      object DBEdit11: TDBEdit
-        Left = 188
-        Height = 25
-        Top = 16
-        Width = 58
-        DataField = 'ano_medio_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 4
-        ParentFont = False
-        TabOrder = 1
-        OnKeyPress = DBEdit11KeyPress
-      end
-      object Label12: TLabel
-        Left = 188
-        Height = 18
-        Top = 0
-        Width = 30
-        Caption = 'Ano:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label11: TLabel
-        Left = 14
-        Height = 18
-        Top = 1
-        Width = 70
-        Caption = 'Instituição:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-    end
-    object GroupBox5: TGroupBox
-      Left = 14
-      Height = 65
-      Top = 88
-      Width = 433
-      Caption = 'Graduação 1'
-      ClientHeight = 47
-      ClientWidth = 429
-      TabOrder = 1
-      object DBEdit12: TDBEdit
-        Left = 14
-        Height = 25
-        Top = 16
-        Width = 170
-        DataField = 'desc_graduacao1_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 0
-      end
-      object Label13: TLabel
-        Left = 14
-        Height = 18
-        Top = 1
-        Width = 45
-        Caption = 'Curso:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label14: TLabel
-        Left = 188
-        Height = 18
-        Top = 1
-        Width = 70
-        Caption = 'Instituição:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object DBEdit13: TDBEdit
-        Left = 188
-        Height = 25
-        Top = 16
-        Width = 170
-        DataField = 'inst_graduacao1_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 1
-      end
-      object Label15: TLabel
-        Left = 362
-        Height = 18
-        Top = 1
-        Width = 30
-        Caption = 'Ano:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object DBEdit15: TDBEdit
-        Left = 362
-        Height = 25
-        Top = 16
-        Width = 58
-        DataField = 'ano_graduacao1_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 4
-        ParentFont = False
-        TabOrder = 2
-        OnKeyPress = DBEdit15KeyPress
-      end
-    end
-    object GroupBox6: TGroupBox
-      Left = 14
-      Height = 65
-      Top = 160
-      Width = 433
-      Caption = 'Graduação 2'
-      ClientHeight = 47
-      ClientWidth = 429
-      TabOrder = 2
-      object Label18: TLabel
-        Left = 362
-        Height = 18
-        Top = 1
-        Width = 30
-        Caption = 'Ano:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label17: TLabel
-        Left = 188
-        Height = 18
-        Top = 1
-        Width = 70
-        Caption = 'Instituição:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label16: TLabel
-        Left = 14
-        Height = 18
-        Top = 1
-        Width = 45
-        Caption = 'Curso:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object DBEdit14: TDBEdit
-        Left = 14
-        Height = 25
-        Top = 17
-        Width = 170
-        DataField = 'desc_graduacao2_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 0
-      end
-      object DBEdit17: TDBEdit
-        Left = 188
-        Height = 25
-        Top = 17
-        Width = 170
-        DataField = 'inst_graduacao2_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 1
-      end
-      object DBEdit16: TDBEdit
-        Left = 362
-        Height = 25
-        Top = 17
-        Width = 58
-        DataField = 'ano_graduacao2_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 4
-        ParentFont = False
-        TabOrder = 2
-        OnKeyPress = DBEdit16KeyPress
-      end
-    end
-    object GroupBox7: TGroupBox
-      Left = 14
-      Height = 65
-      Top = 234
-      Width = 433
-      Caption = 'Pos Graduação 1'
-      ClientHeight = 47
-      ClientWidth = 429
-      TabOrder = 3
-      object Label19: TLabel
-        Left = 14
-        Height = 18
-        Top = 1
-        Width = 45
-        Caption = 'Curso:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label20: TLabel
-        Left = 188
-        Height = 18
-        Top = 1
-        Width = 70
-        Caption = 'Instituição:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label21: TLabel
-        Left = 362
-        Height = 18
-        Top = 1
-        Width = 30
-        Caption = 'Ano:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object DBEdit18: TDBEdit
-        Left = 14
-        Height = 25
-        Top = 17
-        Width = 170
-        DataField = 'desc_pos1_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 0
-      end
-      object DBEdit19: TDBEdit
-        Left = 188
-        Height = 25
-        Top = 17
-        Width = 170
-        DataField = 'inst_pos1_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 1
-      end
-      object DBEdit20: TDBEdit
-        Left = 362
-        Height = 25
-        Top = 17
-        Width = 58
-        DataField = 'ano_pos1_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 4
-        ParentFont = False
-        TabOrder = 2
-        OnKeyPress = DBEdit20KeyPress
-      end
-    end
-    object GroupBox8: TGroupBox
-      Left = 14
-      Height = 65
-      Top = 308
-      Width = 433
-      Caption = 'Pos Graduação 2'
-      ClientHeight = 47
-      ClientWidth = 429
-      TabOrder = 4
-      object Label22: TLabel
-        Left = 14
-        Height = 18
-        Top = 1
-        Width = 45
-        Caption = 'Curso:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label23: TLabel
-        Left = 188
-        Height = 18
-        Top = 1
-        Width = 70
-        Caption = 'Instituição:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label24: TLabel
-        Left = 362
-        Height = 18
-        Top = 1
-        Width = 30
-        Caption = 'Ano:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object DBEdit21: TDBEdit
-        Left = 14
-        Height = 25
-        Top = 16
-        Width = 170
-        DataField = 'desc_pos2_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 0
-      end
-      object DBEdit22: TDBEdit
-        Left = 188
-        Height = 25
-        Top = 16
-        Width = 170
-        DataField = 'inst_pos2_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 1
-      end
-      object DBEdit23: TDBEdit
-        Left = 362
-        Height = 25
-        Top = 16
-        Width = 58
-        DataField = 'ano_pos2_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 4
-        ParentFont = False
-        TabOrder = 2
-        OnKeyPress = DBEdit23KeyPress
-      end
-    end
-    object GroupBox9: TGroupBox
-      Left = 14
-      Height = 65
-      Top = 384
-      Width = 433
-      Caption = 'Mestrado'
-      ClientHeight = 47
-      ClientWidth = 429
-      TabOrder = 5
-      object Label25: TLabel
-        Left = 14
-        Height = 18
-        Top = 1
-        Width = 45
-        Caption = 'Curso:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label26: TLabel
-        Left = 188
-        Height = 18
-        Top = 1
-        Width = 70
-        Caption = 'Instituição:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label27: TLabel
-        Left = 362
-        Height = 18
-        Top = 1
-        Width = 30
-        Caption = 'Ano:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object DBEdit24: TDBEdit
-        Left = 14
-        Height = 25
-        Top = 16
-        Width = 170
-        DataField = 'desc_mestrado_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 0
-      end
-      object DBEdit25: TDBEdit
-        Left = 188
-        Height = 25
-        Top = 16
-        Width = 170
-        DataField = 'inst_mestrado_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 1
-      end
-      object DBEdit26: TDBEdit
-        Left = 362
-        Height = 25
-        Top = 16
-        Width = 58
-        DataField = 'ano_mestrado_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 4
-        ParentFont = False
-        TabOrder = 2
-        OnKeyPress = DBEdit26KeyPress
-      end
-    end
-    object GroupBox10: TGroupBox
-      Left = 14
-      Height = 65
-      Top = 460
-      Width = 433
-      Caption = 'Doutorado'
-      ClientHeight = 47
-      ClientWidth = 429
-      TabOrder = 6
-      object Label28: TLabel
-        Left = 14
-        Height = 18
-        Top = 3
-        Width = 45
-        Caption = 'Curso:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label29: TLabel
-        Left = 188
-        Height = 18
-        Top = 3
-        Width = 70
-        Caption = 'Instituição:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object Label30: TLabel
-        Left = 362
-        Height = 18
-        Top = 3
-        Width = 30
-        Caption = 'Ano:'
-        Font.Height = -15
-        Font.Name = 'Arial'
-        ParentColor = False
-        ParentFont = False
-      end
-      object DBEdit27: TDBEdit
-        Left = 14
-        Height = 25
-        Top = 18
-        Width = 170
-        DataField = 'desc_doutorado_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 0
-      end
-      object DBEdit28: TDBEdit
-        Left = 188
-        Height = 25
-        Top = 18
-        Width = 170
-        DataField = 'inst_doutorado_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 45
-        ParentFont = False
-        TabOrder = 1
-      end
-      object DBEdit29: TDBEdit
-        Left = 362
-        Height = 25
-        Top = 18
-        Width = 58
-        DataField = 'ano_doutorado_pessoa'
-        DataSource = dsPessoas
-        CharCase = ecNormal
-        Font.Height = -15
-        Font.Name = 'Arial'
-        MaxLength = 4
-        ParentFont = False
-        TabOrder = 2
-        OnKeyPress = DBEdit29KeyPress
-      end
-    end
-  end
-  object GroupBox3: TGroupBox
-    Left = 376
-    Height = 561
-    Top = 68
-    Width = 360
-    Caption = 'Endereço'
-    ClientHeight = 543
-    ClientWidth = 356
-    Font.Height = -15
-    Font.Name = 'Arial'
-    ParentFont = False
-    TabOrder = 1
-    object DBEdit31: TDBEdit
-      Left = 86
-      Height = 25
-      Top = 181
-      Width = 255
-      DataField = 'bairro_pessoa'
-      DataSource = dsPessoas
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 45
-      ParentFont = False
-      TabOrder = 1
-    end
-    object Label31: TLabel
-      Left = 14
-      Height = 18
-      Top = 31
-      Width = 74
-      Caption = 'Endereço*:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object Label32: TLabel
-      Left = 14
-      Height = 18
-      Top = 188
-      Width = 54
-      Caption = 'Bairro *:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object Label33: TLabel
-      Left = 14
-      Height = 18
-      Top = 267
-      Width = 61
-      Caption = 'Cidade *:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object comboUF: TComboBox
-      Left = 86
-      Height = 25
-      Top = 222
-      Width = 255
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ItemHeight = 17
-      Items.Strings = (
-        'AC'
-        'AL'
-        'AM'
-        'AP'
-        'BA'
-        'CE'
-        'DF'
-        'ES'
-        'GO'
-        'MA'
-        'MG'
-        'MS'
-        'MT'
-        'PA'
-        'PB'
-        'PE'
-        'PI'
-        'PR'
-        'RJ'
-        'RN'
-        'RO'
-        'RR'
-        'RS'
-        'SC'
-        'SE'
-        'SP'
-        'TO'
-      )
-      OnChange = comboUFChange
-      OnExit = comboUFExit
-      ParentFont = False
-      Style = csDropDownList
-      TabOrder = 2
-    end
-    object Label34: TLabel
-      Left = 14
-      Height = 18
-      Top = 228
-      Width = 34
-      Caption = 'UF *:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-    object DBLookupComboBox1: TDBLookupComboBox
-      Left = 86
-      Height = 25
-      Top = 261
-      Width = 255
-      DataField = 'codigo_cidade'
-      DataSource = dsPessoas
-      Enabled = False
-      Font.Height = -15
-      Font.Name = 'Arial'
-      KeyField = 'codigo_cidade'
-      ListField = 'nome_cidade'
-      ListFieldIndex = 0
-      ListSource = dsCidades
-      LookupCache = False
-      ParentFont = False
-      TabOrder = 3
-    end
-    object DBMemo1: TDBMemo
-      Left = 86
-      Height = 146
-      Top = 24
-      Width = 255
-      DataField = 'endereco_pessoa'
-      DataSource = dsPessoas
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 250
-      ParentFont = False
-      TabOrder = 0
-    end
-    object DBEdit32: TDBEdit
-      Left = 86
-      Height = 25
-      Top = 300
-      Width = 255
-      DataField = 'cep_pessoa'
-      DataSource = dsPessoas
-      CharCase = ecNormal
-      Font.Height = -15
-      Font.Name = 'Arial'
-      MaxLength = 15
-      ParentFont = False
-      TabOrder = 4
-      OnKeyPress = DBEdit32KeyPress
-    end
-    object Label36: TLabel
-      Left = 14
-      Height = 18
-      Top = 307
-      Width = 46
-      Caption = 'CEP *:'
-      Font.Height = -15
-      Font.Name = 'Arial'
-      ParentColor = False
-      ParentFont = False
-    end
-  end
   object Panel1: TPanel
     Left = 1162
     Height = 578
@@ -1057,7 +23,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
     Align = alRight
     ClientHeight = 578
     ClientWidth = 134
-    TabOrder = 3
+    TabOrder = 0
     object BtnVoltar: TBitBtn
       AnchorSideRight.Control = Panel1
       AnchorSideRight.Side = asrBottom
@@ -1466,7 +432,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
     ClientWidth = 1296
     Color = 3893827
     ParentColor = False
-    TabOrder = 4
+    TabOrder = 1
     object Label35: TLabel
       AnchorSideLeft.Control = Panel2
       Left = 116
@@ -2223,6 +1189,1067 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         7FFFD9
       }
       Proportional = True
+    end
+  end
+  object panelCentro: TPanel
+    Left = 0
+    Height = 578
+    Top = 60
+    Width = 1162
+    Align = alClient
+    ClientHeight = 578
+    ClientWidth = 1162
+    TabOrder = 2
+    object ScrollBox1: TScrollBox
+      Left = 1
+      Height = 576
+      Top = 1
+      Width = 1160
+      HorzScrollBar.Page = 1139
+      VertScrollBar.Page = 572
+      Align = alClient
+      ClientHeight = 572
+      ClientWidth = 1139
+      TabOrder = 0
+      object GroupBox3: TGroupBox
+        Left = 469
+        Height = 427
+        Top = 18
+        Width = 440
+        Caption = 'Endereço'
+        ClientHeight = 409
+        ClientWidth = 436
+        Font.Height = -15
+        Font.Name = 'Arial'
+        ParentFont = False
+        TabOrder = 0
+        object DBEdit31: TDBEdit
+          Left = 113
+          Height = 25
+          Top = 181
+          Width = 300
+          DataField = 'bairro_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 45
+          ParentFont = False
+          TabOrder = 1
+        end
+        object Label31: TLabel
+          Left = 14
+          Height = 18
+          Top = 31
+          Width = 74
+          Caption = 'Endereço*:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label32: TLabel
+          Left = 14
+          Height = 18
+          Top = 188
+          Width = 54
+          Caption = 'Bairro *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label33: TLabel
+          Left = 14
+          Height = 18
+          Top = 267
+          Width = 61
+          Caption = 'Cidade *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object comboUF: TComboBox
+          Left = 113
+          Height = 25
+          Top = 222
+          Width = 300
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ItemHeight = 17
+          Items.Strings = (
+            'AC'
+            'AL'
+            'AM'
+            'AP'
+            'BA'
+            'CE'
+            'DF'
+            'ES'
+            'GO'
+            'MA'
+            'MG'
+            'MS'
+            'MT'
+            'PA'
+            'PB'
+            'PE'
+            'PI'
+            'PR'
+            'RJ'
+            'RN'
+            'RO'
+            'RR'
+            'RS'
+            'SC'
+            'SE'
+            'SP'
+            'TO'
+          )
+          OnChange = comboUFChange
+          OnExit = comboUFExit
+          ParentFont = False
+          Style = csDropDownList
+          TabOrder = 2
+        end
+        object Label34: TLabel
+          Left = 14
+          Height = 18
+          Top = 228
+          Width = 34
+          Caption = 'UF *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object DBLookupComboBox1: TDBLookupComboBox
+          Left = 113
+          Height = 25
+          Top = 261
+          Width = 300
+          DataField = 'codigo_cidade'
+          DataSource = dsPessoas
+          Enabled = False
+          Font.Height = -15
+          Font.Name = 'Arial'
+          KeyField = 'codigo_cidade'
+          ListField = 'nome_cidade'
+          ListFieldIndex = 0
+          ListSource = dsCidades
+          LookupCache = False
+          ParentFont = False
+          TabOrder = 3
+        end
+        object DBMemo1: TDBMemo
+          Left = 113
+          Height = 146
+          Top = 24
+          Width = 300
+          DataField = 'endereco_pessoa'
+          DataSource = dsPessoas
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 250
+          ParentFont = False
+          TabOrder = 0
+        end
+        object DBEdit32: TDBEdit
+          Left = 113
+          Height = 25
+          Top = 300
+          Width = 300
+          DataField = 'cep_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 15
+          ParentFont = False
+          TabOrder = 4
+          OnKeyPress = DBEdit32KeyPress
+        end
+        object Label36: TLabel
+          Left = 14
+          Height = 18
+          Top = 307
+          Width = 46
+          Caption = 'CEP *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object GroupBox1: TGroupBox
+        Left = 13
+        Height = 427
+        Top = 18
+        Width = 440
+        Caption = 'Informações Pessoais'
+        ClientHeight = 409
+        ClientWidth = 436
+        Font.Height = -15
+        Font.Name = 'Arial'
+        ParentFont = False
+        TabOrder = 1
+        object DBEdit1: TDBEdit
+          Left = 124
+          Height = 25
+          Top = 24
+          Width = 300
+          DataField = 'codigo_pessoa'
+          DataSource = dsPessoas
+          ReadOnly = True
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 0
+          ParentFont = False
+          TabOrder = 0
+        end
+        object DBEdit2: TDBEdit
+          Left = 124
+          Height = 25
+          Top = 64
+          Width = 300
+          DataField = 'cpf_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 64
+          ParentFont = False
+          TabOrder = 1
+          OnExit = DBEdit2Exit
+          OnKeyPress = DBEdit2KeyPress
+        end
+        object DBEdit3: TDBEdit
+          Left = 124
+          Height = 25
+          Top = 104
+          Width = 300
+          DataField = 'nome_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 50
+          ParentFont = False
+          TabOrder = 2
+        end
+        object DBEdit4: TDBEdit
+          Left = 124
+          Height = 25
+          Top = 143
+          Width = 300
+          DataField = 'rg_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 20
+          ParentFont = False
+          TabOrder = 3
+          OnKeyPress = DBEdit4KeyPress
+        end
+        object DBEdit5: TDBEdit
+          Left = 124
+          Height = 25
+          Top = 221
+          Width = 300
+          DataField = 'nacionalidade_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 20
+          ParentFont = False
+          TabOrder = 5
+        end
+        object DBEdit7: TDBEdit
+          Left = 124
+          Height = 25
+          Top = 301
+          Width = 300
+          DataField = 'telefone1_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 60
+          ParentFont = False
+          TabOrder = 7
+          OnKeyPress = DBEdit7KeyPress
+        end
+        object DBEdit8: TDBEdit
+          Left = 124
+          Height = 25
+          Top = 341
+          Width = 300
+          DataField = 'telefone2_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 60
+          ParentFont = False
+          TabOrder = 8
+          OnKeyPress = DBEdit8KeyPress
+        end
+        object DBEdit9: TDBEdit
+          Left = 124
+          Height = 25
+          Top = 378
+          Width = 300
+          DataField = 'email_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 45
+          ParentFont = False
+          TabOrder = 9
+        end
+        object Label1: TLabel
+          Left = 11
+          Height = 18
+          Top = 31
+          Width = 51
+          Caption = 'Código:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label2: TLabel
+          Left = 11
+          Height = 18
+          Top = 71
+          Width = 45
+          Caption = 'CPF *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label3: TLabel
+          Left = 11
+          Height = 18
+          Top = 112
+          Width = 54
+          Caption = 'Nome *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label4: TLabel
+          Left = 11
+          Height = 18
+          Top = 150
+          Width = 37
+          Caption = 'RG *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label5: TLabel
+          Left = 11
+          Height = 18
+          Top = 225
+          Width = 102
+          Caption = 'Nacionalidade*:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label6: TLabel
+          Left = 11
+          Height = 18
+          Top = 267
+          Width = 92
+          Caption = 'Estado Civil *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label7: TLabel
+          Left = 11
+          Height = 18
+          Top = 308
+          Width = 83
+          Caption = 'Telefone 1 *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label8: TLabel
+          Left = 11
+          Height = 18
+          Top = 348
+          Width = 73
+          Caption = 'Telefone 2:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object Label9: TLabel
+          Left = 11
+          Height = 18
+          Top = 385
+          Width = 47
+          Caption = 'E-mail:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object DBComboBox1: TDBComboBox
+          Left = 124
+          Height = 25
+          Top = 261
+          Width = 300
+          DataField = 'estado_civil_pessoa'
+          DataSource = dsPessoas
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ItemHeight = 17
+          Items.Strings = (
+            'Solteiro(a)'
+            'Casado(a)'
+            'Separado(a)'
+            'Divorciado(a)'
+            'Viúvo(a)'
+          )
+          MaxLength = 0
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 6
+        end
+        object DBEdit6: TDBEdit
+          Left = 124
+          Height = 25
+          Top = 181
+          Width = 300
+          DataField = 'nascimento_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 40
+          ParentFont = False
+          TabOrder = 4
+          OnKeyPress = DBEdit6KeyPress
+        end
+        object Label10: TLabel
+          Left = 11
+          Height = 18
+          Top = 188
+          Width = 93
+          Caption = 'Nascimento *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+      end
+      object GroupBox2: TGroupBox
+        Left = 13
+        Height = 561
+        Top = 456
+        Width = 896
+        Caption = 'Formação Academida'
+        ClientHeight = 543
+        ClientWidth = 892
+        Font.Height = -15
+        Font.Name = 'Arial'
+        ParentFont = False
+        TabOrder = 2
+        object GroupBox4: TGroupBox
+          Left = 14
+          Height = 65
+          Top = 15
+          Width = 864
+          Caption = 'Ensino Médio'
+          ClientHeight = 47
+          ClientWidth = 860
+          TabOrder = 0
+          object DBEdit10: TDBEdit
+            Left = 14
+            Height = 25
+            Top = 16
+            Width = 350
+            DataField = 'inst_medio_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 0
+          end
+          object DBEdit11: TDBEdit
+            Left = 390
+            Height = 25
+            Top = 16
+            Width = 58
+            DataField = 'ano_medio_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 4
+            ParentFont = False
+            TabOrder = 1
+            OnKeyPress = DBEdit11KeyPress
+          end
+          object Label12: TLabel
+            Left = 390
+            Height = 18
+            Top = 0
+            Width = 30
+            Caption = 'Ano:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label11: TLabel
+            Left = 14
+            Height = 18
+            Top = 1
+            Width = 70
+            Caption = 'Instituição:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+        end
+        object GroupBox5: TGroupBox
+          Left = 14
+          Height = 65
+          Top = 88
+          Width = 864
+          Caption = 'Graduação 1'
+          ClientHeight = 47
+          ClientWidth = 860
+          TabOrder = 1
+          object DBEdit12: TDBEdit
+            Left = 14
+            Height = 25
+            Top = 16
+            Width = 350
+            DataField = 'desc_graduacao1_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 0
+          end
+          object Label13: TLabel
+            Left = 14
+            Height = 18
+            Top = 1
+            Width = 45
+            Caption = 'Curso:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label14: TLabel
+            Left = 390
+            Height = 18
+            Top = 1
+            Width = 70
+            Caption = 'Instituição:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object DBEdit13: TDBEdit
+            Left = 390
+            Height = 25
+            Top = 16
+            Width = 350
+            DataField = 'inst_graduacao1_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 1
+          end
+          object Label15: TLabel
+            Left = 783
+            Height = 18
+            Top = 1
+            Width = 30
+            Caption = 'Ano:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object DBEdit15: TDBEdit
+            Left = 782
+            Height = 25
+            Top = 16
+            Width = 58
+            DataField = 'ano_graduacao1_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 4
+            ParentFont = False
+            TabOrder = 2
+            OnKeyPress = DBEdit15KeyPress
+          end
+        end
+        object GroupBox6: TGroupBox
+          Left = 14
+          Height = 65
+          Top = 160
+          Width = 864
+          Caption = 'Graduação 2'
+          ClientHeight = 47
+          ClientWidth = 860
+          TabOrder = 2
+          object Label18: TLabel
+            Left = 783
+            Height = 18
+            Top = 1
+            Width = 30
+            Caption = 'Ano:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label17: TLabel
+            Left = 390
+            Height = 18
+            Top = 1
+            Width = 70
+            Caption = 'Instituição:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label16: TLabel
+            Left = 14
+            Height = 18
+            Top = 1
+            Width = 45
+            Caption = 'Curso:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object DBEdit14: TDBEdit
+            Left = 14
+            Height = 25
+            Top = 17
+            Width = 350
+            DataField = 'desc_graduacao2_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 0
+          end
+          object DBEdit17: TDBEdit
+            Left = 390
+            Height = 25
+            Top = 17
+            Width = 350
+            DataField = 'inst_graduacao2_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 1
+          end
+          object DBEdit16: TDBEdit
+            Left = 782
+            Height = 25
+            Top = 17
+            Width = 58
+            DataField = 'ano_graduacao2_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 4
+            ParentFont = False
+            TabOrder = 2
+            OnKeyPress = DBEdit16KeyPress
+          end
+        end
+        object GroupBox7: TGroupBox
+          Left = 14
+          Height = 65
+          Top = 234
+          Width = 864
+          Caption = 'Pos Graduação 1'
+          ClientHeight = 47
+          ClientWidth = 860
+          TabOrder = 3
+          object Label19: TLabel
+            Left = 14
+            Height = 18
+            Top = 1
+            Width = 45
+            Caption = 'Curso:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label20: TLabel
+            Left = 390
+            Height = 18
+            Top = 1
+            Width = 70
+            Caption = 'Instituição:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label21: TLabel
+            Left = 783
+            Height = 18
+            Top = 1
+            Width = 30
+            Caption = 'Ano:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object DBEdit18: TDBEdit
+            Left = 14
+            Height = 25
+            Top = 17
+            Width = 350
+            DataField = 'desc_pos1_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 0
+          end
+          object DBEdit19: TDBEdit
+            Left = 390
+            Height = 25
+            Top = 17
+            Width = 350
+            DataField = 'inst_pos1_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 1
+          end
+          object DBEdit20: TDBEdit
+            Left = 782
+            Height = 25
+            Top = 17
+            Width = 58
+            DataField = 'ano_pos1_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 4
+            ParentFont = False
+            TabOrder = 2
+            OnKeyPress = DBEdit20KeyPress
+          end
+        end
+        object GroupBox8: TGroupBox
+          Left = 14
+          Height = 65
+          Top = 308
+          Width = 864
+          Caption = 'Pos Graduação 2'
+          ClientHeight = 47
+          ClientWidth = 860
+          TabOrder = 4
+          object Label22: TLabel
+            Left = 14
+            Height = 18
+            Top = 1
+            Width = 45
+            Caption = 'Curso:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label23: TLabel
+            Left = 390
+            Height = 18
+            Top = 1
+            Width = 70
+            Caption = 'Instituição:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label24: TLabel
+            Left = 783
+            Height = 18
+            Top = 1
+            Width = 30
+            Caption = 'Ano:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object DBEdit21: TDBEdit
+            Left = 14
+            Height = 25
+            Top = 16
+            Width = 350
+            DataField = 'desc_pos2_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 0
+          end
+          object DBEdit22: TDBEdit
+            Left = 390
+            Height = 25
+            Top = 16
+            Width = 350
+            DataField = 'inst_pos2_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 1
+          end
+          object DBEdit23: TDBEdit
+            Left = 782
+            Height = 25
+            Top = 16
+            Width = 58
+            DataField = 'ano_pos2_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 4
+            ParentFont = False
+            TabOrder = 2
+            OnKeyPress = DBEdit23KeyPress
+          end
+        end
+        object GroupBox9: TGroupBox
+          Left = 14
+          Height = 65
+          Top = 384
+          Width = 864
+          Caption = 'Mestrado'
+          ClientHeight = 47
+          ClientWidth = 860
+          TabOrder = 5
+          object Label25: TLabel
+            Left = 14
+            Height = 18
+            Top = 1
+            Width = 45
+            Caption = 'Curso:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label26: TLabel
+            Left = 390
+            Height = 18
+            Top = 1
+            Width = 70
+            Caption = 'Instituição:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label27: TLabel
+            Left = 783
+            Height = 18
+            Top = 1
+            Width = 30
+            Caption = 'Ano:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object DBEdit24: TDBEdit
+            Left = 14
+            Height = 25
+            Top = 16
+            Width = 350
+            DataField = 'desc_mestrado_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 0
+          end
+          object DBEdit25: TDBEdit
+            Left = 390
+            Height = 25
+            Top = 16
+            Width = 350
+            DataField = 'inst_mestrado_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 1
+          end
+          object DBEdit26: TDBEdit
+            Left = 782
+            Height = 25
+            Top = 16
+            Width = 58
+            DataField = 'ano_mestrado_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 4
+            ParentFont = False
+            TabOrder = 2
+            OnKeyPress = DBEdit26KeyPress
+          end
+        end
+        object GroupBox10: TGroupBox
+          Left = 14
+          Height = 65
+          Top = 460
+          Width = 864
+          Caption = 'Doutorado'
+          ClientHeight = 47
+          ClientWidth = 860
+          TabOrder = 6
+          object Label28: TLabel
+            Left = 14
+            Height = 18
+            Top = 3
+            Width = 45
+            Caption = 'Curso:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label29: TLabel
+            Left = 390
+            Height = 18
+            Top = 3
+            Width = 70
+            Caption = 'Instituição:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object Label30: TLabel
+            Left = 783
+            Height = 18
+            Top = 3
+            Width = 30
+            Caption = 'Ano:'
+            Font.Height = -15
+            Font.Name = 'Arial'
+            ParentColor = False
+            ParentFont = False
+          end
+          object DBEdit27: TDBEdit
+            Left = 14
+            Height = 25
+            Top = 18
+            Width = 350
+            DataField = 'desc_doutorado_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 0
+          end
+          object DBEdit28: TDBEdit
+            Left = 390
+            Height = 25
+            Top = 18
+            Width = 350
+            DataField = 'inst_doutorado_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 45
+            ParentFont = False
+            TabOrder = 1
+          end
+          object DBEdit29: TDBEdit
+            Left = 782
+            Height = 25
+            Top = 18
+            Width = 58
+            DataField = 'ano_doutorado_pessoa'
+            DataSource = dsPessoas
+            CharCase = ecNormal
+            Font.Height = -15
+            Font.Name = 'Arial'
+            MaxLength = 4
+            ParentFont = False
+            TabOrder = 2
+            OnKeyPress = DBEdit29KeyPress
+          end
+        end
+      end
     end
   end
   object dsPessoas: TDatasource

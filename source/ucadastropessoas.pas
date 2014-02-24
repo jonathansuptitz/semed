@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, DbCtrls,
-  StdCtrls, ExtCtrls, Buttons, LCLType;
+  StdCtrls, ExtCtrls, Buttons, LCLType, ComCtrls;
 
 type
 
@@ -21,9 +21,6 @@ type
     BtnCancelar: TBitBtn;
     BtnApagar: TBitBtn;
     comboUF: TComboBox;
-    DBEdit32: TDBEdit;
-    DBMemo1: TDBMemo;
-    dsCidades: TDatasource;
     DBComboBox1: TDBComboBox;
     DBEdit1: TDBEdit;
     DBEdit10: TDBEdit;
@@ -49,6 +46,7 @@ type
     DBEdit29: TDBEdit;
     DBEdit3: TDBEdit;
     DBEdit31: TDBEdit;
+    DBEdit32: TDBEdit;
     DBEdit4: TDBEdit;
     DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
@@ -56,6 +54,8 @@ type
     DBEdit8: TDBEdit;
     DBEdit9: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
+    DBMemo1: TDBMemo;
+    dsCidades: TDatasource;
     dsPessoas: TDatasource;
     GroupBox1: TGroupBox;
     GroupBox10: TGroupBox;
@@ -106,6 +106,8 @@ type
     Label9: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
+    panelCentro: TPanel;
+    ScrollBox1: TScrollBox;
     procedure BtnApagarClick(Sender: TObject);
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnEditarClick(Sender: TObject);
