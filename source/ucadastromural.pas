@@ -26,6 +26,7 @@ type
     procedure DBMemo1Change(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure LimparRegistrosAntigos;
     procedure AtualizarMural;
   private
@@ -49,8 +50,9 @@ uses
 
 // INICIO ----------------------------------------------------------------------
 
-procedure TfrmCadastroMural.FormCreate(Sender: TObject);
+procedure TfrmCadastroMural.FormShow(Sender: TObject);
 begin
+  dsMural.DataSet.Refresh;
   dsMural.DataSet.Last;                  // Salva codigo do utimo registro
   UltimoRegistro := dsMural.DataSet.FieldByName('codigo_mural').AsInteger;
 
@@ -154,6 +156,11 @@ procedure TfrmCadastroMural.FormClose(Sender: TObject;
   var CloseAction: TCloseAction);
 begin
   dsMural.DataSet.Cancel;
+end;
+
+procedure TfrmCadastroMural.FormCreate(Sender: TObject);
+begin
+
 end;
 
 end.

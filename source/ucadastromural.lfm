@@ -1,7 +1,7 @@
 object frmCadastroMural: TfrmCadastroMural
-  Left = 575
+  Left = 597
   Height = 144
-  Top = 452
+  Top = 207
   Width = 422
   BorderIcons = [biSystemMenu, biMaximize]
   BorderStyle = bsDialog
@@ -10,6 +10,7 @@ object frmCadastroMural: TfrmCadastroMural
   ClientWidth = 422
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   Position = poDesktopCenter
   LCLVersion = '1.0.14.0'
   object DBMemo1: TDBMemo
