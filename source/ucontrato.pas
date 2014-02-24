@@ -332,6 +332,8 @@ end;
 procedure TfrmContrato.Button1Click(Sender: TObject);
 begin
   IpHtmlPanel1.OpenURL(expandLocalHtmlFileName('contrato.html'));
+  IpHtmlPanel1.PrintSettings.MarginBottom:= 0.5;
+  IpHtmlPanel1.PrintPreview;
 end;
 
 end.

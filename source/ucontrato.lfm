@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
-  Left = -79
+  Left = 31
   Height = 600
-  Top = 54
+  Top = 7
   Width = 1218
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Contratos'
@@ -425,9 +425,9 @@ object frmContrato: TfrmContrato
       TabOrder = 7
     end
     object Panel2: TPanel
-      Left = 528
+      Left = 520
       Height = 209
-      Top = 376
+      Top = 292
       Width = 545
       ClientHeight = 209
       ClientWidth = 545
@@ -586,28 +586,27 @@ object frmContrato: TfrmContrato
     object IpHtmlPanel1: TIpHtmlPanel
       Left = 936
       Height = 114
-      Top = 200
+      Top = 172
       Width = 128
       DataProvider = IpFileDataProvider1
       FixedTypeface = 'Courier New'
       DefaultTypeFace = 'default'
-      DefaultFontSize = 12
+      DefaultFontSize = 11
       FactBAParag = 2
       FlagErrors = False
-      PrintSettings.MarginLeft = 0.5
+      PrintSettings.MarginLeft = 0.8
       PrintSettings.MarginTop = 0.5
       PrintSettings.MarginRight = 0.5
       PrintSettings.MarginBottom = 0.5
       TabOrder = 11
-      WantTabs = False
     end
   end
   object Panel1: TPanel
     Left = 16
-    Height = 320
-    Top = 264
+    Height = 264
+    Top = 320
     Width = 497
-    ClientHeight = 320
+    ClientHeight = 264
     ClientWidth = 497
     TabOrder = 2
     object Label10: TLabel
@@ -619,18 +618,18 @@ object frmContrato: TfrmContrato
       ParentColor = False
     end
     object Label11: TLabel
-      Left = 208
+      Left = 24
       Height = 19
-      Top = 88
+      Top = 111
       Width = 53
       Caption = 'Horario'
       ParentColor = False
     end
     object RadioGroup1: TRadioGroup
       Left = 19
-      Height = 124
-      Top = 56
-      Width = 122
+      Height = 48
+      Top = 48
+      Width = 326
       AutoFill = True
       Caption = 'Periodo'
       ChildSizing.LeftRightSpacing = 6
@@ -640,42 +639,43 @@ object frmContrato: TfrmContrato
       ChildSizing.ShrinkHorizontal = crsScaleChilds
       ChildSizing.ShrinkVertical = crsScaleChilds
       ChildSizing.Layout = cclLeftToRightThenTopToBottom
-      ChildSizing.ControlsPerLine = 1
-      ClientHeight = 106
-      ClientWidth = 118
+      ChildSizing.ControlsPerLine = 3
+      ClientHeight = 30
+      ClientWidth = 322
+      Columns = 3
       TabOrder = 0
       object Radiomanha: TRadioButton
         Left = 6
-        Height = 32
+        Height = 18
         Top = 6
-        Width = 106
+        Width = 101
         Caption = 'Matutino'
         OnChange = RadiomanhaChange
         TabOrder = 0
       end
       object Radiotarde: TRadioButton
-        Left = 6
-        Height = 32
-        Top = 38
-        Width = 106
+        Left = 107
+        Height = 18
+        Top = 6
+        Width = 115
         Caption = 'Verpertino'
         OnChange = RadiotardeChange
         TabOrder = 1
       end
       object Radionoite: TRadioButton
-        Left = 6
-        Height = 30
-        Top = 70
-        Width = 106
+        Left = 222
+        Height = 18
+        Top = 6
+        Width = 94
         Caption = 'Noturno'
         OnChange = RadionoiteChange
         TabOrder = 2
       end
     end
     object DBEdthorario: TDBEdit
-      Left = 272
+      Left = 88
       Height = 26
-      Top = 80
+      Top = 104
       Width = 120
       DataSource = dslocal
       CharCase = ecNormal
@@ -683,18 +683,54 @@ object frmContrato: TfrmContrato
       TabOrder = 1
     end
     object Btnadicionalocal: TBitBtn
-      Left = 160
+      Left = 224
       Height = 30
-      Top = 150
-      Width = 160
-      Caption = 'Adicionar Local'
+      Top = 100
+      Width = 104
+      Caption = 'Adicionar'
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFC00FFFFF700806D5EFF7B604BFF7D624DFF806D
+        5EFFFFFFF700FFFFFC00FDFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFB00FFFFF2007C614CFFECCEB5FFECCEB5FF7C61
+        4CFFFFFFF200FFFFFB00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFC00FFFFFB00FFFFF500FFFFED00856346FFEFCFB2FFCBAB8EFF8563
+        46FFFFFFEB00FFFFF500FFFFFB00FFFFFC00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFF800FFFFF200FFFFED00FFFFE6008E6342FFF6D0AEFFD2AC8AFF8E63
+        42FFFFFFE600FFFFED00FFFFF200FFFFF700FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00806D5EFF7C614DFF836248FF8A6343FF8E6342FFD2AC8AFFD4AB8AFF9063
+        41FF8E6342FF876246FF7E624AFF826D5EFFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF007C614CFFE6CCB4FFD3B59CFFD4B497FFD5B395FFD4B294FFCFAC8BFFCFA9
+        89FFCCA688FFC6A487FFDCBEA3FF7E614CFFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF007C614CFFEED4BCFFEFD2B7FFF2D2B5FFF1CFB2FFEDCFB2FFEFCFB2FFF5CF
+        B1FFF4CEB0FFEFCDB0FFEBCDB2FF7F634BFFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00806D5EFF7A624CFF836248FF8A6343FF8A6343FFEDCFB4FFEDCFB4FF8C63
+        43FF8C6342FF856346FF7F634BFF816F5EFFFFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFF700FFFFF200FFFFEB00FFFFE6008A6245FFECCEB5FFECCEB5FF8A62
+        45FFFFFFE600FFFFEB00FFFFF100FFFFF700FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFC00FFFFFB00FFFFF500FFFFED00836248FFEACEB6FFEACEB6FF8362
+        48FFFFFFEB00FFFFF500FFFFF900FFFFFC00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFB00FFFFF2007C614CFFE8CDB8FFE8CDB8FF7C61
+        4CFFFFFFF200FFFFFA00FFFFFF00FFFFFE00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFC00FFFFF700806D5EFF7C614CFF7C614CFF806D
+        5EFFFFFFF700FFFFFC00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+      }
       OnClick = BtnadicionalocalClick
       TabOrder = 2
     end
     object StringGrid1: TStringGrid
       Left = 19
-      Height = 112
-      Top = 192
+      Height = 104
+      Top = 144
       Width = 464
       ColCount = 2
       FixedCols = 0
@@ -721,9 +757,9 @@ object frmContrato: TfrmContrato
       )
     end
     object btnlimparlocais: TBitBtn
-      Left = 408
+      Left = 404
       Height = 30
-      Top = 150
+      Top = 100
       Width = 75
       Caption = 'Limpar'
       OnClick = btnlimparlocaisClick
@@ -1576,7 +1612,7 @@ object frmContrato: TfrmContrato
     top = 336
   end
   object IpFileDataProvider1: TIpFileDataProvider
-    left = 872
-    top = 304
+    left = 848
+    top = 312
   end
 end
