@@ -1328,6 +1328,7 @@ object frmCadastroCargos: TfrmCadastroCargos
         FieldName = 'grupo_ocupacional_cargo'
       end>
     DataSource = dsCargos
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
     ReadOnly = True
     TabOrder = 2
   end

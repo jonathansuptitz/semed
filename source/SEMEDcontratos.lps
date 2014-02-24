@@ -75,7 +75,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uPesquisaPessoas"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="82"/>
+        <TopLine Value="81"/>
         <CursorPos X="8" Y="100"/>
         <UsageCount Value="218"/>
       </Unit5>
@@ -166,7 +166,7 @@
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
         <TopLine Value="7"/>
-        <CursorPos X="28" Y="17"/>
+        <CursorPos X="32" Y="20"/>
         <UsageCount Value="47"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
