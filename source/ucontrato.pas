@@ -40,10 +40,9 @@ type
     DateEditinicial: TDateEdit;
     DBEdtCodcontrato: TDBEdit;
     DBMemoobs: TDBMemo;
+    Edit1: TEdit;
     edtlocal: TEdit;
     Image1: TImage;
-    IpFileDataProvider1: TIpFileDataProvider;
-    IpHtmlPanel1: TIpHtmlPanel;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
@@ -75,6 +74,8 @@ type
     sbtlocal: TSpeedButton;
     StringGrid1: TStringGrid;
     procedure Button1Click(Sender: TObject);
+    procedure DBEdtCodcontratoExit(Sender: TObject);
+    procedure DBEdtFuncionarioExit(Sender: TObject);
     procedure editahtml;
     procedure BtnadicionalocalClick(Sender: TObject);
     procedure BtnGerarcontratoClick(Sender: TObject);
@@ -132,8 +133,7 @@ begin
           editahtml; //chama o preenchimento do html
 
           //carrega contrato prenchido
-          IpHtmlPanel1.OpenURL(expandLocalHtmlFileName('contratoatual.html'));
-          IpHtmlPanel1.PrintPreview;
+          OpenURL(expandLocalHtmlFileName('contratoatual.html'));
 
           frmContrato.close;
         end;
@@ -167,9 +167,6 @@ end;
 
 procedure TfrmContrato.FormShow(Sender: TObject);
 begin
-  //ativa query e coloca em mode de inserção
-  dsContratos.DataSet.Active := true;
-
   //para varios locais
   linhas := 1;
   numlocal := 0;
@@ -182,8 +179,6 @@ begin
     Items.Add('cadastro RH');
     Items.Add('Contratação direta');
   end;
-
-  dsContratos.DataSet.Insert;//contro em modo de insecao
 end;
 
 procedure TfrmContrato.sbtpessoaClick(Sender: TObject);
@@ -337,9 +332,43 @@ end;
 // FIM -------------------------------------------------------------------------
 procedure TfrmContrato.Button1Click(Sender: TObject);
 begin
-  OpenURL(expandLocalHtmlFileName('contrato.html'));
-  //IpHtmlPanel1.OpenURL();
-  //IpHtmlPanel1.PrintPreview;
+  OpenURL(expandLocalHtmlFileName('contratoatual.html'));
+end;
+
+procedure TfrmContrato.DBEdtCodcontratoExit(Sender: TObject);
+begin
+  //libera novo comtrato apenas se codigo contrato nao existir
+  dsContratos.Enabled:=true;
+  if not(dsContratos.DataSet.Locate('codigo_contrato', Edit1.text,[])) then
+  begin
+    ShowMessage('teste');
+    DBEdtFuncionario.Enabled:=true;
+    sbtpessoa.Enabled:=true;
+    dsContratos.DataSet.Insert;//contro em modo de insecao
+  end
+  else
+    ShowMessage('Contrato já existente!');
+end;
+
+procedure TfrmContrato.DBEdtFuncionarioExit(Sender: TObject);
+begin
+  //libera campos apenas se funcionario nao contratado
+  if not(dsContratos.DataSet.Locate('codigo_pessoa', Self.Text,[])) then
+  begin
+    sbtcargo.Enabled:=true;
+    DBEdtcargo.Enabled:=true;
+    DBEdtAnoseletivo.Enabled:=true;
+    DBEdthorario.Enabled:=true;
+    Panel1.Enabled:=true;
+    Panel2.Enabled:=true;
+    DBComboBox1.Enabled:=true;
+    DBMemoobs.Enabled:=true;
+    DBMemovacancia.Enabled:=true;
+    DateEditfinal.Enabled:=true;
+    DateEditinicial.Enabled:=true;
+  end
+  else
+    ShowMessage('Funcionário já contratado!');
 end;
 
 end.

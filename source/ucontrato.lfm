@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
-  Left = 31
+  Left = 65
   Height = 600
-  Top = 7
+  Top = 114
   Width = 1218
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Contratos'
@@ -153,6 +153,7 @@ object frmContrato: TfrmContrato
       CharCase = ecNormal
       MaxLength = 0
       TabOrder = 0
+      OnEditingDone = DBEdtCodcontratoExit
     end
     object Label1: TLabel
       Left = 24
@@ -226,6 +227,7 @@ object frmContrato: TfrmContrato
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
       }
       NumGlyphs = 0
+      Enabled = False
       MaxLength = 0
       TabOrder = 1
     end
@@ -285,6 +287,7 @@ object frmContrato: TfrmContrato
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
       }
       NumGlyphs = 0
+      Enabled = False
       MaxLength = 0
       TabOrder = 2
     end
@@ -303,6 +306,7 @@ object frmContrato: TfrmContrato
       Width = 360
       DataField = 'obs_contrato'
       DataSource = dsContratos
+      Enabled = False
       TabOrder = 3
     end
     object Label6: TLabel
@@ -328,6 +332,7 @@ object frmContrato: TfrmContrato
       Width = 360
       DataField = 'justificativa_contrato'
       DataSource = dsContratos
+      Enabled = False
       MaxLength = 100
       TabOrder = 4
     end
@@ -347,6 +352,7 @@ object frmContrato: TfrmContrato
       DataField = 'jornada_trabalho_contrato'
       DataSource = dsContratos
       CharCase = ecNormal
+      Enabled = False
       MaxLength = 0
       TabOrder = 5
     end
@@ -355,6 +361,7 @@ object frmContrato: TfrmContrato
       Height = 22
       Top = 68
       Width = 23
+      Enabled = False
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000064000000640000000000000000000000000000000000
@@ -402,8 +409,10 @@ object frmContrato: TfrmContrato
       DataField = 'codigo_pessoa'
       DataSource = dsContratos
       CharCase = ecNormal
+      Enabled = False
       MaxLength = 0
       TabOrder = 6
+      OnEditingDone = DBEdtFuncionarioExit
     end
     object Label9: TLabel
       Left = 552
@@ -421,6 +430,7 @@ object frmContrato: TfrmContrato
       DataField = 'ano_seletivo_contrato'
       DataSource = dsContratos
       CharCase = ecNormal
+      Enabled = False
       MaxLength = 0
       TabOrder = 7
     end
@@ -431,6 +441,7 @@ object frmContrato: TfrmContrato
       Width = 545
       ClientHeight = 209
       ClientWidth = 545
+      Enabled = False
       TabOrder = 8
       object Label12: TLabel
         Left = 16
@@ -525,6 +536,7 @@ object frmContrato: TfrmContrato
       Height = 22
       Top = 108
       Width = 23
+      Enabled = False
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000064000000640000000000000000000000000000000000
@@ -583,22 +595,14 @@ object frmContrato: TfrmContrato
       Caption = 'Tipo de Contratação'
       ParentColor = False
     end
-    object IpHtmlPanel1: TIpHtmlPanel
-      Left = 936
-      Height = 114
-      Top = 172
-      Width = 128
-      DataProvider = IpFileDataProvider1
-      FixedTypeface = 'Courier New'
-      DefaultTypeFace = 'default'
-      DefaultFontSize = 11
-      FactBAParag = 2
-      FlagErrors = False
-      PrintSettings.MarginLeft = 0.8
-      PrintSettings.MarginTop = 0.5
-      PrintSettings.MarginRight = 0.5
-      PrintSettings.MarginBottom = 0.5
+    object Edit1: TEdit
+      Left = 336
+      Height = 26
+      Top = 24
+      Width = 80
+      OnEditingDone = DBEdtCodcontratoExit
       TabOrder = 11
+      Text = 'Edit1'
     end
   end
   object Panel1: TPanel
@@ -608,6 +612,7 @@ object frmContrato: TfrmContrato
     Width = 497
     ClientHeight = 264
     ClientWidth = 497
+    Enabled = False
     TabOrder = 2
     object Label10: TLabel
       Left = 19
@@ -1588,6 +1593,7 @@ object frmContrato: TfrmContrato
   end
   object dsContratos: TDatasource
     DataSet = DM1.querycontratos
+    Enabled = False
     left = 1112
     top = 272
   end
@@ -1610,9 +1616,5 @@ object frmContrato: TfrmContrato
     DataSet = DM1.tb_cidades
     left = 1112
     top = 336
-  end
-  object IpFileDataProvider1: TIpFileDataProvider
-    left = 848
-    top = 312
   end
 end
