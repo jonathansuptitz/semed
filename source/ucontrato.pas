@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, db, FileUtil, Ipfilebroker, IpHtml,
  Forms, Controls, Graphics,
-  Dialogs, Buttons, ExtCtrls,
+  Dialogs, Buttons, ExtCtrls, LCLIntf,
   DbCtrls, StdCtrls, EditBtn, Printers, Grids, LCLType;
 
 type
@@ -131,6 +131,10 @@ begin
         finally
           editahtml; //chama o preenchimento do html
 
+          //carrega contrato prenchido
+          IpHtmlPanel1.OpenURL(expandLocalHtmlFileName('contratoatual.html'));
+          IpHtmlPanel1.PrintPreview;
+
           frmContrato.close;
         end;
       end
@@ -253,6 +257,8 @@ var
   y : integer;
   varlocal, varhorario : string;
 begin
+
+  //para varios locais
   if numlocal = 1 then
   begin
       varhorario := StringGrid1.Cells[1,1];
@@ -270,7 +276,7 @@ begin
       varlocal := StringGrid1.Cells[0,1] +', '+ StringGrid1.Cells[0,2]
       + ', ' + StringGrid1.Cells[0,3];
   end;
-
+  //----
   try
     texto := TStringList.Create;
     texto.LoadFromFile('contrato.html');
@@ -323,7 +329,7 @@ begin
         texto[y] := StringReplace(pstl,'var3','X',[rfIgnoreCase,rfReplaceAll]);
 
     end;
-    texto.SaveToFile('contratoteste.html');
+    texto.SaveToFile('contratoatual.html');
   finally
     texto.Free;
   end;
@@ -331,9 +337,9 @@ end;
 // FIM -------------------------------------------------------------------------
 procedure TfrmContrato.Button1Click(Sender: TObject);
 begin
-  IpHtmlPanel1.OpenURL(expandLocalHtmlFileName('contrato.html'));
-  IpHtmlPanel1.PrintSettings.MarginBottom:= 0.5;
-  IpHtmlPanel1.PrintPreview;
+  OpenURL(expandLocalHtmlFileName('contrato.html'));
+  //IpHtmlPanel1.OpenURL();
+  //IpHtmlPanel1.PrintPreview;
 end;
 
 end.
