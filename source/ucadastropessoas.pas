@@ -252,7 +252,7 @@ begin
   end;
   DBEdit31.ReadOnly := false;
   DBEdit32.ReadOnly := false;
-  DBComboBox1.Enabled := true;
+  //DBComboBox1.Enabled := true;
   comboUF.Enabled := true;
   DBMemo1.ReadOnly := false;
   DBLookupComboBox1.Enabled := true;
@@ -278,7 +278,7 @@ begin
   end;
   DBEdit31.ReadOnly := true;
   DBEdit32.ReadOnly := true;
-  DBComboBox1.Enabled := false;
+  //DBComboBox1.Enabled := false;
   comboUF.Enabled := false;
   DBMemo1.ReadOnly := true;
   DBLookupComboBox1.Enabled := false;
@@ -361,9 +361,16 @@ begin
     begin
       dsPessoas.DataSet.Post;
       EditOff;
+      ShowMessage('Registro salvo com sucesso!');
     end
     else
       abort;
+  end
+  else
+  begin
+    dsPessoas.DataSet.Post;
+    EditOff;
+    ShowMessage('Registro salvo com sucesso!');
   end;
 end;
 

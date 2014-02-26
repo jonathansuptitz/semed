@@ -18,6 +18,7 @@ type
     queryCADASTROPESSOAScidadesuf_cidade: TStringField;
     querycontratos: TZQuery;
     querycontratosano_seletivo_contrato: TLongintField;
+    querycontratosclausula_primeira_cargo: TStringField;
     querycontratoscodigo_cargo: TLongintField;
     querycontratoscodigo_contrato: TLongintField;
     querycontratoscodigo_pessoa: TLongintField;
@@ -107,6 +108,7 @@ type
     tb_mural: TZTable;
     tb_cidades: TZTable;
     tb_usuarios: TZTable;
+    procedure DataModuleCreate(Sender: TObject);
   private
     { private declarations }
   public

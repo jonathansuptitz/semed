@@ -31,7 +31,7 @@ CREATE TABLE `tb_cargos` (
   `grupo_ocupacional_cargo` varchar(45) NOT NULL,
   `clausula_primeira_cargo` varchar(20) NOT NULL,
   PRIMARY KEY (`codigo_cargo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,6 +92,7 @@ CREATE TABLE `tb_contratos` (
   `testemunha_2_contrato` varchar(100) NOT NULL,
   `cpf_teste_2_contrato` varchar(16) NOT NULL,
   `tipo_contratacao_contrato` varchar(20) NOT NULL,
+  `clausula_primeira_cargo` varchar(2000) NOT NULL,
   PRIMARY KEY (`codigo_contrato`),
   KEY `fk_tb_contratos_tb_pessoas1_idx` (`codigo_pessoa`),
   KEY `fk_tb_contratos_tb_cargos1_idx` (`codigo_cargo`),
@@ -152,7 +153,7 @@ CREATE TABLE `tb_local_trabalho` (
   `horario_vespertino_trabalho` varchar(15) DEFAULT NULL,
   `horario_noturno_trabalho` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`codigo_local_trabalho`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,6 +162,7 @@ CREATE TABLE `tb_local_trabalho` (
 
 LOCK TABLES `tb_local_trabalho` WRITE;
 /*!40000 ALTER TABLE `tb_local_trabalho` DISABLE KEYS */;
+INSERT INTO `tb_local_trabalho` VALUES (3,'Emir Ropelato','Diretora Emir','(47)1111-1111','07:30 - 11:30','13:30 - 17:30',' - '),(4,'Ruy Barbosa','Diretor Ruy','(47)2222-2222','07:30 - 11:30','13:30 - 17:30','18:45 - 22:20'),(5,'CEDUP Timbó','Diretora CEDUP','(47)3333-3333',' - ',' - ','18:45 - 22:20');
 /*!40000 ALTER TABLE `tb_local_trabalho` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +179,7 @@ CREATE TABLE `tb_mural` (
   `data_mural` varchar(20) NOT NULL,
   `conteudo_mural` varchar(200) NOT NULL,
   PRIMARY KEY (`codigo_mural`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +188,7 @@ CREATE TABLE `tb_mural` (
 
 LOCK TABLES `tb_mural` WRITE;
 /*!40000 ALTER TABLE `tb_mural` DISABLE KEYS */;
-INSERT INTO `tb_mural` VALUES (1,'Roberto Luiz Debarba','21/2/2014 00:42:09','Recado de Teste'),(2,'Roberto Luiz Debarba','21/2/2014 00:42:23','teste 2');
+INSERT INTO `tb_mural` VALUES (1,'Roberto Luiz Debarba','21/2/2014 00:42:09','Recado de Teste'),(2,'Roberto Luiz Debarba','21/2/2014 00:42:23','teste 2'),(3,'Roberto','24/2/2014 13:50:05','teste 3'),(4,'roberto','24/2/2014 13:53:30','teste 4'),(5,'Roberto','24/2/2014 13:54:00','teste 5');
 /*!40000 ALTER TABLE `tb_mural` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,7 +237,7 @@ CREATE TABLE `tb_pessoas` (
   PRIMARY KEY (`codigo_pessoa`),
   KEY `fk_tb_pessoas_tb_cidades_idx` (`codigo_cidade`),
   CONSTRAINT `fk_tb_pessoas_tb_cidades` FOREIGN KEY (`codigo_cidade`) REFERENCES `tb_cidades` (`codigo_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -244,7 +246,7 @@ CREATE TABLE `tb_pessoas` (
 
 LOCK TABLES `tb_pessoas` WRITE;
 /*!40000 ALTER TABLE `tb_pessoas` DISABLE KEYS */;
-INSERT INTO `tb_pessoas` VALUES (1,'Roberto Luiz Debarba','154,138,45-52','44944844','24/03/1995','Brasileiro','Solteiro(a)','Nações','Rua Egito, 574. Casa.\r\nEm frente ao residencial Egito.','roberto.debarba@gmail.com','(47)3382-1947',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4681,'89120000'),(2,'4494','3454','449','191','449','Casado(a)','1919','9919','4949','49','494',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,221,'94944');
+INSERT INTO `tb_pessoas` VALUES (3,'Roberto Luiz Debarba','000.000.000-00','123.123.132-12','24/03/1995','Brasileiro','Solteiro(a)','Nações','Rua Egito, 574','roberto.debarba@gmail.com','(47)3382-1947','(47)9948-4130','Ruy Barbosa',2012,'Informática','CEDUP Timbó',2014,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4681,'89120-000'),(4,'Jonathan Eli Suptittz','111.111.111-11','123.123.123-12','12/12/1000','Brasileiro','Solteiro(a)','Centro','Rua Tal, 111','jonny.suptitz@gmail.com','(47)3333-3333','(99)9999-9999','Ruy Barbosa',2009,'informática','CEDUP Timbó',2014,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4681,'89120-000');
 /*!40000 ALTER TABLE `tb_pessoas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,4 +285,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-21  0:43:46
+-- Dump completed on 2014-02-26 13:07:04

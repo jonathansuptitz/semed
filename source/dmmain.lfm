@@ -1,4 +1,5 @@
 object DM1: TDM1
+  OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 422
   HorizontalOffset = 419
@@ -629,6 +630,17 @@ object DM1: TDM1
       ReadOnly = False
       Required = True
       Size = 80
+    end
+    object querycontratosclausula_primeira_cargo: TStringField
+      DisplayWidth = 8000
+      FieldKind = fkData
+      FieldName = 'clausula_primeira_cargo'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = True
+      Required = False
+      Size = 8000
     end
   end
   object tb_cargos: TZTable
