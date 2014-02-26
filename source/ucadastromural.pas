@@ -13,13 +13,11 @@ type
   { TfrmCadastroMural }
 
   TfrmCadastroMural = class(TForm)
-    DBEdit1: TDBEdit;
     DBMemo1: TDBMemo;
     dsMural: TDatasource;
     BtnSalvar: TImage;
     BtnCancelar: TImage;
     Label1: TLabel;
-    Label2: TLabel;
     labelRestantes: TLabel;
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
@@ -132,12 +130,13 @@ end;
 
 procedure TfrmCadastroMural.BtnSalvarClick(Sender: TObject);    // Salvar
 begin
-  if (DBMemo1.Text = '') or (DBEdit1.Text = '') then  // Verifica se campos estão preenchidos
+  if (DBMemo1.Text = '') then  // Verifica se campos estão preenchidos
     ShowMessage('Todos os campos são obrigatorios!')
   else
   begin
     if Application.MessageBox('O recado não poderá ser alterado/apagado! Deseja continuar?','Inserir recado', MB_YESNO) = idYES then
     begin
+      dsMural.DataSet.FieldByName('usuario_mural').Value := FrmMain.StatusBar.Panels[3].Text;
       dsMural.DataSet.FieldByName('codigo_mural').Value := UltimoRegistro + 1;
       dsMural.DataSet.FieldByName('data_mural').Value := DateToStr(Date) + ' ' + TimeToStr(Time); //Insere data e hora
       dsMural.DataSet.Post;   // Salva
