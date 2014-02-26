@@ -1,7 +1,7 @@
 object frmLogin: TfrmLogin
   Left = 504
   Height = 346
-  Top = 199
+  Top = 202
   Width = 536
   BorderStyle = bsNone
   Caption = 'frmLogin'

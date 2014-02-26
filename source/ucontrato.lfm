@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
   Left = 65
   Height = 600
-  Top = 114
+  Top = 8
   Width = 1218
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Contratos'

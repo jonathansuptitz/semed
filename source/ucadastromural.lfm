@@ -1,7 +1,7 @@
 object frmCadastroMural: TfrmCadastroMural
   Left = 597
   Height = 144
-  Top = 209
+  Top = 212
   Width = 422
   BorderIcons = [biSystemMenu, biMaximize]
   BorderStyle = bsDialog
