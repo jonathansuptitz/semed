@@ -1,11 +1,11 @@
 object frmCadastroCargos: TfrmCadastroCargos
-  Left = 298
-  Height = 466
-  Top = 128
+  Left = 242
+  Height = 486
+  Top = 97
   Width = 985
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Cargos'
-  ClientHeight = 466
+  ClientHeight = 486
   ClientWidth = 985
   OnClose = FormClose
   OnCreate = FormCreate
@@ -784,11 +784,11 @@ object frmCadastroCargos: TfrmCadastroCargos
   end
   object Panel1: TPanel
     Left = 851
-    Height = 406
+    Height = 426
     Top = 60
     Width = 134
     Align = alRight
-    ClientHeight = 406
+    ClientHeight = 426
     ClientWidth = 134
     TabOrder = 5
     object BtnVoltar: TBitBtn
@@ -798,7 +798,7 @@ object frmCadastroCargos: TfrmCadastroCargos
       AnchorSideBottom.Side = asrBottom
       Left = 6
       Height = 40
-      Top = 358
+      Top = 378
       Width = 120
       Anchors = [akRight, akBottom]
       BorderSpacing.Right = 7
@@ -1215,7 +1215,6 @@ object frmCadastroCargos: TfrmCadastroCargos
       MaxLength = 0
       ParentFont = False
       TabOrder = 0
-      OnChange = DBEdit1Change
     end
     object DBEdit2: TDBEdit
       Left = 159
@@ -1227,7 +1226,7 @@ object frmCadastroCargos: TfrmCadastroCargos
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 180
+      MaxLength = 0
       ParentFont = False
       TabOrder = 1
     end
@@ -1241,7 +1240,7 @@ object frmCadastroCargos: TfrmCadastroCargos
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
-      MaxLength = 60
+      MaxLength = 0
       ParentFont = False
       TabOrder = 2
     end
@@ -1375,16 +1374,6 @@ object frmCadastroCargos: TfrmCadastroCargos
     TabOrder = 1
     Text = 'Descrição'
   end
-  object memoClau: TMemo
-    Left = 440
-    Height = 217
-    Top = 254
-    Width = 400
-    Lines.Strings = (
-      ''
-    )
-    TabOrder = 4
-  end
   object Label8: TLabel
     Left = 443
     Height = 18
@@ -1395,6 +1384,19 @@ object frmCadastroCargos: TfrmCadastroCargos
     Font.Name = 'Arial'
     ParentColor = False
     ParentFont = False
+  end
+  object MemoClau: TDBMemo
+    Left = 443
+    Height = 218
+    Top = 253
+    Width = 397
+    DataField = 'clausula_primeira_cargo'
+    DataSource = dsCargos
+    Font.Height = -15
+    Font.Name = 'Arial'
+    MaxLength = 2000
+    ParentFont = False
+    TabOrder = 4
   end
   object dsCargos: TDatasource
     DataSet = DM1.tb_cargos

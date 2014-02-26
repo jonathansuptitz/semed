@@ -29,9 +29,9 @@ CREATE TABLE `tb_cargos` (
   `nome_cargo` varchar(45) NOT NULL,
   `salario_hora_cargo` float NOT NULL,
   `grupo_ocupacional_cargo` varchar(45) NOT NULL,
-  `clausula_primeira_cargo` varchar(20) NOT NULL,
+  `clausula_primeira_cargo` varchar(2000) NOT NULL,
   PRIMARY KEY (`codigo_cargo`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `tb_cargos` (
 
 LOCK TABLES `tb_cargos` WRITE;
 /*!40000 ALTER TABLE `tb_cargos` DISABLE KEYS */;
+INSERT INTO `tb_cargos` VALUES (3,'Professor',20,'AA','Clausula teste Professor'),(4,'Diretor',50,'BB','Clausula Teste Diretor');
 /*!40000 ALTER TABLE `tb_cargos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +93,6 @@ CREATE TABLE `tb_contratos` (
   `testemunha_2_contrato` varchar(100) NOT NULL,
   `cpf_teste_2_contrato` varchar(16) NOT NULL,
   `tipo_contratacao_contrato` varchar(20) NOT NULL,
-  `clausula_primeira_cargo` varchar(2000) NOT NULL,
   PRIMARY KEY (`codigo_contrato`),
   KEY `fk_tb_contratos_tb_pessoas1_idx` (`codigo_pessoa`),
   KEY `fk_tb_contratos_tb_cargos1_idx` (`codigo_cargo`),
@@ -285,4 +285,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-26 13:07:04
+-- Dump completed on 2014-02-26 13:23:47

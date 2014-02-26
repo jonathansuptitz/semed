@@ -37,6 +37,7 @@ type
     DBEdit3: TDBEdit;
     DBEdit4: TDBEdit;
     DBGrid1: TDBGrid;
+    MemoClau: TDBMemo;
     dsCargos: TDatasource;
     editPesquisa: TEdit;
     GroupBox1: TGroupBox;
@@ -48,7 +49,6 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    memoClau: TMemo;
     Panel1: TPanel;
     Panel2: TPanel;
     procedure BtnApagarClick(Sender: TObject);
@@ -59,7 +59,6 @@ type
     procedure BtnSelecionarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
-    procedure DBEdit1Change(Sender: TObject);
     procedure DBEdit4KeyPress(Sender: TObject; var Key: char);
     procedure DBGrid1Enter(Sender: TObject);
     procedure editPesquisaChange(Sender: TObject);
@@ -189,17 +188,6 @@ begin
   EditOFF;
 end;
 
-// CONTROLE DE CLAUSULA - MEMO -------------------------------------------------
-procedure TfrmCadastroCargos.DBEdit1Change(Sender: TObject); // Quando muda registro,
-begin                                                        // carrega Clau. prim. para
-  memoClau.Lines.Clear;                                      // memo
-  if (FileExists('clp/clp'+DBEdit1.Text+'.txt')) then
-    if (ScreenMode <> 'mdInsert') then               // Se INSERT nao estiver ativo
-      memoClau.Lines.LoadFromFile('clp/clp'+DBEdit1.Text+'.txt')
-  else
-    ShowMessage('Ocorreu um erro ao carregar Cláusula Primeira!');
-end;
-
 // BOTOES ----------------------------------------------------------------------
 
 procedure TfrmCadastroCargos.BtnSelecionarClick(Sender: TObject);   // Selecionar
@@ -216,20 +204,7 @@ begin
     ShowMessage('Todos os campos são obrigatorios!')
   else
   begin
-    //salva o caminho da clausula no banco
-    dsCargos.DataSet.FieldByName('clausula_primeira_cargo').value := 'clp/clp'+DBEdit1.Text+'.txt';
-
     dsCargos.DataSet.Post;  // Salvar registro
-
-    try
-      SLtrans := TStringList.Create;
-
-      SLtrans.Assign(memoClau.Lines);//atribui memo na stringlist
-
-      SLtrans.SaveToFile('clp/clp'+DBEdit1.Text+'.txt');  //salva a stringlist direto no arquivo
-    finally
-      SLtrans.Free;//libera stringlist da memoria
-    end;
 
     ShowMessage('Registro salvo com sucesso!');
 

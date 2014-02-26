@@ -1,5 +1,4 @@
 object DM1: TDM1
-  OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 422
   HorizontalOffset = 419
@@ -631,17 +630,6 @@ object DM1: TDM1
       Required = True
       Size = 80
     end
-    object querycontratosclausula_primeira_cargo: TStringField
-      DisplayWidth = 8000
-      FieldKind = fkData
-      FieldName = 'clausula_primeira_cargo'
-      Index = 16
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = True
-      Required = False
-      Size = 8000
-    end
   end
   object tb_cargos: TZTable
     Connection = SEMEDconnection
@@ -694,7 +682,7 @@ object DM1: TDM1
       Size = 60
     end
     object tb_cargosclausula_primeira_cargo: TStringField
-      DisplayWidth = 28
+      DisplayWidth = 8000
       FieldKind = fkData
       FieldName = 'clausula_primeira_cargo'
       Index = 4
@@ -702,7 +690,7 @@ object DM1: TDM1
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
       Required = True
-      Size = 28
+      Size = 8000
     end
   end
   object tb_local_trabalho: TZQuery
