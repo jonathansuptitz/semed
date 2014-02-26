@@ -25,7 +25,6 @@
         <WindowIndex Value="0"/>
         <TopLine Value="73"/>
         <CursorPos X="28" Y="130"/>
-        <ComponentState Value="1"/>
         <UsageCount Value="217"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -50,8 +49,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroPessoas"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="262"/>
-        <CursorPos X="5" Y="281"/>
+        <TopLine Value="329"/>
+        <CursorPos X="26" Y="341"/>
         <UsageCount Value="216"/>
       </Unit3>
       <Unit4>
@@ -61,6 +60,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmMain"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="98"/>
@@ -77,8 +77,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uPesquisaPessoas"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="81"/>
-        <CursorPos X="11" Y="27"/>
+        <TopLine Value="74"/>
+        <CursorPos X="17" Y="80"/>
         <UsageCount Value="218"/>
       </Unit5>
       <Unit6>
@@ -127,14 +127,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UCadastroMural"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="121"/>
-        <CursorPos X="41" Y="138"/>
+        <CursorPos X="31" Y="134"/>
         <UsageCount Value="257"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="usobre.pas"/>
@@ -146,7 +142,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="93"/>
+        <UsageCount Value="94"/>
       </Unit11>
       <Unit12>
         <Filename Value="usuporte.pas"/>
@@ -158,7 +154,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="23" Y="6"/>
-        <UsageCount Value="93"/>
+        <UsageCount Value="94"/>
       </Unit12>
       <Unit13>
         <Filename Value="ulogin.pas"/>
@@ -171,7 +167,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="49"/>
         <CursorPos X="10" Y="54"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="73"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit13>
@@ -185,7 +181,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="126"/>
         <CursorPos X="81" Y="66"/>
-        <UsageCount Value="54"/>
+        <UsageCount Value="55"/>
       </Unit14>
       <Unit15>
         <Filename Value="uhtml.pas"/>
@@ -194,7 +190,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="88"/>
         <CursorPos X="25" Y="101"/>
-        <UsageCount Value="32"/>
+        <UsageCount Value="33"/>
       </Unit15>
       <Unit16>
         <Filename Value="uhtml.lfm"/>
@@ -254,7 +250,7 @@
         <UnitName Value="ZDbcMySqlUtils"/>
         <WindowIndex Value="0"/>
         <TopLine Value="431"/>
-        <CursorPos X="33" Y="444"/>
+        <CursorPos X="32" Y="440"/>
         <UsageCount Value="10"/>
         <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit23>
@@ -396,7 +392,7 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="10" HistoryIndex="9">
+    <JumpHistory Count="6" HistoryIndex="5">
       <Position1>
         <Filename Value="dmmain.pas"/>
         <Caret Line="125" Column="1" TopLine="102"/>
@@ -421,22 +417,6 @@
         <Filename Value="dmmain.pas"/>
         <Caret Line="115" Column="33" TopLine="103"/>
       </Position6>
-      <Position7>
-        <Filename Value="ucadastromural.pas"/>
-        <Caret Line="46" Column="31" TopLine="39"/>
-      </Position7>
-      <Position8>
-        <Filename Value="ucadastromural.pas"/>
-        <Caret Line="45" Column="31" TopLine="38"/>
-      </Position8>
-      <Position9>
-        <Filename Value="ucadastromural.pas"/>
-        <Caret Line="44" Column="31" TopLine="37"/>
-      </Position9>
-      <Position10>
-        <Filename Value="ucadastromural.pas"/>
-        <Caret Line="138" Column="23" TopLine="127"/>
-      </Position10>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

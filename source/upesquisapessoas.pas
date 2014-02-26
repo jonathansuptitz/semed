@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, Buttons, DBGrids;
+  StdCtrls, Buttons, DBGrids, uCadastroPessoas;
 
 type
 
@@ -14,12 +14,14 @@ type
 
   TfrmPesquisaPessoas = class(TForm)
     BtnEncerrar: TBitBtn;
+    BtnNovo: TBitBtn;
     ComboBox1: TComboBox;
     dsPessoas: TDatasource;
     DBGrid1: TDBGrid;
     editPesquisa: TEdit;
     Panel1: TPanel;
     procedure BtnEncerrarClick(Sender: TObject);
+    procedure BtnNovoClick(Sender: TObject);
     procedure ComboBox1Change(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure editPesquisaChange(Sender: TObject);
@@ -74,6 +76,16 @@ begin                                                            // usuario troc
 end;
 
 // FIM -------------------------------------------------------------------------
+
+procedure TfrmPesquisaPessoas.BtnNovoClick(Sender: TObject);     // Botão Novo
+begin
+  Application.CreateForm(TfrmCadastroPessoas, frmCadastroPessoas);
+  frmCadastroPessoas.ShowModal;       // Cria, chama e destroi form de cadastro de pessoas
+  frmCadastroPessoas.Free;
+
+  dsPessoas.DataSet.Refresh;      // Atuaiza dataset para aparecer novo cadastro
+end;
+
 procedure TfrmPesquisaPessoas.BtnEncerrarClick(Sender: TObject); // Botão Encerrar Pesquisa
 begin
   self.Close;

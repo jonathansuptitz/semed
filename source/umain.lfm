@@ -1,12 +1,12 @@
 object FrmMain: TFrmMain
-  Left = 48
+  Left = 172
   Height = 578
-  Top = 76
+  Top = 34
   Width = 1075
   BorderStyle = bsSingle
   Caption = 'SEMED | Módulo de Contratos'
-  ClientHeight = 558
-  ClientWidth = 1075
+  ClientHeight = 0
+  ClientWidth = 0
   Menu = MainMenu1
   OnClose = FormClose
   ShowInTaskBar = stAlways

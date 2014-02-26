@@ -330,7 +330,8 @@ procedure TfrmCadastroPessoas.BtnPesquisarClick(Sender: TObject);   // Pesquisar
 begin
   EditOff;
   Application.CreateForm(TfrmPesquisaPessoas, frmPesquisaPessoas);
-  frmPesquisaPessoas.ShowModal;
+  frmPesquisaPessoas.BtnNovo.Visible := false;  //Desabilita botão de novo cadastro
+  frmPesquisaPessoas.ShowModal;                 // na pesquisa. para evitar suplicação de tela
   frmPesquisaPessoas.Free;
 end;
 
