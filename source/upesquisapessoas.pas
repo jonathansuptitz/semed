@@ -104,7 +104,7 @@ begin                                                     // O registro continua
   //caso o frmcontrato esteje aberto manda o codigo da pessoa para o campo nele
   if not(frmContrato = nil) then
   begin
-    frmContrato.dsContratos.DataSet.FieldByName('codigo_pessoa').value := dsPessoas.DataSet.FieldByName('codigo_pessoa').value ;
+    frmContrato.edtfuncionario.text := dsPessoas.DataSet.FieldByName('codigo_pessoa').value ;
   end;
 
 end;

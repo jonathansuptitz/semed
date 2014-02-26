@@ -1,12 +1,12 @@
 object frmCadastroMural: TfrmCadastroMural
   Left = 597
-  Height = 165
-  Top = 212
+  Height = 144
+  Top = 213
   Width = 422
   BorderIcons = [biSystemMenu, biMaximize]
   BorderStyle = bsDialog
   Caption = 'Novo Recado'
-  ClientHeight = 165
+  ClientHeight = 144
   ClientWidth = 422
   OnClose = FormClose
   OnCreate = FormCreate
@@ -15,7 +15,7 @@ object frmCadastroMural: TfrmCadastroMural
   LCLVersion = '1.0.14.0'
   object DBMemo1: TDBMemo
     Left = 8
-    Height = 112
+    Height = 80
     Top = 29
     Width = 408
     DataField = 'conteudo_mural'
@@ -42,7 +42,7 @@ object frmCadastroMural: TfrmCadastroMural
     Left = 400
     Height = 16
     Hint = 'Salvar'
-    Top = 9
+    Top = 120
     Width = 16
     AutoSize = True
     OnClick = BtnSalvarClick
@@ -74,7 +74,7 @@ object frmCadastroMural: TfrmCadastroMural
     Left = 378
     Height = 16
     Hint = 'Cancelar'
-    Top = 9
+    Top = 120
     Width = 16
     AutoSize = True
     OnClick = BtnCancelarClick
@@ -105,12 +105,37 @@ object frmCadastroMural: TfrmCadastroMural
     ShowHint = True
   end
   object labelRestantes: TLabel
-    Left = 8
+    Left = 331
     Height = 16
-    Top = 144
+    Top = 14
     Width = 85
     Caption = 'Restantes: 200'
     Font.Height = -12
+    Font.Name = 'Arial'
+    ParentColor = False
+    ParentFont = False
+  end
+  object DBEdit1: TDBEdit
+    Left = 56
+    Height = 25
+    Top = 113
+    Width = 155
+    DataField = 'usuario_mural'
+    DataSource = dsMural
+    CharCase = ecNormal
+    Font.Height = -15
+    Font.Name = 'Arial'
+    MaxLength = 180
+    ParentFont = False
+    TabOrder = 1
+  end
+  object Label2: TLabel
+    Left = 9
+    Height = 18
+    Top = 118
+    Width = 44
+    Caption = 'Nome:'
+    Font.Height = -15
     Font.Name = 'Arial'
     ParentColor = False
     ParentFont = False

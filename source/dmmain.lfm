@@ -450,7 +450,6 @@ object DM1: TDM1
   end
   object querycontratos: TZQuery
     Connection = SEMEDconnection
-    Active = True
     SQL.Strings = (
       'SELECT * FROM tb_contratos'
     )

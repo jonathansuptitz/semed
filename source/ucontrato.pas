@@ -32,15 +32,14 @@ type
     dslocal: TDatasource;
     dscargos: TDatasource;
     DBEdtJornada: TDBEdit;
-    DBEdtFuncionario: TDBEdit;
     DBEdtAnoseletivo: TDBEdit;
     DBMemovacancia: TDBMemo;
     dsContratos: TDatasource;
     DateEditfinal: TDateEdit;
     DateEditinicial: TDateEdit;
-    DBEdtCodcontrato: TDBEdit;
     DBMemoobs: TDBMemo;
-    Edit1: TEdit;
+    edtfuncionario: TEdit;
+    edtcodigocontrato: TEdit;
     edtlocal: TEdit;
     Image1: TImage;
     Label1: TLabel;
@@ -75,7 +74,6 @@ type
     StringGrid1: TStringGrid;
     procedure Button1Click(Sender: TObject);
     procedure DBEdtCodcontratoExit(Sender: TObject);
-    procedure DBEdtFuncionarioExit(Sender: TObject);
     procedure BtnadicionalocalClick(Sender: TObject);
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure btnlimparlocaisClick(Sender: TObject);
@@ -114,14 +112,15 @@ end;
 
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 begin
-    if not((DBEdtJornada.text = '') or (DBEdtCodcontrato.text = '') or
-          (DBEdtAnoseletivo.text = '') or (DBEdtJornada.text = '') or
-          (DBEdtFuncionario.text = '')) then
+    if not((DBEdtJornada.text = '') or (DBEdtAnoseletivo.text = '') or
+    (DBEdtJornada.text = '')) then
     begin
       if Application.MessageBox('Tem certeza que os campos estão corretos?','Finalizar', MB_OKCANCEL) = idOK then
       begin
         try
           //adiciona demais campos tabela contrato
+          dsContratos.DataSet.FieldByName('codigo_contrato').Value  := edtcodigocontrato.text;
+          dsContratos.DataSet.FieldByName('codigo_pessoa').Value  := edtfuncionario.text;
           dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
           dsContratos.DataSet.FieldByName('periodo_final_contrato').Value := DateEditfinal.Text;
           dsContratos.DataSet.FieldByName('data_contrato').Value := FormatDateTime('dd/mm/yyyy', Date);
@@ -189,13 +188,35 @@ begin
 
   //filtra o dspessoa para o contrato
   dspessoa.DataSet.Filtered:=false;
-  dspessoa.DataSet.Filter:='codigo_pessoa = '''+DBEdtFuncionario.text+'''';
+  dspessoa.DataSet.Filter:='codigo_pessoa = '''+EdtFuncionario.text+'''';
   dspessoa.DataSet.Filtered:=true;
 
   //filtra a cidade da pessoa
   dscidades.DataSet.Filtered:=false;
   dscidades.DataSet.Filter:='codigo_cidade = '''+dspessoa.DataSet.FieldByName('codigo_cidade').asstring+'''';
   dscidades.DataSet.Filtered:=true;
+
+  //libera campos apenas se funcionario nao contratado
+  if not(dsContratos.DataSet.Locate('codigo_pessoa', EdtFuncionario.Text,[])) then
+  begin
+    edtfuncionario.text := dspessoa.DataSet.FieldByName('codigo_pessoa').value;//joga codigo para o campo
+
+    sbtcargo.Enabled:=true;
+    DBEdtcargo.Enabled:=true;
+    DBEdtAnoseletivo.Enabled:=true;
+    DBEdthorario.Enabled:=true;
+    Panel1.Enabled:=true;
+    Panel2.Enabled:=true;
+    DBComboBox1.Enabled:=true;
+    DBMemoobs.Enabled:=true;
+    DBMemovacancia.Enabled:=true;
+    DateEditfinal.Enabled:=true;
+    DateEditinicial.Enabled:=true;
+
+    dsContratos.DataSet.Insert;//coloca table em modo de inserçao
+  end
+  else
+    ShowMessage('Funcionário já contratado!');
 end;
 
 procedure TfrmContrato.RadiomanhaChange(Sender: TObject);
@@ -251,36 +272,14 @@ procedure TfrmContrato.DBEdtCodcontratoExit(Sender: TObject);
 begin
   //libera novo comtrato apenas se codigo contrato nao existir
   dsContratos.Enabled:=true;
-  if not(dsContratos.DataSet.Locate('codigo_contrato', Edit1.text,[])) then
+  if not(dsContratos.DataSet.Locate('codigo_contrato', edtcodigocontrato.text,[])) then
   begin
-    ShowMessage('teste');
-    DBEdtFuncionario.Enabled:=true;
+    edtcodigocontrato.Enabled:=false;
+
     sbtpessoa.Enabled:=true;
-    dsContratos.DataSet.Insert;//contro em modo de insecao
   end
   else
     ShowMessage('Contrato já existente!');
-end;
-
-procedure TfrmContrato.DBEdtFuncionarioExit(Sender: TObject);
-begin
-  //libera campos apenas se funcionario nao contratado
-  if not(dsContratos.DataSet.Locate('codigo_pessoa', Self.Text,[])) then
-  begin
-    sbtcargo.Enabled:=true;
-    DBEdtcargo.Enabled:=true;
-    DBEdtAnoseletivo.Enabled:=true;
-    DBEdthorario.Enabled:=true;
-    Panel1.Enabled:=true;
-    Panel2.Enabled:=true;
-    DBComboBox1.Enabled:=true;
-    DBMemoobs.Enabled:=true;
-    DBMemovacancia.Enabled:=true;
-    DateEditfinal.Enabled:=true;
-    DateEditinicial.Enabled:=true;
-  end
-  else
-    ShowMessage('Funcionário já contratado!');
 end;
 
 end.
