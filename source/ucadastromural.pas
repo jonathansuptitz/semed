@@ -65,22 +65,23 @@ begin
 
   with FrmMain do
   begin
-    dsMural.DataSet.First;
+    dsMural.DataSet.Refresh;
+    dsMural.DataSet.Last;
 
     memoMural.Lines.Clear;        // Limpa MEMO
-    memoMural.Lines.Add('----- INICIO DOS REGISTROS -----');
-    memoMural.Lines.Add('');
 
-    while not (dsMural.DataSet.EOF) do  //Enquanto nao for fim dos registros
+    while not (dsMural.DataSet.BOF) do  //Enquanto nao for fim dos registros
     begin
       memoMural.Lines.Add('* ' + dsMural.DataSet.FieldByName('data_mural').Value +   // Escreve data e nome
                           ', por ' + dsMural.DataSet.FieldByName('usuario_mural').Value + ':');
       memoMural.Lines.Add(dsMural.DataSet.FieldByName('conteudo_mural').Value);  // Escreve conteudo
       memoMural.Lines.Add('');                                                   // Pula linha
 
-      if not (dsMural.DataSet.EOF) then   // Se nao for ultimo registro, passa para proximo
-        dsMural.DataSet.Next;
+      if not (dsMural.DataSet.BOF) then   // Se nao for ultimo registro, passa para proximo
+        dsMural.DataSet.Prior;
     end;
+    memoMural.Lines.Add('----- INICIO DOS REGISTROS -----');
+    memoMural.SelStart := 0;  // Posiciona cursos na primeira linha para scroll ficar no inicio
   end;
 end;
 
