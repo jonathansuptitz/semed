@@ -66,7 +66,7 @@ begin
       ProgressBar1.StepBy(0);
       labelLoading.Caption := 'Pesquisando usuário...';
       Update;
-      Sleep(500);
+      //Sleep(500);
       IniciarSistema;
     end
     else
@@ -97,7 +97,7 @@ begin
   ProgressBar1.StepIt;
   labelLoading.Caption := 'Descriptografando arquivos de configuração...';
   Update;
-  Sleep(500);
+  //Sleep(500);
   try
       // Cria SL
       SLdescript := TStringList.Create;
@@ -148,7 +148,7 @@ begin
   ProgressBar1.StepIt;                                     // ---
   labelLoading.Caption := 'Conectando ao Banco de Dados...';
   Update;
-  Sleep(500);
+  //Sleep(500);
   with DM1 do
   begin
     // Le informações
@@ -162,7 +162,7 @@ begin
     ProgressBar1.StepIt;                                     // ---
     labelLoading.Caption := 'Realizando ligações...';
     frmLogin.Update;
-    Sleep(500);
+    //Sleep(500);
 
     //Habilita tabelas
     tb_cidades.Active := true;
@@ -178,7 +178,7 @@ begin
   ProgressBar1.StepIt;                                     // ---
   labelLoading.Caption := 'Atualizando Mural de Recados...';
   Update;
-  Sleep(500);
+  //Sleep(500);
 
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TfrmCadastroMural, frmCadastroMural);
@@ -192,7 +192,7 @@ begin
   ProgressBar1.StepIt;                                     // ---
   labelLoading.Caption := 'Criando Interface de usuário...';
   Update;
-  Sleep(500);
+  //Sleep(500);
 
   FrmMain.Show;
 
