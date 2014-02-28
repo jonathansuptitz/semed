@@ -15,11 +15,11 @@ type
   { TfrmContrato }
 
   TfrmContrato = class(TForm)
+    Btnadicionalocal: TBitBtn;
     BtnGerarcontrato: TBitBtn;
     btnlimparlocais: TBitBtn;
-    Btnadicionalocal: TBitBtn;
     BtnVoltar: TBitBtn;
-    Button1: TButton;
+    DBEdthorario: TDBEdit;
     dscidades: TDatasource;
     DBComboBox1: TDBComboBox;
     DBEdtcargo: TDBEdit;
@@ -27,7 +27,6 @@ type
     DBEdtcpfteste1: TDBEdit;
     DBEdttest2: TDBEdit;
     DBEdtteste1: TDBEdit;
-    DBEdthorario: TDBEdit;
     dspessoa: TDatasource;
     dslocal: TDatasource;
     dscargos: TDatasource;
@@ -64,20 +63,32 @@ type
     Panel3: TPanel;
     Panelprincipal: TPanel;
     PanelBotoes: TPanel;
-    sbtpessoa: TSpeedButton;
     RadioGroup1: TRadioGroup;
     Radiomanha: TRadioButton;
     Radionoite: TRadioButton;
     Radiotarde: TRadioButton;
-    sbtcargo: TSpeedButton;
     sbtlocal: TSpeedButton;
+    sbtpessoa: TSpeedButton;
+    sbtcargo: TSpeedButton;
     StringGrid1: TStringGrid;
-    procedure Button1Click(Sender: TObject);
+    procedure DateEditfinalKeyPress(Sender: TObject; var Key: char);
+    procedure DateEditinicialKeyPress(Sender: TObject; var Key: char);
+    procedure DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
+    procedure DBEdtcargoKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtCodcontratoExit(Sender: TObject);
     procedure BtnadicionalocalClick(Sender: TObject);
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure btnlimparlocaisClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
+    procedure DBEdtcpftest2Exit(Sender: TObject);
+    procedure DBEdtcpftest2KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdtcpfteste1EditingDone(Sender: TObject);
+    procedure DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdthorarioKeyPress(Sender: TObject; var Key: char);
+    procedure DBEdtJornadaKeyPress(Sender: TObject; var Key: char);
+    procedure edtcodigocontratoKeyPress(Sender: TObject; var Key: char);
+    procedure edtfuncionarioEditingDone(Sender: TObject);
+    procedure edtfuncionarioKeyPress(Sender: TObject; var Key: char);
     procedure FormShow(Sender: TObject);
     procedure sbtpessoaClick(Sender: TObject);
     procedure RadiomanhaChange(Sender: TObject);
@@ -96,7 +107,7 @@ var
 
 implementation
 uses
-  uPesquisaPessoas,uhtml, UCadastroLocalTrabalho, uCadastroCargos;
+  uPesquisaPessoas,UUtilidades,uhtml , UCadastroLocalTrabalho, uCadastroCargos;
 
 var
   linhas, numlocal: byte;
@@ -194,29 +205,7 @@ begin
   //filtra a cidade da pessoa
   dscidades.DataSet.Filtered:=false;
   dscidades.DataSet.Filter:='codigo_cidade = '''+dspessoa.DataSet.FieldByName('codigo_cidade').asstring+'''';
-  dscidades.DataSet.Filtered:=true;
-
-  //libera campos apenas se funcionario nao contratado
-  if not(dsContratos.DataSet.Locate('codigo_pessoa', EdtFuncionario.Text,[])) then
-  begin
-    edtfuncionario.text := dspessoa.DataSet.FieldByName('codigo_pessoa').value;//joga codigo para o campo
-
-    sbtcargo.Enabled:=true;
-    DBEdtcargo.Enabled:=true;
-    DBEdtAnoseletivo.Enabled:=true;
-    DBEdthorario.Enabled:=true;
-    Panel1.Enabled:=true;
-    Panel2.Enabled:=true;
-    DBComboBox1.Enabled:=true;
-    DBMemoobs.Enabled:=true;
-    DBMemovacancia.Enabled:=true;
-    DateEditfinal.Enabled:=true;
-    DateEditinicial.Enabled:=true;
-
-    dsContratos.DataSet.Insert;//coloca table em modo de inserçao
-  end
-  else
-    ShowMessage('Funcionário já contratado!');
+  DBEdtcargo.SetFocus;
 end;
 
 procedure TfrmContrato.RadiomanhaChange(Sender: TObject);
@@ -263,15 +252,103 @@ begin
   dslocal.DataSet.Filtered := true;
 end;
 
-procedure TfrmContrato.Button1Click(Sender: TObject);
+//PREVISAO DE ERROS-------------------------------------------------------------
+
+procedure TfrmContrato.DBEdtcpftest2Exit(Sender: TObject);
 begin
-  OpenURL(expandLocalHtmlFileName('contratoatual.html'));
+  utilidades.VerifCPF(DBEdtcpftest2);
+end;
+
+procedure TfrmContrato.DBEdtcpftest2KeyPress(Sender: TObject; var Key: char);
+begin
+  utilidades.MascCPF(DBEdtcpftest2, Key)
+end;
+
+procedure TfrmContrato.DBEdtcpfteste1EditingDone(Sender: TObject);
+begin
+  utilidades.VerifCPF(DBEdtcpfteste1);
+end;
+
+procedure TfrmContrato.DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
+begin
+  utilidades.MascCPF(DBEdtcpfteste1, Key)
+end;
+
+procedure TfrmContrato.DBEdthorarioKeyPress(Sender: TObject; var Key: char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+end;
+
+procedure TfrmContrato.DateEditfinalKeyPress(Sender: TObject; var Key: char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+end;
+
+procedure TfrmContrato.DateEditinicialKeyPress(Sender: TObject; var Key: char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+end;
+
+procedure TfrmContrato.DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+end;
+
+procedure TfrmContrato.DBEdtcargoKeyPress(Sender: TObject; var Key: char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+end;
+
+procedure TfrmContrato.DBEdtJornadaKeyPress(Sender: TObject; var Key: char);
+begin
+    if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+end;
+
+procedure TfrmContrato.edtcodigocontratoKeyPress(Sender: TObject; var Key: char
+  );
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+end;
+
+procedure TfrmContrato.edtfuncionarioEditingDone(Sender: TObject);
+begin
+  //libera campos apenas se funcionario nao contratado
+  if not(dsContratos.DataSet.Locate('codigo_pessoa', EdtFuncionario.Text,[])) then
+  begin
+    DBEdtJornada.Enabled:=true;
+    sbtcargo.Enabled:=true;
+    DBEdtcargo.Enabled:=true;
+    DBEdtAnoseletivo.Enabled:=true;
+    DBEdthorario.Enabled:=true;
+    Panel1.Enabled:=true;
+    Panel2.Enabled:=true;
+    DBComboBox1.Enabled:=true;
+    DBMemoobs.Enabled:=true;
+    DBMemovacancia.Enabled:=true;
+    DateEditfinal.Enabled:=true;
+    DateEditinicial.Enabled:=true;
+
+    dsContratos.DataSet.Insert;//coloca table em modo de inserçao
+  end
+  else
+  begin
+    edtfuncionario.Clear;
+    ShowMessage('Funcionário já contratado!');
+  end;
 end;
 
 procedure TfrmContrato.DBEdtCodcontratoExit(Sender: TObject);
 begin
   //libera novo comtrato apenas se codigo contrato nao existir
   dsContratos.Enabled:=true;
+
   if not(dsContratos.DataSet.Locate('codigo_contrato', edtcodigocontrato.text,[])) then
   begin
     edtcodigocontrato.Enabled:=false;
@@ -282,5 +359,10 @@ begin
     ShowMessage('Contrato já existente!');
 end;
 
+procedure TfrmContrato.edtfuncionarioKeyPress(Sender: TObject; var Key: char);
+begin
+  if not (Key in ['0'..'9', #8{backspace}]) then
+    Key := #0{nil};
+end;
 end.
 
