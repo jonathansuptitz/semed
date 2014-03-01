@@ -15,9 +15,9 @@ type
     public
       { public declarations }
 
-      procedure VerifCPF(campo : Tcomponent);  {Verrificar CPF, parametros: componente.
-                Utilizar no evento "OnExit"    ex: utilidades.VerifCPF(Edit2);
-                                               }
+      function VerifCPF(campo : Tcomponent) : boolean;  {Verrificar CPF, parametros: componente.
+                Utilizar no evento "OnExit"              ex: utilidades.VerifCPF(Edit2);
+                Retorna Boolean                          }
 
       procedure MascCPF(campo : TComponent; var Key : char); {Mascara CPF, parametros: componente,
                 Utilizar no evento "OnKeyPress"               Key do procedure.
@@ -61,12 +61,13 @@ var
 
 implementation
 
-procedure TUtilidades.VerifCPF(campo : Tcomponent);
+function TUtilidades.VerifCPF(campo : Tcomponent) : boolean;
 var
   x : byte;
   z, primeiro, segundo : integer;
   a, numero : string;
 begin
+  Result := true;
   // Se componente for DBedit
   if campo.ClassName = 'TDBEdit' then
   begin
@@ -78,6 +79,7 @@ begin
         (campo as TDBEdit).Color := clRed;
         ShowMessage('CPF incorreto!');
         (campo as TDBEdit).SetFocus;
+        Result := false;
       end
       else
       begin
@@ -119,6 +121,7 @@ begin
           (campo as TDBEdit).Color := clRed;
           ShowMessage('CPF incorreto!');
           (campo as TDBEdit).SetFocus;
+          Result := false;
         end
         else         {DV OK}
           (campo as TDBEdit).Color := clDefault;
@@ -136,6 +139,7 @@ begin
         (campo as TEdit).Color := clRed;
         ShowMessage('CPF incorreto!');
         (campo as TEdit).SetFocus;
+        Result := false;
       end
       else
       begin
@@ -177,6 +181,7 @@ begin
           (campo as TEdit).Color := clRed;
           ShowMessage('CPF incorreto!');
           (campo as TEdit).SetFocus;
+          Result := false;
         end
         else         {DV OK}
           (campo as TEdit).Color := clDefault;

@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, DbCtrls,
-  StdCtrls, ExtCtrls, Buttons, LCLType, ComCtrls;
+  StdCtrls, ExtCtrls, Buttons, LCLType, ComCtrls, ZConnection, ZDataset;
 
 type
 
@@ -161,8 +161,27 @@ end;
 
 // MASCARAS E VERIFICADORES ----------------------------------------------------
 procedure TfrmCadastroPessoas.DBEdit2Exit(Sender: TObject);  // CPF - verif
+var
+  queryConsultaCPF : TZReadOnlyQuery;
 begin
-  utilidades.VerifCPF(DBEdit2);
+  if (utilidades.VerifCPF(DBEdit2)) then   // Chama verificador(que trata o erro) e verifica
+  begin                                    // para chamar proximo teste
+    // Verifica se CPF inserido já existe
+    queryConsultaCPF := TZReadOnlyQuery.Create(nil);
+    queryConsultaCPF.Connection := DM1.SEMEDconnection;
+    queryConsultaCPF.SQL.Clear;
+    queryConsultaCPF.SQL.Add('SELECT 1 FROM tb_pessoas WHERE cpf_pessoa = "' + DBEdit2.Text + '"');
+    queryConsultaCPF.Open;
+
+    if not (queryConsultaCPF.IsEmpty) then
+    begin
+      ShowMessage('CPF já cadastrado!');
+      DBEdit2.SetFocus;
+    end;
+
+    queryConsultaCPF.Close;
+    queryConsultaCPF.Free;
+  end;
 end;
 
 procedure TfrmCadastroPessoas.DBEdit2KeyPress(Sender: TObject; var Key: char);  //CPF
