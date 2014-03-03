@@ -320,7 +320,9 @@ end;
 procedure TfrmContrato.edtfuncionarioEditingDone(Sender: TObject);
 begin
   //libera campos apenas se funcionario nao contratado
-  if not(dsContratos.DataSet.Locate('codigo_pessoa', EdtFuncionario.Text,[])) then
+if edtfuncionario.text <> '' then
+begin
+  if not dsContratos.DataSet.Locate('codigo_pessoa', EdtFuncionario.Text,[]) then
   begin
     DBEdtJornada.Enabled:=true;
     sbtcargo.Enabled:=true;
@@ -343,15 +345,18 @@ begin
     ShowMessage('Funcionário já contratado!');
   end;
 end;
+end;
 
 procedure TfrmContrato.DBEdtCodcontratoExit(Sender: TObject);
 begin
   //libera novo comtrato apenas se codigo contrato nao existir
-  dsContratos.Enabled:=true;
+dsContratos.Enabled:=true;
 
   if not(dsContratos.DataSet.Locate('codigo_contrato', edtcodigocontrato.text,[])) then
   begin
     edtcodigocontrato.Enabled:=false;
+
+    edtfuncionario.Enabled:=true;
 
     sbtpessoa.Enabled:=true;
   end

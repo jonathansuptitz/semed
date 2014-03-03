@@ -7,7 +7,7 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, printer4lazarus, ULogin, uusuarios, uhtml;
+  Forms, printer4lazarus, ULogin, uusuarios, uhtml, ubuscacontrato;
 
 {$R *.res}
 
@@ -16,5 +16,6 @@ begin
   RequireDerivedFormResource := True;
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmUsuarios, frmUsuarios);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.

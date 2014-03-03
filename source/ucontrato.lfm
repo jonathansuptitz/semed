@@ -587,6 +587,7 @@ object frmContrato: TfrmContrato
       Height = 26
       Top = 64
       Width = 88
+      Enabled = False
       OnEditingDone = edtfuncionarioEditingDone
       OnKeyPress = edtfuncionarioKeyPress
       TabOrder = 2
