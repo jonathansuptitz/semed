@@ -2,7 +2,7 @@ object DM1: TDM1
   OldCreateOrder = False
   Height = 422
   HorizontalOffset = 573
-  VerticalOffset = 137
+  VerticalOffset = 135
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -413,8 +413,9 @@ object DM1: TDM1
       'SELECT * FROM tb_cidades'
     )
     Params = <>
-    left = 256
-    top = 32
+    MasterSource = frmCadastroPessoas.dsPessoas
+    left = 232
+    top = 96
     object queryCADASTROPESSOAScidadescodigo_cidade: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -829,8 +830,9 @@ object DM1: TDM1
   object tb_cidades: TZTable
     Connection = SEMEDconnection
     TableName = 'tb_cidades'
+    MasterSource = frmCadastroPessoas.dsPessoas
     left = 48
-    top = 344
+    top = 352
     object tb_cidadescodigo_cidade: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -867,8 +869,8 @@ object DM1: TDM1
   object tb_usuarios: TZTable
     Connection = SEMEDconnection
     TableName = 'tb_usuarios'
-    left = 141
-    top = 96
+    left = 412
+    top = 120
     object tb_usuarioscodigo_usuario: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -912,5 +914,14 @@ object DM1: TDM1
       Required = True
       Size = 180
     end
+  end
+  object tb_CADASTROPESSOASuf: TZTable
+    Connection = SEMEDconnection
+    TableName = 'tb_cidades'
+    MasterFields = 'codigo_cidade'
+    MasterSource = frmCadastroPessoas.dsPessoas
+    LinkedFields = 'codigo_cidade'
+    left = 128
+    top = 96
   end
 end

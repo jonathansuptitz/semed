@@ -21,6 +21,8 @@ type
     BtnCancelar: TBitBtn;
     BtnApagar: TBitBtn;
     comboUF: TComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
+    dsUF: TDatasource;
     DBComboBox1: TDBComboBox;
     DBEdit1: TDBEdit;
     DBEdit10: TDBEdit;
@@ -120,6 +122,7 @@ type
     procedure DBEdit11KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit15KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit16KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdit1Change(Sender: TObject);
     procedure DBEdit20KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit23KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit26KeyPress(Sender: TObject; var Key: char);
@@ -157,6 +160,13 @@ uses
 procedure TfrmCadastroPessoas.FormCreate(Sender: TObject);
 begin
   EditOff;
+end;
+
+procedure TfrmCadastroPessoas.DBEdit1Change(Sender: TObject); // Ao mudar registro atualiza Cidades
+begin
+  //comboUF.Text := dsUF.DataSet.FieldByName('uf_cidade').Value;
+
+  //dsCidades.DataSet.Locate('codigo_cidade', dsPessoas.DataSet.FieldByName('codigo_cidade').Value, []);
 end;
 
 // MASCARAS E VERIFICADORES ----------------------------------------------------
@@ -271,10 +281,10 @@ begin
   end;
   DBEdit31.ReadOnly := false;
   DBEdit32.ReadOnly := false;
-  //DBComboBox1.Enabled := true;
+  DBComboBox1.Enabled := true;
   comboUF.Enabled := true;
-  DBMemo1.ReadOnly := false;
   DBLookupComboBox1.Enabled := true;
+  DBMemo1.ReadOnly := false;
 
   BtnSalvar.Enabled := true;
   BtnCancelar.Enabled := true;
@@ -297,10 +307,10 @@ begin
   end;
   DBEdit31.ReadOnly := true;
   DBEdit32.ReadOnly := true;
-  //DBComboBox1.Enabled := false;
+  DBComboBox1.Enabled := false;
   comboUF.Enabled := false;
-  DBMemo1.ReadOnly := true;
   DBLookupComboBox1.Enabled := false;
+  DBMemo1.ReadOnly := true;
 
   BtnSalvar.Enabled := false;
   BtnCancelar.Enabled := false;

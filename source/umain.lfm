@@ -1,7 +1,7 @@
 object FrmMain: TFrmMain
-  Left = 172
+  Left = 248
   Height = 578
-  Top = 34
+  Top = 126
   Width = 1075
   BorderStyle = bsSingle
   Caption = 'SEMED | Módulo de Contratos'

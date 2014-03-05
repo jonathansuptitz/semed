@@ -107,6 +107,10 @@ type
     tb_mural: TZTable;
     tb_cidades: TZTable;
     tb_usuarios: TZTable;
+    tb_CADASTROPESSOASuf: TZTable;
+    ZTable1codigo_cidade: TLongintField;
+    ZTable1nome_cidade: TStringField;
+    ZTable1uf_cidade: TStringField;
   private
     { private declarations }
   public

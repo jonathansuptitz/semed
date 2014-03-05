@@ -1,8 +1,8 @@
 object frmCadastroPessoas: TfrmCadastroPessoas
-  Left = 514
-  Height = 638
-  Top = 48
-  Width = 1296
+  Left = 7
+  Height = 595
+  Top = 107
+  Width = 1287
   HorzScrollBar.Page = 1279
   HorzScrollBar.Range = 877
   VertScrollBar.Page = 638
@@ -10,18 +10,18 @@ object frmCadastroPessoas: TfrmCadastroPessoas
   VertScrollBar.Visible = False
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Pessoas'
-  ClientHeight = 638
-  ClientWidth = 1296
+  ClientHeight = 595
+  ClientWidth = 1287
   OnCreate = FormCreate
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object Panel1: TPanel
-    Left = 1162
-    Height = 578
+    Left = 1153
+    Height = 535
     Top = 60
     Width = 134
     Align = alRight
-    ClientHeight = 578
+    ClientHeight = 535
     ClientWidth = 134
     TabOrder = 0
     object BtnVoltar: TBitBtn
@@ -31,7 +31,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
       AnchorSideBottom.Side = asrBottom
       Left = 6
       Height = 40
-      Top = 530
+      Top = 487
       Width = 120
       Anchors = [akRight, akBottom]
       BorderSpacing.Right = 7
@@ -426,10 +426,10 @@ object frmCadastroPessoas: TfrmCadastroPessoas
     Left = 0
     Height = 60
     Top = 0
-    Width = 1296
+    Width = 1287
     Align = alTop
     ClientHeight = 60
-    ClientWidth = 1296
+    ClientWidth = 1287
     Color = 3893827
     ParentColor = False
     TabOrder = 1
@@ -1193,23 +1193,23 @@ object frmCadastroPessoas: TfrmCadastroPessoas
   end
   object panelCentro: TPanel
     Left = 0
-    Height = 578
+    Height = 535
     Top = 60
-    Width = 1162
+    Width = 1153
     Align = alClient
-    ClientHeight = 578
-    ClientWidth = 1162
+    ClientHeight = 535
+    ClientWidth = 1153
     TabOrder = 2
     object ScrollBox1: TScrollBox
       Left = 1
-      Height = 576
+      Height = 533
       Top = 1
-      Width = 1160
-      HorzScrollBar.Page = 1139
-      VertScrollBar.Page = 572
+      Width = 1151
+      HorzScrollBar.Page = 1130
+      VertScrollBar.Page = 529
       Align = alClient
-      ClientHeight = 572
-      ClientWidth = 1139
+      ClientHeight = 529
+      ClientWidth = 1130
       TabOrder = 0
       object GroupBox3: TGroupBox
         Left = 469
@@ -1270,13 +1270,81 @@ object frmCadastroPessoas: TfrmCadastroPessoas
           ParentColor = False
           ParentFont = False
         end
-        object comboUF: TComboBox
-          Left = 113
-          Height = 25
-          Top = 222
-          Width = 300
+        object Label34: TLabel
+          Left = 14
+          Height = 18
+          Top = 228
+          Width = 34
+          Caption = 'UF *:'
           Font.Height = -15
           Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object DBLookupComboBox1: TDBLookupComboBox
+          Left = 113
+          Height = 25
+          Top = 261
+          Width = 300
+          DataField = 'codigo_cidade'
+          DataSource = dsPessoas
+          Enabled = False
+          Font.Height = -15
+          Font.Name = 'Arial'
+          KeyField = 'codigo_cidade'
+          ListField = 'nome_cidade'
+          ListFieldIndex = 0
+          ListSource = dsCidades
+          LookupCache = False
+          ParentFont = False
+          ReadOnly = True
+          Style = csDropDownList
+          TabOrder = 2
+        end
+        object DBMemo1: TDBMemo
+          Left = 113
+          Height = 146
+          Top = 24
+          Width = 300
+          DataField = 'endereco_pessoa'
+          DataSource = dsPessoas
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 250
+          ParentFont = False
+          TabOrder = 0
+        end
+        object DBEdit32: TDBEdit
+          Left = 113
+          Height = 25
+          Top = 300
+          Width = 300
+          DataField = 'cep_pessoa'
+          DataSource = dsPessoas
+          CharCase = ecNormal
+          Font.Height = -15
+          Font.Name = 'Arial'
+          MaxLength = 15
+          ParentFont = False
+          TabOrder = 3
+          OnKeyPress = DBEdit32KeyPress
+        end
+        object Label36: TLabel
+          Left = 14
+          Height = 18
+          Top = 307
+          Width = 46
+          Caption = 'CEP *:'
+          Font.Height = -15
+          Font.Name = 'Arial'
+          ParentColor = False
+          ParentFont = False
+        end
+        object comboUF: TComboBox
+          Left = 62
+          Height = 25
+          Top = 218
+          Width = 168
           ItemHeight = 17
           Items.Strings = (
             'AC'
@@ -1307,80 +1375,22 @@ object frmCadastroPessoas: TfrmCadastroPessoas
             'SP'
             'TO'
           )
-          OnChange = comboUFChange
-          OnExit = comboUFExit
-          ParentFont = False
-          Style = csDropDownList
-          TabOrder = 2
+          TabOrder = 4
+          Text = 'comboUF'
         end
-        object Label34: TLabel
-          Left = 14
-          Height = 18
-          Top = 228
-          Width = 34
-          Caption = 'UF *:'
-          Font.Height = -15
-          Font.Name = 'Arial'
-          ParentColor = False
-          ParentFont = False
-        end
-        object DBLookupComboBox1: TDBLookupComboBox
-          Left = 113
+        object DBLookupComboBox2: TDBLookupComboBox
+          Left = 265
           Height = 25
-          Top = 261
-          Width = 300
+          Top = 215
+          Width = 100
           DataField = 'codigo_cidade'
           DataSource = dsPessoas
-          Enabled = False
-          Font.Height = -15
-          Font.Name = 'Arial'
           KeyField = 'codigo_cidade'
-          ListField = 'nome_cidade'
+          ListField = 'uf_cidade'
           ListFieldIndex = 0
-          ListSource = dsCidades
+          ListSource = dsUF
           LookupCache = False
-          ParentFont = False
-          ReadOnly = True
-          TabOrder = 3
-        end
-        object DBMemo1: TDBMemo
-          Left = 113
-          Height = 146
-          Top = 24
-          Width = 300
-          DataField = 'endereco_pessoa'
-          DataSource = dsPessoas
-          Font.Height = -15
-          Font.Name = 'Arial'
-          MaxLength = 250
-          ParentFont = False
-          TabOrder = 0
-        end
-        object DBEdit32: TDBEdit
-          Left = 113
-          Height = 25
-          Top = 300
-          Width = 300
-          DataField = 'cep_pessoa'
-          DataSource = dsPessoas
-          CharCase = ecNormal
-          Font.Height = -15
-          Font.Name = 'Arial'
-          MaxLength = 15
-          ParentFont = False
-          TabOrder = 4
-          OnKeyPress = DBEdit32KeyPress
-        end
-        object Label36: TLabel
-          Left = 14
-          Height = 18
-          Top = 307
-          Width = 46
-          Caption = 'CEP *:'
-          Font.Height = -15
-          Font.Name = 'Arial'
-          ParentColor = False
-          ParentFont = False
+          TabOrder = 5
         end
       end
       object GroupBox1: TGroupBox
@@ -1409,6 +1419,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
           MaxLength = 0
           ParentFont = False
           TabOrder = 0
+          OnChange = DBEdit1Change
         end
         object DBEdit2: TDBEdit
           Left = 124
@@ -1631,6 +1642,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
           )
           MaxLength = 0
           ParentFont = False
+          Style = csDropDownList
           TabOrder = 6
         end
         object DBEdit6: TDBEdit
@@ -2259,7 +2271,12 @@ object frmCadastroPessoas: TfrmCadastroPessoas
   end
   object dsCidades: TDatasource
     DataSet = DM1.queryCADASTROPESSOAScidades
-    left = 1168
-    top = 320
+    left = 344
+    top = 8
+  end
+  object dsUF: TDatasource
+    DataSet = DM1.tb_cidades
+    left = 414
+    top = 8
   end
 end

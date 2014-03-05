@@ -172,6 +172,7 @@ begin
     tb_cargos.Active := true;
     tb_mural.Active := true;
     queryCADASTROPESSOAScidades.Active := true;
+    tb_CADASTROPESSOASuf.Active := true;
   end;
 
   // MURAL ---------------------------------------------------------------------
