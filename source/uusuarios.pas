@@ -41,7 +41,7 @@ type
     procedure BtnVoltarClick(Sender: TObject);
     procedure EditON;
     procedure EditOFF;
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormClose(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { private declarations }
@@ -139,8 +139,7 @@ end;
 
 // FIM -------------------------------------------------------------------------
 
-procedure TfrmUsuarios.FormClose(Sender: TObject; var CloseAction: TCloseAction
-  );
+procedure TfrmUsuarios.FormClose(Sender: TObject);
 begin
   dsUsuarios.DataSet.Cancel;
 end;

@@ -55,7 +55,7 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure BtnAtualizarClick(Sender: TObject);
     procedure BtnNovoClick(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormClose(Sender: TObject);
   private
     { private declarations }
   public
@@ -189,7 +189,7 @@ end;
 
 // FIM -------------------------------------------------------------------------
 
-procedure TFrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TFrmMain.FormClose(Sender: TObject);
 begin
   if Application.MessageBox('Deseja realmente sair?','Sair', MB_OKCANCEL) = idOK then
     Application.Terminate

@@ -62,8 +62,8 @@ type
     procedure DBEdit4KeyPress(Sender: TObject; var Key: char);
     procedure DBGrid1Enter(Sender: TObject);
     procedure editPesquisaChange(Sender: TObject);
-    procedure editPesquisaKeyPress(Sender: TObject; var Key: char);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure editPesquisaKeyPress(Sender: TObject);
+    procedure FormClose(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure EditON;
     procedure EditOFF;
@@ -101,8 +101,7 @@ begin
   EditOFF;
 end;
 
-procedure TfrmCadastroCargos.editPesquisaKeyPress(Sender: TObject; var Key: char
-  );
+procedure TfrmCadastroCargos.editPesquisaKeyPress(Sender: TObject);
 begin                                                          // Limpa campo de pesquisa
   if (editPesquisa.Text = 'Digite para pesquisar...') then     // quando usuario começa a
     editPesquisa.Text := '';                                   // digitar
@@ -112,7 +111,7 @@ end;
 
 procedure TfrmCadastroCargos.DBEdit4KeyPress(Sender: TObject; var Key: char); //Masc Moeda
 begin
-  if not (Key in ['0'..'9', chr(8){backspace}, DecimalSeparator]) then
+  if not (Key in ['0'..'9', chr(8){backspace}, DefaultFormatSettings.DecimalSeparator]) then
     Key := #0{nil};
 end;
 
@@ -197,8 +196,6 @@ begin                   // manda o codigo do cargo para o campo corespondente no
 end;
 
 procedure TfrmCadastroCargos.BtnSalvarClick(Sender: TObject);       // Salvar
-var
-  SLtrans: TStringList;
 begin
   if (DBEdit2.Text = '') or (DBEdit3.Text = '') or (DBEdit4.Text = '') or (memoClau.Text = '') then
     ShowMessage('Todos os campos são obrigatorios!')
@@ -253,8 +250,7 @@ begin
 end;
 
 // FIM -------------------------------------------------------------------------
-procedure TfrmCadastroCargos.FormClose(Sender: TObject;
-  var CloseAction: TCloseAction);
+procedure TfrmCadastroCargos.FormClose(Sender: TObject);
 begin
   dsCargos.DataSet.Cancel;      // Cancela INSERT se houver
 end;

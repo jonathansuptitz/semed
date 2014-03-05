@@ -23,8 +23,8 @@
         <UnitName Value="Umain"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="73"/>
-        <CursorPos X="28" Y="130"/>
+        <TopLine Value="177"/>
+        <CursorPos X="45" Y="192"/>
         <UsageCount Value="217"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -36,13 +36,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ucontrato"/>
-        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="349"/>
         <CursorPos X="43" Y="364"/>
         <UsageCount Value="217"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="ucadastropessoas.pas"/>
@@ -51,11 +48,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroPessoas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="343"/>
-        <CursorPos X="14" Y="357"/>
+        <TopLine Value="74"/>
+        <CursorPos X="31" Y="203"/>
         <UsageCount Value="216"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -67,10 +63,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dmMain"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="105"/>
-        <CursorPos X="18" Y="106"/>
+        <TopLine Value="113"/>
+        <CursorPos X="19" Y="122"/>
         <UsageCount Value="215"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -82,24 +78,19 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uPesquisaPessoas"/>
-        <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="93"/>
-        <CursorPos X="42" Y="102"/>
+        <TopLine Value="86"/>
+        <CursorPos X="60" Y="99"/>
         <UsageCount Value="218"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="uutilidades.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UUtilidades"/>
-        <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="265"/>
-        <CursorPos X="20" Y="271"/>
+        <TopLine Value="277"/>
+        <CursorPos X="38" Y="265"/>
         <UsageCount Value="210"/>
-        <Loaded Value="True"/>
       </Unit6>
       <Unit7>
         <Filename Value="ucadastrolocaltrabalho.pas"/>
@@ -108,11 +99,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UCadastroLocalTrabalho"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="181"/>
-        <CursorPos X="25" Y="193"/>
-        <FoldState Value=" T3lQ0J1,"/>
+        <TopLine Value="376"/>
+        <CursorPos X="78" Y="388"/>
+        <FoldState Value=" T3lP0J1/"/>
         <UsageCount Value="207"/>
+        <Loaded Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="ucadastrocargos.pas"/>
@@ -121,13 +114,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroCargos"/>
-        <EditorIndex Value="5"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="239"/>
-        <CursorPos X="44" Y="263"/>
+        <TopLine Value="105"/>
+        <CursorPos X="86" Y="114"/>
         <UsageCount Value="205"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="ucadastromural.lfm"/>
@@ -141,13 +134,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UCadastroMural"/>
-        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="66"/>
-        <CursorPos X="63" Y="80"/>
+        <TopLine Value="140"/>
+        <CursorPos X="56" Y="155"/>
         <UsageCount Value="257"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit10>
       <Unit11>
         <Filename Value="usobre.pas"/>
@@ -159,7 +149,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="126"/>
+        <UsageCount Value="127"/>
       </Unit11>
       <Unit12>
         <Filename Value="usuporte.pas"/>
@@ -171,7 +161,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="23" Y="6"/>
-        <UsageCount Value="126"/>
+        <UsageCount Value="127"/>
       </Unit12>
       <Unit13>
         <Filename Value="ulogin.pas"/>
@@ -180,13 +170,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ULogin"/>
-        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="80"/>
-        <CursorPos X="31" Y="91"/>
-        <UsageCount Value="105"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <TopLine Value="1"/>
+        <CursorPos X="33" Y="15"/>
+        <UsageCount Value="106"/>
       </Unit13>
       <Unit14>
         <Filename Value="uusuarios.pas"/>
@@ -196,9 +183,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uusuarios"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="126"/>
-        <CursorPos X="81" Y="66"/>
-        <UsageCount Value="87"/>
+        <TopLine Value="127"/>
+        <CursorPos X="49" Y="142"/>
+        <UsageCount Value="88"/>
       </Unit14>
       <Unit15>
         <Filename Value="uhtml.pas"/>
@@ -207,7 +194,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="54"/>
         <CursorPos X="33" Y="105"/>
-        <UsageCount Value="65"/>
+        <UsageCount Value="66"/>
       </Unit15>
       <Unit16>
         <Filename Value="ubuscacontrato.pas"/>
@@ -216,13 +203,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ubuscacontrato"/>
-        <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="5"/>
-        <CursorPos X="30" Y="5"/>
-        <UsageCount Value="41"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <TopLine Value="1"/>
+        <CursorPos X="39" Y="13"/>
+        <UsageCount Value="42"/>
       </Unit16>
       <Unit17>
         <Filename Value="uhtml.lfm"/>
@@ -442,127 +426,19 @@
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="3" HistoryIndex="2">
       <Position1>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="306" Column="34" TopLine="289"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="130" Column="28" TopLine="73"/>
       </Position1>
       <Position2>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="305" Column="34" TopLine="288"/>
+        <Filename Value="umain.pas"/>
+        <Caret Line="58" Column="24" TopLine="50"/>
       </Position2>
       <Position3>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="304" Column="34" TopLine="287"/>
+        <Filename Value="ucadastrocargos.pas"/>
+        <Caret Line="253" Column="57" TopLine="238"/>
       </Position3>
-      <Position4>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="324" Column="34" TopLine="307"/>
-      </Position4>
-      <Position5>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="149" Column="20" TopLine="145"/>
-      </Position5>
-      <Position6>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="188" Column="20" TopLine="185"/>
-      </Position6>
-      <Position7>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="144" Column="26" TopLine="142"/>
-      </Position7>
-      <Position8>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="338" Column="20" TopLine="335"/>
-      </Position8>
-      <Position9>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="334" Column="20" TopLine="334"/>
-      </Position9>
-      <Position10>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="346" Column="3" TopLine="344"/>
-      </Position10>
-      <Position11>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="358" Column="20" TopLine="355"/>
-      </Position11>
-      <Position12>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="149" Column="3" TopLine="147"/>
-      </Position12>
-      <Position13>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="160" Column="26" TopLine="143"/>
-      </Position13>
-      <Position14>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="317" Column="4" TopLine="315"/>
-      </Position14>
-      <Position15>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="372" Column="20" TopLine="369"/>
-      </Position15>
-      <Position16>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="162" Column="1" TopLine="151"/>
-      </Position16>
-      <Position17>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="322" Column="5" TopLine="301"/>
-      </Position17>
-      <Position18>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="75" Column="71" TopLine="64"/>
-      </Position18>
-      <Position19>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="86" Column="70" TopLine="77"/>
-      </Position19>
-      <Position20>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="87" Column="68" TopLine="78"/>
-      </Position20>
-      <Position21>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="354" Column="35" TopLine="340"/>
-      </Position21>
-      <Position22>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="355" Column="82" TopLine="345"/>
-      </Position22>
-      <Position23>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="348" Column="5" TopLine="339"/>
-      </Position23>
-      <Position24>
-        <Filename Value="ucontrato.pas"/>
-        <Caret Line="356" Column="81" TopLine="346"/>
-      </Position24>
-      <Position25>
-        <Filename Value="ucadastropessoas.pas"/>
-        <Caret Line="181" Column="56" TopLine="171"/>
-      </Position25>
-      <Position26>
-        <Filename Value="ucadastropessoas.pas"/>
-        <Caret Line="19" Column="12" TopLine="7"/>
-      </Position26>
-      <Position27>
-        <Filename Value="ucadastropessoas.pas"/>
-        <Caret Line="115" Column="22" TopLine="95"/>
-      </Position27>
-      <Position28>
-        <Filename Value="ucadastropessoas.pas"/>
-        <Caret Line="290" Column="10" TopLine="270"/>
-      </Position28>
-      <Position29>
-        <Filename Value="ucadastropessoas.pas"/>
-        <Caret Line="316" Column="10" TopLine="296"/>
-      </Position29>
-      <Position30>
-        <Filename Value="ucadastropessoas.pas"/>
-        <Caret Line="356" Column="14" TopLine="342"/>
-      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

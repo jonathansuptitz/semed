@@ -22,7 +22,7 @@ type
     procedure BtnCancelarClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure DBMemo1Change(Sender: TObject);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormClose(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure LimparRegistrosAntigos;
@@ -152,8 +152,7 @@ end;
 
 // FIM -------------------------------------------------------------------------
 
-procedure TfrmCadastroMural.FormClose(Sender: TObject;
-  var CloseAction: TCloseAction);
+procedure TfrmCadastroMural.FormClose(Sender: TObject);
 begin
   dsMural.DataSet.Cancel;
 end;

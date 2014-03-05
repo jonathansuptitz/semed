@@ -29,7 +29,7 @@ type
                                                               ex: utilidades.MascFone(Edit2, Key);
                                                               }
 
-      procedure MascRG(campo : Tcomponent; var Key : char);   {Mascara RG, parametros: componente,
+      procedure MascRG(var Key : char);                       {Mascara RG, parametros:
                 Utilizar no evento "OnKeyPress"               Key do procedure.
                                                               ex: utilidades.MascRG(Edit2, Key);
                                                               }
@@ -264,7 +264,7 @@ begin
   end;
 end;
 
-procedure TUtilidades.MascRG(campo : Tcomponent; var Key : char);
+procedure TUtilidades.MascRG(var Key : char);
 begin
   if not (Key in ['0'..'9', #8{backspace}, '.', '-', '/']) then
     Key := #0{nil};

@@ -25,8 +25,8 @@ type
     procedure ComboBox1Change(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure editPesquisaChange(Sender: TObject);
-    procedure editPesquisaKeyPress(Sender: TObject; var Key: char);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure editPesquisaKeyPress(Sender: TObject);
+    procedure FormClose(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     { private declarations }
@@ -49,9 +49,8 @@ begin                                                         // para iniciar pe
   campoBusca := 'nome_pessoa';
 end;
 
-procedure TfrmPesquisaPessoas.editPesquisaKeyPress(Sender: TObject;
-  var Key: char);                                            // Limpa campo quando
-begin                                                        // usuario começa a digitar
+procedure TfrmPesquisaPessoas.editPesquisaKeyPress(Sender: TObject);                                            // Limpa campo quando
+begin                                                         // usuario começa a digitar
   if (editPesquisa.Text = 'Digite para pesquisar...') then
     editPesquisa.Text := '';
 end;
@@ -96,10 +95,9 @@ begin
   self.Close;
 end;
 
-procedure TfrmPesquisaPessoas.FormClose(Sender: TObject;  // Desativa filtro da tabela (principal)
-  var CloseAction: TCloseAction);                         // para nao afetar outros processos.
-begin                                                     // O registro continua no selecionado.
-  DM1.tb_pessoas.Filtered := false;
+procedure TfrmPesquisaPessoas.FormClose(Sender: TObject);  // Desativa filtro da tabela (principal)
+begin                                                      // para nao afetar outros processos.
+  DM1.tb_pessoas.Filtered := false;                        // O registro continua no selecionado.
 
   //caso o frmcontrato esteje aberto manda o codigo da pessoa para o campo nele
   if not(frmContrato = nil) then

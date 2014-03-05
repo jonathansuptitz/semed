@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, DbCtrls,
-  StdCtrls, ExtCtrls, Buttons, LCLType, ComCtrls, ZConnection, ZDataset;
+  StdCtrls, ExtCtrls, Buttons, LCLType, ZDataset;
 
 type
 
@@ -206,7 +206,7 @@ end;
 
 procedure TfrmCadastroPessoas.DBEdit4KeyPress(Sender: TObject; var Key: char);  //RG
 begin
-  Utilidades.MascRG(DBEdit4, Key);
+  Utilidades.MascRG(Key);
 end;
 
 procedure TfrmCadastroPessoas.DBEdit6KeyPress(Sender: TObject; var Key: char);  //Nascimento

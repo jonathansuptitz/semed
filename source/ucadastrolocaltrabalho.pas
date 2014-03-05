@@ -79,8 +79,8 @@ type
     procedure Edit5KeyPress(Sender: TObject; var Key: char);
     procedure Edit6KeyPress(Sender: TObject; var Key: char);
     procedure editPesquisaChange(Sender: TObject);
-    procedure editPesquisaKeyPress(Sender: TObject; var Key: char);
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure editPesquisaKeyPress(Sender: TObject);
+    procedure FormClose(Sender: TObject);
     procedure EditON;
     procedure EditOFF;
     procedure FormCreate(Sender: TObject);
@@ -115,9 +115,8 @@ begin
   EditOFF;
 end;
 
-procedure TfrmCadastroLocalTrabalho.editPesquisaKeyPress(Sender: TObject;
-  var Key: char);                                            // Limpa campo quando usuario
-begin                                                        // começa a digitar
+procedure TfrmCadastroLocalTrabalho.editPesquisaKeyPress(Sender: TObject); // Limpa campo quando usuario
+begin                                                                      // começa a digitar
   if (editPesquisa.Text = 'Digite para pesquisar...') then
     editPesquisa.Text := '';
 end;
@@ -386,8 +385,7 @@ begin
 end;
 
 // FIM -------------------------------------------------------------------------
-procedure TfrmCadastroLocalTrabalho.FormClose(Sender: TObject;   // OnClose
-  var CloseAction: TCloseAction);
+procedure TfrmCadastroLocalTrabalho.FormClose(Sender: TObject);     //OnClose
 begin
   dsLocal_trabalho.DataSet.Cancel;   // Cancela INSERT se houver
 
