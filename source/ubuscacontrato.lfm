@@ -1,8 +1,49 @@
-object Form1: TForm1
-  Left = 390
-  Height = 240
-  Top = 152
-  Width = 320
-  Caption = 'Form1'
+object frmbuscacontrato: Tfrmbuscacontrato
+  Left = 455
+  Height = 431
+  Top = 145
+  Width = 724
+  Caption = 'frmbuscacontrato'
+  ClientHeight = 431
+  ClientWidth = 724
   LCLVersion = '1.0.14.0'
+  object DBGrid1: TDBGrid
+    Left = 0
+    Height = 351
+    Top = 80
+    Width = 724
+    Align = alBottom
+    Color = clWindow
+    Columns = <>
+    DataSource = frmContrato.dsContratos
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
+    TabOrder = 0
+  end
+  object GroupBox1: TGroupBox
+    Left = 0
+    Height = 80
+    Top = 0
+    Width = 724
+    Align = alTop
+    Caption = 'Buscar Contrato'
+    ClientHeight = 62
+    ClientWidth = 720
+    TabOrder = 1
+    object Label1: TLabel
+      Left = 6
+      Height = 14
+      Top = 7
+      Width = 56
+      Caption = 'Funcionario'
+      ParentColor = False
+    end
+    object Edit1: TEdit
+      Left = 70
+      Height = 21
+      Top = 0
+      Width = 152
+      OnChange = Edit1Change
+      TabOrder = 0
+    end
+  end
 end

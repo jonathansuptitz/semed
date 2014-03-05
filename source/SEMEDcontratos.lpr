@@ -16,6 +16,5 @@ begin
   RequireDerivedFormResource := True;
   Application.CreateForm(TfrmLogin, frmLogin);
   Application.CreateForm(TfrmUsuarios, frmUsuarios);
-  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.

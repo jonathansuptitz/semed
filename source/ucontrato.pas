@@ -70,6 +70,7 @@ type
     sbtlocal: TSpeedButton;
     sbtpessoa: TSpeedButton;
     sbtcargo: TSpeedButton;
+    SpeedButton1: TSpeedButton;
     StringGrid1: TStringGrid;
     procedure DateEditfinalKeyPress(Sender: TObject; var Key: char);
     procedure DateEditinicialKeyPress(Sender: TObject; var Key: char);
@@ -96,6 +97,7 @@ type
     procedure RadiotardeChange(Sender: TObject);
     procedure sbtcargoClick(Sender: TObject);
     procedure sbtlocalClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -107,7 +109,8 @@ var
 
 implementation
 uses
-  uPesquisaPessoas,UUtilidades,uhtml , UCadastroLocalTrabalho, uCadastroCargos;
+  uPesquisaPessoas, ubuscacontrato, UUtilidades, uhtml , UCadastroLocalTrabalho,
+  uCadastroCargos;
 
 var
   linhas, numlocal: byte;
@@ -250,6 +253,14 @@ begin
   //filtra o dslocal para o contrato
   dslocal.DataSet.Filter := 'nome_local_trabalho = ''' + edtlocal.text + '''';
   dslocal.DataSet.Filtered := true;
+end;
+
+procedure TfrmContrato.SpeedButton1Click(Sender: TObject);
+begin
+  dsContratos.DataSet.Active:=true;
+  Application.CreateForm(Tfrmbuscacontrato, frmbuscacontrato);
+  frmbuscacontrato.ShowModal;
+  frmbuscacontrato.Free;
 end;
 
 //PREVISAO DE ERROS-------------------------------------------------------------
