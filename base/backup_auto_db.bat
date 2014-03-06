@@ -1,0 +1,1 @@
+"C:\Arquivos de programas\MySQL\MySQL Server 5.6\bin\mysqldump" -u root --password=12345678 semedcontratos > "C:\dump.sql"
