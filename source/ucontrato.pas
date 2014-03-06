@@ -70,7 +70,7 @@ type
     sbtlocal: TSpeedButton;
     sbtpessoa: TSpeedButton;
     sbtcargo: TSpeedButton;
-    SpeedButton1: TSpeedButton;
+    sbtbuscacintrato: TSpeedButton;
     StringGrid1: TStringGrid;
     procedure DateEditfinalKeyPress(Sender: TObject; var Key: char);
     procedure DateEditinicialKeyPress(Sender: TObject; var Key: char);
@@ -91,13 +91,13 @@ type
     procedure edtfuncionarioEditingDone(Sender: TObject);
     procedure edtfuncionarioKeyPress(Sender: TObject; var Key: char);
     procedure FormShow(Sender: TObject);
+    procedure sbtbuscacintratoClick(Sender: TObject);
     procedure sbtpessoaClick(Sender: TObject);
     procedure RadiomanhaChange(Sender: TObject);
     procedure RadionoiteChange(Sender: TObject);
     procedure RadiotardeChange(Sender: TObject);
     procedure sbtcargoClick(Sender: TObject);
     procedure sbtlocalClick(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -133,6 +133,8 @@ begin
       begin
         try
           //adiciona demais campos tabela contrato
+
+
           dsContratos.DataSet.FieldByName('codigo_contrato').Value  := edtcodigocontrato.text;
           dsContratos.DataSet.FieldByName('codigo_pessoa').Value  := edtfuncionario.text;
           dsContratos.DataSet.FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
@@ -193,6 +195,30 @@ begin
   end;
 end;
 
+procedure TfrmContrato.sbtbuscacintratoClick(Sender: TObject);
+begin
+  dsContratos.DataSet.Active:=true;
+
+  Application.CreateForm(Tfrmbuscacontrato, frmbuscacontrato);
+  frmbuscacontrato.ShowModal;
+  frmbuscacontrato.Free;
+
+  //filtra datasources
+  DBEdtcargo.text := dsContratos.DataSet.FieldByName('codigo_cargo').value;
+
+  dscargos.DataSet.Filter := 'codigo_cargo = ''' + DBEdtcargo.text + '''';
+  dscargos.DataSet.Filtered := true;
+
+  //filtra o dspessoa para o contrato
+  dspessoa.DataSet.Filter:='codigo_pessoa = '''+EdtFuncionario.text+'''';
+  dspessoa.DataSet.Filtered:=true;
+
+  //filtra a cidade da pessoa
+  dscidades.DataSet.Filter:='codigo_cidade = '''+dspessoa.DataSet.FieldByName('codigo_cidade').asstring+'''';
+  dscidades.DataSet.Filtered:=true;
+
+end;
+
 procedure TfrmContrato.sbtpessoaClick(Sender: TObject);
 begin
   //chama a pesquisa de pessoa
@@ -201,14 +227,12 @@ begin
   frmPesquisaPessoas.free;
 
   //filtra o dspessoa para o contrato
-  dspessoa.DataSet.Filtered:=false;
   dspessoa.DataSet.Filter:='codigo_pessoa = '''+EdtFuncionario.text+'''';
   dspessoa.DataSet.Filtered:=true;
 
   //filtra a cidade da pessoa
-  dscidades.DataSet.Filtered:=false;
   dscidades.DataSet.Filter:='codigo_cidade = '''+dspessoa.DataSet.FieldByName('codigo_cidade').asstring+'''';
-  DBEdtcargo.SetFocus;
+  dscidades.DataSet.Filtered:=true;
 end;
 
 procedure TfrmContrato.RadiomanhaChange(Sender: TObject);
@@ -238,8 +262,11 @@ begin
   frmCadastroCargos.free;
 
   //filtra o dscargo para o contrato
+  DBEdtcargo.text := dsContratos.DataSet.FieldByName('codigo_cargo').value;
+
   dscargos.DataSet.Filter := 'codigo_cargo = ''' + DBEdtcargo.text + '''';
   dscargos.DataSet.Filtered := true;
+
 end;
 
 procedure TfrmContrato.sbtlocalClick(Sender: TObject);
@@ -253,14 +280,6 @@ begin
   //filtra o dslocal para o contrato
   dslocal.DataSet.Filter := 'nome_local_trabalho = ''' + edtlocal.text + '''';
   dslocal.DataSet.Filtered := true;
-end;
-
-procedure TfrmContrato.SpeedButton1Click(Sender: TObject);
-begin
-  dsContratos.DataSet.Active:=true;
-  Application.CreateForm(Tfrmbuscacontrato, frmbuscacontrato);
-  frmbuscacontrato.ShowModal;
-  frmbuscacontrato.Free;
 end;
 
 //PREVISAO DE ERROS-------------------------------------------------------------
@@ -331,7 +350,7 @@ end;
 procedure TfrmContrato.edtfuncionarioEditingDone(Sender: TObject);
 begin
   //libera campos apenas se funcionario nao contratado
-if edtfuncionario.text <> '' then
+if Length(edtfuncionario.text) <> 0 then
 begin
   if not dsContratos.DataSet.Locate('codigo_pessoa', EdtFuncionario.Text,[]) then
   begin
@@ -362,7 +381,8 @@ procedure TfrmContrato.DBEdtCodcontratoExit(Sender: TObject);
 begin
   //libera novo comtrato apenas se codigo contrato nao existir
 dsContratos.Enabled:=true;
-
+if Length(edtcodigocontrato.text) <> 0 then
+begin
   if not(dsContratos.DataSet.Locate('codigo_contrato', edtcodigocontrato.text,[])) then
   begin
     edtcodigocontrato.Enabled:=false;
@@ -373,6 +393,7 @@ dsContratos.Enabled:=true;
   end
   else
     ShowMessage('Contrato já existente!');
+end;
 end;
 
 procedure TfrmContrato.edtfuncionarioKeyPress(Sender: TObject; var Key: char);

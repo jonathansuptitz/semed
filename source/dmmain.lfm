@@ -2,7 +2,7 @@ object DM1: TDM1
   OldCreateOrder = False
   Height = 422
   HorizontalOffset = 504
-  VerticalOffset = 115
+  VerticalOffset = 116
   Width = 535
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
@@ -414,8 +414,8 @@ object DM1: TDM1
     )
     Params = <>
     MasterSource = frmCadastroPessoas.dsPessoas
-    left = 232
-    top = 96
+    left = 272
+    top = 160
     object queryCADASTROPESSOAScidadescodigo_cidade: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -921,7 +921,7 @@ object DM1: TDM1
     MasterFields = 'codigo_cidade'
     MasterSource = frmCadastroPessoas.dsPessoas
     LinkedFields = 'codigo_cidade'
-    left = 128
-    top = 96
+    left = 160
+    top = 80
   end
 end

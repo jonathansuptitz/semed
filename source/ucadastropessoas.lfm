@@ -1,7 +1,7 @@
 object frmCadastroPessoas: TfrmCadastroPessoas
   Left = 7
   Height = 595
-  Top = 107
+  Top = 39
   Width = 1287
   HorzScrollBar.Page = 1279
   HorzScrollBar.Range = 877

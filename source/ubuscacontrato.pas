@@ -6,18 +6,26 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, DBGrids,
-  StdCtrls, ucontrato;
+  StdCtrls, Calendar, EditBtn, ucontrato, uCadastroCargos;
 
 type
 
   { Tfrmbuscacontrato }
 
   Tfrmbuscacontrato = class(TForm)
+    DateEdit1: TDateEdit;
     DBGrid1: TDBGrid;
-    Edit1: TEdit;
+    EditButton1: TEditButton;
+    edtfuncionario: TEdit;
+    edtcodigo: TEdit;
     GroupBox1: TGroupBox;
     Label1: TLabel;
-    procedure Edit1Change(Sender: TObject);
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    procedure EditButton1Change(Sender: TObject);
+    procedure edtfuncionarioChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
   private
     { private declarations }
   public
@@ -33,11 +41,35 @@ implementation
 
 { Tfrmbuscacontrato }
 
-procedure Tfrmbuscacontrato.Edit1Change(Sender: TObject);
+procedure Tfrmbuscacontrato.edtfuncionarioChange(Sender: TObject);
 begin
-  frmContrato.dsContratos.DataSet.Filtered:=false;
-  frmContrato.dsContratos.DataSet.Filter:= 'codigo_pessoa like '''+Edit1.text'''';
-  frmContrato.dsContratos.DataSet.Filtered:=true;
+  if Length(edtfuncionario.text) <> 0 then
+  begin
+    frmContrato.dsContratos.DataSet.Filter:= 'codigo_pessoa like '+QuotedStr('*'+edtfuncionario.text+'*');
+    frmContrato.dsContratos.DataSet.Filtered:=true;
+  end
+  else
+    frmContrato.dsContratos.DataSet.Filtered:=false;
+
+end;
+
+procedure Tfrmbuscacontrato.FormClose(Sender: TObject;
+  var CloseAction: TCloseAction);
+begin
+
+end;
+
+procedure Tfrmbuscacontrato.EditButton1Change(Sender: TObject);
+begin
+  //chama a pesquisa de cargo
+  Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
+  frmCadastroCargos.SelecionarAtivo := true; // Habilita botão SELECIONAR
+  frmCadastroCargos.showmodal;
+  frmCadastroCargos.free;
+
+  //filtra o dscargo para o contrato
+  frmContrato.dsContratos.DataSet.Filter := 'codigo_cargo = ''' + EditButton1.text + '''';
+  frmContrato.dscargos.DataSet.Filtered := true;
 end;
 
 end.
