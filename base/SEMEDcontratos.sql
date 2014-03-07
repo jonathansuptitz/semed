@@ -18,32 +18,6 @@ USE `semedcontratos`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cidade`
---
-
-DROP TABLE IF EXISTS `cidade`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cidade` (
-  `cid_codigo` int(11) NOT NULL AUTO_INCREMENT,
-  `cid_nome` varchar(30) NOT NULL,
-  `cid_uf` varchar(2) NOT NULL,
-  PRIMARY KEY (`cid_codigo`),
-  KEY `cid_nome` (`cid_nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cidade`
---
-
-LOCK TABLES `cidade` WRITE;
-/*!40000 ALTER TABLE `cidade` DISABLE KEYS */;
-INSERT INTO `cidade` VALUES (1,'Timbó','SC'),(2,'Indaial','SC');
-/*!40000 ALTER TABLE `cidade` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tb_cargos`
 --
 
@@ -121,8 +95,8 @@ CREATE TABLE `tb_contratos` (
   PRIMARY KEY (`codigo_contrato`),
   KEY `fk_tb_contratos_tb_pessoas1_idx` (`codigo_pessoa`),
   KEY `fk_tb_contratos_tb_cargos1_idx` (`codigo_cargo`),
-  CONSTRAINT `fk_tb_contratos_tb_cargos1` FOREIGN KEY (`codigo_cargo`) REFERENCES `tb_cargos` (`codigo_cargo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tb_contratos_tb_pessoas1` FOREIGN KEY (`codigo_pessoa`) REFERENCES `tb_pessoas` (`codigo_pessoa`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_contratos_tb_cargos1` FOREIGN KEY (`codigo_cargo`) REFERENCES `tb_cargos` (`codigo_cargo`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_tb_contratos_tb_pessoas1` FOREIGN KEY (`codigo_pessoa`) REFERENCES `tb_pessoas` (`codigo_pessoa`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -148,8 +122,8 @@ CREATE TABLE `tb_contratos_local_trabalho` (
   PRIMARY KEY (`codigo_local_trabalho`,`codigo_contrato`),
   KEY `fk_tb_contratos_local_trabalho_tb_contratos1_idx` (`codigo_contrato`),
   KEY `fk_tb_contratos_local_trabalho_tb_local_trabalho1_idx` (`codigo_local_trabalho`),
-  CONSTRAINT `fk_tb_contratos_local_trabalho_tb_contratos1` FOREIGN KEY (`codigo_contrato`) REFERENCES `tb_contratos` (`codigo_contrato`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_tb_contratos_local_trabalho_tb_local_trabalho1` FOREIGN KEY (`codigo_local_trabalho`) REFERENCES `tb_local_trabalho` (`codigo_local_trabalho`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_contratos_local_trabalho_tb_contratos1` FOREIGN KEY (`codigo_contrato`) REFERENCES `tb_contratos` (`codigo_contrato`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_tb_contratos_local_trabalho_tb_local_trabalho1` FOREIGN KEY (`codigo_local_trabalho`) REFERENCES `tb_local_trabalho` (`codigo_local_trabalho`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -261,7 +235,7 @@ CREATE TABLE `tb_pessoas` (
   `cep_pessoa` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`codigo_pessoa`),
   KEY `fk_tb_pessoas_tb_cidades_idx` (`codigo_cidade`),
-  CONSTRAINT `fk_tb_pessoas_tb_cidades` FOREIGN KEY (`codigo_cidade`) REFERENCES `tb_cidades` (`codigo_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_tb_pessoas_tb_cidades` FOREIGN KEY (`codigo_cidade`) REFERENCES `tb_cidades` (`codigo_cidade`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -310,4 +284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-06 19:47:08
+-- Dump completed on 2014-03-07 13:04:08
