@@ -407,48 +407,6 @@ object DM1: TDM1
       Size = 180
     end
   end
-  object queryCADASTROPESSOAScidades: TZReadOnlyQuery
-    Connection = SEMEDconnection
-    SQL.Strings = (
-      'SELECT * FROM tb_cidades'
-    )
-    Params = <>
-    MasterSource = frmCadastroPessoas.dsPessoas
-    left = 272
-    top = 160
-    object queryCADASTROPESSOAScidadescodigo_cidade: TLongintField
-      DisplayWidth = 10
-      FieldKind = fkData
-      FieldName = 'codigo_cidade'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object queryCADASTROPESSOAScidadesnome_cidade: TStringField
-      DisplayWidth = 180
-      FieldKind = fkData
-      FieldName = 'nome_cidade'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 180
-    end
-    object queryCADASTROPESSOAScidadesuf_cidade: TStringField
-      DisplayWidth = 8
-      FieldKind = fkData
-      FieldName = 'uf_cidade'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 8
-    end
-  end
   object querycontratos: TZQuery
     Connection = SEMEDconnection
     SQL.Strings = (
@@ -827,45 +785,6 @@ object DM1: TDM1
       Size = 800
     end
   end
-  object tb_cidades: TZTable
-    Connection = SEMEDconnection
-    TableName = 'tb_cidades'
-    MasterSource = frmCadastroPessoas.dsPessoas
-    left = 48
-    top = 352
-    object tb_cidadescodigo_cidade: TLongintField
-      DisplayWidth = 10
-      FieldKind = fkData
-      FieldName = 'codigo_cidade'
-      Index = 0
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-    end
-    object tb_cidadesnome_cidade: TStringField
-      DisplayWidth = 180
-      FieldKind = fkData
-      FieldName = 'nome_cidade'
-      Index = 1
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 180
-    end
-    object tb_cidadesuf_cidade: TStringField
-      DisplayWidth = 8
-      FieldKind = fkData
-      FieldName = 'uf_cidade'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = True
-      Size = 8
-    end
-  end
   object tb_usuarios: TZTable
     Connection = SEMEDconnection
     TableName = 'tb_usuarios'
@@ -915,13 +834,32 @@ object DM1: TDM1
       Size = 180
     end
   end
-  object tb_CADASTROPESSOASuf: TZTable
+  object tb_cidades: TZTable
     Connection = SEMEDconnection
+    Active = True
     TableName = 'tb_cidades'
-    MasterFields = 'codigo_cidade'
-    MasterSource = frmCadastroPessoas.dsPessoas
-    LinkedFields = 'codigo_cidade'
-    left = 160
-    top = 80
+    left = 48
+    top = 344
+    object tb_cidadescodigo_cidade: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_cidade'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object tb_cidadesnome_cidade: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'nome_cidade'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
   end
 end

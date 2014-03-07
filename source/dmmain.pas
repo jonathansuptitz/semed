@@ -42,7 +42,6 @@ type
     tb_cargossalario_hora_cargo: TFloatField;
     tb_cidadescodigo_cidade: TLongintField;
     tb_cidadesnome_cidade: TStringField;
-    tb_cidadesuf_cidade: TStringField;
     tb_horarioscodigo_horario: TLongintField;
     tb_horariosdescricao_periodo_horario: TStringField;
     tb_horarioshorario_periodo_horario: TStringField;
@@ -94,7 +93,6 @@ type
     tb_pessoasrg_pessoa: TStringField;
     tb_pessoastelefone1_pessoa: TStringField;
     tb_pessoastelefone2_pessoa: TStringField;
-    queryCADASTROPESSOAScidades: TZReadOnlyQuery;
     tb_local_trabalho: TZQuery;
     tb_usuarioscodigo_usuario: TLongintField;
     tb_usuarioslogin_usuario: TStringField;
@@ -105,12 +103,10 @@ type
     ZReadOnlyQuery1uf_cidade: TStringField;
     tb_cargos: TZTable;
     tb_mural: TZTable;
-    tb_cidades: TZTable;
     tb_usuarios: TZTable;
-    tb_CADASTROPESSOASuf: TZTable;
+    tb_cidades: TZTable;
     ZTable1codigo_cidade: TLongintField;
     ZTable1nome_cidade: TStringField;
-    ZTable1uf_cidade: TStringField;
   private
     { private declarations }
   public

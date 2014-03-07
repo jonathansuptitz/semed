@@ -20,10 +20,7 @@ type
     BtnSalvar: TBitBtn;
     BtnCancelar: TBitBtn;
     BtnApagar: TBitBtn;
-    comboUF: TComboBox;
-    DBLookupComboBox2: TDBLookupComboBox;
-    dsUF: TDatasource;
-    DBComboBox1: TDBComboBox;
+    comboEstadoCivil: TDBComboBox;
     DBEdit1: TDBEdit;
     DBEdit10: TDBEdit;
     DBEdit11: TDBEdit;
@@ -55,7 +52,7 @@ type
     DBEdit7: TDBEdit;
     DBEdit8: TDBEdit;
     DBEdit9: TDBEdit;
-    DBLookupComboBox1: TDBLookupComboBox;
+    comboCidade: TDBLookupComboBox;
     DBMemo1: TDBMemo;
     dsCidades: TDatasource;
     dsPessoas: TDatasource;
@@ -97,7 +94,6 @@ type
     Label31: TLabel;
     Label32: TLabel;
     Label33: TLabel;
-    Label34: TLabel;
     Label35: TLabel;
     Label36: TLabel;
     Label4: TLabel;
@@ -117,12 +113,9 @@ type
     procedure BtnPesquisarClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
-    procedure comboUFChange(Sender: TObject);
-    procedure comboUFExit(Sender: TObject);
     procedure DBEdit11KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit15KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit16KeyPress(Sender: TObject; var Key: char);
-    procedure DBEdit1Change(Sender: TObject);
     procedure DBEdit20KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit23KeyPress(Sender: TObject; var Key: char);
     procedure DBEdit26KeyPress(Sender: TObject; var Key: char);
@@ -160,13 +153,8 @@ uses
 procedure TfrmCadastroPessoas.FormCreate(Sender: TObject);
 begin
   EditOff;
-end;
 
-procedure TfrmCadastroPessoas.DBEdit1Change(Sender: TObject); // Ao mudar registro atualiza Cidades
-begin
-  //comboUF.Text := dsUF.DataSet.FieldByName('uf_cidade').Value;
-
-  //dsCidades.DataSet.Locate('codigo_cidade', dsPessoas.DataSet.FieldByName('codigo_cidade').Value, []);
+  dsPessoas.DataSet.Refresh; // Gambiara master para carregar todos os campos
 end;
 
 // MASCARAS E VERIFICADORES ----------------------------------------------------
@@ -261,14 +249,6 @@ end;
 
 // PREVISAO DE ERROS -----------------------------------------------------------
 
-procedure TfrmCadastroPessoas.comboUFExit(Sender: TObject);  // Ao selecionar UF
-begin
-  if self.Text = '' then
-    DBLookupComboBox1.Enabled := false
-  else
-    DBLookupComboBox1.Enabled := true;
-end;
-
 procedure TfrmCadastroPessoas.EditON;        // Habilitar Edição
 var
   componente: TComponent;
@@ -281,9 +261,8 @@ begin
   end;
   DBEdit31.ReadOnly := false;
   DBEdit32.ReadOnly := false;
-  DBComboBox1.Enabled := true;
-  comboUF.Enabled := true;
-  DBLookupComboBox1.Enabled := true;
+  comboEstadoCivil.Enabled := true;
+  comboCidade.Enabled := true;
   DBMemo1.ReadOnly := false;
 
   BtnSalvar.Enabled := true;
@@ -307,9 +286,8 @@ begin
   end;
   DBEdit31.ReadOnly := true;
   DBEdit32.ReadOnly := true;
-  DBComboBox1.Enabled := false;
-  comboUF.Enabled := false;
-  DBLookupComboBox1.Enabled := false;
+  comboEstadoCivil.Enabled := false;
+  comboCidade.Enabled := false;
   DBMemo1.ReadOnly := true;
 
   BtnSalvar.Enabled := false;
@@ -319,26 +297,6 @@ begin
   BtnApagar.Enabled := true;
   BtnVoltar.Enabled := true;
   BtnPesquisar.Enabled := true;
-end;
-
-// Carrega Lista de Cidades comforme UF ----------------------------------------
-procedure TfrmCadastroPessoas.comboUFChange(Sender: TObject);
-begin
-  try
-    try
-      DM1.queryCADASTROPESSOAScidades.Active := true;
-    except
-      ShowMessage('Erro ao abrir tela!');
-      frmCadastroPessoas.Close;
-    end;
-    DM1.queryCADASTROPESSOAScidades.Close;
-    DM1.queryCADASTROPESSOAScidades.SQL.Clear;
-    DM1.queryCADASTROPESSOAScidades.SQL.Add('SELECT * FROM tb_cidades WHERE uf_cidade = "'+comboUF.Text+'"');
-    DM1.queryCADASTROPESSOAScidades.Open;
-  except
-    ShowMessage('Erro ao abrir tela!');
-    frmCadastroPessoas.Close;
-  end;
 end;
 
 // BOTOES MENU -----------------------------------------------------------------
@@ -381,8 +339,8 @@ begin
 
   if (DBEdit2.Text = '') or (DBEdit3.Text = '') or (DBEdit4.Text = '') or       // Se campos principais nao
       (DBEdit5.Text = '') or (DBEdit6.Text = '') or (DBEdit7.Text = '') or      // estiverem preenchidos
-      (DBEdit31.Text = '') or (DBEdit32.Text = '') or (DBComboBox1.Text = '') or
-      (comboUF.Text = '') or (DBLookupComboBox1.Text = '') then
+      (DBEdit31.Text = '') or (DBEdit32.Text = '') or (comboEstadoCivil.Text = '') or
+      (comboCidade.Text = '') then
     ShowMessage('Os campos * são obrigatorios!')
   else if editFormacaoLimpos then                                               // Se nenhum campo de formacao
   begin                                                                         // estiver preenchido
