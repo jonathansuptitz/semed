@@ -1,12 +1,11 @@
 object frmbuscacontrato: Tfrmbuscacontrato
-  Left = 330
+  Left = 385
   Height = 431
-  Top = 142
+  Top = 150
   Width = 724
   Caption = 'frmbuscacontrato'
   ClientHeight = 431
   ClientWidth = 724
-  OnClose = FormClose
   LCLVersion = '1.0.14.0'
   object DBGrid1: TDBGrid
     Left = 0
@@ -16,7 +15,6 @@ object frmbuscacontrato: Tfrmbuscacontrato
     Align = alBottom
     Color = clWindow
     Columns = <>
-    DataSource = frmContrato.dsContratos
     Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
     TabOrder = 0
   end

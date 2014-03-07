@@ -53,7 +53,7 @@
         <PackageName Value="LCL"/>
       </Item7>
     </RequiredPackages>
-    <Units Count="17">
+    <Units Count="18">
       <Unit0>
         <Filename Value="SEMEDcontratos.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -177,6 +177,13 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ubuscacontrato"/>
       </Unit16>
+      <Unit17>
+        <Filename Value="udmcontratos.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DMcontratos"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="udmcontratos"/>
+      </Unit17>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

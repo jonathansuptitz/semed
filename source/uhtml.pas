@@ -4,7 +4,7 @@ unit uhtml;
 
 interface
 uses
-  Classes, ucontrato, SysUtils;
+  Classes, udmcontratos, ucontrato, SysUtils;
 
 type
   Thtml = class
@@ -54,30 +54,30 @@ begin
     begin
       pstl := texto[y];//atribui uma linha da stringlist  na pstl
 
-      texto[y] := StringReplace(pstl,'varnome',frmContrato.dspessoa.DataSet.FieldByName('nome_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varcargo',frmContrato.dscargos.DataSet.FieldByName('nome_cargo').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varperiodoinicial',frmContrato.dsContratos.DataSet.FieldByName('periodo_inicial_contrato').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varperiodofinal',frmContrato.dsContratos.DataSet.FieldByName('periodo_final_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varnome',DMcontratos.dspessoa.DataSet.FieldByName('nome_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcargo',DMcontratos.dscargos.DataSet.FieldByName('nome_cargo').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varperiodoinicial',DMcontratos.dsContratos.DataSet.FieldByName('periodo_inicial_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varperiodofinal',DMcontratos.dsContratos.DataSet.FieldByName('periodo_final_contrato').value,[rfIgnoreCase,rfReplaceAll]);
       texto[y] := StringReplace(pstl,'varlocal',varlocal,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varjornada',frmContrato.dsContratos.DataSet.FieldByName('jornada_trabalho_contrato').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'vardata',frmContrato.dsContratos.DataSet.FieldByName('data_contrato').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varanoseletivo',frmContrato.dsContratos.DataSet.FieldByName('ano_seletivo_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varjornada',DMcontratos.dsContratos.DataSet.FieldByName('jornada_trabalho_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'vardata',DMcontratos.dsContratos.DataSet.FieldByName('data_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varanoseletivo',DMcontratos.dsContratos.DataSet.FieldByName('ano_seletivo_contrato').value,[rfIgnoreCase,rfReplaceAll]);
       texto[y] := StringReplace(pstl,'varano',FormatDateTime('yyyy',now),[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varcodigocontrato',frmContrato.dsContratos.DataSet.FieldByName('codigo_contrato').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varnacionalidade',frmContrato.dspessoa.DataSet.FieldByName('nacionalidade_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varestadocivil',frmContrato.dspessoa.DataSet.FieldByName('estado_civil_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varrg',frmContrato.dspessoa.DataSet.FieldByName('rg_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varcpf',frmContrato.dspessoa.DataSet.FieldByName('cpf_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varendereco',frmContrato.dspessoa.DataSet.FieldByName('endereco_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varbairro',frmContrato.dspessoa.DataSet.FieldByName('bairro_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varcidade',frmContrato.dscidades.DataSet.FieldByName('nome_cidade').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varjustificativa',frmContrato.dsContratos.DataSet.FieldByName('justificativa_contrato').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varcargahoraria',frmContrato.dsContratos.DataSet.FieldByName('jornada_trabalho_contrato').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varcpfteste1',frmContrato.dsContratos.DataSet.FieldByName('cpf_teste_1_contrato').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'vartestemunha1',frmContrato.dsContratos.DataSet.FieldByName('testemunha_1_contrato').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varcpfteste2',frmContrato.dsContratos.DataSet.FieldByName('cpf_teste_2_contrato').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'vartestemunha2',frmContrato.dsContratos.DataSet.FieldByName('testemunha_2_contrato').value,[rfIgnoreCase,rfReplaceAll]);
-      texto[y] := StringReplace(pstl,'varclausula',frmContrato.dscargos.DataSet.FieldByName('clausula_primeira_cargo').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcodigocontrato',DMcontratos.dsContratos.DataSet.FieldByName('codigo_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varnacionalidade',DMcontratos.dspessoa.DataSet.FieldByName('nacionalidade_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varestadocivil',DMcontratos.dspessoa.DataSet.FieldByName('estado_civil_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varrg',DMcontratos.dspessoa.DataSet.FieldByName('rg_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcpf',DMcontratos.dspessoa.DataSet.FieldByName('cpf_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varendereco',DMcontratos.dspessoa.DataSet.FieldByName('endereco_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varbairro',DMcontratos.dspessoa.DataSet.FieldByName('bairro_pessoa').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcidade',DMcontratos.dscidades.DataSet.FieldByName('nome_cidade').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varjustificativa',DMcontratos.dsContratos.DataSet.FieldByName('justificativa_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcargahoraria',DMcontratos.dsContratos.DataSet.FieldByName('jornada_trabalho_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcpfteste1',DMcontratos.dsContratos.DataSet.FieldByName('cpf_teste_1_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'vartestemunha1',DMcontratos.dsContratos.DataSet.FieldByName('testemunha_1_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varcpfteste2',DMcontratos.dsContratos.DataSet.FieldByName('cpf_teste_2_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'vartestemunha2',DMcontratos.dsContratos.DataSet.FieldByName('testemunha_2_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+      texto[y] := StringReplace(pstl,'varclausula',DMcontratos.dscargos.DataSet.FieldByName('clausula_primeira_cargo').value,[rfIgnoreCase,rfReplaceAll]);
 
       //observaçao contrato
       if frmContrato.DBMemoobs.text = '' then
@@ -87,7 +87,7 @@ begin
         '______________________________________________________________________'+
         '________',[rfIgnoreCase,rfReplaceAll])
       else
-        texto[y] := StringReplace(pstl,'varobs',frmContrato.dsContratos.DataSet.FieldByName('obs_contrato').value,[rfIgnoreCase,rfReplaceAll]);
+        texto[y] := StringReplace(pstl,'varobs',DMcontratos.dsContratos.DataSet.FieldByName('obs_contrato').value,[rfIgnoreCase,rfReplaceAll]);
       //----
 
       texto[y] := StringReplace(pstl,'varhorario',varhorario,[rfIgnoreCase,rfReplaceAll]);

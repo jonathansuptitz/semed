@@ -1,0 +1,91 @@
+object DMcontratos: TDMcontratos
+  OldCreateOrder = False
+  Height = 321
+  HorizontalOffset = 431
+  VerticalOffset = 167
+  Width = 390
+  object zt_cargos: TZTable
+    Connection = DM1.SEMEDconnection
+    Active = True
+    TableName = 'tb_cargos'
+    left = 32
+    top = 16
+  end
+  object zt_cidades: TZTable
+    Connection = DM1.SEMEDconnection
+    Active = True
+    TableName = 'tb_cidades'
+    left = 304
+    top = 240
+  end
+  object zt_contratos: TZTable
+    Connection = DM1.SEMEDconnection
+    Active = True
+    TableName = 'tb_contratos'
+    left = 304
+    top = 160
+  end
+  object zt_contratos_cargos: TZTable
+    Connection = DM1.SEMEDconnection
+    Active = True
+    TableName = 'tb_contratos_local_trabalho'
+    left = 32
+    top = 88
+  end
+  object zt_pessoas: TZTable
+    Connection = DM1.SEMEDconnection
+    Active = True
+    TableName = 'tb_pessoas'
+    left = 304
+    top = 16
+  end
+  object zt_local_trabalho: TZTable
+    Connection = DM1.SEMEDconnection
+    Active = True
+    TableName = 'tb_local_trabalho'
+    left = 304
+    top = 88
+  end
+  object zt_horario: TZTable
+    Connection = DM1.SEMEDconnection
+    Active = True
+    TableName = 'tb_horarios'
+    left = 32
+    top = 240
+  end
+  object dspessoa: TDatasource
+    DataSet = zt_pessoas
+    left = 208
+    top = 16
+  end
+  object dsContratos: TDatasource
+    DataSet = zt_contratos
+    left = 208
+    top = 160
+  end
+  object dslocaltrabalho: TDatasource
+    DataSet = zt_local_trabalho
+    left = 208
+    top = 88
+  end
+  object dscidades: TDatasource
+    DataSet = zt_cidades
+    left = 208
+    top = 240
+  end
+  object dshorario: TDatasource
+    DataSet = zt_horario
+    left = 128
+    top = 240
+  end
+  object dscontratocargos: TDatasource
+    DataSet = zt_contratos_cargos
+    left = 128
+    top = 88
+  end
+  object dscargos: TDatasource
+    DataSet = zt_cargos
+    left = 128
+    top = 16
+  end
+end

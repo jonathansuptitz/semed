@@ -41,7 +41,7 @@ var
 implementation
 
 uses
-  dmMain, ucontrato;
+  dmMain, udmcontratos;
 
 // INICIO ----------------------------------------------------------------------
 procedure TfrmPesquisaPessoas.FormCreate(Sender: TObject);    // Atribui valor a var
@@ -100,9 +100,9 @@ begin                                                      // para nao afetar ou
   DM1.tb_pessoas.Filtered := false;                        // O registro continua no selecionado.
 
   //caso o frmcontrato esteje aberto manda o codigo da pessoa para o campo nele
-  if not(frmContrato = nil) then
+  if DMcontratos <> nil then
   begin
-    frmContrato.edtfuncionario.text := dsPessoas.DataSet.FieldByName('codigo_pessoa').value ;
+   DMcontratos.dsContratos.DataSet.FieldByName('codigo_pessoa').value := dsPessoas.DataSet.FieldByName('codigo_pessoa').value ;
   end;
 
 end;
