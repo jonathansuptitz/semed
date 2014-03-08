@@ -1,91 +1,813 @@
 object DMcontratos: TDMcontratos
   OldCreateOrder = False
-  Height = 321
-  HorizontalOffset = 431
+  Height = 316
+  HorizontalOffset = 449
   VerticalOffset = 167
-  Width = 390
+  Width = 616
   object zt_cargos: TZTable
-    Connection = DM1.SEMEDconnection
-    Active = True
+    Connection = contratoconection
     TableName = 'tb_cargos'
-    left = 32
+    left = 48
     top = 16
+    object zt_cargoscodigo_cargo: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_cargo'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_cargosnome_cargo: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'nome_cargo'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
+    object zt_cargossalario_hora_cargo: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'salario_hora_cargo'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      MaxValue = 0
+      MinValue = 0
+      Precision = 12
+    end
+    object zt_cargosgrupo_ocupacional_cargo: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'grupo_ocupacional_cargo'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
+    object zt_cargosclausula_primeira_cargo: TStringField
+      DisplayWidth = 8000
+      FieldKind = fkData
+      FieldName = 'clausula_primeira_cargo'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 8000
+    end
   end
   object zt_cidades: TZTable
-    Connection = DM1.SEMEDconnection
-    Active = True
+    Connection = contratoconection
     TableName = 'tb_cidades'
-    left = 304
-    top = 240
+    left = 48
+    top = 160
+    object zt_cidadescodigo_cidade: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_cidade'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_cidadesnome_cidade: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'nome_cidade'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
   end
   object zt_contratos: TZTable
-    Connection = DM1.SEMEDconnection
-    Active = True
+    Connection = contratoconection
     TableName = 'tb_contratos'
-    left = 304
+    left = 336
     top = 160
+    object zt_contratoscodigo_contrato: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_contrato'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_contratosjustificativa_contrato: TStringField
+      DisplayWidth = 1200
+      FieldKind = fkData
+      FieldName = 'justificativa_contrato'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 1200
+    end
+    object zt_contratosperiodo_inicial_contrato: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'periodo_inicial_contrato'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object zt_contratosperiodo_final_contrato: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'periodo_final_contrato'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object zt_contratossalario_contrato: TFloatField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'salario_contrato'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      MaxValue = 0
+      MinValue = 0
+      Precision = 12
+    end
+    object zt_contratosdata_contrato: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'data_contrato'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object zt_contratosano_seletivo_contrato: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_seletivo_contrato'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_contratosobs_contrato: TStringField
+      DisplayWidth = 1000
+      FieldKind = fkData
+      FieldName = 'obs_contrato'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 1000
+    end
+    object zt_contratosjornada_trabalho_contrato: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'jornada_trabalho_contrato'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_contratoscodigo_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_pessoa'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_contratoscodigo_cargo: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_cargo'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_contratostestemunha_1_contrato: TStringField
+      DisplayWidth = 400
+      FieldKind = fkData
+      FieldName = 'testemunha_1_contrato'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 400
+    end
+    object zt_contratoscpf_teste_1_contrato: TStringField
+      DisplayWidth = 64
+      FieldKind = fkData
+      FieldName = 'cpf_teste_1_contrato'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 64
+    end
+    object zt_contratostestemunha_2_contrato: TStringField
+      DisplayWidth = 400
+      FieldKind = fkData
+      FieldName = 'testemunha_2_contrato'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 400
+    end
+    object zt_contratoscpf_teste_2_contrato: TStringField
+      DisplayWidth = 64
+      FieldKind = fkData
+      FieldName = 'cpf_teste_2_contrato'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 64
+    end
+    object zt_contratostipo_contratacao_contrato: TStringField
+      DisplayWidth = 80
+      FieldKind = fkData
+      FieldName = 'tipo_contratacao_contrato'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
+    end
   end
   object zt_contratos_cargos: TZTable
-    Connection = DM1.SEMEDconnection
-    Active = True
+    Connection = contratoconection
     TableName = 'tb_contratos_local_trabalho'
-    left = 32
+    left = 48
     top = 88
+    object zt_contratos_cargoscodigo_contrato: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_contrato'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_contratos_cargoscodigo_local_trabalho: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_local_trabalho'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
   end
   object zt_pessoas: TZTable
-    Connection = DM1.SEMEDconnection
-    Active = True
+    Connection = contratoconection
     TableName = 'tb_pessoas'
-    left = 304
+    left = 336
     top = 16
+    object zt_pessoascodigo_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_pessoa'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_pessoasnome_pessoa: TStringField
+      DisplayWidth = 200
+      FieldKind = fkData
+      FieldName = 'nome_pessoa'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 200
+    end
+    object zt_pessoascpf_pessoa: TStringField
+      DisplayWidth = 64
+      FieldKind = fkData
+      FieldName = 'cpf_pessoa'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 64
+    end
+    object zt_pessoasrg_pessoa: TStringField
+      DisplayWidth = 80
+      FieldKind = fkData
+      FieldName = 'rg_pessoa'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
+    end
+    object zt_pessoasnascimento_pessoa: TStringField
+      DisplayWidth = 40
+      FieldKind = fkData
+      FieldName = 'nascimento_pessoa'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 40
+    end
+    object zt_pessoasnacionalidade_pessoa: TStringField
+      DisplayWidth = 80
+      FieldKind = fkData
+      FieldName = 'nacionalidade_pessoa'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
+    end
+    object zt_pessoasestado_civil_pessoa: TStringField
+      DisplayWidth = 80
+      FieldKind = fkData
+      FieldName = 'estado_civil_pessoa'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 80
+    end
+    object zt_pessoasbairro_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'bairro_pessoa'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
+    object zt_pessoasendereco_pessoa: TStringField
+      DisplayWidth = 1000
+      FieldKind = fkData
+      FieldName = 'endereco_pessoa'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 1000
+    end
+    object zt_pessoasemail_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'email_pessoa'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoastelefone1_pessoa: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'telefone1_pessoa'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 60
+    end
+    object zt_pessoastelefone2_pessoa: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'telefone2_pessoa'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object zt_pessoasinst_medio_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_medio_pessoa'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasano_medio_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_medio_pessoa'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object zt_pessoasdesc_graduacao1_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_graduacao1_pessoa'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasinst_graduacao1_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_graduacao1_pessoa'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasano_graduacao1_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_graduacao1_pessoa'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object zt_pessoasdesc_graduacao2_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_graduacao2_pessoa'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasinst_graduacao2_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_graduacao2_pessoa'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasano_graduacao2_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_graduacao2_pessoa'
+      Index = 19
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object zt_pessoasdesc_pos1_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_pos1_pessoa'
+      Index = 20
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasinst_pos1_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_pos1_pessoa'
+      Index = 21
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasano_pos1_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_pos1_pessoa'
+      Index = 22
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object zt_pessoasdesc_pos2_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_pos2_pessoa'
+      Index = 23
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasinst_pos2_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_pos2_pessoa'
+      Index = 24
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasano_pos2_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_pos2_pessoa'
+      Index = 25
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object zt_pessoasdesc_mestrado_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_mestrado_pessoa'
+      Index = 26
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasinst_mestrado_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_mestrado_pessoa'
+      Index = 27
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasano_mestrado_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_mestrado_pessoa'
+      Index = 28
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object zt_pessoasdesc_doutorado_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'desc_doutorado_pessoa'
+      Index = 29
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasinst_doutorado_pessoa: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'inst_doutorado_pessoa'
+      Index = 30
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_pessoasano_doutorado_pessoa: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'ano_doutorado_pessoa'
+      Index = 31
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object zt_pessoascodigo_cidade: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_cidade'
+      Index = 32
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_pessoascep_pessoa: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'cep_pessoa'
+      Index = 33
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
   end
   object zt_local_trabalho: TZTable
-    Connection = DM1.SEMEDconnection
-    Active = True
+    Connection = contratoconection
     TableName = 'tb_local_trabalho'
-    left = 304
+    left = 336
     top = 88
-  end
-  object zt_horario: TZTable
-    Connection = DM1.SEMEDconnection
-    Active = True
-    TableName = 'tb_horarios'
-    left = 32
-    top = 240
+    object zt_local_trabalhocodigo_local_trabalho: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'codigo_local_trabalho'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
+    object zt_local_trabalhonome_local_trabalho: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'nome_local_trabalho'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+      Size = 180
+    end
+    object zt_local_trabalhoresponsavel_local_trabalho: TStringField
+      DisplayWidth = 180
+      FieldKind = fkData
+      FieldName = 'responsavel_local_trabalho'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object zt_local_trabalhotelefone_local_trabalho: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'telefone_local_trabalho'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object zt_local_trabalhohorario_matutino_trabalho: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'horario_matutino_trabalho'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object zt_local_trabalhohorario_vespertino_trabalho: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'horario_vespertino_trabalho'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
+    object zt_local_trabalhohorario_noturno_trabalho: TStringField
+      DisplayWidth = 60
+      FieldKind = fkData
+      FieldName = 'horario_noturno_trabalho'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 60
+    end
   end
   object dspessoa: TDatasource
     DataSet = zt_pessoas
-    left = 208
+    left = 240
     top = 16
   end
   object dsContratos: TDatasource
     DataSet = zt_contratos
-    left = 208
+    left = 240
     top = 160
   end
   object dslocaltrabalho: TDatasource
     DataSet = zt_local_trabalho
-    left = 208
+    left = 240
     top = 88
   end
   object dscidades: TDatasource
     DataSet = zt_cidades
-    left = 208
-    top = 240
-  end
-  object dshorario: TDatasource
-    DataSet = zt_horario
-    left = 128
-    top = 240
+    left = 152
+    top = 160
   end
   object dscontratocargos: TDatasource
     DataSet = zt_contratos_cargos
-    left = 128
+    OnDataChange = dscontratocargosDataChange
+    left = 152
     top = 88
   end
   object dscargos: TDatasource
     DataSet = zt_cargos
-    left = 128
+    left = 152
     top = 16
+  end
+  object contratoconection: TZConnection
+    ControlsCodePage = cCP_UTF8
+    UTF8StringsAsWideField = False
+    AutoEncodeStrings = False
+    Properties.Strings = (
+      'AutoEncodeStrings='
+    )
+    Connected = True
+    HostName = 'localhost'
+    Port = 3306
+    Database = 'semedcontratos'
+    User = 'root'
+    Password = '12345678'
+    Protocol = 'mysql'
+    left = 432
+    top = 88
+  end
+  object zt_contatros_locais: TZTable
+    Connection = contratoconection
+    TableName = 'tb_contratos_local_trabalho'
+    left = 50
+    top = 247
+  end
+  object dscontratoslocais: TDatasource
+    DataSet = zt_contatros_locais
+    left = 152
+    top = 247
   end
 end

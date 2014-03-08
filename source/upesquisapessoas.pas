@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, db, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, Buttons, DBGrids, uCadastroPessoas;
+  StdCtrls, Buttons, DBGrids;
 
 type
 
@@ -41,7 +41,7 @@ var
 implementation
 
 uses
-  dmMain, udmcontratos;
+  dmMain, udmcontratos, uCadastroPessoas, ucontrato, ufiltragem;
 
 // INICIO ----------------------------------------------------------------------
 procedure TfrmPesquisaPessoas.FormCreate(Sender: TObject);    // Atribui valor a var
@@ -100,11 +100,10 @@ begin                                                      // para nao afetar ou
   DM1.tb_pessoas.Filtered := false;                        // O registro continua no selecionado.
 
   //caso o frmcontrato esteje aberto manda o codigo da pessoa para o campo nele
-  if DMcontratos <> nil then
+  if frmcontrato <> nil then
   begin
-   DMcontratos.dsContratos.DataSet.FieldByName('codigo_pessoa').value := dsPessoas.DataSet.FieldByName('codigo_pessoa').value ;
+   filtragem.filtrads('codigo_pessoa = ' + dsPessoas.DataSet.FieldByName('codigo_pessoa').value, 'dspessoa');
   end;
-
 end;
 
 {$R *.lfm}

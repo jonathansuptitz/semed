@@ -1,8 +1,9 @@
 object frmContrato: TfrmContrato
-  Left = 21
+  Left = 25
   Height = 600
-  Top = 34
+  Top = 8
   Width = 1221
+  Align = alClient
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Contratos'
   ClientHeight = 600
@@ -16,7 +17,6 @@ object frmContrato: TfrmContrato
   Font.Quality = fqDraft
   OnClose = FormClose
   OnShow = FormShow
-  Position = poDefault
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
   object PanelBotoes: TPanel
@@ -210,7 +210,7 @@ object frmContrato: TfrmContrato
       Enabled = False
       MaxLength = 0
       OnKeyPress = DateEditinicialKeyPress
-      TabOrder = 4
+      TabOrder = 3
     end
     object Label4: TLabel
       Left = 24
@@ -271,7 +271,7 @@ object frmContrato: TfrmContrato
       Enabled = False
       MaxLength = 0
       OnKeyPress = DateEditfinalKeyPress
-      TabOrder = 5
+      TabOrder = 4
     end
     object Label5: TLabel
       Left = 552
@@ -290,7 +290,7 @@ object frmContrato: TfrmContrato
       DataSource = DMcontratos.dsContratos
       Enabled = False
       MaxLength = 250
-      TabOrder = 7
+      TabOrder = 6
     end
     object Label6: TLabel
       Left = 24
@@ -317,7 +317,7 @@ object frmContrato: TfrmContrato
       DataSource = DMcontratos.dsContratos
       Enabled = False
       MaxLength = 300
-      TabOrder = 8
+      TabOrder = 7
     end
     object Label8: TLabel
       Left = 24
@@ -337,7 +337,7 @@ object frmContrato: TfrmContrato
       CharCase = ecNormal
       Enabled = False
       MaxLength = 0
-      TabOrder = 3
+      TabOrder = 2
       OnKeyPress = DBEdtJornadaKeyPress
     end
     object sbtbuscarpessoa: TSpeedButton
@@ -402,8 +402,8 @@ object frmContrato: TfrmContrato
       DataSource = DMcontratos.dsContratos
       CharCase = ecNormal
       Enabled = False
-      MaxLength = 4
-      TabOrder = 9
+      MaxLength = 0
+      TabOrder = 8
       OnKeyPress = DBEdtAnoseletivoKeyPress
     end
     object Panel2: TPanel
@@ -414,7 +414,7 @@ object frmContrato: TfrmContrato
       ClientHeight = 209
       ClientWidth = 545
       Enabled = False
-      TabOrder = 11
+      TabOrder = 10
       object Label12: TLabel
         Left = 16
         Height = 19
@@ -431,7 +431,7 @@ object frmContrato: TfrmContrato
         DataField = 'testemunha_1_contrato'
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
-        MaxLength = 400
+        MaxLength = 0
         TabOrder = 0
       end
       object Label13: TLabel
@@ -450,7 +450,7 @@ object frmContrato: TfrmContrato
         DataField = 'testemunha_2_contrato'
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
-        MaxLength = 400
+        MaxLength = 0
         TabOrder = 1
       end
       object Label14: TLabel
@@ -469,7 +469,7 @@ object frmContrato: TfrmContrato
         DataField = 'cpf_teste_1_contrato'
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
-        MaxLength = 14
+        MaxLength = 0
         TabOrder = 2
         OnEditingDone = DBEdtcpfteste1EditingDone
         OnKeyPress = DBEdtcpfteste1KeyPress
@@ -490,24 +490,11 @@ object frmContrato: TfrmContrato
         DataField = 'cpf_teste_2_contrato'
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
-        MaxLength = 14
+        MaxLength = 0
         TabOrder = 3
         OnExit = DBEdtcpftest2Exit
         OnKeyPress = DBEdtcpftest2KeyPress
       end
-    end
-    object DBEdtcargo: TDBEdit
-      Left = 83
-      Height = 26
-      Top = 104
-      Width = 93
-      DataField = 'codigo_cargo'
-      DataSource = DMcontratos.dscargos
-      CharCase = ecNormal
-      Enabled = False
-      MaxLength = 0
-      TabOrder = 1
-      OnKeyPress = DBEdtcargoKeyPress
     end
     object sbtbuscarcargo: TSpeedButton
       Left = 176
@@ -563,7 +550,7 @@ object frmContrato: TfrmContrato
       Enabled = False
       ItemHeight = 18
       MaxLength = 0
-      TabOrder = 10
+      TabOrder = 9
     end
     object Label16: TLabel
       Left = 552
@@ -590,7 +577,7 @@ object frmContrato: TfrmContrato
       Enabled = False
       OnEditingDone = edtfuncionarioEditingDone
       OnKeyPress = edtfuncionarioKeyPress
-      TabOrder = 2
+      TabOrder = 1
     end
     object Panel1: TPanel
       Left = 16
@@ -600,7 +587,7 @@ object frmContrato: TfrmContrato
       ClientHeight = 264
       ClientWidth = 497
       Enabled = False
-      TabOrder = 6
+      TabOrder = 5
       object Label10: TLabel
         Left = 24
         Height = 19
@@ -856,6 +843,13 @@ object frmContrato: TfrmContrato
       }
       NumGlyphs = 0
       OnClick = sbtbuscacintratoClick
+    end
+    object edtcargo: TEdit
+      Left = 96
+      Height = 26
+      Top = 104
+      Width = 80
+      TabOrder = 11
     end
   end
   object Panel3: TPanel

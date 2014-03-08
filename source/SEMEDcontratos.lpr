@@ -8,7 +8,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, printer4lazarus, ULogin, uusuarios, uhtml, ubuscacontrato,
-  udmcontratos;
+  udmcontratos, ufiltragem;
 
 {$R *.res}
 

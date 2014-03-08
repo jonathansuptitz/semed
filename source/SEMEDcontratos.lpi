@@ -53,7 +53,7 @@
         <PackageName Value="LCL"/>
       </Item7>
     </RequiredPackages>
-    <Units Count="18">
+    <Units Count="19">
       <Unit0>
         <Filename Value="SEMEDcontratos.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -181,9 +181,15 @@
         <Filename Value="udmcontratos.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="DMcontratos"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="udmcontratos"/>
       </Unit17>
+      <Unit18>
+        <Filename Value="ufiltragem.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ufiltragem"/>
+      </Unit18>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

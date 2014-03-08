@@ -22,7 +22,6 @@ type
     dbedtlocal: TDBEdit;
     DBEdthorario: TDBEdit;
     DBComboBox1: TDBComboBox;
-    DBEdtcargo: TDBEdit;
     DBEdtcpftest2: TDBEdit;
     DBEdtcpfteste1: TDBEdit;
     DBEdttest2: TDBEdit;
@@ -33,6 +32,7 @@ type
     DateEditfinal: TDateEdit;
     DateEditinicial: TDateEdit;
     DBMemoobs: TDBMemo;
+    edtcargo: TEdit;
     edtfuncionario: TEdit;
     edtcodigocontrato: TEdit;
     Image1: TImage;
@@ -105,7 +105,7 @@ var
 implementation
 uses
   uPesquisaPessoas, ubuscacontrato, UUtilidades, uhtml , UCadastroLocalTrabalho,
-  uCadastroCargos, udmcontratos;
+  uCadastroCargos, udmcontratos, ufiltragem;
 
 var
   linhas, numlocal: byte;
@@ -184,7 +184,9 @@ end;
 procedure TfrmContrato.FormShow(Sender: TObject);
 begin
   //cria dmcontratos
-  Application.Create(DMcontratos);
+  Application.CreateForm(TDMcontratos, DMcontratos);
+  //ativa table contratos
+  DMcontratos.zt_contratos.Active:= true;
 
   //inicializa variaveis para varios locais
   linhas := 1;
@@ -235,7 +237,11 @@ begin
   frmPesquisaPessoas.free;
 
   //coloca codigo funcionario em seu respectivo edit
-  edtfuncionario.text:= DMcontratos.dsContratos.DataSet.FieldByName('codigo_pessoa').value;
+  edtfuncionario.text:= DMcontratos.dspessoa.DataSet.FieldByName('codigo_pessoa').value;
+
+  //filtra ds cargo
+  filtragem.filtrads('codigo_pessoa = '  + edtfuncionario.text, 'dspessoa');
+
 end;
 
 //sbtbuscarcargo ---------------------------------------------------------------
@@ -246,6 +252,10 @@ begin
   frmCadastroCargos.SelecionarAtivo := true; // Habilita botão SELECIONAR
   frmCadastroCargos.showmodal;
   frmCadastroCargos.free;
+
+  //filtra ds cargo
+  filtragem.filtrads('codigo_cargo = '  + DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').AsString, 'dscargos');
+
 end;
 
 //sbtbuscarlocal ---------------------------------------------------------------
@@ -332,7 +342,7 @@ begin
     begin
       DBEdtJornada.Enabled:=true;
       sbtbuscarcargo.Enabled:=true;
-      DBEdtcargo.Enabled:=true;
+      edtcargo.Enabled:=true;
       DBEdtAnoseletivo.Enabled:=true;
       DBEdthorario.Enabled:=true;
       Panel1.Enabled:=true;
@@ -358,13 +368,22 @@ begin
   //libera novo comtrato apenas se codigo contrato nao existir
   if Length(edtcodigocontrato.text) <> 0 then
   begin
-    if not(DMcontratos.dsContratos.DataSet.Locate('codigo_contrato', edtcodigocontrato.text,[])) then
+    //buscar se contrato existe
+    DMcontratos.dsContratos.DataSet.Filter := 'codigo_contrato = '''+edtcodigocontrato.text+'''';
+    DMcontratos.dsContratos.DataSet.Filtered:=true;
+
+    //senao liberar novo contrato
+    if DMcontratos.dsContratos.DataSet.FieldCount <> 0 then
     begin
+      DMcontratos.dsContratos.DataSet.Filtered:=false;
+
       edtcodigocontrato.Enabled:=false;
 
       edtfuncionario.Enabled:=true;
 
       sbtbuscarpessoa.Enabled:=true;
+
+      DMcontratos.zt_pessoas.Active:=true;
     end
     else
       ShowMessage('Contrato já existente!');
@@ -381,7 +400,7 @@ procedure TfrmContrato.FormClose(Sender: TObject; var CloseAction: TCloseAction
   );
 begin
   //fecha datamodule de controtos
-  DMcontratos.Destroy;
+  DMcontratos.free;
 end;
 
 end.

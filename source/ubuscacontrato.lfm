@@ -1,7 +1,7 @@
 object frmbuscacontrato: Tfrmbuscacontrato
-  Left = 385
+  Left = 386
   Height = 431
-  Top = 150
+  Top = 152
   Width = 724
   Caption = 'frmbuscacontrato'
   ClientHeight = 431

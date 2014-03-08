@@ -60,31 +60,5 @@ begin
   frmCadastroCargos.free;
 end;
 
-
-{
-  //filtra o dspessoa para o contrato
-  dspessoa.DataSet.Filter:='codigo_pessoa = '''+EdtFuncionario.text+'''';
-  dspessoa.DataSet.Filtered:=true;
-
-  //filtra a cidade da pessoa
-  dscidades.DataSet.Filter:='codigo_cidade = '''+dspessoa.DataSet.FieldByName('codigo_cidade').asstring+'''';
-  dscidades.DataSet.Filtered:=true;
-
-  //filtra cargo
-  dscargos.DataSet.Filter := 'codigo_cargo = ''' + DBEdtcargo.text + '''';
-  dscargos.DataSet.Filtered := true;
-
-  //filtra o dspessoa para o contrato
-  dspessoa.DataSet.Filter:='codigo_pessoa = '''+EdtFuncionario.text+'''';
-  dspessoa.DataSet.Filtered:=true;
-
-  //filtra a cidade da pessoa
-  dscidades.DataSet.Filter:='codigo_cidade = '''+dspessoa.DataSet.FieldByName('codigo_cidade').asstring+'''';
-  dscidades.DataSet.Filtered:=true;
-
-  //filtra o dslocal para o contrato
-  dslocal.DataSet.Filter := 'nome_local_trabalho = ''' + edtlocal.text + '''';
-  dslocal.DataSet.Filtered := true;
-}
 end.
 
