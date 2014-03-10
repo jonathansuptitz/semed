@@ -99,7 +99,7 @@ var
 implementation
 
 uses
-  dmMain, udmcontratos, UUtilidades;
+  dmMain, udmcontratos, UUtilidades, ufiltragem;
 
 { TfrmCadastroLocalTrabalho }
 
@@ -321,9 +321,7 @@ end;
 procedure TfrmCadastroLocalTrabalho.BtnSelecionarClick(Sender: TObject);  // Selecionar
 begin
   //filtra table locais do dmcontratos
-  DMcontratos.dslocaltrabalho.DataSet.Filter := 'nome_local_trabalho = '''
-    + dsLocal_trabalho.DataSet.FieldByName('codigo_local_trabalho').value+ '''';
-  DMcontratos.dslocaltrabalho.DataSet.Filtered := true;
+  filtragem.filtrads('codigo_local_trabalho = ''' + DBEdit1.text+ '''', 'dslocaltrabalho');
 
   Close;
 end;
@@ -393,8 +391,8 @@ procedure TfrmCadastroLocalTrabalho.FormClose(Sender: TObject);     //OnClose
 begin
   dsLocal_trabalho.DataSet.Cancel;   // Cancela INSERT se houver
 
-  DM1.tb_local_trabalho.Filtered := false;  // Cancela filtro para não prejudcar outros processos.
-end;                                        // Registro selecionado se mantém.
+  DM1.tb_local_trabalho.Filtered := false;
+end;
 
 {$R *.lfm}
 

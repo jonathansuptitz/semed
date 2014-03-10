@@ -82,7 +82,7 @@ var
 implementation
 
 uses
-  dmMain, udmcontratos, ucontrato, ufiltragem;
+  dmMain, udmcontratos;
 
 {$R *.lfm}
 
@@ -191,12 +191,8 @@ end;
 
 procedure TfrmCadastroCargos.BtnSelecionarClick(Sender: TObject);   // Selecionar
 begin
-  if frmContrato <> nil then
-  begin
-
-    // manda o codigo do cargo para o campo corespondente no dmcontratos.zt_contratos
-    DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').value := dsCargos.DataSet.FieldByName('codigo_cargo').value;
-  end;
+  // manda o codigo do cargo para o campo corespondente no dmcontratos.zt_contratos
+  DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').value := dsCargos.DataSet.FieldByName('codigo_cargo').value;
 
   Close;
 end;

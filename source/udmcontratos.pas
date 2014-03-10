@@ -5,8 +5,7 @@ unit udmcontratos;
 interface
 
 uses
-  Classes, SysUtils, db, FileUtil, ZDataset, ZConnection, ZConnectionGroup,
-  ZGroupedConnection, ZSequence, ZSqlProcessor;
+  Classes, SysUtils, db, FileUtil, ZDataset, ZConnection;
 
 type
 
@@ -94,7 +93,6 @@ type
     zt_pessoasrg_pessoa: TStringField;
     zt_pessoastelefone1_pessoa: TStringField;
     zt_pessoastelefone2_pessoa: TStringField;
-    procedure dscontratocargosDataChange(Sender: TObject; Field: TField);
   private
     { private declarations }
   public
@@ -106,15 +104,7 @@ var
 
 implementation
 
-uses dmMain;
-
 { TDMcontratos }
-
-procedure TDMcontratos.dscontratocargosDataChange(Sender: TObject; Field: TField
-  );
-begin
-
-end;
 
 {$R *.lfm}
 

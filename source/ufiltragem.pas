@@ -23,12 +23,18 @@ implementation
 
 uses udmcontratos;
 
-// filtra campos do contrato q nao estao na table contrato
+{ filtra as tables do dmcontrato,
+  'dsnome': o nome do  data source a ser filtrado,
+  'parametro': a string passada para a opçao filter do datasource
+
+  ex. filtragem.filtrads('codigo_contrato = ''' + edt1.text + '''', 'dscontrato')}
+
 procedure Tfiltragem.filtrads(parametro: string; dsnome : string);
 var
   ds : TDataSource;
 begin
-  ds.FindComponent('DMcontratos.'+dsnome);
+  ds := TDataSource.Create(nil);
+  ds := TDataSource(DMcontratos.FindComponent(dsnome));
 
   ds.dataset.active:= true;
 

@@ -4,14 +4,14 @@ unit uhtml;
 
 interface
 uses
-  Classes, udmcontratos, ucontrato, SysUtils;
+  Classes, udmcontratos, ucontrato, ufiltragem, SysUtils;
 
 type
   Thtml = class
   private
 
   public
-    procedure editahtml(numlocal: byte);
+    procedure editahtml(numlocal: string; horario: string);
   end;
 
 var
@@ -20,32 +20,43 @@ var
 implementation
 
 //prenche contrato em html
-procedure Thtml.editahtml(numlocal: byte);
+procedure Thtml.editahtml(numlocal: string; horario: string);
 var
   texto : TStringList;
   pstl : string;
-  y : integer;
-  varlocal, varhorario : string;
+  y,x,i : integer;
+  varlocal, varhorario, periodo : string;
 begin
+  varlocal:= '';
+  varhorario:= '';
 
-  //para varios locais
-  if numlocal = 1 then
+  //locais e horarios dos locais
+  filtragem.filtrads('codigo_contrato = '
+  + DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').value,
+  'dscontratoslocais');
+
+  with DMcontratos.dscontratoslocais.DataSet do
   begin
-      varhorario := frmContrato.StringGrid1.Cells[1,1];
-      varlocal := frmContrato.StringGrid1.Cells[0,1];
-  end
-  else if numlocal = 2 then
-  begin
-      varhorario := frmContrato.StringGrid1.Cells[1,1] +', '+ frmContrato.StringGrid1.Cells[1,2];
-      varlocal := frmContrato.StringGrid1.Cells[0,1] +', '+ frmContrato.StringGrid1.Cells[0,2];
-  end
-  else if numlocal = 3 then
-  begin
-      varhorario := frmContrato.StringGrid1.Cells[1,1] +', '+ frmContrato.StringGrid1.Cells[1,2]
-      + ', ' + frmContrato.StringGrid1.Cells[1,3];
-      varlocal := frmContrato.StringGrid1.Cells[0,1] +', '+ frmContrato.StringGrid1.Cells[0,2]
-      + ', ' + frmContrato.StringGrid1.Cells[0,3];
-  end;
+    for i := 0 to FieldCount - 1 do
+    begin
+      filtragem.filtrads('codigo_local_trabalho = '+ FieldByName('codigo_contrato').value,
+      'dslocaltrabalho');
+
+      //gera o periodo do campo a ser selecionado para o varhorario
+      for x := 1 to 3 do
+      begin
+        if horario[x] = '1' then
+          periodo := 'matutino'
+        else if horario[x] = '2' then
+          periodo := 'vespertino'
+        else if horario[x] = '3' then
+          periodo := 'noturno';
+      end;
+
+      varlocal := varlocal + DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').value + ', ';
+      varhorario := varhorario + DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_'+periodo+'_trabalho').value + ', ';
+      end;
+    end;
   //----
   try
     texto := TStringList.Create;

@@ -41,7 +41,7 @@ var
 implementation
 
 uses
-  dmMain, udmcontratos, uCadastroPessoas, ucontrato, ufiltragem;
+  dmMain, uCadastroPessoas, ufiltragem;
 
 // INICIO ----------------------------------------------------------------------
 procedure TfrmPesquisaPessoas.FormCreate(Sender: TObject);    // Atribui valor a var
@@ -87,23 +87,19 @@ end;
 
 procedure TfrmPesquisaPessoas.BtnEncerrarClick(Sender: TObject); // Botão Encerrar Pesquisa
 begin
+  filtragem.filtrads('codigo_pessoa = ''' + dsPessoas.DataSet.FieldByName('codigo_pessoa').AsString+'''', 'dspessoa');
+
   self.Close;
 end;
 
 procedure TfrmPesquisaPessoas.DBGrid1DblClick(Sender: TObject);  // Duplo clique na grid
 begin
-  self.Close;
+  Close;
 end;
 
-procedure TfrmPesquisaPessoas.FormClose(Sender: TObject);  // Desativa filtro da tabela (principal)
-begin                                                      // para nao afetar outros processos.
-  DM1.tb_pessoas.Filtered := false;                        // O registro continua no selecionado.
-
-  //caso o frmcontrato esteje aberto manda o codigo da pessoa para o campo nele
-  if frmcontrato <> nil then
-  begin
-   filtragem.filtrads('codigo_pessoa = ' + dsPessoas.DataSet.FieldByName('codigo_pessoa').value, 'dspessoa');
-  end;
+procedure TfrmPesquisaPessoas.FormClose(Sender: TObject);
+begin
+  DM1.tb_pessoas.Filtered := false;
 end;
 
 {$R *.lfm}

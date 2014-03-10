@@ -1,5 +1,5 @@
 object frmContrato: TfrmContrato
-  Left = 25
+  Left = 50
   Height = 600
   Top = 8
   Width = 1221
@@ -210,7 +210,7 @@ object frmContrato: TfrmContrato
       Enabled = False
       MaxLength = 0
       OnKeyPress = DateEditinicialKeyPress
-      TabOrder = 3
+      TabOrder = 4
     end
     object Label4: TLabel
       Left = 24
@@ -271,7 +271,7 @@ object frmContrato: TfrmContrato
       Enabled = False
       MaxLength = 0
       OnKeyPress = DateEditfinalKeyPress
-      TabOrder = 4
+      TabOrder = 5
     end
     object Label5: TLabel
       Left = 552
@@ -290,7 +290,7 @@ object frmContrato: TfrmContrato
       DataSource = DMcontratos.dsContratos
       Enabled = False
       MaxLength = 250
-      TabOrder = 6
+      TabOrder = 7
     end
     object Label6: TLabel
       Left = 24
@@ -317,7 +317,7 @@ object frmContrato: TfrmContrato
       DataSource = DMcontratos.dsContratos
       Enabled = False
       MaxLength = 300
-      TabOrder = 7
+      TabOrder = 8
     end
     object Label8: TLabel
       Left = 24
@@ -337,7 +337,7 @@ object frmContrato: TfrmContrato
       CharCase = ecNormal
       Enabled = False
       MaxLength = 0
-      TabOrder = 2
+      TabOrder = 3
       OnKeyPress = DBEdtJornadaKeyPress
     end
     object sbtbuscarpessoa: TSpeedButton
@@ -403,7 +403,7 @@ object frmContrato: TfrmContrato
       CharCase = ecNormal
       Enabled = False
       MaxLength = 0
-      TabOrder = 8
+      TabOrder = 9
       OnKeyPress = DBEdtAnoseletivoKeyPress
     end
     object Panel2: TPanel
@@ -414,7 +414,7 @@ object frmContrato: TfrmContrato
       ClientHeight = 209
       ClientWidth = 545
       Enabled = False
-      TabOrder = 10
+      TabOrder = 11
       object Label12: TLabel
         Left = 16
         Height = 19
@@ -550,7 +550,7 @@ object frmContrato: TfrmContrato
       Enabled = False
       ItemHeight = 18
       MaxLength = 0
-      TabOrder = 9
+      TabOrder = 10
     end
     object Label16: TLabel
       Left = 552
@@ -587,7 +587,7 @@ object frmContrato: TfrmContrato
       ClientHeight = 264
       ClientWidth = 497
       Enabled = False
-      TabOrder = 5
+      TabOrder = 6
       object Label10: TLabel
         Left = 24
         Height = 19
@@ -622,39 +622,21 @@ object frmContrato: TfrmContrato
         ClientHeight = 30
         ClientWidth = 457
         Columns = 3
+        Items.Strings = (
+          'Matutino'
+          'Vespertino'
+          'Noturno'
+        )
+        OnChangeBounds = rgHorariosChangeBounds
         OnClick = rgHorariosClick
         TabOrder = 0
-        object Radiomanha: TRadioButton
-          Left = 6
-          Height = 18
-          Top = 6
-          Width = 146
-          Caption = 'Matutino'
-          TabOrder = 0
-        end
-        object Radiotarde: TRadioButton
-          Left = 152
-          Height = 18
-          Top = 6
-          Width = 160
-          Caption = 'Verpertino'
-          TabOrder = 1
-        end
-        object Radionoite: TRadioButton
-          Left = 312
-          Height = 18
-          Top = 6
-          Width = 139
-          Caption = 'Noturno'
-          OnChange = RadionoiteChange
-          TabOrder = 2
-        end
       end
       object DBEdthorario: TDBEdit
         Left = 88
         Height = 26
         Top = 104
         Width = 120
+        DataSource = DMcontratos.dslocaltrabalho
         CharCase = ecNormal
         MaxLength = 0
         TabOrder = 1
@@ -745,9 +727,9 @@ object frmContrato: TfrmContrato
         TabOrder = 3
       end
       object sbtlocal: TSpeedButton
-        Left = 237
+        Left = 248
         Height = 22
-        Top = 19
+        Top = 16
         Width = 23
         Glyph.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
@@ -788,15 +770,12 @@ object frmContrato: TfrmContrato
         NumGlyphs = 0
         OnClick = sbtlocalClick
       end
-      object dbedtlocal: TDBEdit
-        Left = 157
+      object edtlocal: TEdit
+        Left = 152
         Height = 26
-        Top = 16
-        Width = 80
-        DataField = 'codigo_local_trabalho'
-        DataSource = DMcontratos.dslocaltrabalho
-        CharCase = ecNormal
-        MaxLength = 0
+        Top = 11
+        Width = 96
+        OnEditingDone = edtlocalEditingDone
         TabOrder = 5
       end
     end
@@ -849,7 +828,10 @@ object frmContrato: TfrmContrato
       Height = 26
       Top = 104
       Width = 80
-      TabOrder = 11
+      Enabled = False
+      OnEditingDone = edtcargoEditingDone
+      OnKeyPress = edtcargoKeyPress
+      TabOrder = 2
     end
   end
   object Panel3: TPanel

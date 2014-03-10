@@ -2,7 +2,7 @@ object DMcontratos: TDMcontratos
   OldCreateOrder = False
   Height = 316
   HorizontalOffset = 449
-  VerticalOffset = 167
+  VerticalOffset = 198
   Width = 616
   object zt_cargos: TZTable
     Connection = contratoconection
@@ -671,6 +671,7 @@ object DMcontratos: TDMcontratos
   end
   object zt_local_trabalho: TZTable
     Connection = contratoconection
+    Active = True
     TableName = 'tb_local_trabalho'
     left = 336
     top = 88
@@ -773,7 +774,6 @@ object DMcontratos: TDMcontratos
   end
   object dscontratocargos: TDatasource
     DataSet = zt_contratos_cargos
-    OnDataChange = dscontratocargosDataChange
     left = 152
     top = 88
   end
