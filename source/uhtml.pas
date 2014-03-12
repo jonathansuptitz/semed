@@ -11,7 +11,7 @@ type
   private
 
   public
-    procedure editahtml(numlocal: string; horario: string);
+    procedure editahtml;
   end;
 
 var
@@ -20,44 +20,38 @@ var
 implementation
 
 //prenche contrato em html
-procedure Thtml.editahtml(numlocal: string; horario: string);
+procedure Thtml.editahtml;
 var
   texto : TStringList;
   pstl : string;
-  y,x,i : integer;
+  y, x : integer;
   varlocal, varhorario, periodo : string;
 begin
   varlocal:= '';
   varhorario:= '';
 
-  //locais e horarios dos locais
+  //atribui os locais e horarios nas variaveis
   filtragem.filtrads('codigo_contrato = '
-  + DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').value,
-  'dscontratoslocais');
+    + DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').value, 'dscontratoslocais');
 
   with DMcontratos.dscontratoslocais.DataSet do
   begin
-    for i := 0 to FieldCount - 1 do
+    for x := 1 to FieldCount do
     begin
-      filtragem.filtrads('codigo_local_trabalho = '+ FieldByName('codigo_contrato').value,
+      filtragem.filtrads('codigo_local_trabalho = '+ FieldByName('codigo_local_trabalho').value,
       'dslocaltrabalho');
 
-      //gera o periodo do campo a ser selecionado para o varhorario
-      for x := 1 to 3 do
-      begin
-        if horario[x] = '1' then
-          periodo := 'matutino'
-        else if horario[x] = '2' then
-          periodo := 'vespertino'
-        else if horario[x] = '3' then
-          periodo := 'noturno';
-      end;
+      varlocal := varlocal
+        + DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').value
+        + ', ';
 
-      varlocal := varlocal + DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').value + ', ';
-      varhorario := varhorario + DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_'+periodo+'_trabalho').value + ', ';
-      end;
+      varhorario := varhorario + FieldByName('horario_local_trabalho').value + ', ';
+
+      Next;
     end;
+   end;
   //----
+  //substitui variaveis do html
   try
     texto := TStringList.Create;
     texto.LoadFromFile('contrato.html');

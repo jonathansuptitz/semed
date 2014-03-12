@@ -6,25 +6,31 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, DBGrids,
-  StdCtrls, EditBtn, LCLType;
+  StdCtrls, EditBtn, LCLType, Buttons;
 
 type
 
   { Tfrmbuscacontrato }
 
   Tfrmbuscacontrato = class(TForm)
-    ComboBox1: TComboBox;
+    btnGeracontrato: TBitBtn;
     DateEdit1: TDateEdit;
     DBGrid1: TDBGrid;
-    EditButton1: TEditButton;
-    edtbusca: TEdit;
+    edtlocal: TEditButton;
+    edtCodigo: TEditButton;
+    edtfuncionario: TEditButton;
     GroupBox1: TGroupBox;
+    Label1: TLabel;
+    Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    procedure ComboBox1Change(Sender: TObject);
-    procedure EditButton1Change(Sender: TObject);
-    procedure edtbuscaChange(Sender: TObject);
-    procedure edtbuscaExit(Sender: TObject);
+    procedure btnGeracontratoClick(Sender: TObject);
+    procedure edtCodigoButtonClick(Sender: TObject);
+    procedure edtCodigoExit(Sender: TObject);
+    procedure edtfuncionarioButtonClick(Sender: TObject);
+    procedure edtfuncionarioExit(Sender: TObject);
+    procedure edtlocalButtonClick(Sender: TObject);
+    procedure edtlocalExit(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { private declarations }
@@ -37,39 +43,57 @@ var
 
 implementation
 
-uses uhtml,ufiltragem, uCadastroCargos, udmcontratos;
+uses uhtml, ufiltragem, uCadastroCargos,UCadastroLocalTrabalho,
+  uPesquisaPessoas, udmcontratos;
 
 {$R *.lfm}
 
 { Tfrmbuscacontrato }
 
-procedure Tfrmbuscacontrato.edtbuscaChange(Sender: TObject);
+procedure Tfrmbuscacontrato.edtCodigoExit(Sender: TObject);
 begin
-  if Length(edtbusca.text) <> 0 then
-  begin
-    DMcontratos.dsContratos.DataSet.Filter:= 'codigo_pessoa like '+QuotedStr('*'+edtbusca.text+'*');
-    DMcontratos.dsContratos.DataSet.Filtered:=true;
-  end
-  else
-    DMcontratos.dsContratos.DataSet.Filtered:=false;
+  filtragem.filtrads('codigo_contrato = '''  + edtCodigo.text+'''', 'dscontrato');
 end;
 
-procedure Tfrmbuscacontrato.edtbuscaExit(Sender: TObject);
+procedure Tfrmbuscacontrato.edtfuncionarioButtonClick(Sender: TObject);
 begin
-  if Length(edtbusca.text) <> 0 then
-    case ComboBox1.ItemIndex of
-    0:
-      filtragem.filtrads('codigo_contrato = '''+ edtbusca.text+'''','dscontratos');
-    1:
-      begin
-        filtragem.filtrads('nome_pessoa = '''+edtbusca.text+'''','dspessoa');
+  //chama a pesquisa de pessoa
+  Application.CreateForm(TfrmPesquisaPessoas, frmPesquisaPessoas);
+  frmPesquisaPessoas.showmodal;
+  frmPesquisaPessoas.free;
 
-        filtragem.filtrads('codigo_pessoa = '''
-        + DMcontratos.dspessoa.DataSet.FieldByName('codigo_pessoa').value+'''','dscontratos');
-      end;
-    2: filtragem.filtrads('codigo_pessoa = '''+edtbusca.text +'''','dscontratos');
-    end;
+  //coloca codigo funcionario em seu respectivo edit
+  edtfuncionario.text:= DMcontratos.dspessoa.DataSet.FieldByName('codigo_pessoa').value;
 
+  //filtra ds pessoa
+  filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dspessoa');
+  filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dscontrato');
+end;
+
+procedure Tfrmbuscacontrato.edtfuncionarioExit(Sender: TObject);
+begin
+  filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dspessoa');
+  filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dscontrato');
+end;
+
+procedure Tfrmbuscacontrato.edtlocalButtonClick(Sender: TObject);
+begin
+  //chama a pesquisa de local
+     DMcontratos.dslocaltrabalho.DataSet.Active:=true;
+
+     Application.CreateForm(TfrmCadastroLocalTrabalho, frmCadastroLocalTrabalho);
+     frmCadastroLocalTrabalho.SelecionarAtivo := true;
+     frmCadastroLocalTrabalho.showmodal;
+     frmCadastroLocalTrabalho.free;
+
+     edtlocal.Text := DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').AsString;
+
+     filtragem.filtrads('codigo_local_trabalho = '''  + edtlocal.text+'''', 'dscontrato');
+end;
+
+procedure Tfrmbuscacontrato.edtlocalExit(Sender: TObject);
+begin
+  filtragem.filtrads('codigo_local_trabalho = '''  + edtlocal.text+'''', 'dscontrato');
 end;
 
 procedure Tfrmbuscacontrato.FormShow(Sender: TObject);
@@ -77,19 +101,20 @@ begin
 
 end;
 
-procedure Tfrmbuscacontrato.EditButton1Change(Sender: TObject);
+procedure Tfrmbuscacontrato.edtCodigoButtonClick(Sender: TObject);
 begin
-  //chama a pesquisa de cargo
-  Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
-  frmCadastroCargos.SelecionarAtivo := true; // Habilita botão SELECIONAR
-  frmCadastroCargos.showmodal;
-  frmCadastroCargos.free;
+  filtragem.filtrads('codigo_contrato = '''  + edtCodigo.text+'''', 'dscontrato');
 end;
 
-procedure Tfrmbuscacontrato.ComboBox1Change(Sender: TObject);
+procedure Tfrmbuscacontrato.btnGeracontratoClick(Sender: TObject);
 begin
+  filtragem.filtrads('codigo_contrato = '''
+  +DMcontratos.dsContratos.DataSet.FieldByName('codigo_contrato').value
+  +'''', 'dscontratoslocais');
 
+  html.editahtml();
 end;
+
 
 end.
 

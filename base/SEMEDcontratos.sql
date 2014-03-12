@@ -119,6 +119,7 @@ DROP TABLE IF EXISTS `tb_contratos_local_trabalho`;
 CREATE TABLE `tb_contratos_local_trabalho` (
   `codigo_contrato` int(11) NOT NULL,
   `codigo_local_trabalho` int(11) NOT NULL,
+  Horario_local_trabalho varchar(15) not null,
   PRIMARY KEY (`codigo_local_trabalho`,`codigo_contrato`),
   KEY `fk_tb_contratos_local_trabalho_tb_contratos1_idx` (`codigo_contrato`),
   KEY `fk_tb_contratos_local_trabalho_tb_local_trabalho1_idx` (`codigo_local_trabalho`),
