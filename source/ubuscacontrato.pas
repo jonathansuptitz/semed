@@ -13,24 +13,23 @@ type
   { Tfrmbuscacontrato }
 
   Tfrmbuscacontrato = class(TForm)
+    btnSair: TBitBtn;
     btnGeracontrato: TBitBtn;
     DateEdit1: TDateEdit;
     DBGrid1: TDBGrid;
-    edtlocal: TEditButton;
     edtCodigo: TEditButton;
     edtfuncionario: TEditButton;
     GroupBox1: TGroupBox;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
-    Label4: TLabel;
     procedure btnGeracontratoClick(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
     procedure edtCodigoButtonClick(Sender: TObject);
     procedure edtCodigoExit(Sender: TObject);
     procedure edtfuncionarioButtonClick(Sender: TObject);
     procedure edtfuncionarioExit(Sender: TObject);
-    procedure edtlocalButtonClick(Sender: TObject);
-    procedure edtlocalExit(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { private declarations }
@@ -76,26 +75,6 @@ begin
   filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dscontrato');
 end;
 
-procedure Tfrmbuscacontrato.edtlocalButtonClick(Sender: TObject);
-begin
-  //chama a pesquisa de local
-     DMcontratos.dslocaltrabalho.DataSet.Active:=true;
-
-     Application.CreateForm(TfrmCadastroLocalTrabalho, frmCadastroLocalTrabalho);
-     frmCadastroLocalTrabalho.SelecionarAtivo := true;
-     frmCadastroLocalTrabalho.showmodal;
-     frmCadastroLocalTrabalho.free;
-
-     edtlocal.Text := DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').AsString;
-
-     filtragem.filtrads('codigo_local_trabalho = '''  + edtlocal.text+'''', 'dscontrato');
-end;
-
-procedure Tfrmbuscacontrato.edtlocalExit(Sender: TObject);
-begin
-  filtragem.filtrads('codigo_local_trabalho = '''  + edtlocal.text+'''', 'dscontrato');
-end;
-
 procedure Tfrmbuscacontrato.FormShow(Sender: TObject);
 begin
 
@@ -108,11 +87,21 @@ end;
 
 procedure Tfrmbuscacontrato.btnGeracontratoClick(Sender: TObject);
 begin
-  filtragem.filtrads('codigo_contrato = '''
-  +DMcontratos.dsContratos.DataSet.FieldByName('codigo_contrato').value
-  +'''', 'dscontratoslocais');
+  //filtragem.filtrads('codigo_cargo = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').value +'''', 'dscargos');
 
-  html.editahtml();
+  filtragem.filtrads('codigo_pessoa = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_pessoa').AsString +'''', 'dspessoa');
+
+  html.editahtml;
+end;
+
+procedure Tfrmbuscacontrato.btnSairClick(Sender: TObject);
+begin
+ close;
+end;
+
+procedure Tfrmbuscacontrato.DBGrid1DblClick(Sender: TObject);
+begin
+ html.editahtml;
 end;
 
 

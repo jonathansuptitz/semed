@@ -1,5 +1,5 @@
 object frmContrato: TfrmContrato
-  Left = 47
+  Left = 41
   Height = 600
   Top = 8
   Width = 1224
@@ -83,9 +83,10 @@ object frmContrato: TfrmContrato
     object BtnGerarcontrato: TBitBtn
       Left = 5
       Height = 40
-      Top = 10
+      Top = 12
       Width = 120
       Caption = 'Finalizar'
+      Enabled = False
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000064000000640000000000000000000000FFFFFF00BBBB
@@ -458,7 +459,7 @@ object frmContrato: TfrmContrato
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 1
+        TabOrder = 2
         OnEditingDone = DBEdttest2EditingDone
       end
       object Label14: TLabel
@@ -478,7 +479,7 @@ object frmContrato: TfrmContrato
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
         MaxLength = 0
-        TabOrder = 2
+        TabOrder = 1
         OnEditingDone = DBEdtcpfteste1EditingDone
         OnKeyPress = DBEdtcpfteste1KeyPress
       end
@@ -549,19 +550,6 @@ object frmContrato: TfrmContrato
       }
       NumGlyphs = 0
       OnClick = sbtbuscarcargoClick
-    end
-    object DBComboBox1: TDBComboBox
-      Left = 712
-      Height = 26
-      Top = 223
-      Width = 172
-      DataField = 'tipo_contratacao_contrato'
-      DataSource = DMcontratos.dsContratos
-      Enabled = False
-      ItemHeight = 18
-      MaxLength = 0
-      OnExit = DBComboBox1Exit
-      TabOrder = 10
     end
     object Label16: TLabel
       Left = 552
@@ -703,6 +691,7 @@ object frmContrato: TfrmContrato
         Height = 103
         Top = 144
         Width = 460
+        AutoFillColumns = True
         ColCount = 2
         FixedCols = 0
         RowCount = 4
@@ -716,8 +705,8 @@ object frmContrato: TfrmContrato
         TitleStyle = tsStandard
         OnExit = StringGrid1Exit
         ColWidths = (
-          342
-          93
+          228
+          228
         )
         Cells = (
           2
@@ -844,6 +833,20 @@ object frmContrato: TfrmContrato
       OnEditingDone = edtcargoEditingDone
       OnKeyPress = edtcargoKeyPress
       TabOrder = 2
+    end
+    object cboxtipo: TComboBox
+      Left = 715
+      Height = 26
+      Top = 223
+      Width = 165
+      ItemHeight = 18
+      Items.Strings = (
+        'Seletivo'
+        'cadastro RH'
+        'Contratação direta'
+      )
+      Style = csDropDownList
+      TabOrder = 10
     end
   end
   object Panel3: TPanel

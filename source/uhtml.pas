@@ -25,25 +25,21 @@ var
   texto : TStringList;
   pstl : string;
   y, x : integer;
-  varlocal, varhorario, periodo : string;
+  varlocal, varhorario: string;
 begin
   varlocal:= '';
   varhorario:= '';
 
   //atribui os locais e horarios nas variaveis
-  filtragem.filtrads('codigo_contrato = '
-    + DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').value, 'dscontratoslocais');
+  filtragem.filtrads('codigo_contrato = '+ DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').value, 'dscontratoslocais');
 
   with DMcontratos.dscontratoslocais.DataSet do
   begin
     for x := 1 to FieldCount do
     begin
-      filtragem.filtrads('codigo_local_trabalho = '+ FieldByName('codigo_local_trabalho').value,
-      'dslocaltrabalho');
+      filtragem.filtrads('codigo_local_trabalho = '+ FieldByName('codigo_local_trabalho').value, 'dslocaltrabalho');
 
-      varlocal := varlocal
-        + DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').value
-        + ', ';
+      varlocal := varlocal+ DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').value+ ', ';
 
       varhorario := varhorario + FieldByName('horario_local_trabalho').value + ', ';
 
@@ -97,11 +93,11 @@ begin
 
       texto[y] := StringReplace(pstl,'varhorario',varhorario,[rfIgnoreCase,rfReplaceAll]);
 
-      if frmContrato.DBComboBox1.Text = 'Seletivo' then
+      if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').value = 'Seletivo' then
         texto[y] := StringReplace(pstl,'var1','X',[rfIgnoreCase,rfReplaceAll])
-      else if frmContrato.DBComboBox1.Text = 'Cadastro RH' then
+      else if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').value = 'Cadastro RH' then
         texto[y] := StringReplace(pstl,'var2','X',[rfIgnoreCase,rfReplaceAll])
-      else if frmContrato.DBComboBox1.Text = 'Contratação Direta' then
+      else if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').value = 'Contratação Direta' then
         texto[y] := StringReplace(pstl,'var3','X',[rfIgnoreCase,rfReplaceAll]);
 
     end;

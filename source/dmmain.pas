@@ -16,7 +16,6 @@ type
     queryCADASTROPESSOAScidadescodigo_cidade: TLongintField;
     queryCADASTROPESSOAScidadesnome_cidade: TStringField;
     queryCADASTROPESSOAScidadesuf_cidade: TStringField;
-    querycontratos: TZQuery;
     querycontratosano_seletivo_contrato: TLongintField;
     querycontratoscodigo_cargo: TLongintField;
     querycontratoscodigo_contrato: TLongintField;

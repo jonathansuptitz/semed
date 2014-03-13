@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, FileUtil, Ipfilebroker, IpHtml,
  Forms, Controls, Graphics,
   Dialogs, Buttons, ExtCtrls, LCLIntf,
-  DbCtrls, StdCtrls, EditBtn, Printers, Grids, LCLType, DBGrids;
+  DbCtrls, StdCtrls, EditBtn, Printers, Grids, LCLType;
 
 type
 
@@ -19,8 +19,8 @@ type
     BtnGerarcontrato: TBitBtn;
     btnlimparlocais: TBitBtn;
     BtnVoltar: TBitBtn;
+    cboxtipo: TComboBox;
     DBEdthorario: TDBEdit;
-    DBComboBox1: TDBComboBox;
     DBEdtcpftest2: TDBEdit;
     DBEdtcpfteste1: TDBEdit;
     DBEdttest2: TDBEdit;
@@ -120,9 +120,8 @@ uses
 
 var
   linhas: byte;
-  horarios, numlocal : array of string[3];
-  campos : integer;
-
+  horarios: array[1..3] of string;
+  numlocal : array[1..3] of integer;
 {$R *.lfm}
 
 { TfrmContrato }
@@ -138,7 +137,12 @@ procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 var
   i : integer;
 begin
-if campos = 14 then
+if (Length(edtcargo.text) <> 0) and (Length(DBEdtJornada.text) <> 0) and
+    (Length(DateEditfinal.text) <> 0) and (Length(DateEditinicial.text) <> 0) and
+    (Length(DBMemovacancia.text) <> 0) and (Length(DBEdtAnoseletivo.text) <> 0) and
+    (Length(cboxtipo.text) <> 0) and (Length(DBEdtteste1.text) <> 0) and
+    (Length(DBEdttest2.text) <> 0) and (Length(DBEdtcpfteste1.text) <> 0) and
+    (Length(DBEdtcpftest2.text) <> 0) and  (StringGrid1.Rows[1].Text <> '') then
 begin
   if Application.MessageBox('Tem certeza que os campos estão corretos?','Finalizar', MB_OKCANCEL) = idOK then
   begin
@@ -146,6 +150,7 @@ begin
       //adiciona demais campos tabela contrato
       with udmcontratos.dmcontratos.zt_contratos do
       begin
+        FieldByName('tipo_contratacao_contrato').value := cboxtipo.Text;
         FieldByName('codigo_contrato').Value  := edtcodigocontrato.text;
         FieldByName('codigo_pessoa').Value  := edtfuncionario.text;
         FieldByName('codigo_cargo').value := edtcargo.text;
@@ -156,15 +161,15 @@ begin
       //
         Post; //posta
 
+        DMcontratos.dscontratoslocais.DataSet.Active:=true;
         //salva locais do contrato
-        for i := 1 to Length(numlocal) do
+        for i := 1 to linhas -1 do
         begin
           with DMcontratos.dscontratoslocais.DataSet do
           begin
-            Append;
+            insert;
 
-            FieldByName('codigo_contrato').value
-            := DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').value;
+            FieldByName('codigo_contrato').value := DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').value;
 
             FieldByName('codigo_local_trabalho').value := numlocal[i];
 
@@ -193,13 +198,13 @@ procedure TfrmContrato.btnlimparlocaisClick(Sender: TObject);
 var
   x:integer;
 begin
-  Dec(campos);
+  linhas:=1;
 
   StringGrid1.Clean(0,1,1,3,[gznormal]);
 
   for x := 1 to 3 do
   begin
-    numlocal[x] := '';
+    numlocal[x] := 0;
     horarios[x]:='';
   end;
 end;
@@ -214,14 +219,9 @@ begin
     StringGrid1.Cells[1,linhas] := DBEdthorario.text;
     horarios[linhas] := DBEdthorario.text;
 
-    if linhas = 3 then
-      linhas := 1
-    else
-      inc(linhas);
+    numlocal[linhas]:= DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').value;
 
-    numlocal[linhas]:= DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').AsString;
-
-    inc(campos);
+    inc(linhas);
   end;
 end;
 
@@ -236,26 +236,15 @@ begin
   //ativa table contratos
   DMcontratos.zt_contratos.Active:= true;
 
-  campos:=0;
-
   //inicializa variaveis para varios locais
   linhas := 1;
 
   for x := 1 to 3 do
   begin
-    numlocal[x] := '';
+    numlocal[x] := 0;
     horarios[x]:='';
   end;
   //--
-
-  //prenche combobox de tipo de contrataçao
-  with DBComboBox1 do
-  begin
-    clear;
-    Items.Add('Seletivo');
-    Items.Add('cadastro RH');
-    Items.Add('Contratação direta');
-  end;
 end;
 
 procedure TfrmContrato.rgHorariosChangeBounds(Sender: TObject);
@@ -296,8 +285,6 @@ begin
 
   //filtra dspessoa
   filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dspessoa');
-
-
 end;
 
 //sbtbuscarcargo ---------------------------------------------------------------
@@ -349,8 +336,7 @@ end;
 
 procedure TfrmContrato.DBEdtcpfteste1EditingDone(Sender: TObject);
 begin
-  if Length(DBEdtcpfteste1.Text) <> 0 then
-    inc(campos);
+
 end;
 
 procedure TfrmContrato.DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
@@ -366,8 +352,7 @@ end;
 
 procedure TfrmContrato.DBEdtJornadaEditingDone(Sender: TObject);
 begin
-  if Length(DBEdtJornada.Text) <> 0 then
-    inc(campos);
+
 end;
 
 procedure TfrmContrato.DateEditfinalKeyPress(Sender: TObject; var Key: char);
@@ -383,14 +368,12 @@ end;
 
 procedure TfrmContrato.DateEditfinalExit(Sender: TObject);
 begin
-  if Length(DateEditfinal.Text) <> 0 then
-    inc(campos);
+
 end;
 
 procedure TfrmContrato.DateEditinicialExit(Sender: TObject);
 begin
-  if Length(DateEditinicial.Text) <> 0 then
-    inc(campos);
+
 end;
 
 procedure TfrmContrato.DateEditinicialKeyPress(Sender: TObject; var Key: char);
@@ -401,14 +384,12 @@ end;
 
 procedure TfrmContrato.DBComboBox1Exit(Sender: TObject);
 begin
-  if DBComboBox1.Text <> '' then
-    inc(campos);
+
 end;
 
 procedure TfrmContrato.DBEdtAnoseletivoExit(Sender: TObject);
 begin
-  if Length(DBEdtAnoseletivo.Text) <> 0 then
-    inc(campos);
+
 end;
 
 procedure TfrmContrato.DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
@@ -431,27 +412,21 @@ end;
 
 procedure TfrmContrato.DBEdttest2EditingDone(Sender: TObject);
 begin
-  if Length(DBEdttest2.Text) <> 0 then
-    inc(campos);
+
 end;
 
 procedure TfrmContrato.DBEdtteste1Exit(Sender: TObject);
 begin
-  if Length(DBEdtteste1.Text) <> 0 then
-    inc(campos);
+
 end;
 
 procedure TfrmContrato.DBMemovacanciaExit(Sender: TObject);
 begin
-  if Length(DBMemovacancia.Text) <> 0 then
-    inc(campos);
+
 end;
 
 procedure TfrmContrato.edtcargoEditingDone(Sender: TObject);
 begin
-  if Length(edtcargo.Text) <> 0 then
-    inc(campos);
-
   //filtra ds cargo
   if Length(edtcargo.text) <> 0 then
     filtragem.filtrads('codigo_cargo = ''' + edtcargo.text+'''', 'dscargos');
@@ -472,9 +447,6 @@ end;
 
 procedure TfrmContrato.edtfuncionarioEditingDone(Sender: TObject);
 begin
-  if Length(edtfuncionario.Text) <> 0 then
-    inc(campos);
-
   //libera campos apenas se funcionario nao contratado
   if Length(edtfuncionario.text) <> 0 then
   begin
@@ -490,21 +462,26 @@ begin
       DBEdtAnoseletivo.Enabled:=true;
       Panel1.Enabled:=true;
       Panel2.Enabled:=true;
-      DBComboBox1.Enabled:=true;
+      cboxtipo.Enabled:=true;
       DBMemoobs.Enabled:=true;
       DBMemovacancia.Enabled:=true;
       DateEditfinal.Enabled:=true;
       DateEditinicial.Enabled:=true;
+
+      BtnGerarcontrato.Enabled:=true;
 
       DMcontratos.dsContratos.DataSet.Insert;//coloca table em modo de inserçao
 
       //filtra dspessoa
       filtragem.filtrads('codigo_pessoa = '''+ edtfuncionario.text+'''','dspessoa');
 
+
       //ativa tabelas
       DMcontratos.zt_cargos.Active:=true;
       DMcontratos.zt_cidades.Active:=true;
       DMcontratos.zt_contratos_cargos.Active:=true;
+
+      filtragem.filtrads('codigo_cidade = '''+DMcontratos.dspessoa.DataSet.FieldByName('codigo_cidade').AsString +'''', 'dscidades');
 
       edtcargo.SetFocus;
     end
@@ -518,18 +495,14 @@ end;
 
 procedure TfrmContrato.DBEdtCodcontratoExit(Sender: TObject);
 begin
-  if Length(edtcodigocontrato.Text) <> 0 then
-    inc(campos);
-
   //libera novo comtrato apenas se codigo contrato nao existir
   if Length(edtcodigocontrato.text) <> 0 then
   begin
     //buscar se contrato existe
-    DMcontratos.dsContratos.DataSet.Filter := 'codigo_contrato = '''+edtcodigocontrato.text+'''';
-    DMcontratos.dsContratos.DataSet.Filtered:=true;
+    filtragem.filtrads('codigo_contrato = '''+edtcodigocontrato.text+'''', 'dscontratos');
 
     //senao liberar novo contrato
-    if DMcontratos.dsContratos.DataSet.FieldCount <> 0 then
+    if DMcontratos.dsContratos.DataSet.RecordCount = 0 then
     begin
       DMcontratos.dsContratos.DataSet.Filtered:=false;
 
@@ -555,16 +528,11 @@ end;
 procedure TfrmContrato.edtlocalEditingDone(Sender: TObject);
 begin
   if Length(edtlocal.text) <> 0 then
-  begin
     filtragem.filtrads('codigo_local_trabalho = '''+ edtlocal.text+'''','dslocaltrabalho');
-    inc(campos);
-  end;
 end;
 
 procedure TfrmContrato.DBEdtcpftest2EditingDone(Sender: TObject);
 begin
-  if Length(DBEdtcpftest2.Text) <> 0 then
-    inc(campos);
 
 end;
 

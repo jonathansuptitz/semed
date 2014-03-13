@@ -1,7 +1,7 @@
 object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
   Left = 177
   Height = 521
-  Top = 42
+  Top = 49
   Width = 1058
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Local de Trabalho'

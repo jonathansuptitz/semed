@@ -168,7 +168,6 @@ begin
     tb_cidades.Active := true;
     tb_pessoas.Active := true;
     tb_local_trabalho.Active := true;
-    querycontratos.Active := true;
     tb_cargos.Active := true;
     tb_mural.Active := true;
   end;
