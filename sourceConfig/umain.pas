@@ -31,7 +31,7 @@ type
     procedure BtnSalvarClick(Sender: TObject);
     procedure Criptografar;
     procedure Descriptografar;
-    procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormClose(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { private declarations }
@@ -79,12 +79,14 @@ procedure TfrmMain.Criptografar;                      // Criptografar
 var
   i, x, caracCript : integer;
   linha, linhaCript: string;
+  arq: TextFile;
 begin
   SLdescript.Clear;
   SLdescript.Add(Edit1.Text);
   SLdescript.Add(Edit2.Text);
   SLdescript.Add(Edit3.Text);
   SLdescript.Add(Edit4.Text);
+  SL.Clear;
 
   for x := 0 to SLdescript.Count - 1 do // Varre linha a linha
   begin
@@ -102,7 +104,6 @@ begin
     SL.Add(linhaCript);
   end;
 
-  DeleteFile('conf/db.cfg');
   SL.SaveToFile('conf/db.cfg');
 end;
 
@@ -146,7 +147,7 @@ end;
 
 // FIM -------------------------------------------------------------------------
 
-procedure TfrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+procedure TfrmMain.FormClose(Sender: TObject);
 begin
   SLdescript.Free;
   SL.Free;

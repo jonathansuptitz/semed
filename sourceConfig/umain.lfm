@@ -7,7 +7,6 @@ object frmMain: TfrmMain
   Caption = 'SEMED | Config'
   ClientHeight = 295
   ClientWidth = 447
-  OnClose = FormClose
   OnShow = FormShow
   Position = poDesktopCenter
   ShowInTaskBar = stAlways
