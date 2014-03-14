@@ -99,7 +99,7 @@ var
 implementation
 
 uses
-  dmMain, udmcontratos, UUtilidades, ufiltragem;
+  dmMain, UUtilidades, ufiltragem;
 
 { TfrmCadastroLocalTrabalho }
 
