@@ -26,9 +26,9 @@ object frmSuporte: TfrmSuporte
       Left = 116
       Height = 34
       Top = 13
-      Width = 224
+      Width = 208
       BorderSpacing.Left = 115
-      Caption = 'Ajuda de Suporte'
+      Caption = 'Ajuda e Suporte'
       Font.Color = clWhite
       Font.Height = -29
       Font.Name = 'Arial'
