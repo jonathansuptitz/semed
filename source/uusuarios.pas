@@ -75,19 +75,20 @@ begin
   BtnApagar.Enabled := false;
   BtnSalvar.Enabled := true;
   BtnCancelar.Enabled := true;
+  BtnVoltar.Enabled := false;
 end;
 
 procedure TfrmUsuarios.EditOFF;
 begin
   DBEdit2.ReadOnly := true;
   DBEdit3.ReadOnly := true;
-  DBEdit4.ReadOnly := false;
+  DBEdit4.ReadOnly := true;
   BtnNovo.Enabled := true;
   BtnEditar.Enabled := true;
   BtnApagar.Enabled := true;
   BtnSalvar.Enabled := false;
   BtnCancelar.Enabled := false;
-
+  BtnVoltar.Enabled := true;
 end;
 
 // MENU ------------------------------------------------------------------------

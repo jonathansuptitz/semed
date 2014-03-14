@@ -36,7 +36,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ucontrato"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="0"/>
         <TopLine Value="174"/>
         <CursorPos X="1" Y="184"/>
@@ -79,7 +79,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uPesquisaPessoas"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="16"/>
         <WindowIndex Value="0"/>
         <TopLine Value="23"/>
         <CursorPos X="41" Y="86"/>
@@ -118,7 +118,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uCadastroCargos"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="0"/>
         <TopLine Value="23"/>
@@ -196,10 +195,14 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="uusuarios"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="127"/>
-        <CursorPos X="49" Y="142"/>
+        <TopLine Value="77"/>
+        <CursorPos X="46" Y="85"/>
         <UsageCount Value="213"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit14>
       <Unit15>
         <Filename Value="uhtml.pas"/>
@@ -219,7 +222,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ubuscacontrato"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="0"/>
         <TopLine Value="79"/>
         <CursorPos X="36" Y="94"/>
@@ -234,7 +237,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="udmcontratos"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="0"/>
         <TopLine Value="88"/>
         <CursorPos X="6" Y="11"/>
@@ -246,7 +249,7 @@
         <Filename Value="ufiltragem.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ufiltragem"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
         <TopLine Value="25"/>
         <CursorPos X="6" Y="31"/>
@@ -270,7 +273,7 @@
       </Unit20>
       <Unit21>
         <Filename Value="C:\lazarus\lcl\include\control.inc"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="0"/>
         <TopLine Value="2700"/>
         <CursorPos X="1" Y="2718"/>
@@ -324,7 +327,7 @@
       <Unit27>
         <Filename Value="C:\lazarus\lcl\controls.pp"/>
         <UnitName Value="Controls"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="15"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>

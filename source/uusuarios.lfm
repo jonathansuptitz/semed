@@ -1217,6 +1217,7 @@ object frmUsuarios: TfrmUsuarios
     Width = 192
     DataField = 'senha_usuario'
     DataSource = dsUsuarios
+    ReadOnly = True
     CharCase = ecNormal
     Font.Height = -15
     Font.Name = 'Arial'
