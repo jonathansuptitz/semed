@@ -309,6 +309,7 @@ object FrmMain: TFrmMain
       Font.Height = -15
       Font.Name = 'Arial'
       ParentFont = False
+      ReadOnly = True
       ScrollBars = ssAutoVertical
       TabOrder = 0
     end
