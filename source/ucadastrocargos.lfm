@@ -1209,6 +1209,7 @@ object frmCadastroCargos: TfrmCadastroCargos
       Width = 100
       DataField = 'codigo_cargo'
       DataSource = dsCargos
+      ReadOnly = True
       CharCase = ecNormal
       Font.Height = -15
       Font.Name = 'Arial'
@@ -1371,6 +1372,7 @@ object frmCadastroCargos: TfrmCadastroCargos
     )
     OnChange = ComboBox1Change
     ParentFont = False
+    Style = csDropDownList
     TabOrder = 1
     Text = 'Descrição'
   end
