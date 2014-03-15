@@ -1,7 +1,7 @@
 object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
-  Left = 380
+  Left = 177
   Height = 521
-  Top = 68
+  Top = 51
   Width = 1058
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Local de Trabalho'
@@ -683,10 +683,10 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
     Text = 'Digite para pesquisar...'
   end
   object ComboBox1: TComboBox
-    Left = 324
+    Left = 325
     Height = 25
     Top = 67
-    Width = 148
+    Width = 140
     Font.Height = -15
     Font.Name = 'Arial'
     ItemHeight = 17
@@ -697,7 +697,6 @@ object frmCadastroLocalTrabalho: TfrmCadastroLocalTrabalho
     )
     OnChange = ComboBox1Change
     ParentFont = False
-    Style = csDropDownList
     TabOrder = 1
     Text = 'Nome'
   end

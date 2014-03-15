@@ -6,7 +6,10 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, DBGrids,
-  StdCtrls, EditBtn, LCLType, Buttons;
+  StdCtrls, EditBtn, LCLType, Buttons, Ipfilebroker, ExtCtrls, LCLIntf,
+  DbCtrls, Printers, IpHtml;
+
+
 
 type
 
@@ -30,6 +33,7 @@ type
     procedure edtCodigoExit(Sender: TObject);
     procedure edtfuncionarioButtonClick(Sender: TObject);
     procedure edtfuncionarioExit(Sender: TObject);
+    procedure FormClose(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     { private declarations }
@@ -75,9 +79,14 @@ begin
   filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dscontrato');
 end;
 
+procedure Tfrmbuscacontrato.FormClose(Sender: TObject);
+begin
+   DMcontratos.zt_contratos.Active:=false;
+end;
+
 procedure Tfrmbuscacontrato.FormShow(Sender: TObject);
 begin
-
+ DMcontratos.zt_contratos.Active:=true;
 end;
 
 procedure Tfrmbuscacontrato.edtCodigoButtonClick(Sender: TObject);
@@ -87,11 +96,15 @@ end;
 
 procedure Tfrmbuscacontrato.btnGeracontratoClick(Sender: TObject);
 begin
-  //filtragem.filtrads('codigo_cargo = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').value +'''', 'dscargos');
+  filtragem.filtrads('codigo_cargo = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').AsString +'''', 'dscargos');
 
   filtragem.filtrads('codigo_pessoa = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_pessoa').AsString +'''', 'dspessoa');
 
+  filtragem.filtrads('codigo_cidade = '''+DMcontratos.dspessoa.DataSet.FieldByName('codigo_cidade').AsString +'''', 'dscidades');
+
   html.editahtml;
+
+  OpenURL(expandLocalHtmlFileName('contratoatual.html'));
 end;
 
 procedure Tfrmbuscacontrato.btnSairClick(Sender: TObject);
@@ -101,7 +114,13 @@ end;
 
 procedure Tfrmbuscacontrato.DBGrid1DblClick(Sender: TObject);
 begin
- html.editahtml;
+  filtragem.filtrads('codigo_cargo = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').AsString +'''', 'dscargos');
+
+  filtragem.filtrads('codigo_pessoa = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_pessoa').AsString +'''', 'dspessoa');
+
+  filtragem.filtrads('codigo_cidade = '''+DMcontratos.dspessoa.DataSet.FieldByName('codigo_cidade').AsString +'''', 'dscidades');
+
+  html.editahtml;
 end;
 
 

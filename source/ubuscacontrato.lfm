@@ -1,11 +1,12 @@
 object frmbuscacontrato: Tfrmbuscacontrato
   Left = 401
   Height = 431
-  Top = 101
+  Top = 103
   Width = 724
   Caption = 'Buscar Contrato'
   ClientHeight = 431
   ClientWidth = 724
+  OnClose = FormClose
   OnShow = FormShow
   LCLVersion = '1.0.14.0'
   WindowState = wsMaximized
@@ -123,10 +124,14 @@ object frmbuscacontrato: Tfrmbuscacontrato
       TabOrder = 0
     end
     object btnGeracontrato: TBitBtn
-      Left = 518
+      AnchorSideRight.Control = btnSair
+      AnchorSideRight.Side = asrBottom
+      Left = 515
       Height = 54
       Top = 0
-      Width = 91
+      Width = 95
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 103
       Caption = 'Gerar Contrato'
       OnClick = btnGeracontratoClick
       TabOrder = 1
@@ -246,10 +251,13 @@ object frmbuscacontrato: Tfrmbuscacontrato
       ParentColor = False
     end
     object btnSair: TBitBtn
+      AnchorSideRight.Side = asrBottom
       Left = 622
       Height = 54
       Top = 0
       Width = 91
+      Anchors = [akTop, akRight]
+      BorderSpacing.Right = 19
       Caption = 'Sair'
       OnClick = btnSairClick
       TabOrder = 4

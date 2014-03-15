@@ -182,10 +182,6 @@ begin
       end;
     finally
       html.editahtml; //chama o preenchimento do html
-
-      //carrega contrato prenchido
-      OpenURL(expandLocalHtmlFileName('contratoatual.html'));
-
     end;
   end;
 end
@@ -233,8 +229,6 @@ var
 begin
   //cria dmcontratos
   Application.CreateForm(TDMcontratos, DMcontratos);
-  //ativa table contratos
-  DMcontratos.zt_contratos.Active:= true;
 
   //inicializa variaveis para varios locais
   linhas := 1;
@@ -499,6 +493,8 @@ begin
   if Length(edtcodigocontrato.text) <> 0 then
   begin
     //buscar se contrato existe
+    DMcontratos.zt_contratos.Active:= true;
+
     filtragem.filtrads('codigo_contrato = '''+edtcodigocontrato.text+'''', 'dscontratos');
 
     //senao liberar novo contrato
