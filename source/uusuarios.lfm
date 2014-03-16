@@ -1181,6 +1181,7 @@ object frmUsuarios: TfrmUsuarios
     MaxLength = 11
     ParentFont = False
     TabOrder = 2
+    OnChange = DBEdit1Change
   end
   object DBEdit2: TDBEdit
     Left = 469
@@ -1264,6 +1265,48 @@ object frmUsuarios: TfrmUsuarios
     Top = 205
     Width = 47
     Caption = 'Senha:'
+    Font.Height = -15
+    Font.Name = 'Arial'
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 406
+    Height = 18
+    Top = 239
+    Width = 109
+    Caption = 'Nivel de Acesso:'
+    Font.Height = -15
+    Font.Name = 'Arial'
+    ParentColor = False
+    ParentFont = False
+  end
+  object comboNivelAcesso: TDBComboBox
+    Left = 520
+    Height = 25
+    Top = 235
+    Width = 53
+    DataField = 'nivel_acesso_usuario'
+    DataSource = dsUsuarios
+    Font.Height = -15
+    Font.Name = 'Arial'
+    ItemHeight = 17
+    Items.Strings = (
+      '1'
+      '2'
+    )
+    MaxLength = 0
+    OnChange = comboNivelAcessoChange
+    ParentFont = False
+    Style = csDropDownList
+    TabOrder = 7
+  end
+  object Label7: TLabel
+    Left = 580
+    Height = 18
+    Top = 240
+    Width = 44
+    Caption = 'Label7'
     Font.Height = -15
     Font.Name = 'Arial'
     ParentColor = False

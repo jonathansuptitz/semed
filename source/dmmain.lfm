@@ -1,9 +1,9 @@
 object DM1: TDM1
   OldCreateOrder = False
-  Height = 422
+  Height = 314
   HorizontalOffset = 326
   VerticalOffset = 186
-  Width = 535
+  Width = 256
   object SEMEDconnection: TZConnection
     ControlsCodePage = cCP_UTF8
     UTF8StringsAsWideField = False
@@ -411,7 +411,7 @@ object DM1: TDM1
     Connection = SEMEDconnection
     TableName = 'tb_cargos'
     left = 48
-    top = 224
+    top = 232
     object tb_cargoscodigo_cargo: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -557,8 +557,8 @@ object DM1: TDM1
   object tb_mural: TZTable
     Connection = SEMEDconnection
     TableName = 'tb_mural'
-    left = 48
-    top = 283
+    left = 184
+    top = 96
     object tb_muralcodigo_mural: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -606,8 +606,8 @@ object DM1: TDM1
   object tb_usuarios: TZTable
     Connection = SEMEDconnection
     TableName = 'tb_usuarios'
-    left = 412
-    top = 120
+    left = 184
+    top = 232
     object tb_usuarioscodigo_usuario: TLongintField
       DisplayWidth = 10
       FieldKind = fkData
@@ -651,13 +651,22 @@ object DM1: TDM1
       Required = True
       Size = 180
     end
+    object tb_usuariosnivel_acesso_usuario: TLongintField
+      DisplayWidth = 10
+      FieldKind = fkData
+      FieldName = 'nivel_acesso_usuario'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = True
+    end
   end
   object tb_cidades: TZTable
     Connection = SEMEDconnection
-    Active = True
     TableName = 'tb_cidades'
-    left = 48
-    top = 344
+    left = 184
+    top = 165
     object tb_cidadescodigo_cidade: TLongintField
       DisplayWidth = 10
       FieldKind = fkData

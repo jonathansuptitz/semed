@@ -19,6 +19,7 @@ type
     BtnNovo: TBitBtn;
     BtnSalvar: TBitBtn;
     BtnVoltar: TBitBtn;
+    comboNivelAcesso: TDBComboBox;
     DBEdit1: TDBEdit;
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
@@ -30,7 +31,9 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    Label5: TLabel;
     Label6: TLabel;
+    Label7: TLabel;
     Panel1: TPanel;
     Panel2: TPanel;
     procedure BtnApagarClick(Sender: TObject);
@@ -39,6 +42,8 @@ type
     procedure BtnNovoClick(Sender: TObject);
     procedure BtnSalvarClick(Sender: TObject);
     procedure BtnVoltarClick(Sender: TObject);
+    procedure comboNivelAcessoChange(Sender: TObject);
+    procedure DBEdit1Change(Sender: TObject);
     procedure EditON;
     procedure EditOFF;
     procedure FormClose(Sender: TObject);
@@ -65,6 +70,22 @@ end;
 
 // PROCEDURES ------------------------------------------------------------------
 
+procedure TfrmUsuarios.DBEdit1Change(Sender: TObject);      // Atualizar label do
+begin                                                       // comboBox nivel_acesso
+  if comboNivelAcesso.Text = '1' then
+    Label7.Caption := 'Administrador'
+  else if comboNivelAcesso.Text = '2' then
+    Label7.Caption := 'Usuario';
+end;
+
+procedure TfrmUsuarios.comboNivelAcessoChange(Sender: TObject);  // Atualizar label do
+begin                                                            // comboBox nivel_acesso
+  if comboNivelAcesso.Text = '1' then
+    Label7.Caption := 'Administrador'
+  else if comboNivelAcesso.Text = '2' then
+    Label7.Caption := 'Usuario';
+end;
+
 procedure TfrmUsuarios.EditON;
 begin
   DBEdit2.ReadOnly := false;
@@ -76,6 +97,7 @@ begin
   BtnSalvar.Enabled := true;
   BtnCancelar.Enabled := true;
   BtnVoltar.Enabled := false;
+  comboNivelAcesso.Enabled := true;
 end;
 
 procedure TfrmUsuarios.EditOFF;
@@ -89,6 +111,7 @@ begin
   BtnSalvar.Enabled := false;
   BtnCancelar.Enabled := false;
   BtnVoltar.Enabled := true;
+  comboNivelAcesso.Enabled := false;
 end;
 
 // MENU ------------------------------------------------------------------------
@@ -101,7 +124,8 @@ end;
 
 procedure TfrmUsuarios.BtnSalvarClick(Sender: TObject);          // Salvar
 begin
-  if (DBEdit2.Text <> '') and (DBEdit3.Text <> '') and (DBEdit4.Text <> '') then
+  if (DBEdit2.Text <> '') and (DBEdit3.Text <> '') and
+     (DBEdit4.Text <> '') and (comboNivelAcesso.Text <> '') then
   begin
     dsUsuarios.DataSet.Post;
     EditOFF;

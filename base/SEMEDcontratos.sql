@@ -262,6 +262,7 @@ CREATE TABLE `tb_usuarios` (
   `login_usuario` varchar(20) NOT NULL,
   `senha_usuario` varchar(20) NOT NULL,
   `nome_usuario` varchar(45) NOT NULL,
+  `nivel_acesso_usuario` int(1) NOT NULL,
   PRIMARY KEY (`codigo_usuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -272,7 +273,7 @@ CREATE TABLE `tb_usuarios` (
 
 LOCK TABLES `tb_usuarios` WRITE;
 /*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
-INSERT INTO `tb_usuarios` VALUES (1,'roberto.debarba','luiz5505','Roberto Luiz Debarba'),(2,'1','1','Beta Tester');
+INSERT INTO `tb_usuarios` VALUES (1,'roberto.debarba','luiz5505','Roberto Luiz Debarba',1),(2,'1','1','Beta Tester',1);
 /*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

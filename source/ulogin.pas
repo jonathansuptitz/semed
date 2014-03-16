@@ -26,6 +26,7 @@ type
     procedure BtnEntrarClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure ConfigurarNivelAcesso(nivel: String);
   private
     { private declarations }
     procedure IniciarSistema;
@@ -68,6 +69,7 @@ begin
       Update;
       //Sleep(500);
       IniciarSistema;
+      ConfigurarNivelAcesso(dsUsuarios.DataSet.FieldByName('nivel_acesso_usuario').AsString);
     end
     else
       ShowMessage('Usuário ou senha não encontrado!');
@@ -79,6 +81,16 @@ end;
 procedure TfrmLogin.BtnSairClick(Sender: TObject);           // Sair
 begin
   Application.Terminate;
+end;
+
+// Configurar Nivel de Acesso --------------------------------------------------
+
+procedure TfrmLogin.ConfigurarNivelAcesso(nivel: String);
+begin
+  if (nivel = '1') then
+    FrmMain.GerenciarUsuarios.Enabled := true
+  else if (nivel = '2') then
+    FrmMain.GerenciarUsuarios.Enabled := false;
 end;
 
 // INICIAR SISTEMA -------------------------------------------------------------

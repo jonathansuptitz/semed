@@ -95,6 +95,7 @@ type
     tb_local_trabalho: TZQuery;
     tb_usuarioscodigo_usuario: TLongintField;
     tb_usuarioslogin_usuario: TStringField;
+    tb_usuariosnivel_acesso_usuario: TLongintField;
     tb_usuariosnome_usuario: TStringField;
     tb_usuariossenha_usuario: TStringField;
     ZReadOnlyQuery1codigo_cidade: TLongintField;
