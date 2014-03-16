@@ -1613,7 +1613,7 @@ object frmCadastroPessoas: TfrmCadastroPessoas
         Height = 561
         Top = 456
         Width = 896
-        Caption = 'Formação Academida'
+        Caption = 'Formação Acadêmica'
         ClientHeight = 543
         ClientWidth = 892
         Font.Height = -15

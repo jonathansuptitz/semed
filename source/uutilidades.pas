@@ -311,12 +311,12 @@ begin
   begin
     if campo.ClassName = 'TDBEdit' then
     begin
-      if LengTh((campo as TDBEdit).text) = 4 then
+      if (LengTh((campo as TDBEdit).text) = 4) and (Key <> #8{backspace}) then
         Key := #0{nil};
     end
     else if campo.ClassName = 'TEdit' then
     begin
-      if LengTh((campo as TEdit).text) = 4 then
+      if (LengTh((campo as TEdit).text) = 4) and (Key <> #8{backspace}) then
         Key := #0{nil};
     end;
   end;

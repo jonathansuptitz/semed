@@ -161,24 +161,35 @@ end;
 procedure TfrmCadastroPessoas.DBEdit2Exit(Sender: TObject);  // CPF - verif
 var
   queryConsultaCPF : TZReadOnlyQuery;
+  cpfCadastrado: string;
 begin
   if (utilidades.VerifCPF(DBEdit2)) then   // Chama verificador(que trata o erro) e verifica
   begin                                    // para chamar proximo teste
-    // Verifica se CPF inserido já existe
-    queryConsultaCPF := TZReadOnlyQuery.Create(nil);
-    queryConsultaCPF.Connection := DM1.SEMEDconnection;
-    queryConsultaCPF.SQL.Clear;
-    queryConsultaCPF.SQL.Add('SELECT 1 FROM tb_pessoas WHERE cpf_pessoa = "' + DBEdit2.Text + '"');
-    queryConsultaCPF.Open;
+    try
+      // Verifica se CPF inserido já existe
+      queryConsultaCPF := TZReadOnlyQuery.Create(nil);
+      queryConsultaCPF.Connection := DM1.SEMEDconnection;
+      // Guarda CPF ja cadastrado
+      queryConsultaCPF.SQL.Clear;
+      queryConsultaCPF.SQL.Add('SELECT cpf_pessoa FROM tb_pessoas WHERE codigo_pessoa = ' + DBEdit1.Text + '');
+      queryConsultaCPF.Open;
+      cpfCadastrado := queryConsultaCPF.FieldByName('cpf_pessoa').Value;
+      queryConsultaCPF.Close;
+      // Verifica de CPF ja existe
+      queryConsultaCPF.SQL.Clear;
+      queryConsultaCPF.SQL.Add('SELECT cpf_pessoa FROM tb_pessoas WHERE cpf_pessoa = "' + DBEdit2.Text + '"');
+      queryConsultaCPF.Open;
 
-    if not (queryConsultaCPF.IsEmpty) then
-    begin
-      ShowMessage('CPF já cadastrado!');
-      DBEdit2.SetFocus;
+      if not (queryConsultaCPF.IsEmpty) and
+             (cpfCadastrado <> DBEdit2.Text) then
+      begin
+        ShowMessage('CPF já cadastrado!');
+        DBEdit2.SetFocus;
+      end;
+    finally
+      queryConsultaCPF.Close;
+      queryConsultaCPF.Free;
     end;
-
-    queryConsultaCPF.Close;
-    queryConsultaCPF.Free;
   end;
 end;
 
@@ -340,7 +351,7 @@ begin
   if (DBEdit2.Text = '') or (DBEdit3.Text = '') or (DBEdit4.Text = '') or       // Se campos principais nao
       (DBEdit5.Text = '') or (DBEdit6.Text = '') or (DBEdit7.Text = '') or      // estiverem preenchidos
       (DBEdit31.Text = '') or (DBEdit32.Text = '') or (comboEstadoCivil.Text = '') or
-      (comboCidade.Text = '') then
+      (comboCidade.Text = '') or (DBMemo1.Text = '') then
     ShowMessage('Os campos * são obrigatorios!')
   else if editFormacaoLimpos then                                               // Se nenhum campo de formacao
   begin                                                                         // estiver preenchido
