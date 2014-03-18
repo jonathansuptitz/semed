@@ -28,11 +28,12 @@ procedure Thtml.editahtml;
 var
   textoref, textofinal : TStringList;
   y, x : integer;
-  varlocal, varhorario: string;
+  varlocal, varhorario, vardistribui: string;
   savedlg : TSaveDialog;
 begin
   varlocal:= '';
   varhorario:= '';
+  vardistribui := '';
 
   //atribui os locais e horarios nas variaveis
   filtragem.filtrads('codigo_contrato = '+ DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').AsString, 'dscontratoslocais');
@@ -46,6 +47,10 @@ begin
       varlocal := varlocal+ DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').AsString+ ', ';
 
       varhorario := varhorario + FieldByName('horario_local_trabalho').AsString + ', ';
+
+      vardistribui := vardistribui
+        +DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').AsString
+        +' ' + FieldByName('horario_local_trabalho').AsString + ', ';
 
       Next;
     end;
@@ -92,24 +97,30 @@ begin
         textofinal.Add(StringReplace(textoref.Strings[y],'varendereco',DMcontratos.dspessoa.DataSet.FieldByName('endereco_pessoa').AsString,[rfIgnoreCase]))
       else if Pos('varbairro',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'varbairro',DMcontratos.dspessoa.DataSet.FieldByName('bairro_pessoa').AsString,[rfIgnoreCase]))
+      else if Pos('varsalario',textoref.Strings[y]) <> 0 then
+        textofinal.Add(StringReplace(textoref.Strings[y],'varsalario',DMcontratos.dscargos.DataSet.FieldByName('salario_hora_cargo').AsString,[rfIgnoreCase]))
       else if Pos('varcidade',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'varcidade',DMcontratos.dscidades.DataSet.FieldByName('nome_cidade').AsString,[rfIgnoreCase]))
       else if Pos('varjustificativa',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'varjustificativa',DMcontratos.dsContratos.DataSet.FieldByName('justificativa_contrato').AsString,[rfIgnoreCase]))
       else if Pos('varcargahoraria',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'varcargahoraria',DMcontratos.dsContratos.DataSet.FieldByName('jornada_trabalho_contrato').AsString,[rfIgnoreCase]))
-      else if Pos('varcpfteste1',textoref.Strings[y]) <> 0 then
-        textofinal.Add(StringReplace(textoref.Strings[y],'varcpfteste1',DMcontratos.dsContratos.DataSet.FieldByName('cpf_teste_1_contrato').AsString,[rfIgnoreCase]))
+      else if Pos('varteste1cpf',textoref.Strings[y]) <> 0 then
+        textofinal.Add(StringReplace(textoref.Strings[y],'varteste1cpf',DMcontratos.dsContratos.DataSet.FieldByName('cpf_teste_1_contrato').AsString,[rfIgnoreCase]))
       else if Pos('vartestemunha1',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'vartestemunha1',DMcontratos.dsContratos.DataSet.FieldByName('testemunha_1_contrato').AsString,[rfIgnoreCase]))
-      else if Pos('varcpfteste2',textoref.Strings[y]) <> 0 then
-        textofinal.Add(StringReplace(textoref.Strings[y],'varcpfteste2',DMcontratos.dsContratos.DataSet.FieldByName('cpf_teste_2_contrato').AsString,[rfIgnoreCase]))
+      else if Pos('varteste2cpf',textoref.Strings[y]) <> 0 then
+        textofinal.Add(StringReplace(textoref.Strings[y],'varteste2cpf',DMcontratos.dsContratos.DataSet.FieldByName('cpf_teste_2_contrato').AsString,[rfIgnoreCase]))
       else if Pos('vartestemunha2',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'vartestemunha2',DMcontratos.dsContratos.DataSet.FieldByName('testemunha_2_contrato').AsString,[rfIgnoreCase]))
       else if Pos('varclausula',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'varclausula',DMcontratos.dscargos.DataSet.FieldByName('clausula_primeira_cargo').AsString,[rfIgnoreCase]))
+      else if Pos('vargrupo',textoref.Strings[y]) <> 0 then
+        textofinal.Add(StringReplace(textoref.Strings[y],'vargrupo',DMcontratos.dscargos.DataSet.FieldByName('grupo_ocupacional_cargo').AsString,[rfIgnoreCase]))
       else if Pos('varhorario',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'varhorario',varhorario,[rfIgnoreCase]))
+      else if Pos('vardistribui',textoref.Strings[y]) <> 0 then
+        textofinal.Add(StringReplace(textoref.Strings[y],'vardistribui',vardistribui,[rfIgnoreCase]))
       //observaçao contrato
       else if Pos('varobs',textoref.Strings[y]) <> 0 then
       begin
@@ -160,7 +171,7 @@ begin
     textofinal.SaveToFile('c:\temp\contratoatual.html');//salva arquivo
 
     //salva se o usuario desejar em local especifico
-    if MessageDlg('Salvar o contrato no computador?', mtCustom, mbYesNo, 1) = IDYES then
+    if MessageDlg('Salvar o contrato no computador? O mesmo já está salvo no banco de dados.', mtCustom, mbYesNo, 1) = IDYES then
     begin
       savedlg := TSaveDialog.Create(nil);
       savedlg.FileName:= 'contrato_'+DMcontratos.dsContratos.DataSet.Fields[0].AsString +'.html';

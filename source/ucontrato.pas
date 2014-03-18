@@ -18,7 +18,7 @@ type
     Btnadicionalocal: TBitBtn;
     BtnGerarcontrato: TBitBtn;
     btnlimparlocais: TBitBtn;
-    BtnVoltar: TBitBtn;
+    BtnSair: TBitBtn;
     cboxtipo: TComboBox;
     DBEdthorario: TDBEdit;
     DBEdtcpftest2: TDBEdit;
@@ -77,7 +77,7 @@ type
     procedure BtnadicionalocalClick(Sender: TObject);
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure btnlimparlocaisClick(Sender: TObject);
-    procedure BtnVoltarClick(Sender: TObject);
+    procedure BtnSairClick(Sender: TObject);
     procedure DBEdtcpftest2EditingDone(Sender: TObject);
     procedure DBEdtcpftest2Exit(Sender: TObject);
     procedure DBEdtcpftest2KeyPress(Sender: TObject; var Key: char);
@@ -128,7 +128,7 @@ var
 { TfrmContrato }
 
 //frmcontrato close ------------------------------------------------------------
-procedure TfrmContrato.BtnVoltarClick(Sender: TObject);
+procedure TfrmContrato.BtnSairClick(Sender: TObject);
 begin
   close;
 end;
@@ -508,8 +508,6 @@ begin
     //senao liberar novo contrato
     if DMcontratos.dsContratos.DataSet.RecordCount = 0 then
     begin
-      DMcontratos.dsContratos.DataSet.Filtered:=false;
-
       edtcodigocontrato.Enabled:=false;
       sbtbuscacintrato.Enabled:=false;
 
