@@ -97,6 +97,7 @@ type
     procedure edtlocalEditingDone(Sender: TObject);
     procedure FormClose(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Panel3Click(Sender: TObject);
     procedure rgHorariosChangeBounds(Sender: TObject);
     procedure rgHorariosClick(Sender: TObject);
     procedure sbtbuscacintratoClick(Sender: TObject);
@@ -230,6 +231,8 @@ begin
   //cria dmcontratos
   Application.CreateForm(TDMcontratos, DMcontratos);
 
+  CreateDir('c:\temp\');//cria pasta temporaria para o contrato
+
   //inicializa variaveis para varios locais
   linhas := 1;
 
@@ -239,6 +242,11 @@ begin
     horarios[x]:='';
   end;
   //--
+end;
+
+procedure TfrmContrato.Panel3Click(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmContrato.rgHorariosChangeBounds(Sender: TObject);
@@ -534,8 +542,9 @@ end;
 
 procedure TfrmContrato.FormClose(Sender: TObject);
 begin
-  //fecha datamodule de controtos
-  DMcontratos.free;
+  DeleteDirectory('c:\temp\',false);  //deleta pasta temporaria do contrato
+
+  DMcontratos.free;  //fecha datamodule de controtos
 end;
 
 

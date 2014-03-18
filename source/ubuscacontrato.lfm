@@ -1,10 +1,10 @@
 object frmbuscacontrato: Tfrmbuscacontrato
-  Left = 401
-  Height = 431
-  Top = 103
+  Left = 402
+  Height = 443
+  Top = 104
   Width = 724
   Caption = 'Buscar Contrato'
-  ClientHeight = 431
+  ClientHeight = 443
   ClientWidth = 724
   OnClose = FormClose
   OnShow = FormShow
@@ -12,7 +12,7 @@ object frmbuscacontrato: Tfrmbuscacontrato
   WindowState = wsMaximized
   object DBGrid1: TDBGrid
     Left = 0
-    Height = 351
+    Height = 363
     Top = 80
     Width = 724
     Align = alClient

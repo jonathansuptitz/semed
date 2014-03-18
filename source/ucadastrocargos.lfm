@@ -1,7 +1,7 @@
 object frmCadastroCargos: TfrmCadastroCargos
-  Left = 243
+  Left = 244
   Height = 486
-  Top = 122
+  Top = 107
   Width = 985
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Cargos'

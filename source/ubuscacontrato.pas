@@ -103,8 +103,6 @@ begin
   filtragem.filtrads('codigo_cidade = '''+DMcontratos.dspessoa.DataSet.FieldByName('codigo_cidade').AsString +'''', 'dscidades');
 
   html.editahtml;
-
-  OpenURL(expandLocalHtmlFileName('contratoatual.html'));
 end;
 
 procedure Tfrmbuscacontrato.btnSairClick(Sender: TObject);
@@ -114,6 +112,7 @@ end;
 
 procedure Tfrmbuscacontrato.DBGrid1DblClick(Sender: TObject);
 begin
+
   filtragem.filtrads('codigo_cargo = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').AsString +'''', 'dscargos');
 
   filtragem.filtrads('codigo_pessoa = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_pessoa').AsString +'''', 'dspessoa');

@@ -1,8 +1,8 @@
 object DMcontratos: TDMcontratos
   OldCreateOrder = False
   Height = 316
-  HorizontalOffset = 449
-  VerticalOffset = 226
+  HorizontalOffset = 450
+  VerticalOffset = 227
   Width = 616
   object zt_cargos: TZTable
     Connection = contratoconection
