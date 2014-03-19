@@ -18,6 +18,9 @@ type
     procedure editahtml;
   end;
 
+const
+  local = 'c:\temp\';//local de salvamento do contrato
+
 var
   html: Thtml;
 
@@ -31,6 +34,15 @@ var
   varlocal, varhorario, vardistribui: string;
   savedlg : TSaveDialog;
 begin
+  //faz as filtragens necessarias
+  filtragem.filtrads('codigo_cargo = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').AsString +'''', 'dscargos');
+
+  filtragem.filtrads('codigo_pessoa = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_pessoa').AsString +'''', 'dspessoa');
+
+  filtragem.filtrads('codigo_cidade = '''+DMcontratos.dspessoa.DataSet.FieldByName('codigo_cidade').AsString +'''', 'dscidades');
+  //
+
+  //inicializa variaveis
   varlocal:= '';
   varhorario:= '';
   vardistribui := '';
@@ -56,6 +68,7 @@ begin
     end;
    end;
   //----
+
   //substitui variaveis do html
   try
     textoref := TStringList.Create;
@@ -168,7 +181,7 @@ begin
         textofinal.Add(textoref.Strings[y]);
 
     end;
-    textofinal.SaveToFile('c:\temp\contratoatual.html');//salva arquivo
+    textofinal.SaveToFile(local+'contratoatual.html');//salva arquivo
 
     //salva se o usuario desejar em local especifico
     if MessageDlg('Salvar o contrato no computador? O mesmo já está salvo no banco de dados.', mtCustom, mbYesNo, 1) = IDYES then
@@ -181,11 +194,11 @@ begin
         textofinal.SaveToFile(savedlg.FileName);
       end;
 
-      OpenURL(expandLocalHtmlFileName('c:\temp\'+savedlg.FileName+'.html'));
+      OpenURL(expandLocalHtmlFileName(local+savedlg.FileName+'.html'));// abre o contrato html no navegador
     end
     else
       //abre contrato no navegador
-      OpenURL(expandLocalHtmlFileName('c:\temp\contratoatual.html'));
+      OpenURL(expandLocalHtmlFileName(local+'contratoatual.html'));
   finally
     textoref.Free;
     textofinal.free;

@@ -41,7 +41,7 @@ var
 implementation
 
 uses
-  dmMain, uCadastroPessoas, ufiltragem;
+  dmMain, uCadastroPessoas,udmcontratos, ufiltragem;
 
 // INICIO ----------------------------------------------------------------------
 procedure TfrmPesquisaPessoas.FormCreate(Sender: TObject);    // Atribui valor a var
@@ -87,7 +87,8 @@ end;
 
 procedure TfrmPesquisaPessoas.BtnEncerrarClick(Sender: TObject); // Botão Encerrar Pesquisa
 begin
-  filtragem.filtrads('codigo_pessoa = ''' + dsPessoas.DataSet.FieldByName('codigo_pessoa').AsString+'''', 'dspessoa');
+  if DMcontratos <> nil then
+    filtragem.filtrads('codigo_pessoa = ''' + dsPessoas.DataSet.FieldByName('codigo_pessoa').AsString+'''', 'dspessoa');
 
   self.Close;
 end;
