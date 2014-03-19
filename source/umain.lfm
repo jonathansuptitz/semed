@@ -291,6 +291,8 @@ object FrmMain: TFrmMain
     Align = alClient
     ClientHeight = 535
     ClientWidth = 881
+    Color = clNone
+    ParentColor = False
     TabOrder = 1
     object memoMural: TMemo
       AnchorSideTop.Control = Panel2
