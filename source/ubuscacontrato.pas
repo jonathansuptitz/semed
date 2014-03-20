@@ -28,11 +28,17 @@ type
     Label3: TLabel;
     procedure btnGeracontratoClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
+    procedure DateEdit1AcceptDate(Sender: TObject; var ADate: TDateTime;
+      var AcceptDate: Boolean);
+    procedure DateEdit1Change(Sender: TObject);
+    procedure DateEdit1Enter(Sender: TObject);
     procedure DateEdit1Exit(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure edtCodigoButtonClick(Sender: TObject);
+    procedure edtcodigoEditingDone(Sender: TObject);
+    procedure edtcodigoEnter(Sender: TObject);
     procedure edtCodigoExit(Sender: TObject);
     procedure edtfuncionarioButtonClick(Sender: TObject);
+    procedure edtfuncionarioEnter(Sender: TObject);
     procedure edtfuncionarioExit(Sender: TObject);
     procedure FormClose(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -56,10 +62,10 @@ uses uhtml, ufiltragem, uCadastroCargos,UCadastroLocalTrabalho,
 
 procedure Tfrmbuscacontrato.edtCodigoExit(Sender: TObject);
 begin
-   if Length(edtcodigo.text) <>0 then
-  begin
-    filtragem.filtrads('codigo_contrato = '''  + edtCodigo.text+'''', 'dscontrato');
-  end;
+  if Length(edtcodigo.text) <> 0 then
+    filtragem.filtrads('codigo_contrato = '''  + edtCodigo.text+'''', 'dscontratos')
+  else
+    DMcontratos.dsContratos.DataSet.Filtered:=false;
 end;
 
 procedure Tfrmbuscacontrato.edtfuncionarioButtonClick(Sender: TObject);
@@ -74,15 +80,21 @@ begin
 
   //filtra ds pessoa
   filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dspessoa');
-  filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dscontrato');
+  filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dscontratos');
+end;
+
+procedure Tfrmbuscacontrato.edtfuncionarioEnter(Sender: TObject);
+begin
+  edtcodigo.clear;
+  DateEdit1.clear;
 end;
 
 procedure Tfrmbuscacontrato.edtfuncionarioExit(Sender: TObject);
 begin
   if Length(edtfuncionario.text) <> 0 then
-  begin
-    filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dscontrato');
-  end;
+    filtragem.filtrads('codigo_pessoa like '  + QuotedStr('*'+edtfuncionario.text+'*'), 'dscontratos')
+  else
+    DMcontratos.dsContratos.DataSet.Filtered:=false;
 end;
 
 procedure Tfrmbuscacontrato.FormClose(Sender: TObject);
@@ -95,11 +107,6 @@ begin
  DMcontratos.zt_contratos.Active:=true;
 end;
 
-procedure Tfrmbuscacontrato.edtCodigoButtonClick(Sender: TObject);
-begin
-  filtragem.filtrads('codigo_contrato = '''  + edtCodigo.text+'''', 'dscontrato');
-end;
-
 procedure Tfrmbuscacontrato.btnGeracontratoClick(Sender: TObject);
 begin
   html.editahtml;//chama o gera html
@@ -110,14 +117,48 @@ begin
  close;
 end;
 
+procedure Tfrmbuscacontrato.DateEdit1AcceptDate(Sender: TObject;
+  var ADate: TDateTime; var AcceptDate: Boolean);
+begin
+
+end;
+
+procedure Tfrmbuscacontrato.DateEdit1Change(Sender: TObject);
+begin
+  if Length(DateEdit1.Text) <> 0 then
+    filtragem.filtrads('data_contrato like ' + QuotedStr('*'+DateEdit1.text+'*'), 'dscontratos')
+  else
+    DMcontratos.dsContratos.DataSet.Filtered:=false;
+end;
+
+procedure Tfrmbuscacontrato.DateEdit1Enter(Sender: TObject);
+begin
+  edtfuncionario.clear;
+  edtcodigo.clear;
+end;
+
 procedure Tfrmbuscacontrato.DateEdit1Exit(Sender: TObject);
 begin
-  filtragem.filtrads('data_contrato = '''  + DateEdit1.text+'''', 'dscontrato');
+ if Length(DateEdit1.Text) <> 0 then
+  filtragem.filtrads('data_contrato like ' + QuotedStr('*'+DateEdit1.text+'*'), 'dscontratos')
+ else
+  DMcontratos.dsContratos.DataSet.Filtered:=false;
 end;
 
 procedure Tfrmbuscacontrato.DBGrid1DblClick(Sender: TObject);
 begin
   html.editahtml;//chama o gerador de contrato
+end;
+
+procedure Tfrmbuscacontrato.edtcodigoEditingDone(Sender: TObject);
+begin
+
+end;
+
+procedure Tfrmbuscacontrato.edtcodigoEnter(Sender: TObject);
+begin
+  edtfuncionario.Clear;
+  DateEdit1.Clear;
 end;
 
 

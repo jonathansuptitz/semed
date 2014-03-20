@@ -157,7 +157,7 @@ begin
         FieldByName('codigo_cargo').value := edtcargo.text;
         FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
         FieldByName('periodo_final_contrato').Value := DateEditfinal.Text;
-        FieldByName('data_contrato').Value := FormatDateTime('dd/mm/yyyy', Date);
+        FieldByName('data_contrato').Value := DateToStr(date);
         FieldByName('salario_contrato').Value := DMcontratos.dscargos.DataSet.FieldByName('salario_hora_cargo').value;
       //
         Post; //posta
@@ -454,9 +454,6 @@ begin
   begin
     if not DMcontratos.dsContratos.DataSet.Locate('codigo_pessoa', EdtFuncionario.Text,[]) then
     begin
-      edtfuncionario.Enabled:=false;
-      sbtbuscarpessoa.Enabled:=false;
-
       sbtbuscarcargo.Enabled:=true;
       DBEdtJornada.Enabled:=true;
       sbtbuscarcargo.Enabled:=true;
@@ -490,7 +487,7 @@ begin
     else
     begin
       edtfuncionario.Clear;
-      ShowMessage('Funcionário já contratado!');
+      ShowMessage('Funcionário número'+edtfuncionario.text+' já contratado!');
     end;
   end;
 end;
@@ -508,16 +505,18 @@ begin
     //senao liberar novo contrato
     if DMcontratos.dsContratos.DataSet.RecordCount = 0 then
     begin
-      edtcodigocontrato.Enabled:=false;
-      sbtbuscacintrato.Enabled:=false;
-
       edtfuncionario.Enabled:=true;
       sbtbuscarpessoa.Enabled:=true;
 
       DMcontratos.zt_pessoas.Active:=true;
     end
     else
-      ShowMessage('Contrato já existente!');
+    begin
+      ShowMessage('Código '+edtcodigocontrato.text + ' já existente!');
+      edtcodigocontrato.clear;
+      DMcontratos.zt_contratos.Active:= false;
+      DMcontratos.zt_pessoas.Active:= false;
+    end;
   end;
 end;
 

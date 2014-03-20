@@ -121,7 +121,9 @@ object frmbuscacontrato: Tfrmbuscacontrato
       }
       NumGlyphs = 0
       MaxLength = 0
-      OnExit = DateEdit1Exit
+      OnChange = DateEdit1Change
+      OnEditingDone = DateEdit1Exit
+      OnEnter = DateEdit1Enter
       TabOrder = 0
     end
     object btnGeracontrato: TBitBtn
@@ -227,7 +229,8 @@ object frmbuscacontrato: Tfrmbuscacontrato
       MaxLength = 0
       NumGlyphs = 0
       OnButtonClick = edtfuncionarioButtonClick
-      OnExit = edtfuncionarioExit
+      OnEditingDone = edtfuncionarioExit
+      OnEnter = edtfuncionarioEnter
       TabOrder = 2
     end
     object Label2: TLabel
@@ -292,7 +295,8 @@ object frmbuscacontrato: Tfrmbuscacontrato
       Height = 21
       Top = 6
       Width = 80
-      OnExit = edtCodigoExit
+      OnEditingDone = edtCodigoExit
+      OnEnter = edtcodigoEnter
       TabOrder = 4
     end
   end
