@@ -111,6 +111,9 @@ type
     { public declarations }
   end;
 
+const
+  local = 'c:\temp\';//local de salvamento do contrato
+
 var
   frmContrato: TfrmContrato;
 
@@ -121,7 +124,7 @@ uses
 
 var
   linhas: byte;
-  horarios: array[1..3] of string;
+  horarios: array[1..3] of integer;
   numlocal : array[1..3] of integer;
 {$R *.lfm}
 
@@ -174,7 +177,11 @@ begin
 
             FieldByName('codigo_local_trabalho').value := numlocal[i];
 
-            FieldByName('horario_local_trabalho').value:= horarios[i];
+            case horarios[i] of
+            1: FieldByName('matutino').value := true;
+            2: FieldByName('vespertino').value := true;
+            3: FieldByName('noturno').value := true;
+            end;
 
             post;
           end;
@@ -202,7 +209,7 @@ begin
   for x := 1 to 3 do
   begin
     numlocal[x] := 0;
-    horarios[x]:='';
+    horarios[x]:= 0;
   end;
 end;
 
@@ -214,7 +221,6 @@ begin
     //adiociona mais locais de trabalho
     StringGrid1.Cells[0,linhas] := DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').value;
     StringGrid1.Cells[1,linhas] := DBEdthorario.text;
-    horarios[linhas] := DBEdthorario.text;
 
     numlocal[linhas]:= DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').value;
 
@@ -231,7 +237,7 @@ begin
   //cria dmcontratos
   Application.CreateForm(TDMcontratos, DMcontratos);
 
-  CreateDir('c:\temp\');//cria pasta temporaria para o contrato
+  CreateDir(local);//cria pasta temporaria para o contrato
 
   //inicializa variaveis para varios locais
   linhas := 1;
@@ -239,7 +245,7 @@ begin
   for x := 1 to 3 do
   begin
     numlocal[x] := 0;
-    horarios[x]:='';
+    horarios[x]:= 0;
   end;
   //--
 end;
@@ -254,13 +260,25 @@ begin
 
 end;
 
-//Rghorarios selectio ----------------------------------------------------------
+//Rghorarios selection ---------------------------------------------------------
 procedure TfrmContrato.rgHorariosClick(Sender: TObject);
 begin
     case rgHorarios.ItemIndex of
-    0: DBedtHorario.DataField:= 'horario_matutino_trabalho';
-    1: DBedtHorario.DataField:= 'horario_vespertino_trabalho';
-    2: DBedtHorario.DataField:= 'horario_noturno_trabalho';
+    0:
+    begin
+      DBedtHorario.DataField:= 'horario_matutino_trabalho';
+      horarios[linhas] := 1;
+    end;
+    1:
+    begin
+      DBedtHorario.DataField:= 'horario_vespertino_trabalho';
+      horarios[linhas] := 2;
+    end;
+    2:
+    begin
+      DBedtHorario.DataField:= 'horario_noturno_trabalho';
+      horarios[linhas] := 3;
+    end;
   end;
 
 end;
