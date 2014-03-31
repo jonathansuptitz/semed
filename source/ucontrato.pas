@@ -62,15 +62,10 @@ type
     sbtlocal: TSpeedButton;
     sbtbuscarpessoa: TSpeedButton;
     sbtbuscarcargo: TSpeedButton;
-    sbtbuscacintrato: TSpeedButton;
     StringGrid1: TStringGrid;
-    procedure DateEditfinalChange(Sender: TObject);
-    procedure DateEditfinalExit(Sender: TObject);
+    procedure BtnBuscaContratoClick(Sender: TObject);
     procedure DateEditfinalKeyPress(Sender: TObject; var Key: char);
-    procedure DateEditinicialExit(Sender: TObject);
     procedure DateEditinicialKeyPress(Sender: TObject; var Key: char);
-    procedure DBComboBox1Exit(Sender: TObject);
-    procedure DBEdtAnoseletivoExit(Sender: TObject);
     procedure DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtcargoKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtCodcontratoExit(Sender: TObject);
@@ -78,17 +73,11 @@ type
     procedure BtnGerarcontratoClick(Sender: TObject);
     procedure btnlimparlocaisClick(Sender: TObject);
     procedure BtnSairClick(Sender: TObject);
-    procedure DBEdtcpftest2EditingDone(Sender: TObject);
     procedure DBEdtcpftest2Exit(Sender: TObject);
     procedure DBEdtcpftest2KeyPress(Sender: TObject; var Key: char);
-    procedure DBEdtcpfteste1EditingDone(Sender: TObject);
     procedure DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
     procedure DBEdthorarioKeyPress(Sender: TObject; var Key: char);
-    procedure DBEdtJornadaEditingDone(Sender: TObject);
     procedure DBEdtJornadaKeyPress(Sender: TObject; var Key: char);
-    procedure DBEdttest2EditingDone(Sender: TObject);
-    procedure DBEdtteste1Exit(Sender: TObject);
-    procedure DBMemovacanciaExit(Sender: TObject);
     procedure edtcargoEditingDone(Sender: TObject);
     procedure edtcargoKeyPress(Sender: TObject; var Key: char);
     procedure edtcodigocontratoKeyPress(Sender: TObject; var Key: char);
@@ -97,14 +86,10 @@ type
     procedure edtlocalEditingDone(Sender: TObject);
     procedure FormClose(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure Panel3Click(Sender: TObject);
-    procedure rgHorariosChangeBounds(Sender: TObject);
     procedure rgHorariosClick(Sender: TObject);
-    procedure sbtbuscacintratoClick(Sender: TObject);
     procedure sbtbuscarpessoaClick(Sender: TObject);
     procedure sbtbuscarcargoClick(Sender: TObject);
     procedure sbtlocalClick(Sender: TObject);
-    procedure StringGrid1Exit(Sender: TObject);
   private
     { private declarations }
   public
@@ -130,10 +115,34 @@ var
 
 { TfrmContrato }
 
-//frmcontrato close ------------------------------------------------------------
-procedure TfrmContrato.BtnSairClick(Sender: TObject);
+// INICIO - frmcontratos show ------------------------------------------------------------
+procedure TfrmContrato.FormShow(Sender: TObject);
+var
+  x:integer;
 begin
-  close;
+  //cria dmcontratos
+  Application.CreateForm(TDMcontratos, DMcontratos);
+
+  CreateDir(local);//cria pasta temporaria para o contrato
+
+  //inicializa variaveis para varios locais
+  linhas := 1;
+
+  for x := 1 to 3 do
+  begin
+    numlocal[x] := 0;
+    horarios[x]:= 0;
+  end;
+  //--
+end;
+
+//Botão Buscar Contratos --------------------------------------------------------
+procedure TfrmContrato.BtnBuscaContratoClick(Sender: TObject);
+begin
+  //cria form de busca de contratos
+  Application.CreateForm(Tfrmbuscacontrato, frmbuscacontrato);
+  frmbuscacontrato.ShowModal;
+  frmbuscacontrato.Free;
 end;
 
 //btngerarcontrato click -------------------------------------------------------
@@ -228,38 +237,6 @@ begin
   end;
 end;
 
-
-//frmcontratos show ------------------------------------------------------------
-procedure TfrmContrato.FormShow(Sender: TObject);
-var
-  x:integer;
-begin
-  //cria dmcontratos
-  Application.CreateForm(TDMcontratos, DMcontratos);
-
-  CreateDir(local);//cria pasta temporaria para o contrato
-
-  //inicializa variaveis para varios locais
-  linhas := 1;
-
-  for x := 1 to 3 do
-  begin
-    numlocal[x] := 0;
-    horarios[x]:= 0;
-  end;
-  //--
-end;
-
-procedure TfrmContrato.Panel3Click(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmContrato.rgHorariosChangeBounds(Sender: TObject);
-begin
-
-end;
-
 //Rghorarios selection ---------------------------------------------------------
 procedure TfrmContrato.rgHorariosClick(Sender: TObject);
 begin
@@ -281,15 +258,6 @@ begin
     end;
   end;
 
-end;
-
-//sbtbuscacontrato -------------------------------------------------------------
-procedure TfrmContrato.sbtbuscacintratoClick(Sender: TObject);
-begin
-  //cria form de busca de contratos
-  Application.CreateForm(Tfrmbuscacontrato, frmbuscacontrato);
-  frmbuscacontrato.ShowModal;
-  frmbuscacontrato.Free;
 end;
 
 //sbtbuscarpessoa ---------------------------------------------------------------
@@ -337,11 +305,6 @@ begin
   edtlocal.Text := DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').AsString;
 end;
 
-procedure TfrmContrato.StringGrid1Exit(Sender: TObject);
-begin
-
-end;
-
 //PREVISAO DE ERROS-------------------------------------------------------------
 
 procedure TfrmContrato.DBEdtcpftest2Exit(Sender: TObject);
@@ -352,11 +315,6 @@ end;
 procedure TfrmContrato.DBEdtcpftest2KeyPress(Sender: TObject; var Key: char);
 begin
   utilidades.MascCPF(DBEdtcpftest2, Key)
-end;
-
-procedure TfrmContrato.DBEdtcpfteste1EditingDone(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmContrato.DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
@@ -370,46 +328,16 @@ begin
     Key := #0{nil};
 end;
 
-procedure TfrmContrato.DBEdtJornadaEditingDone(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmContrato.DateEditfinalKeyPress(Sender: TObject; var Key: char);
 begin
   if not (Key in ['0'..'9', #8{backspace}]) then
     Key := #0{nil};
 end;
 
-procedure TfrmContrato.DateEditfinalChange(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmContrato.DateEditfinalExit(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmContrato.DateEditinicialExit(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmContrato.DateEditinicialKeyPress(Sender: TObject; var Key: char);
 begin
   if not (Key in ['0'..'9', #8{backspace}]) then
     Key := #0{nil};
-end;
-
-procedure TfrmContrato.DBComboBox1Exit(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmContrato.DBEdtAnoseletivoExit(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmContrato.DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
@@ -428,21 +356,6 @@ procedure TfrmContrato.DBEdtJornadaKeyPress(Sender: TObject; var Key: char);
 begin
     if not (Key in ['0'..'9', #8{backspace}]) then
     Key := #0{nil};
-end;
-
-procedure TfrmContrato.DBEdttest2EditingDone(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmContrato.DBEdtteste1Exit(Sender: TObject);
-begin
-
-end;
-
-procedure TfrmContrato.DBMemovacanciaExit(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmContrato.edtcargoEditingDone(Sender: TObject);
@@ -550,11 +463,6 @@ begin
     filtragem.filtrads('codigo_local_trabalho = '''+ edtlocal.text+'''','dslocaltrabalho');
 end;
 
-procedure TfrmContrato.DBEdtcpftest2EditingDone(Sender: TObject);
-begin
-
-end;
-
 procedure TfrmContrato.FormClose(Sender: TObject);
 begin
   DeleteDirectory('c:\temp\',false);  //deleta pasta temporaria do contrato
@@ -562,7 +470,11 @@ begin
   DMcontratos.free;  //fecha datamodule de controtos
 end;
 
-
+// FIM - frmcontrato close ------------------------------------------------------
+procedure TfrmContrato.BtnSairClick(Sender: TObject);
+begin
+  close;
+end;
 
 end.
 
