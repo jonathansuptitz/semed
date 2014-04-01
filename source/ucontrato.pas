@@ -5,10 +5,9 @@ unit ucontrato;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Ipfilebroker, IpHtml,
- Forms, Controls, Graphics,
-  Dialogs, Buttons, ExtCtrls, LCLIntf,
-  DbCtrls, StdCtrls, EditBtn, Printers, Grids, LCLType;
+  Classes, SysUtils, FileUtil, Ipfilebroker, IpHtml, Forms, Controls, Graphics,
+  Dialogs, Buttons, ExtCtrls, LCLIntf, DbCtrls, StdCtrls, EditBtn, Printers,
+  Grids, LCLType, Menus, ZDataset;
 
 type
 
@@ -39,6 +38,9 @@ type
     gbContrato: TGroupBox;
     gbLocalTrabalho: TGroupBox;
     gbInformacoesAdicionais: TGroupBox;
+    gbTestemunhas: TGroupBox;
+    gbTestemunha1: TGroupBox;
+    gbTestemunha2: TGroupBox;
     Image1: TImage;
     Label1: TLabel;
     Label10: TLabel;
@@ -49,6 +51,7 @@ type
     Label15: TLabel;
     Label16: TLabel;
     Label17: TLabel;
+    lblFuncionario: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -57,14 +60,18 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
-    Panel2: TPanel;
+    lblCargo: TLabel;
+    lblLocalTrabalho: TLabel;
+    MenuItem1: TMenuItem;
     Panel3: TPanel;
     Panelprincipal: TPanel;
     PanelBotoes: TPanel;
+    popJornadaSemanal: TPopupMenu;
     rgHorarios: TRadioGroup;
     sbtbuscarcargo: TSpeedButton;
     sbtbuscarpessoa: TSpeedButton;
     sbtlocal: TSpeedButton;
+    sbtJornadaSemanal: TSpeedButton;
     StringGrid1: TStringGrid;
     procedure BtnBuscaContratoClick(Sender: TObject);
     procedure DateEditfinalKeyPress(Sender: TObject; var Key: char);
@@ -82,19 +89,25 @@ type
     procedure DBEdthorarioKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtJornadaKeyPress(Sender: TObject; var Key: char);
     procedure edtcargoEditingDone(Sender: TObject);
+    procedure edtcargoExit(Sender: TObject);
     procedure edtcargoKeyPress(Sender: TObject; var Key: char);
     procedure edtcodigocontratoKeyPress(Sender: TObject; var Key: char);
     procedure edtfuncionarioEditingDone(Sender: TObject);
+    procedure edtfuncionarioExit(Sender: TObject);
     procedure edtfuncionarioKeyPress(Sender: TObject; var Key: char);
     procedure edtlocalEditingDone(Sender: TObject);
+    procedure edtlocalExit(Sender: TObject);
     procedure FormClose(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure rgHorariosClick(Sender: TObject);
     procedure sbtbuscarpessoaClick(Sender: TObject);
     procedure sbtbuscarcargoClick(Sender: TObject);
+    procedure sbtJornadaSemanalClick(Sender: TObject);
     procedure sbtlocalClick(Sender: TObject);
+
   private
     { private declarations }
+    procedure verificarCodigo(var edit1: TEdit; var labelDesc: TLabel; tabela, campoCodigo, campoNome: String);
   public
     { public declarations }
   end;
@@ -106,19 +119,21 @@ var
   frmContrato: TfrmContrato;
 
 implementation
+
 uses
   uPesquisaPessoas, ubuscacontrato, UUtilidades, uhtml , UCadastroLocalTrabalho,
-  uCadastroCargos, udmcontratos, ufiltragem;
+  uCadastroCargos, udmcontratos, ufiltragem, dmMain;
 
 var
   linhas: byte;
   horarios: array[1..3] of integer;
   numlocal : array[1..3] of integer;
+
 {$R *.lfm}
 
 { TfrmContrato }
 
-// INICIO - frmcontratos show ------------------------------------------------------------
+// INICIO - frmcontratos show ---------------------------------------------------
 procedure TfrmContrato.FormShow(Sender: TObject);
 var
   x:integer;
@@ -139,7 +154,39 @@ begin
   //--
 end;
 
-//Botão Buscar Contratos --------------------------------------------------------
+// PROCEDURE verificadora de Codigos (preenche também os labels com os nomes ao lado)
+procedure TfrmContrato.verificarCodigo(var edit1: TEdit; var labelDesc: TLabel; tabela,
+                                    campoCodigo, campoNome: String);
+var
+  query : TZQuery;
+begin
+  try
+    query := TZQuery.Create(self);
+    query.Connection := DM1.SEMEDconnection;
+    query.SQL.Clear;
+    query.SQL.Add('SELECT '+campoNome+' FROM '+tabela+' WHERE '+campoCodigo+
+                  ' = "'+ edit1.Text +'";');
+    query.Open;
+    if not (query.IsEmpty) then   // Se nao retornar nenhum valor
+    begin
+      edit1.Color := clDefault;
+      labelDesc.Caption := query.FieldByName(campoNome).Value;
+    end
+    else
+    begin
+      edit1.Color := clRed;       // Se retornar valor (codigo é valido)
+      edit1.SetFocus;
+      labelDesc.Caption := 'Registro não encontrado!';
+    end;
+  finally
+    query.Close;
+    query.Free;
+  end;
+end;
+
+// MENU lateral ----------------------------------------------------------------
+
+//Botão Buscar Contratos ---
 procedure TfrmContrato.BtnBuscaContratoClick(Sender: TObject);
 begin
   //cria form de busca de contratos
@@ -148,7 +195,7 @@ begin
   frmbuscacontrato.Free;
 end;
 
-//btngerarcontrato click -------------------------------------------------------
+//btngerarcontrato click ---
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 var
   i : integer;
@@ -308,9 +355,32 @@ begin
   edtlocal.Text := DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').AsString;
 end;
 
+//sbtJornadaSemanal ------------------------------------------------------------
+procedure TfrmContrato.sbtJornadaSemanalClick(Sender: TObject);
+begin
+  popJornadaSemanal.PopUp;
+end;
+
 //PREVISAO DE ERROS-------------------------------------------------------------
 
-procedure TfrmContrato.DBEdtcpftest2Exit(Sender: TObject);
+// Ao sair dos campos codigo de algo
+procedure TfrmContrato.edtfuncionarioExit(Sender: TObject);         // Funcionarios
+begin
+  verificarCodigo(edtfuncionario, lblFuncionario, 'tb_pessoas', 'codigo_pessoa', 'nome_pessoa');
+end;
+
+procedure TfrmContrato.edtcargoExit(Sender: TObject);               // Cargos
+begin
+  verificarCodigo(edtcargo, lblCargo, 'tb_cargos', 'codigo_cargo', 'nome_cargo');
+end;
+
+procedure TfrmContrato.edtlocalExit(Sender: TObject);               // Locais de Trabalho
+begin
+  verificarCodigo(edtlocal, lblLocalTrabalho, 'tb_local_trabalho', 'codigo_local_trabalho', 'nome_local_trabalho');
+end;
+
+// Verificadores e marcaras
+procedure TfrmContrato.DBEdtcpftest2Exit(Sender: TObject);  // CPF testemunha 2
 begin
   utilidades.VerifCPF(DBEdtcpftest2);
 end;
@@ -319,12 +389,12 @@ procedure TfrmContrato.DBEdtcpftest2KeyPress(Sender: TObject; var Key: char);
 begin
   utilidades.MascCPF(DBEdtcpftest2, Key)
 end;
-
+                                                            // CPF testemunha 1
 procedure TfrmContrato.DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
 begin
     utilidades.MascCPF(DBEdtcpfteste1, Key);
 end;
-
+                                                            // horario
 procedure TfrmContrato.DBEdthorarioKeyPress(Sender: TObject; var Key: char);
 begin
   if not (Key in ['0'..'9', #8{backspace}]) then
@@ -393,7 +463,6 @@ begin
       sbtbuscarcargo.Enabled:=true;
       edtcargo.Enabled:=true;
       DBEdtAnoseletivo.Enabled:=true;
-      Panel2.Enabled:=true;
       cboxtipo.Enabled:=true;
       DBMemoobs.Enabled:=true;
       DBMemovacancia.Enabled:=true;

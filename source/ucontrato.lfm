@@ -1,12 +1,12 @@
 object frmContrato: TfrmContrato
-  Left = 107
-  Height = 590
-  Top = 66
+  Left = 326
+  Height = 597
+  Top = 135
   Width = 1224
   Align = alClient
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'SEMED | Contratos'
-  ClientHeight = 590
+  ClientHeight = 597
   ClientWidth = 1224
   DefaultMonitor = dmMainForm
   Font.CharSet = ANSI_CHARSET
@@ -21,11 +21,11 @@ object frmContrato: TfrmContrato
   WindowState = wsMaximized
   object PanelBotoes: TPanel
     Left = 1094
-    Height = 530
+    Height = 537
     Top = 60
     Width = 130
     Align = alRight
-    ClientHeight = 530
+    ClientHeight = 537
     ClientWidth = 130
     TabOrder = 1
     object BtnSair: TBitBtn
@@ -35,7 +35,7 @@ object frmContrato: TfrmContrato
       AnchorSideBottom.Side = asrBottom
       Left = 5
       Height = 40
-      Top = 479
+      Top = 486
       Width = 120
       Anchors = [akLeft, akBottom]
       BorderSpacing.Bottom = 10
@@ -174,28 +174,42 @@ object frmContrato: TfrmContrato
   end
   object Panelprincipal: TPanel
     Left = 0
-    Height = 530
+    Height = 537
     Top = 60
     Width = 1094
     Align = alClient
-    ClientHeight = 530
+    ClientHeight = 537
     ClientWidth = 1094
     TabOrder = 0
     object Label1: TLabel
       Left = 24
-      Height = 19
-      Top = 19
-      Width = 121
+      Height = 18
+      Top = 22
+      Width = 111
       Caption = 'Código Contrato:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
       ParentColor = False
+      ParentFont = False
     end
     object Label2: TLabel
       Left = 24
-      Height = 19
+      Height = 18
       Top = 55
-      Width = 87
+      Width = 81
       Caption = 'Funcionário:'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
       ParentColor = False
+      ParentFont = False
     end
     object sbtbuscarpessoa: TSpeedButton
       Left = 306
@@ -242,112 +256,38 @@ object frmContrato: TfrmContrato
       NumGlyphs = 0
       OnClick = sbtbuscarpessoaClick
     end
-    object Panel2: TPanel
-      Left = 520
-      Height = 209
-      Top = 292
-      Width = 545
-      ClientHeight = 209
-      ClientWidth = 545
-      Enabled = False
-      TabOrder = 2
-      object Label12: TLabel
-        Left = 16
-        Height = 19
-        Top = 23
-        Width = 99
-        Caption = 'Testemunha 1'
-        ParentColor = False
-      end
-      object DBEdtteste1: TDBEdit
-        Left = 128
-        Height = 26
-        Top = 16
-        Width = 367
-        DataField = 'testemunha_1_contrato'
-        DataSource = DMcontratos.dsContratos
-        CharCase = ecNormal
-        MaxLength = 0
-        TabOrder = 0
-      end
-      object Label13: TLabel
-        Left = 16
-        Height = 19
-        Top = 135
-        Width = 99
-        Caption = 'Testemunha 2'
-        ParentColor = False
-      end
-      object DBEdttest2: TDBEdit
-        Left = 128
-        Height = 26
-        Top = 128
-        Width = 398
-        DataField = 'testemunha_2_contrato'
-        DataSource = DMcontratos.dsContratos
-        CharCase = ecNormal
-        MaxLength = 0
-        TabOrder = 2
-      end
-      object Label14: TLabel
-        Left = 16
-        Height = 19
-        Top = 67
-        Width = 136
-        Caption = 'CPF Testemunha 1'
-        ParentColor = False
-      end
-      object DBEdtcpfteste1: TDBEdit
-        Left = 160
-        Height = 26
-        Top = 60
-        Width = 200
-        DataField = 'cpf_teste_1_contrato'
-        DataSource = DMcontratos.dsContratos
-        CharCase = ecNormal
-        MaxLength = 0
-        TabOrder = 1
-        OnKeyPress = DBEdtcpfteste1KeyPress
-      end
-      object Label15: TLabel
-        Left = 16
-        Height = 19
-        Top = 174
-        Width = 136
-        Caption = 'CPF Testemunha 2'
-        ParentColor = False
-      end
-      object DBEdtcpftest2: TDBEdit
-        Left = 160
-        Height = 26
-        Top = 167
-        Width = 200
-        DataField = 'cpf_teste_2_contrato'
-        DataSource = DMcontratos.dsContratos
-        CharCase = ecNormal
-        MaxLength = 0
-        TabOrder = 3
-        OnExit = DBEdtcpftest2Exit
-        OnKeyPress = DBEdtcpftest2KeyPress
-      end
-    end
     object edtcodigocontrato: TEdit
       Left = 176
-      Height = 26
-      Top = 12
+      Height = 25
+      Top = 15
       Width = 130
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
       OnEditingDone = DBEdtCodcontratoExit
       OnKeyPress = edtcodigocontratoKeyPress
+      ParentFont = False
       TabOrder = 0
     end
     object edtfuncionario: TEdit
       Left = 176
-      Height = 26
+      Height = 25
       Top = 48
       Width = 130
       Enabled = False
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
       OnEditingDone = edtfuncionarioEditingDone
+      OnExit = edtfuncionarioExit
       OnKeyPress = edtfuncionarioKeyPress
+      ParentFont = False
       TabOrder = 1
     end
     object gbContrato: TGroupBox
@@ -365,7 +305,7 @@ object frmContrato: TfrmContrato
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
-      TabOrder = 3
+      TabOrder = 2
       object DBEdtJornada: TDBEdit
         Left = 163
         Height = 25
@@ -375,7 +315,7 @@ object frmContrato: TfrmContrato
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
         Enabled = False
-        MaxLength = 0
+        MaxLength = 2
         TabOrder = 0
         OnKeyPress = DBEdtJornadaKeyPress
       end
@@ -524,6 +464,7 @@ object frmContrato: TfrmContrato
         Width = 130
         Enabled = False
         OnEditingDone = edtcargoEditingDone
+        OnExit = edtcargoExit
         OnKeyPress = edtcargoKeyPress
         TabOrder = 3
       end
@@ -572,6 +513,65 @@ object frmContrato: TfrmContrato
         NumGlyphs = 0
         OnClick = sbtbuscarcargoClick
       end
+      object lblCargo: TLabel
+        Left = 319
+        Height = 18
+        Top = 15
+        Width = 41
+        Caption = 'Cargo'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentColor = False
+        ParentFont = False
+      end
+      object sbtJornadaSemanal: TSpeedButton
+        Left = 293
+        Height = 26
+        Top = 114
+        Width = 23
+        Glyph.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000064000000640000000000000000000000000000000000
+          00000000000000000000FFFFFF12FFFFFF71FFFFFFCDFFFFFFF9FFFFFFF3FFFF
+          FFCAFFFFFF71FFFFFF1300000000000000000000000000000000000000000000
+          000000000000FFFFFF3DFCFCFCD8CCBCB7FF94766BFF7B5446FF7B5546FF9476
+          6BFFCCBCB7FFFCFCFCDAFFFFFF41000000000000000000000000000000000000
+          0000FFFFFF35EFEBE9E4A2877DFF764F40FF775041FF775041FF775041FF7750
+          41FF764F40FFA2877DFFEFEBE9E6FFFFFF36000000000000000000000000FFFF
+          FF13F3F0EEBDAC948BFF734A3BFF744C3CFF967C73FFFEFEFEFF9E877EFF744C
+          3DFF775041FF734A3BFFAC948BFFF3F0EEBDFFFFFF1300000000FFFFFF01FFFF
+          FF4CD6CAC5FF734B3CFF774F40FF775041FF775041FF775041FF775041FF7750
+          41FF775041FF774F40FF734B3CFFD6CAC5FFFFFFFF4CFFFFFF01FFFFFF05F2EE
+          EDA8A68C82FF724A3AFF775041FF754D3DFF8D7065FFFEFDFDFF9E877EFF744C
+          3DFF775041FF775041FF734A3BFFA4897FFFF1EDECA8FFFFFF05FFFFFF08EEEA
+          E8EA825F51FF754E3FFF775041FF775041FF704636FFECE8E7FFD4CAC7FF7148
+          38FF775041FF775041FF754E3FFF835F50FFEEE9E7E7FFFFFF08FFFFFF09EDE8
+          E6FF704737FF775041FF775041FF775041FF754D3EFF947970FFF2F0EFFFD0C6
+          C1FF6F4636FF775041FF774F40FF724A3BFFEDE8E6FFFFFFFF09FFFFFF09EDE8
+          E6FF704737FF775041FF775041FF775041FF775041FF775040FF87675AFFF1EF
+          EEFFA79189FF72493AFF775041FF704737FFEDE8E6FFFFFFFF09FFFFFF08EEEA
+          E8EA825F51FF714939FF9C8278FFF9F8F8FF96796EFF775041FF7B5547FFE8E5
+          E2FFC3B4AEFF704637FF754E3FFF825E50FFEEEAE8EAFFFFFF08FFFFFF05F2EE
+          EDA8A68C82FF714839FF7C594CFFE4DDDBFFDDD6D5FF795344FFA7928BFFFDFC
+          FCFFA69088FF72493AFF734A3BFFA4897FFFF1EDECA8FFFFFF05FFFFFF01FFFF
+          FF4BD6CAC5FF734B3CFF744B3CFF91756AFFE5DFDDFFFFFFFEFFFDFDFDFFB8A8
+          A2FF714838FF774F40FF734B3CFFD6CAC5FFFFFFFF4BFFFFFF0100000000FFFF
+          FF13F3F0EFBDAD948CFF724A3AFF775041FF775041FF775041FF775041FF7750
+          41FF775041FF734A3BFFAC948BFFF3F0EEBCFFFFFF1300000000000000000000
+          0000FFFFFF35EFEBE9E4A2877DFF764F40FF775041FF775041FF775041FF7750
+          41FF764F40FFA2877DFFEFEBE9E6FFFFFF360000000000000000000000000000
+          000000000000FFFFFF3DFCFCFCD8CCBCB7FF95776BFF7C5647FF7C5647FF9577
+          6BFFCCBCB7FFFCFCFCDAFFFFFF41000000000000000000000000000000000000
+          00000000000000000000FFFFFF11FFFFFF6FFFFFFFCCFFFFFFF7FFFFFFF7FFFF
+          FFCBFFFFFF6FFFFFFF1100000000000000000000000000000000
+        }
+        NumGlyphs = 0
+        OnClick = sbtJornadaSemanalClick
+      end
     end
     object gbLocalTrabalho: TGroupBox
       Left = 11
@@ -588,13 +588,12 @@ object frmContrato: TfrmContrato
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 3
       object Label10: TLabel
         Left = 11
-        Height = 18
+        Height = 1
         Top = 15
-        Width = 121
-        Caption = 'Local de Trabalho:'
+        Width = 1
         ParentColor = False
       end
       object edtlocal: TEdit
@@ -603,6 +602,7 @@ object frmContrato: TfrmContrato
         Top = 8
         Width = 130
         OnEditingDone = edtlocalEditingDone
+        OnExit = edtlocalExit
         TabOrder = 0
       end
       object sbtlocal: TSpeedButton
@@ -779,6 +779,21 @@ object frmContrato: TfrmContrato
           'Horario'
         )
       end
+      object lblLocalTrabalho: TLabel
+        Left = 319
+        Height = 18
+        Top = 15
+        Width = 117
+        Caption = 'Local de Trabalho'
+        Font.CharSet = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -15
+        Font.Name = 'Arial'
+        Font.Pitch = fpVariable
+        Font.Quality = fqDraft
+        ParentColor = False
+        ParentFont = False
+      end
     end
     object gbInformacoesAdicionais: TGroupBox
       Left = 516
@@ -795,7 +810,7 @@ object frmContrato: TfrmContrato
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 4
       object DBMemoobs: TDBMemo
         Left = 152
         Height = 60
@@ -843,7 +858,7 @@ object frmContrato: TfrmContrato
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
         Enabled = False
-        MaxLength = 0
+        MaxLength = 4
         TabOrder = 2
         OnKeyPress = DBEdtAnoseletivoKeyPress
       end
@@ -865,7 +880,7 @@ object frmContrato: TfrmContrato
       end
       object cboxtipo: TComboBox
         Left = 152
-        Height = 26
+        Height = 25
         Top = 184
         Width = 130
         Enabled = False
@@ -878,6 +893,137 @@ object frmContrato: TfrmContrato
         Style = csDropDownList
         TabOrder = 3
       end
+    end
+    object gbTestemunhas: TGroupBox
+      Left = 516
+      Height = 264
+      Top = 265
+      Width = 547
+      Caption = 'Testemunhas'
+      ClientHeight = 246
+      ClientWidth = 543
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentFont = False
+      TabOrder = 5
+      object gbTestemunha1: TGroupBox
+        Left = 13
+        Height = 108
+        Top = 14
+        Width = 519
+        Caption = 'Testemunha 1'
+        ClientHeight = 90
+        ClientWidth = 515
+        TabOrder = 0
+        object DBEdtteste1: TDBEdit
+          Left = 87
+          Height = 25
+          Top = 11
+          Width = 380
+          DataField = 'testemunha_1_contrato'
+          DataSource = DMcontratos.dsContratos
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object Label12: TLabel
+          Left = 11
+          Height = 18
+          Top = 18
+          Width = 44
+          Caption = 'Nome:'
+          ParentColor = False
+        end
+        object Label14: TLabel
+          Left = 11
+          Height = 18
+          Top = 54
+          Width = 35
+          Caption = 'CPF:'
+          ParentColor = False
+        end
+        object DBEdtcpfteste1: TDBEdit
+          Left = 87
+          Height = 25
+          Top = 47
+          Width = 230
+          DataField = 'cpf_teste_1_contrato'
+          DataSource = DMcontratos.dsContratos
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 1
+          OnKeyPress = DBEdtcpfteste1KeyPress
+        end
+      end
+      object gbTestemunha2: TGroupBox
+        Left = 13
+        Height = 108
+        Top = 126
+        Width = 519
+        Caption = 'Testemunha 2'
+        ClientHeight = 90
+        ClientWidth = 515
+        TabOrder = 1
+        object DBEdttest2: TDBEdit
+          Left = 87
+          Height = 25
+          Top = 14
+          Width = 380
+          DataField = 'testemunha_2_contrato'
+          DataSource = DMcontratos.dsContratos
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 0
+        end
+        object Label13: TLabel
+          Left = 9
+          Height = 18
+          Top = 21
+          Width = 44
+          Caption = 'Nome:'
+          ParentColor = False
+        end
+        object Label15: TLabel
+          Left = 11
+          Height = 18
+          Top = 57
+          Width = 35
+          Caption = 'CPF:'
+          ParentColor = False
+        end
+        object DBEdtcpftest2: TDBEdit
+          Left = 87
+          Height = 25
+          Top = 50
+          Width = 230
+          DataField = 'cpf_teste_2_contrato'
+          DataSource = DMcontratos.dsContratos
+          CharCase = ecNormal
+          MaxLength = 0
+          TabOrder = 1
+          OnExit = DBEdtcpftest2Exit
+          OnKeyPress = DBEdtcpftest2KeyPress
+        end
+      end
+    end
+    object lblFuncionario: TLabel
+      Left = 333
+      Height = 18
+      Top = 55
+      Width = 77
+      Caption = 'Funcionário'
+      Font.CharSet = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      ParentColor = False
+      ParentFont = False
     end
   end
   object Panel3: TPanel
@@ -1647,6 +1793,13 @@ object frmContrato: TfrmContrato
         7FFFD9
       }
       Proportional = True
+    end
+  end
+  object popJornadaSemanal: TPopupMenu
+    left = 344
+    top = 264
+    object MenuItem1: TMenuItem
+      Caption = 'Formato: horas p/ semana'
     end
   end
 end
