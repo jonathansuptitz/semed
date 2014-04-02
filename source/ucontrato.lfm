@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
-  Left = 326
+  Left = 306
   Height = 597
-  Top = 135
+  Top = 20
   Width = 1224
   Align = alClient
   BorderIcons = [biSystemMenu, biMaximize]
@@ -78,7 +78,7 @@ object frmContrato: TfrmContrato
       }
       ModalResult = 11
       OnClick = BtnSairClick
-      TabOrder = 0
+      TabOrder = 2
     end
     object BtnGerarcontrato: TBitBtn
       Left = 5
@@ -124,7 +124,7 @@ object frmContrato: TfrmContrato
         C6FFC5C6C6FFC5C6C6FFC5C6C6FFC5C6C6FFC5C6C6FFC5C6C6FF
       }
       OnClick = BtnGerarcontratoClick
-      TabOrder = 1
+      TabOrder = 0
     end
     object BtnBuscaContrato: TBitBtn
       Left = 5
@@ -169,7 +169,7 @@ object frmContrato: TfrmContrato
         0000000000000000000000000000000000000000000000000000
       }
       OnClick = BtnBuscaContratoClick
-      TabOrder = 2
+      TabOrder = 1
     end
   end
   object Panelprincipal: TPanel
@@ -298,6 +298,7 @@ object frmContrato: TfrmContrato
       Caption = 'Informações do Contrato'
       ClientHeight = 158
       ClientWidth = 489
+      Enabled = False
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -15
@@ -314,9 +315,8 @@ object frmContrato: TfrmContrato
         DataField = 'jornada_trabalho_contrato'
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
-        Enabled = False
         MaxLength = 2
-        TabOrder = 0
+        TabOrder = 3
         OnKeyPress = DBEdtJornadaKeyPress
       end
       object Label8: TLabel
@@ -383,10 +383,9 @@ object frmContrato: TfrmContrato
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         NumGlyphs = 0
-        Enabled = False
         MaxLength = 0
         OnKeyPress = DateEditfinalKeyPress
-        TabOrder = 1
+        TabOrder = 2
       end
       object DateEditinicial: TDateEdit
         Left = 163
@@ -436,10 +435,9 @@ object frmContrato: TfrmContrato
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         NumGlyphs = 0
-        Enabled = False
         MaxLength = 0
         OnKeyPress = DateEditinicialKeyPress
-        TabOrder = 2
+        TabOrder = 1
       end
       object Label3: TLabel
         Left = 11
@@ -462,18 +460,16 @@ object frmContrato: TfrmContrato
         Height = 25
         Top = 8
         Width = 130
-        Enabled = False
         OnEditingDone = edtcargoEditingDone
         OnExit = edtcargoExit
         OnKeyPress = edtcargoKeyPress
-        TabOrder = 3
+        TabOrder = 0
       end
       object sbtbuscarcargo: TSpeedButton
         Left = 293
         Height = 26
         Top = 8
         Width = 23
-        Enabled = False
         Glyph.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
           2000000000000004000064000000640000000000000000000000000000000000
@@ -581,6 +577,7 @@ object frmContrato: TfrmContrato
       Caption = 'Local de Trabalho'
       ClientHeight = 246
       ClientWidth = 489
+      Enabled = False
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -15
@@ -803,6 +800,7 @@ object frmContrato: TfrmContrato
       Caption = 'Informações Adicionais'
       ClientHeight = 220
       ClientWidth = 544
+      Enabled = False
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -15
@@ -818,7 +816,6 @@ object frmContrato: TfrmContrato
         Width = 380
         DataField = 'obs_contrato'
         DataSource = DMcontratos.dsContratos
-        Enabled = False
         MaxLength = 250
         TabOrder = 0
       end
@@ -845,7 +842,6 @@ object frmContrato: TfrmContrato
         Width = 380
         DataField = 'justificativa_contrato'
         DataSource = DMcontratos.dsContratos
-        Enabled = False
         MaxLength = 300
         TabOrder = 1
       end
@@ -857,7 +853,6 @@ object frmContrato: TfrmContrato
         DataField = 'ano_seletivo_contrato'
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
-        Enabled = False
         MaxLength = 4
         TabOrder = 2
         OnKeyPress = DBEdtAnoseletivoKeyPress
@@ -883,7 +878,6 @@ object frmContrato: TfrmContrato
         Height = 25
         Top = 184
         Width = 130
-        Enabled = False
         ItemHeight = 17
         Items.Strings = (
           'Seletivo'
@@ -902,6 +896,7 @@ object frmContrato: TfrmContrato
       Caption = 'Testemunhas'
       ClientHeight = 246
       ClientWidth = 543
+      Enabled = False
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -15
@@ -927,7 +922,7 @@ object frmContrato: TfrmContrato
           DataField = 'testemunha_1_contrato'
           DataSource = DMcontratos.dsContratos
           CharCase = ecNormal
-          MaxLength = 0
+          MaxLength = 100
           TabOrder = 0
         end
         object Label12: TLabel
@@ -956,6 +951,7 @@ object frmContrato: TfrmContrato
           CharCase = ecNormal
           MaxLength = 0
           TabOrder = 1
+          OnExit = DBEdtcpfteste1Exit
           OnKeyPress = DBEdtcpfteste1KeyPress
         end
       end
@@ -976,7 +972,7 @@ object frmContrato: TfrmContrato
           DataField = 'testemunha_2_contrato'
           DataSource = DMcontratos.dsContratos
           CharCase = ecNormal
-          MaxLength = 0
+          MaxLength = 100
           TabOrder = 0
         end
         object Label13: TLabel

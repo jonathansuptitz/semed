@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Buttons, DbCtrls, StdCtrls;
+  Buttons, DbCtrls, StdCtrls, EditBtn;
 
 type
   TUtilidades = class
@@ -294,13 +294,70 @@ begin
         (campo as TEdit).text := (campo as TEdit).text + '/'
       else if LengTh((campo as TEdit).text) = 10 then
         Key := #0 {nil};
+    end
+    else if campo.ClassName = 'TDateEdit' then
+    begin
+      if LengTh((campo as TDateEdit).text) = 0 then
+      begin
+        if (StrToInt(Key) > 3) then
+        begin
+          ShowMessage('Data não é válida!');
+          key:=#0;
+        end;
+      end
+      else if LengTh((campo as TDateEdit).text) = 2 then
+      begin
+        (campo as TDateEdit).text := (campo as TDateEdit).text + '/';
+        Key:=#0;
+      end
+      else if LengTh((campo as TDateEdit).text) = 3 then
+      begin
+        if (StrToInt(Key) > 1) then
+        begin
+          ShowMessage('Data não é válida!');
+          key:=#0;
+        end;
+      end
+      else if LengTh((campo as TDateEdit).text) = 4 then
+      begin
+        if (StrToInt(Key) < 1) and (StrToInt((campo as TDateEdit).text[3]) = 1) then
+        begin
+          ShowMessage('Data não é válida!');
+          key:=#0;
+        end;
+      end
+      else if LengTh((campo as TDateEdit).text) = 5 then
+      begin
+        (campo as TDateEdit).text := (campo as TDateEdit).text + '/';
+        Key:=#0;
+      end
+      else if LengTh((campo as TDateEdit).text) = 6 then
+      begin
+        if (StrToInt(Key) < 1) then
+        begin
+          ShowMessage('Data não é válida!');
+          key:=#0;
+        end;
+      end
+      else if LengTh((campo as TDateEdit).text) = 7 then
+      begin
+        if (StrToInt(Key) < 3) then
+        begin
+          ShowMessage('Data não é válida!');
+          key:=#0;
+        end;
+      end
+      else if LengTh((campo as TDateEdit).text) = 10 then
+        Key := #0 {nil};
+      end;
     end;
 
     if campo.ClassName = 'TDBEdit' then
       (campo as TDBEdit).SelStart := LengTh((campo as TDBEdit).Text)
     else if campo.ClassName = 'TEdit' then
-      (campo as TEdit).SelStart := LengTh((campo as TEdit).Text);
-  end;
+      (campo as TEdit).SelStart := LengTh((campo as TEdit).Text)
+    else if campo.ClassName = 'TDateEdit' then
+      (campo as TDateEdit).SelStart := LengTh((campo as TDateEdit).Text);
 end;
 
 procedure TUtilidades.MascAno(campo : Tcomponent; var key : char);

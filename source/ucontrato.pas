@@ -85,6 +85,7 @@ type
     procedure BtnSairClick(Sender: TObject);
     procedure DBEdtcpftest2Exit(Sender: TObject);
     procedure DBEdtcpftest2KeyPress(Sender: TObject; var Key: char);
+    procedure DBEdtcpfteste1Exit(Sender: TObject);
     procedure DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
     procedure DBEdthorarioKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtJornadaKeyPress(Sender: TObject; var Key: char);
@@ -107,7 +108,7 @@ type
 
   private
     { private declarations }
-    procedure verificarCodigo(var edit1: TEdit; var labelDesc: TLabel; tabela, campoCodigo, campoNome: String);
+    function verificarCodigo(var edit1: TEdit; var labelDesc: TLabel; tabela, campoCodigo, campoNome: String): boolean;
   public
     { public declarations }
   end;
@@ -155,32 +156,37 @@ begin
 end;
 
 // PROCEDURE verificadora de Codigos (preenche também os labels com os nomes ao lado)
-procedure TfrmContrato.verificarCodigo(var edit1: TEdit; var labelDesc: TLabel; tabela,
-                                    campoCodigo, campoNome: String);
+function TfrmContrato.verificarCodigo(var edit1: TEdit; var labelDesc: TLabel; tabela,
+                                    campoCodigo, campoNome: String): boolean;
 var
   query : TZQuery;
 begin
-  try
-    query := TZQuery.Create(self);
-    query.Connection := DM1.SEMEDconnection;
-    query.SQL.Clear;
-    query.SQL.Add('SELECT '+campoNome+' FROM '+tabela+' WHERE '+campoCodigo+
-                  ' = "'+ edit1.Text +'";');
-    query.Open;
-    if not (query.IsEmpty) then   // Se nao retornar nenhum valor
-    begin
-      edit1.Color := clDefault;
-      labelDesc.Caption := query.FieldByName(campoNome).Value;
-    end
-    else
-    begin
-      edit1.Color := clRed;       // Se retornar valor (codigo é valido)
-      edit1.SetFocus;
-      labelDesc.Caption := 'Registro não encontrado!';
+  if Length(edit1.Text) <> 0 then
+  begin
+    try
+      query := TZQuery.Create(self);
+      query.Connection := DM1.SEMEDconnection;
+      query.SQL.Clear;
+      query.SQL.Add('SELECT '+campoNome+' FROM '+tabela+' WHERE '+campoCodigo+
+                    ' = "'+ edit1.Text +'";');
+      query.Open;
+      if not (query.IsEmpty) then   // Se nao retornar nenhum valor
+      begin
+        edit1.Color := clDefault;
+        labelDesc.Caption := query.FieldByName(campoNome).Value;
+        result := true;
+      end
+      else
+      begin
+        edit1.Color := clRed;       // Se retornar valor (codigo é valido)
+        edit1.SetFocus;
+        labelDesc.Caption := 'Registro não encontrado!';
+        result := false;
+      end;
+    finally
+      query.Close;
+      query.Free;
     end;
-  finally
-    query.Close;
-    query.Free;
   end;
 end;
 
@@ -366,7 +372,7 @@ end;
 // Ao sair dos campos codigo de algo
 procedure TfrmContrato.edtfuncionarioExit(Sender: TObject);         // Funcionarios
 begin
-  verificarCodigo(edtfuncionario, lblFuncionario, 'tb_pessoas', 'codigo_pessoa', 'nome_pessoa');
+  // Função chamada em verificação de usuario ja cadastrado (evento OnEditingDone)
 end;
 
 procedure TfrmContrato.edtcargoExit(Sender: TObject);               // Cargos
@@ -389,7 +395,12 @@ procedure TfrmContrato.DBEdtcpftest2KeyPress(Sender: TObject; var Key: char);
 begin
   utilidades.MascCPF(DBEdtcpftest2, Key)
 end;
-                                                            // CPF testemunha 1
+                                                             // CPF testemunha 1
+procedure TfrmContrato.DBEdtcpfteste1Exit(Sender: TObject);
+begin
+  Utilidades.VerifCPF(DBEdtcpfteste1);
+end;
+
 procedure TfrmContrato.DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
 begin
     utilidades.MascCPF(DBEdtcpfteste1, Key);
@@ -409,8 +420,9 @@ end;
 
 procedure TfrmContrato.DateEditinicialKeyPress(Sender: TObject; var Key: char);
 begin
-  if not (Key in ['0'..'9', #8{backspace}]) then
-    Key := #0{nil};
+  //if not (Key in ['0'..'9', #8{backspace}]) then
+    //Key := #0{nil};
+  Utilidades.MascData(DateEditinicial, Key);
 end;
 
 procedure TfrmContrato.DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
@@ -454,22 +466,20 @@ end;
 procedure TfrmContrato.edtfuncionarioEditingDone(Sender: TObject);
 begin
   //libera campos apenas se funcionario nao contratado
-  if Length(edtfuncionario.text) <> 0 then
+  if (Length(edtfuncionario.text) <> 0) and
+     (verificarCodigo(edtfuncionario, lblFuncionario, 'tb_pessoas', 'codigo_pessoa', 'nome_pessoa')) then
   begin
     if not DMcontratos.dsContratos.DataSet.Locate('codigo_pessoa', EdtFuncionario.Text,[]) then
     begin
-      sbtbuscarcargo.Enabled:=true;
-      DBEdtJornada.Enabled:=true;
-      sbtbuscarcargo.Enabled:=true;
-      edtcargo.Enabled:=true;
-      DBEdtAnoseletivo.Enabled:=true;
-      cboxtipo.Enabled:=true;
-      DBMemoobs.Enabled:=true;
-      DBMemovacancia.Enabled:=true;
-      DateEditfinal.Enabled:=true;
-      DateEditinicial.Enabled:=true;
+      gbLocalTrabalho.Enabled := true;
+      gbInformacoesAdicionais.Enabled := true;
+      gbTestemunhas.Enabled := true;
+      gbContrato.Enabled := true;
 
       BtnGerarcontrato.Enabled:=true;
+
+      edtfuncionario.Enabled:=false;
+      sbtbuscarpessoa.Enabled:=false;
 
       DMcontratos.dsContratos.DataSet.Insert;//coloca table em modo de inserçao
 
@@ -488,6 +498,13 @@ begin
     end
     else
     begin
+      gbLocalTrabalho.Enabled := false;
+      gbInformacoesAdicionais.Enabled := false;
+      gbTestemunhas.Enabled := false;
+      gbContrato.Enabled := false;
+
+      BtnGerarcontrato.Enabled:=false;
+
       edtfuncionario.Clear;
       ShowMessage('Funcionário número'+edtfuncionario.text+' já contratado!');
     end;
@@ -509,6 +526,9 @@ begin
     begin
       edtfuncionario.Enabled:=true;
       sbtbuscarpessoa.Enabled:=true;
+
+      edtcodigocontrato.Enabled := false;
+      edtfuncionario.SetFocus;
 
       DMcontratos.zt_pessoas.Active:=true;
     end
