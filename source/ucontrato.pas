@@ -14,6 +14,7 @@ type
   { TfrmContrato }
 
   TfrmContrato = class(TForm)
+    BtnCancelarContrato: TBitBtn;
     Btnadicionalocal: TBitBtn;
     BtnBuscaContrato: TBitBtn;
     BtnGerarcontrato: TBitBtn;
@@ -74,8 +75,7 @@ type
     sbtJornadaSemanal: TSpeedButton;
     StringGrid1: TStringGrid;
     procedure BtnBuscaContratoClick(Sender: TObject);
-    procedure DateEditfinalKeyPress(Sender: TObject; var Key: char);
-    procedure DateEditinicialKeyPress(Sender: TObject; var Key: char);
+    procedure BtnCancelarContratoClick(Sender: TObject);
     procedure DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtcargoKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtCodcontratoExit(Sender: TObject);
@@ -94,7 +94,6 @@ type
     procedure edtcargoKeyPress(Sender: TObject; var Key: char);
     procedure edtcodigocontratoKeyPress(Sender: TObject; var Key: char);
     procedure edtfuncionarioEditingDone(Sender: TObject);
-    procedure edtfuncionarioExit(Sender: TObject);
     procedure edtfuncionarioKeyPress(Sender: TObject; var Key: char);
     procedure edtlocalEditingDone(Sender: TObject);
     procedure edtlocalExit(Sender: TObject);
@@ -262,6 +261,66 @@ else
   ShowMessage('Preencha todos os campos!');
 end;
 
+// Botão Cancelar Contrato -----------------------------------------------------
+
+procedure TfrmContrato.BtnCancelarContratoClick(Sender: TObject);
+var
+  x: integer;
+begin
+  edtcodigocontrato.Text:='';
+  edtcodigocontrato.Enabled := true;
+  BtnCancelarContrato.Enabled:=false;
+  edtcodigocontrato.SetFocus;
+
+  edtfuncionario.Enabled:=false;
+  sbtbuscarpessoa.Enabled:=false;
+  edtfuncionario.Text:='';
+
+  BtnBuscaContrato.Enabled:=true;
+  BtnGerarcontrato.Enabled:=false;
+
+  gbLocalTrabalho.Enabled := false;
+  gbInformacoesAdicionais.Enabled := false;
+  gbTestemunhas.Enabled := false;
+  gbContrato.Enabled := false;
+
+  edtcargo.Text:='';
+  DateEditinicial.Text:='';
+  DateEditfinal.Text:='';
+  DBEdtJornada.Text:='';
+  //Limpa grid ---
+  linhas:=1;
+  StringGrid1.Clean(0,1,1,3,[gznormal]);
+  for x := 1 to 3 do
+  begin
+    numlocal[x] := 0;
+    horarios[x]:= 0;
+  end;
+  //---
+
+  edtlocal.Text:='';
+  DBEdthorario.Text:='';
+
+  DBMemoobs.Text:='';
+  DBMemovacancia.Text:='';
+  DBEdtAnoseletivo.Text:='';
+  cboxtipo.Text:='';
+
+  DBEdtteste1.Text:='';
+  DBEdtcpfteste1.Text:='';
+  DBEdttest2.Text:='';
+  DBEdtcpftest2.Text:='';
+
+  // ---
+  DMcontratos.dsContratos.DataSet.Cancel;
+
+  DMcontratos.zt_pessoas.Active:=false;
+  DMcontratos.zt_contratos.Active:= false;
+  DMcontratos.zt_cargos.Active:=false;
+  DMcontratos.zt_cidades.Active:=false;
+  DMcontratos.zt_contratos_cargos.Active:=false;
+end;
+
 //limpar locais da grid locais -------------------------------------------------
 procedure TfrmContrato.btnlimparlocaisClick(Sender: TObject);
 var
@@ -370,10 +429,6 @@ end;
 //PREVISAO DE ERROS-------------------------------------------------------------
 
 // Ao sair dos campos codigo de algo
-procedure TfrmContrato.edtfuncionarioExit(Sender: TObject);         // Funcionarios
-begin
-  // Função chamada em verificação de usuario ja cadastrado (evento OnEditingDone)
-end;
 
 procedure TfrmContrato.edtcargoExit(Sender: TObject);               // Cargos
 begin
@@ -410,19 +465,6 @@ procedure TfrmContrato.DBEdthorarioKeyPress(Sender: TObject; var Key: char);
 begin
   if not (Key in ['0'..'9', #8{backspace}]) then
     Key := #0{nil};
-end;
-
-procedure TfrmContrato.DateEditfinalKeyPress(Sender: TObject; var Key: char);
-begin
-  if not (Key in ['0'..'9', #8{backspace}]) then
-    Key := #0{nil};
-end;
-
-procedure TfrmContrato.DateEditinicialKeyPress(Sender: TObject; var Key: char);
-begin
-  //if not (Key in ['0'..'9', #8{backspace}]) then
-    //Key := #0{nil};
-  Utilidades.MascData(DateEditinicial, Key);
 end;
 
 procedure TfrmContrato.DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
@@ -521,18 +563,22 @@ begin
 
     filtragem.filtrads('codigo_contrato = '''+edtcodigocontrato.text+'''', 'dscontratos');
 
-    //senao liberar novo contrato
+    //liberar novo contrato
     if DMcontratos.dsContratos.DataSet.RecordCount = 0 then
     begin
       edtfuncionario.Enabled:=true;
       sbtbuscarpessoa.Enabled:=true;
 
       edtcodigocontrato.Enabled := false;
+      BtnCancelarContrato.Enabled:=true;
       edtfuncionario.SetFocus;
+
+      BtnBuscaContrato.Enabled:=false;
 
       DMcontratos.zt_pessoas.Active:=true;
     end
     else
+    //não liberar novo contrato
     begin
       ShowMessage('Código '+edtcodigocontrato.text + ' já existente!');
       edtcodigocontrato.clear;
