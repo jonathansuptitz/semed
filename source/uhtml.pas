@@ -58,11 +58,22 @@ begin
 
       varlocal := varlocal+ DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').AsString+ ', ';
 
-      varhorario := varhorario + FieldByName('horario_local_trabalho').AsString + ', ';
+      //adiciona horarios -----
+      if FieldByName('maturino').Value = true then
+        varhorario := varhorario
+        + DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').AsString + ', ';
+      if FieldByName('vespertino').Value = true then
+        varhorario := varhorario
+        + DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_vespertino_trabalho').AsString + ', ';
+      if FieldByName('noturno').Value = true then
+        varhorario := varhorario
+        + DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_noturno_trabalho').AsString + ', ';
 
       vardistribui := vardistribui
         +DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').AsString
-        +' ' + FieldByName('horario_local_trabalho').AsString + ', ';
+        +' ' + varhorario + ', ';
+
+       //  ----
 
       Next;
     end;

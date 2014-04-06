@@ -1,7 +1,7 @@
 object frmbuscacontrato: Tfrmbuscacontrato
   Left = 402
   Height = 443
-  Top = 106
+  Top = 112
   Width = 724
   Caption = 'Buscar Contrato'
   ClientHeight = 443

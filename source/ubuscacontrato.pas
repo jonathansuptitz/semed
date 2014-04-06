@@ -28,8 +28,6 @@ type
     Label3: TLabel;
     procedure btnGeracontratoClick(Sender: TObject);
     procedure btnSairClick(Sender: TObject);
-    procedure DateEdit1AcceptDate(Sender: TObject; var ADate: TDateTime;
-      var AcceptDate: Boolean);
     procedure DateEdit1Change(Sender: TObject);
     procedure DateEdit1Enter(Sender: TObject);
     procedure DateEdit1Exit(Sender: TObject);
@@ -115,12 +113,6 @@ end;
 procedure Tfrmbuscacontrato.btnSairClick(Sender: TObject);
 begin
  close;
-end;
-
-procedure Tfrmbuscacontrato.DateEdit1AcceptDate(Sender: TObject;
-  var ADate: TDateTime; var AcceptDate: Boolean);
-begin
-
 end;
 
 procedure Tfrmbuscacontrato.DateEdit1Change(Sender: TObject);

@@ -241,12 +241,17 @@ begin
 
             FieldByName('codigo_local_trabalho').value := numlocal[i];
 
-            case horarios[i] of
-            1: FieldByName('matutino').value := true;
-            2: FieldByName('vespertino').value := true;
-            3: FieldByName('noturno').value := true;
-            end;
+            //defini os horaios para false para setar true nos que foram selecionados
+            FieldByName('matutino').value := false;
+            FieldByName('vespertino').value := false;
+            FieldByName('noturno').value := false;
 
+            case horarios[i] of
+              1: FieldByName('matutino').value := true;
+              2: FieldByName('vespertino').value := true;
+              3: FieldByName('noturno').value := true;
+            end;
+            //----------
             post;
           end;
         end;
@@ -312,6 +317,10 @@ begin
   DBEdtcpftest2.Text:='';
 
   // ---
+  rgHorarios.Items[0] := 'Maturino';
+  rgHorarios.Items[1] := 'Vespertino';
+  rgHorarios.Items[2] := 'Noturno';
+  //---
   DMcontratos.dsContratos.DataSet.Cancel;
 
   DMcontratos.zt_pessoas.Active:=false;
@@ -340,7 +349,7 @@ end;
 //adicionar locais a grid locais -----------------------------------------------
 procedure TfrmContrato.BtnadicionalocalClick(Sender: TObject);
 begin
-  if Length(edtlocal.Text) <> 0 then
+  if (Length(edtlocal.Text) <> 0) and (Length(DBEdthorario.text) <> 0) then
   begin
     //adiociona mais locais de trabalho
     StringGrid1.Cells[0,linhas] := DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').value;
@@ -356,24 +365,37 @@ end;
 procedure TfrmContrato.rgHorariosClick(Sender: TObject);
 begin
     case rgHorarios.ItemIndex of
-    0:
-    begin
-      DBedtHorario.DataField:= 'horario_matutino_trabalho';
-      horarios[linhas] := 1;
-    end;
-    1:
-    begin
-      DBedtHorario.DataField:= 'horario_vespertino_trabalho';
-      horarios[linhas] := 2;
-    end;
-    2:
-    begin
-      DBedtHorario.DataField:= 'horario_noturno_trabalho';
-      horarios[linhas] := 3;
+      0:
+      begin
+        if rgHorarios.Items[0] <> ' - ' then
+        begin
+          DBedtHorario.DataField:= 'horario_matutino_trabalho';
+          horarios[linhas] := 1;
+        end
+        else DBedtHorario.DataField := '';
+      end;
+
+      1:
+      begin
+        if rgHorarios.Items[1] <> ' - ' then
+        begin
+          DBedtHorario.DataField:= 'horario_vespertino_trabalho';
+          horarios[linhas] := 2;
+        end
+        else DBedtHorario.DataField := '';
+      end;
+
+      2:
+      begin
+        if rgHorarios.Items[2] <> ' - ' then
+        begin
+          DBedtHorario.DataField:= 'horario_noturno_trabalho';
+          horarios[linhas] := 3;
+        end
+        else DBedtHorario.DataField := '';
+      end;
     end;
   end;
-
-end;
 
 //sbtbuscarpessoa ---------------------------------------------------------------
 procedure TfrmContrato.sbtbuscarpessoaClick(Sender: TObject);
@@ -418,6 +440,15 @@ begin
   frmCadastroLocalTrabalho.free;
 
   edtlocal.Text := DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').AsString;
+
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').value = ' - ' then
+    rgHorarios.Items[0] := ' - ';
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_vespertino_trabalho').value = ' - ' then
+    rgHorarios.Items[1] := ' - ';
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_noturno_trabalho').value = ' - ' then
+    rgHorarios.Items[2] := ' - ';
+
+  DBEdthorario.SetFocus;
 end;
 
 //sbtJornadaSemanal ------------------------------------------------------------
