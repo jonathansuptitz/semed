@@ -427,6 +427,8 @@ begin
 
   //filtra dspessoa
   filtragem.filtrads('codigo_pessoa = ''' + edtfuncionario.Text + '''', 'dspessoa');
+
+  edtfuncionario.SetFocus;
 end;
 
 //sbtbuscarcargo ---------------------------------------------------------------
@@ -443,6 +445,7 @@ begin
   //filtra ds cargo
   filtragem.filtrads('codigo_cargo = ''' + edtcargo.Text + '''', 'dscargos');
 
+  edtcargo.SetFocus;
 end;
 
 //sbtbuscarlocal ---------------------------------------------------------------
@@ -471,7 +474,7 @@ begin
     ' - ' then
     rgHorarios.Items[2] := ' - ';
 
-  DBEdthorario.SetFocus;
+  edtlocal.SetFocus;
 end;
 
 //sbtJornadaSemanal ------------------------------------------------------------
