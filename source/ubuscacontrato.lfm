@@ -1,7 +1,7 @@
 object frmbuscacontrato: Tfrmbuscacontrato
-  Left = 402
+  Left = 382
   Height = 443
-  Top = 113
+  Top = 112
   Width = 724
   Caption = 'Buscar Contrato'
   ClientHeight = 443
@@ -229,6 +229,7 @@ object frmbuscacontrato: Tfrmbuscacontrato
       MaxLength = 0
       NumGlyphs = 0
       OnButtonClick = edtfuncionarioButtonClick
+      OnChange = edtfuncionarioChange
       OnEditingDone = edtfuncionarioExit
       OnEnter = edtfuncionarioEnter
       TabOrder = 2
@@ -295,6 +296,7 @@ object frmbuscacontrato: Tfrmbuscacontrato
       Height = 21
       Top = 6
       Width = 80
+      OnChange = edtcodigoChange
       OnEditingDone = edtCodigoExit
       OnEnter = edtcodigoEnter
       TabOrder = 4

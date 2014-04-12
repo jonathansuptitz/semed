@@ -32,10 +32,12 @@ type
     procedure DateEdit1Enter(Sender: TObject);
     procedure DateEdit1Exit(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
+    procedure edtcodigoChange(Sender: TObject);
     procedure edtcodigoEditingDone(Sender: TObject);
     procedure edtcodigoEnter(Sender: TObject);
     procedure edtCodigoExit(Sender: TObject);
     procedure edtfuncionarioButtonClick(Sender: TObject);
+    procedure edtfuncionarioChange(Sender: TObject);
     procedure edtfuncionarioEnter(Sender: TObject);
     procedure edtfuncionarioExit(Sender: TObject);
     procedure FormClose(Sender: TObject);
@@ -81,6 +83,20 @@ begin
   filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dscontratos');
 end;
 
+procedure Tfrmbuscacontrato.edtfuncionarioChange(Sender: TObject);
+begin
+  if (edtfuncionario.Text <> '') then
+  begin
+    DateEdit1.Enabled:= false;
+    edtcodigo.Enabled:= false;
+  end
+  else
+  begin
+    DateEdit1.Enabled:= true;
+    edtcodigo.Enabled:= true;
+  end;
+end;
+
 procedure Tfrmbuscacontrato.edtfuncionarioEnter(Sender: TObject);
 begin
   edtcodigo.clear;
@@ -121,6 +137,17 @@ begin
     filtragem.filtrads('data_contrato like ' + QuotedStr('*'+DateEdit1.text+'*'), 'dscontratos')
   else
     DMcontratos.dsContratos.DataSet.Filtered:=false;
+
+  if (DateEdit1.Text <> '') then
+  begin
+    edtfuncionario.Enabled:= false;
+    edtcodigo.Enabled:= false;
+  end
+  else
+  begin
+    edtfuncionario.Enabled:= true;
+    edtcodigo.Enabled:= true;
+  end;
 end;
 
 procedure Tfrmbuscacontrato.DateEdit1Enter(Sender: TObject);
@@ -140,6 +167,20 @@ end;
 procedure Tfrmbuscacontrato.DBGrid1DblClick(Sender: TObject);
 begin
   html.editahtml;//chama o gerador de contrato
+end;
+
+procedure Tfrmbuscacontrato.edtcodigoChange(Sender: TObject);
+begin
+  if (edtcodigo.Text <> '') then
+  begin
+    edtfuncionario.Enabled:= false;
+    DateEdit1.Enabled:= false;
+  end
+  else
+  begin
+    edtfuncionario.Enabled:= true;
+    DateEdit1.Enabled:= true;
+  end;
 end;
 
 procedure Tfrmbuscacontrato.edtcodigoEditingDone(Sender: TObject);
