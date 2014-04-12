@@ -1,7 +1,7 @@
 object frmbuscacontrato: Tfrmbuscacontrato
-  Left = 382
+  Left = 405
   Height = 443
-  Top = 112
+  Top = 123
   Width = 724
   Caption = 'Buscar Contrato'
   ClientHeight = 443
@@ -25,14 +25,14 @@ object frmbuscacontrato: Tfrmbuscacontrato
         FieldName = 'codigo_contrato'
       end    
       item
-        Title.Caption = 'Código Cargo'
+        Title.Caption = 'Pessoa'
         Width = 115
-        FieldName = 'codigo_cargo'
+        FieldName = 'nome_pessoa'
       end    
       item
-        Title.Caption = 'Código Pessoa'
+        Title.Caption = 'Cargo'
         Width = 115
-        FieldName = 'codigo_pessoa'
+        FieldName = 'nome_cargo'
       end    
       item
         Title.Caption = 'Data Contrato'
@@ -83,6 +83,7 @@ object frmbuscacontrato: Tfrmbuscacontrato
       DateOrder = doNone
       ButtonWidth = 23
       CharCase = ecNormal
+      DirectInput = False
       Glyph.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000064000000640000000000000000000000FFFFFF00FFFF

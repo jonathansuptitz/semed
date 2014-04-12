@@ -271,6 +271,36 @@ object DMcontratos: TDMcontratos
       Required = True
       Size = 80
     end
+    object StringField1: TStringField
+      DisplayWidth = 180
+      FieldKind = fkLookup
+      FieldName = 'nome_cargo'
+      Index = 16
+      KeyFields = 'codigo_cargo'
+      LookupCache = False
+      LookupDataSet = zt_cargos
+      LookupKeyFields = 'codigo_cargo'
+      LookupResultField = 'nome_cargo'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 180
+    end
+    object StringField2: TStringField
+      DisplayWidth = 200
+      FieldKind = fkLookup
+      FieldName = 'nome_pessoa'
+      Index = 17
+      KeyFields = 'codigo_pessoa'
+      LookupCache = False
+      LookupDataSet = zt_pessoas
+      LookupKeyFields = 'codigo_pessoa'
+      LookupResultField = 'nome_pessoa'
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
   end
   object zt_contratos_cargos: TZTable
     Connection = contratoconection

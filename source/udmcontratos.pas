@@ -20,6 +20,8 @@ type
     dslocaltrabalho: TDatasource;
     dspessoa: TDatasource;
     contratoconection: TZConnection;
+    StringField1: TStringField;
+    StringField2: TStringField;
     zt_contatros_locais: TZTable;
     zt_cargosclausula_primeira_cargo: TStringField;
     zt_cargoscodigo_cargo: TLongintField;
