@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Ipfilebroker, IpHtml, Forms, Controls, Graphics,
-  Dialogs, Buttons, ExtCtrls, LCLIntf, DbCtrls, StdCtrls, EditBtn, Printers,
+  Dialogs, Buttons, ExtCtrls, LCLIntf, DBCtrls, StdCtrls, EditBtn, Printers,
   Grids, LCLType, Menus, ZDataset;
 
 type
@@ -105,10 +105,12 @@ type
     procedure sbtJornadaSemanalClick(Sender: TObject);
     procedure sbtlocalClick(Sender: TObject);
     procedure limparCampos;
+    procedure limpaLocal;
 
   private
     { private declarations }
-    function verificarCodigo(var edit1: TEdit; var labelDesc: TLabel; tabela, campoCodigo, campoNome: String): boolean;
+    function verificarCodigo(var edit1: TEdit; var labelDesc: TLabel;
+      tabela, campoCodigo, campoNome: string): boolean;
   public
     { public declarations }
   end;
@@ -122,13 +124,14 @@ var
 implementation
 
 uses
-  uPesquisaPessoas, ubuscacontrato, UUtilidades, uhtml , UCadastroLocalTrabalho,
+  uPesquisaPessoas, ubuscacontrato, UUtilidades, uhtml, UCadastroLocalTrabalho,
   uCadastroCargos, udmcontratos, ufiltragem, dmMain;
 
 var
   linhas: byte;
   horarios: array[1..3] of integer;
-  numlocal : integer;
+  numlocal: integer;
+  m,v,n : boolean;
 
 {$R *.lfm}
 
@@ -136,30 +139,20 @@ var
 
 // INICIO - frmcontratos show ---------------------------------------------------
 procedure TfrmContrato.FormShow(Sender: TObject);
-var
-  x:integer;
 begin
   //cria dmcontratos
   Application.CreateForm(TDMcontratos, DMcontratos);
 
   CreateDir(local);//cria pasta temporaria para o contrato
 
-  //inicializa variaveis para varios locais
-  linhas := 1;
-
-  for x := 1 to 3 do
-  begin
-    numlocal := 0;
-    horarios[x]:= 0;
-  end;
-  //--
+  limpaLocal;
 end;
 
 // PROCEDURE verificadora de Codigos (preenche também os labels com os nomes ao lado)
-function TfrmContrato.verificarCodigo(var edit1: TEdit; var labelDesc: TLabel; tabela,
-                                    campoCodigo, campoNome: String): boolean;
+function TfrmContrato.verificarCodigo(var edit1: TEdit; var labelDesc: TLabel;
+  tabela, campoCodigo, campoNome: string): boolean;
 var
-  query : TZQuery;
+  query: TZQuery;
 begin
   if Length(edit1.Text) <> 0 then
   begin
@@ -167,21 +160,21 @@ begin
       query := TZQuery.Create(self);
       query.Connection := DM1.SEMEDconnection;
       query.SQL.Clear;
-      query.SQL.Add('SELECT '+campoNome+' FROM '+tabela+' WHERE '+campoCodigo+
-                    ' = "'+ edit1.Text +'";');
+      query.SQL.Add('SELECT ' + campoNome + ' FROM ' + tabela + ' WHERE ' + campoCodigo +
+        ' = "' + edit1.Text + '";');
       query.Open;
       if not (query.IsEmpty) then   // Se nao retornar nenhum valor
       begin
         edit1.Color := clDefault;
         labelDesc.Caption := query.FieldByName(campoNome).Value;
-        result := true;
+        Result := True;
       end
       else
       begin
         edit1.Color := clRed;       // Se retornar valor (codigo é valido)
         edit1.SetFocus;
         labelDesc.Caption := 'Registro não encontrado!';
-        result := false;
+        Result := False;
       end;
     finally
       query.Close;
@@ -204,69 +197,72 @@ end;
 //btngerarcontrato click ---
 procedure TfrmContrato.BtnGerarcontratoClick(Sender: TObject);
 var
-  i : integer;
+  i: integer;
 begin
-if (Length(edtcargo.text) <> 0) and (Length(DBEdtJornada.text) <> 0) and
-    (Length(DateEditfinal.text) <> 0) and (Length(DateEditinicial.text) <> 0) and
-    (Length(DBMemovacancia.text) <> 0) and (Length(DBEdtAnoseletivo.text) <> 0) and
-    (Length(cboxtipo.text) <> 0) and (Length(DBEdtteste1.text) <> 0) and
-    (Length(DBEdttest2.text) <> 0) and (Length(DBEdtcpfteste1.text) <> 0) and
-    (Length(DBEdtcpftest2.text) <> 0) and  (StringGrid1.Rows[1].Text <> '') then
-begin
-  if Application.MessageBox('Tem certeza que os campos estão corretos?','Finalizar', MB_OKCANCEL) = idOK then
+  if (Length(edtcargo.Text) <> 0) and (Length(DBEdtJornada.Text) <> 0) and
+    (Length(DateEditfinal.Text) <> 0) and (Length(DateEditinicial.Text) <> 0) and
+    (Length(DBMemovacancia.Text) <> 0) and (Length(DBEdtAnoseletivo.Text) <> 0) and
+    (Length(cboxtipo.Text) <> 0) and (Length(DBEdtteste1.Text) <> 0) and
+    (Length(DBEdttest2.Text) <> 0) and (Length(DBEdtcpfteste1.Text) <> 0) and
+    (Length(DBEdtcpftest2.Text) <> 0) and (StringGrid1.Rows[1].Text <> '') then
   begin
-    try
-      //adiciona demais campos tabela contrato
-      with udmcontratos.dmcontratos.zt_contratos do
-      begin
-        FieldByName('tipo_contratacao_contrato').value := cboxtipo.Text;
-        FieldByName('codigo_contrato').Value  := edtcodigocontrato.text;
-        FieldByName('codigo_pessoa').Value  := edtfuncionario.text;
-        FieldByName('codigo_cargo').value := edtcargo.text;
-        FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
-        FieldByName('periodo_final_contrato').Value := DateEditfinal.Text;
-        FieldByName('data_contrato').Value := DateToStr(date);
-        FieldByName('salario_contrato').Value := DMcontratos.dscargos.DataSet.FieldByName('salario_hora_cargo').value;
-      //
-        Post; //posta
-
-        //salva locais do contrato
-        with DMcontratos.dscontratoslocais.DataSet do
+    if Application.MessageBox('Tem certeza que os campos estão corretos?', 'Finalizar',
+      MB_OKCANCEL) = idOk then
+    begin
+      try
+        //adiciona demais campos tabela contrato
+        with udmcontratos.dmcontratos.zt_contratos do
         begin
-          Active:=true;
-          insert;
+          FieldByName('tipo_contratacao_contrato').Value := cboxtipo.Text;
+          FieldByName('codigo_contrato').Value := edtcodigocontrato.Text;
+          FieldByName('codigo_pessoa').Value := edtfuncionario.Text;
+          FieldByName('codigo_cargo').Value := edtcargo.Text;
+          FieldByName('periodo_inicial_contrato').Value := DateEditinicial.Text;
+          FieldByName('periodo_final_contrato').Value := DateEditfinal.Text;
+          FieldByName('data_contrato').Value := DateToStr(date);
+          FieldByName('salario_contrato').Value :=
+            DMcontratos.dscargos.DataSet.FieldByName('salario_hora_cargo').Value;
 
-          FieldByName('codigo_contrato').value := DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').value;
-          FieldByName('codigo_local_trabalho').value := numlocal;
+          Post; //posta
 
-          // 0 = false/ 1 = true
-          FieldByName('matutino').value := 0;
-          FieldByName('vespertino').value := 0;
-          FieldByName('noturno').value := 0;
-
-          for i := 0 to linhas-1 do
+          //salva locais do contrato
+          with DMcontratos.dscontratoslocais.DataSet do
           begin
-            //defini os horaios para false para setar true nos que foram selecionados
-            case horarios[i] of
-              1: FieldByName('matutino').value := 1;
-              2: FieldByName('vespertino').value := 1;
-              3: FieldByName('noturno').value := 1;
-            end;
+            Active := True;
+            insert;
 
+            FieldByName('codigo_contrato').Value :=
+              DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').Value;
+            FieldByName('codigo_local_trabalho').Value := numlocal;
+
+            // 0 = false/ 1 = true
+            FieldByName('matutino').Value := 0;
+            FieldByName('vespertino').Value := 0;
+            FieldByName('noturno').Value := 0;
+
+            for i := 0 to linhas - 1 do
+            begin
+              //defini os horaios para false para setar true nos que foram selecionados
+              case horarios[i] of
+                1: FieldByName('matutino').Value := 1;
+                2: FieldByName('vespertino').Value := 1;
+                3: FieldByName('noturno').Value := 1;
+              end;
+
+            end;
+            //fim for ----
+            post;
           end;
-          //fim for ----
-          post;
+          //fim with ----
         end;
-        //fim with ----
+      finally
+        html.editahtml; //chama o preenchimento do html
+        limparCampos;
       end;
-    finally
-      html.editahtml; //chama o preenchimento do html
-      limparCampos;
     end;
-  end;
-end
-else
-  ShowMessage('Preencha todos os campos!');
+  end
+  else
+    ShowMessage('Preencha todos os campos!');
 end;
 
 // Botão Cancelar Contrato -----------------------------------------------------
@@ -277,66 +273,49 @@ begin
 end;
 
 procedure TfrmContrato.limparCampos;
-var
-  h: integer;
 begin
-  edtcodigocontrato.Text:='';
-  edtcodigocontrato.Enabled := true;
-  BtnCancelarContrato.Enabled:=false;
+  edtcodigocontrato.Text := '';
+  edtcodigocontrato.Enabled := True;
+  BtnCancelarContrato.Enabled := False;
   edtcodigocontrato.SetFocus;
 
-  edtfuncionario.Enabled:=false;
-  sbtbuscarpessoa.Enabled:=false;
-  edtfuncionario.Text:='';
+  edtfuncionario.Enabled := False;
+  sbtbuscarpessoa.Enabled := False;
+  edtfuncionario.Text := '';
 
-  BtnBuscaContrato.Enabled:=true;
-  BtnGerarcontrato.Enabled:=false;
+  BtnBuscaContrato.Enabled := True;
+  BtnGerarcontrato.Enabled := False;
 
-  gbLocalTrabalho.Enabled := false;
-  gbInformacoesAdicionais.Enabled := false;
-  gbTestemunhas.Enabled := false;
-  gbContrato.Enabled := false;
+  gbLocalTrabalho.Enabled := False;
+  gbInformacoesAdicionais.Enabled := False;
+  gbTestemunhas.Enabled := False;
+  gbContrato.Enabled := False;
 
-  edtcargo.Text:='';
-  DateEditinicial.Text:='';
-  DateEditfinal.Text:='';
-  DBEdtJornada.Text:='';
-  //Limpa grid ---
-  linhas:=1;
-  StringGrid1.Clean(0,1,1,3,[gznormal]);
+  edtcargo.Text := '';
+  DateEditinicial.Text := '';
+  DateEditfinal.Text := '';
+  DBEdtJornada.Text := '';
 
-  for h := 1 to 3 do
-  begin
-    numlocal := 0;
-    horarios[h]:= 0;
-  end;
-  //---
+  limpaLocal;
+  edtlocal.Text := '';
 
-  edtlocal.Text:='';
-  DBEdthorario.Text:='';
+  DBMemoobs.Text := '';
+  DBMemovacancia.Text := '';
+  DBEdtAnoseletivo.Text := '';
+  cboxtipo.Text := '';
 
-  DBMemoobs.Text:='';
-  DBMemovacancia.Text:='';
-  DBEdtAnoseletivo.Text:='';
-  cboxtipo.Text:='';
+  DBEdtteste1.Text := '';
+  DBEdtcpfteste1.Text := '';
+  DBEdttest2.Text := '';
+  DBEdtcpftest2.Text := '';
 
-  DBEdtteste1.Text:='';
-  DBEdtcpfteste1.Text:='';
-  DBEdttest2.Text:='';
-  DBEdtcpftest2.Text:='';
-
-  // ---
-  rgHorarios.Items[0] := 'Maturino';
-  rgHorarios.Items[1] := 'Vespertino';
-  rgHorarios.Items[2] := 'Noturno';
-  //---
   DMcontratos.dsContratos.DataSet.Cancel;
 
-  DMcontratos.zt_pessoas.Active:=false;
-  DMcontratos.zt_contratos.Active:= false;
-  DMcontratos.zt_cargos.Active:=false;
-  DMcontratos.zt_cidades.Active:=false;
-  DMcontratos.zt_contratos_cargos.Active:=false;
+  DMcontratos.zt_pessoas.Active := False;
+  DMcontratos.zt_contratos.Active := False;
+  DMcontratos.zt_cargos.Active := False;
+  DMcontratos.zt_cidades.Active := False;
+  DMcontratos.zt_contratos_cargos.Active := False;
 
   //-- zera linhas
   linhas := 1;
@@ -344,70 +323,97 @@ end;
 
 //limpar locais da grid locais -------------------------------------------------
 procedure TfrmContrato.btnlimparlocaisClick(Sender: TObject);
-var
-  x:integer;
 begin
+  limpaLocal;
+end;
+
+procedure TfrmContrato.limpaLocal;
+var
+  x: integer;
+begin
+  //variavel se hora foi adicionada
+  m := false;
+  v := false;
+  n := false;
+
   linhas := 1;
 
-  StringGrid1.Clean(0,1,1,3,[gznormal]);
+  DBEdthorario.Clear;
+
+  StringGrid1.Clean(0, 1, 1, 3, [gznormal]);
 
   for x := 1 to 3 do
   begin
     numlocal := 0;
-    horarios[x]:= 0;
+    horarios[x] := 0;
   end;
+
+  // ---
+  rgHorarios.Items[0] := 'Maturino';
+  rgHorarios.Items[1] := 'Vespertino';
+  rgHorarios.Items[2] := 'Noturno';
+  //---
 end;
 
 //adicionar locais a grid locais -----------------------------------------------
 procedure TfrmContrato.BtnadicionalocalClick(Sender: TObject);
 begin
-  if (Length(edtlocal.Text) <> 0) and (Length(DBEdthorario.text) <> 0) then
+  if (Length(edtlocal.Text) <> 0) and (Length(DBEdthorario.Text) <> 0) then
   begin
     //adiociona mais locais de trabalho
-    StringGrid1.Cells[0,linhas] := DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').value;
-    StringGrid1.Cells[1,linhas] := DBEdthorario.text;
+    StringGrid1.Cells[0, linhas] :=
+      DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').Value;
+    StringGrid1.Cells[1, linhas] := DBEdthorario.Text;
 
-    numlocal:= DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').value;
+    numlocal := DMcontratos.dslocaltrabalho.DataSet.FieldByName(
+      'codigo_local_trabalho').Value;
 
-    inc(linhas);
+    Inc(linhas);
+    DBedtHorario.Clear;
   end;
 end;
 
 //Rghorarios selection ---------------------------------------------------------
 procedure TfrmContrato.rgHorariosClick(Sender: TObject);
 begin
-    case rgHorarios.ItemIndex of
-      0:
+  case rgHorarios.ItemIndex of
+    0:
+    begin
+      if (rgHorarios.Items[0] <> ' - ') and (not(m))  then
       begin
-        if rgHorarios.Items[0] <> ' - ' then
-        begin
-          DBedtHorario.DataField:= 'horario_matutino_trabalho';
-          horarios[linhas] := 1;
-        end
-        else DBedtHorario.DataField := '';
-      end;
+        DBedtHorario.DataField := 'horario_matutino_trabalho';
+        horarios[linhas] := 1;
+        m := true;
+      end
+      else
+        DBedtHorario.DataField := '';
+    end;
 
-      1:
+    1:
+    begin
+      if (rgHorarios.Items[1] <> ' - ') and ( not(v) ) then
       begin
-        if rgHorarios.Items[1] <> ' - ' then
-        begin
-          DBedtHorario.DataField:= 'horario_vespertino_trabalho';
-          horarios[linhas] := 2;
-        end
-        else DBedtHorario.DataField := '';
-      end;
+        DBedtHorario.DataField := 'horario_vespertino_trabalho';
+        horarios[linhas] := 2;
+        v := true;
+      end
+      else
+        DBedtHorario.DataField := '';
+    end;
 
-      2:
+    2:
+    begin
+      if (rgHorarios.Items[2] <> ' - ') and ( not(n) ) then
       begin
-        if rgHorarios.Items[2] <> ' - ' then
-        begin
-          DBedtHorario.DataField:= 'horario_noturno_trabalho';
-          horarios[linhas] := 3;
-        end
-        else DBedtHorario.DataField := '';
-      end;
+        DBedtHorario.DataField := 'horario_noturno_trabalho';
+        horarios[linhas] := 3;
+        n := true;
+      end
+      else
+        DBedtHorario.DataField := '';
     end;
   end;
+end;
 
 //sbtbuscarpessoa ---------------------------------------------------------------
 procedure TfrmContrato.sbtbuscarpessoaClick(Sender: TObject);
@@ -415,43 +421,56 @@ begin
   //chama a pesquisa de pessoa
   Application.CreateForm(TfrmPesquisaPessoas, frmPesquisaPessoas);
   frmPesquisaPessoas.showmodal;
-  frmPesquisaPessoas.free;
+  frmPesquisaPessoas.Free;
 
   //coloca codigo funcionario em seu respectivo edit
-  edtfuncionario.text:= DMcontratos.dspessoa.DataSet.FieldByName('codigo_pessoa').value;
+  edtfuncionario.Text := DMcontratos.dspessoa.DataSet.FieldByName('codigo_pessoa').Value;
 
   //filtra dspessoa
-  filtragem.filtrads('codigo_pessoa = '''  + edtfuncionario.text+'''', 'dspessoa');
+  filtragem.filtrads('codigo_pessoa = ''' + edtfuncionario.Text + '''', 'dspessoa');
 end;
 
 //sbtbuscarcargo ---------------------------------------------------------------
 procedure TfrmContrato.sbtbuscarcargoClick(Sender: TObject);
 begin
-   //chama a pesquisa de cargo
+  //chama a pesquisa de cargo
   Application.CreateForm(TfrmCadastroCargos, frmCadastroCargos);
-  frmCadastroCargos.SelecionarAtivo := true; // Habilita botão SELECIONAR
+  frmCadastroCargos.SelecionarAtivo := True; // Habilita botão SELECIONAR
   frmCadastroCargos.showmodal;
-  frmCadastroCargos.free;
+  frmCadastroCargos.Free;
 
-  edtcargo.text := DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').AsString;
+  edtcargo.Text := DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').AsString;
 
   //filtra ds cargo
-  filtragem.filtrads('codigo_cargo = ''' + edtcargo.text+'''', 'dscargos');
+  filtragem.filtrads('codigo_cargo = ''' + edtcargo.Text + '''', 'dscargos');
 
 end;
 
 //sbtbuscarlocal ---------------------------------------------------------------
 procedure TfrmContrato.sbtlocalClick(Sender: TObject);
 begin
+  limpaLocal;
+
   //chama a pesquisa de local
-  DMcontratos.dslocaltrabalho.DataSet.Active:=true;
+  DMcontratos.dslocaltrabalho.DataSet.Active := True;
 
   Application.CreateForm(TfrmCadastroLocalTrabalho, frmCadastroLocalTrabalho);
-  frmCadastroLocalTrabalho.SelecionarAtivo := true;
+  frmCadastroLocalTrabalho.SelecionarAtivo := True;
   frmCadastroLocalTrabalho.showmodal;
-  frmCadastroLocalTrabalho.free;
+  frmCadastroLocalTrabalho.Free;
 
-  edtlocal.Text := DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').AsString;
+  edtlocal.Text := DMcontratos.dslocaltrabalho.DataSet.FieldByName(
+    'codigo_local_trabalho').AsString;
+
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').Value =
+    ' - ' then
+    rgHorarios.Items[0] := ' - ';
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName( 'horario_vespertino_trabalho').Value =
+    ' - ' then
+    rgHorarios.Items[1] := ' - ';
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_noturno_trabalho').Value =
+    ' - ' then
+    rgHorarios.Items[2] := ' - ';
 
   DBEdthorario.SetFocus;
 end;
@@ -473,13 +492,19 @@ end;
 
 procedure TfrmContrato.edtlocalExit(Sender: TObject);               // Locais de Trabalho
 begin
-  verificarCodigo(edtlocal, lblLocalTrabalho, 'tb_local_trabalho', 'codigo_local_trabalho', 'nome_local_trabalho');
+  limpaLocal;
 
-  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').value = ' - ' then
+  verificarCodigo(edtlocal, lblLocalTrabalho, 'tb_local_trabalho',
+    'codigo_local_trabalho', 'nome_local_trabalho');
+
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').Value =
+    ' - ' then
     rgHorarios.Items[0] := ' - ';
-  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_vespertino_trabalho').value = ' - ' then
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName(
+    'horario_vespertino_trabalho').Value = ' - ' then
     rgHorarios.Items[1] := ' - ';
-  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_noturno_trabalho').value = ' - ' then
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_noturno_trabalho').Value =
+    ' - ' then
     rgHorarios.Items[2] := ' - ';
 end;
 
@@ -491,9 +516,9 @@ end;
 
 procedure TfrmContrato.DBEdtcpftest2KeyPress(Sender: TObject; var Key: char);
 begin
-  utilidades.MascCPF(DBEdtcpftest2, Key)
+  utilidades.MascCPF(DBEdtcpftest2, Key);
 end;
-                                                             // CPF testemunha 1
+// CPF testemunha 1
 procedure TfrmContrato.DBEdtcpfteste1Exit(Sender: TObject);
 begin
   Utilidades.VerifCPF(DBEdtcpfteste1);
@@ -501,9 +526,9 @@ end;
 
 procedure TfrmContrato.DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
 begin
-    utilidades.MascCPF(DBEdtcpfteste1, Key);
+  utilidades.MascCPF(DBEdtcpfteste1, Key);
 end;
-                                                            // horario
+// horario
 procedure TfrmContrato.DBEdthorarioKeyPress(Sender: TObject; var Key: char);
 begin
   if not (Key in ['0'..'9', #8{backspace}]) then
@@ -524,15 +549,15 @@ end;
 
 procedure TfrmContrato.DBEdtJornadaKeyPress(Sender: TObject; var Key: char);
 begin
-    if not (Key in ['0'..'9', #8{backspace}]) then
+  if not (Key in ['0'..'9', #8{backspace}]) then
     Key := #0{nil};
 end;
 
 procedure TfrmContrato.edtcargoEditingDone(Sender: TObject);
 begin
   //filtra ds cargo
-  if Length(edtcargo.text) <> 0 then
-    filtragem.filtrads('codigo_cargo = ''' + edtcargo.text+'''', 'dscargos');
+  if Length(edtcargo.Text) <> 0 then
+    filtragem.filtrads('codigo_cargo = ''' + edtcargo.Text + '''', 'dscargos');
 end;
 
 procedure TfrmContrato.edtcargoKeyPress(Sender: TObject; var Key: char);
@@ -541,8 +566,7 @@ begin
     Key := #0{nil};
 end;
 
-procedure TfrmContrato.edtcodigocontratoKeyPress(Sender: TObject; var Key: char
-  );
+procedure TfrmContrato.edtcodigocontratoKeyPress(Sender: TObject; var Key: char);
 begin
   if not (Key in ['0'..'9', #8{backspace}]) then
     Key := #0{nil};
@@ -551,47 +575,50 @@ end;
 procedure TfrmContrato.edtfuncionarioEditingDone(Sender: TObject);
 begin
   //libera campos apenas se funcionario nao contratado
-  if (Length(edtfuncionario.text) <> 0) and
-     (verificarCodigo(edtfuncionario, lblFuncionario, 'tb_pessoas', 'codigo_pessoa', 'nome_pessoa')) then
+  if (Length(edtfuncionario.Text) <> 0) and
+    (verificarCodigo(edtfuncionario, lblFuncionario, 'tb_pessoas',
+    'codigo_pessoa', 'nome_pessoa')) then
   begin
-    if not DMcontratos.dsContratos.DataSet.Locate('codigo_pessoa', EdtFuncionario.Text,[]) then
+    if not DMcontratos.dsContratos.DataSet.Locate('codigo_pessoa',
+      EdtFuncionario.Text, []) then
     begin
-      gbLocalTrabalho.Enabled := true;
-      gbInformacoesAdicionais.Enabled := true;
-      gbTestemunhas.Enabled := true;
-      gbContrato.Enabled := true;
+      gbLocalTrabalho.Enabled := True;
+      gbInformacoesAdicionais.Enabled := True;
+      gbTestemunhas.Enabled := True;
+      gbContrato.Enabled := True;
 
-      BtnGerarcontrato.Enabled:=true;
+      BtnGerarcontrato.Enabled := True;
 
-      edtfuncionario.Enabled:=false;
-      sbtbuscarpessoa.Enabled:=false;
+      edtfuncionario.Enabled := False;
+      sbtbuscarpessoa.Enabled := False;
 
       DMcontratos.dsContratos.DataSet.Insert;//coloca table em modo de inserçao
 
       //filtra dspessoa
-      filtragem.filtrads('codigo_pessoa = '''+ edtfuncionario.text+'''','dspessoa');
+      filtragem.filtrads('codigo_pessoa = ''' + edtfuncionario.Text + '''', 'dspessoa');
 
 
       //ativa tabelas
-      DMcontratos.zt_cargos.Active:=true;
-      DMcontratos.zt_cidades.Active:=true;
-      DMcontratos.zt_contratos_cargos.Active:=true;
+      DMcontratos.zt_cargos.Active := True;
+      DMcontratos.zt_cidades.Active := True;
+      DMcontratos.zt_contratos_cargos.Active := True;
 
-      filtragem.filtrads('codigo_cidade = '''+DMcontratos.dspessoa.DataSet.FieldByName('codigo_cidade').AsString +'''', 'dscidades');
+      filtragem.filtrads('codigo_cidade = ''' + DMcontratos.dspessoa.DataSet.FieldByName(
+        'codigo_cidade').AsString + '''', 'dscidades');
 
       edtcargo.SetFocus;
     end
     else
     begin
-      gbLocalTrabalho.Enabled := false;
-      gbInformacoesAdicionais.Enabled := false;
-      gbTestemunhas.Enabled := false;
-      gbContrato.Enabled := false;
+      gbLocalTrabalho.Enabled := False;
+      gbInformacoesAdicionais.Enabled := False;
+      gbTestemunhas.Enabled := False;
+      gbContrato.Enabled := False;
 
-      BtnGerarcontrato.Enabled:=false;
+      BtnGerarcontrato.Enabled := False;
 
       edtfuncionario.Clear;
-      ShowMessage('Funcionário número'+edtfuncionario.text+' já contratado!');
+      ShowMessage('Funcionário número' + edtfuncionario.Text + ' já contratado!');
     end;
   end;
 end;
@@ -599,34 +626,35 @@ end;
 procedure TfrmContrato.DBEdtCodcontratoExit(Sender: TObject);
 begin
   //libera novo comtrato apenas se codigo contrato nao existir
-  if Length(edtcodigocontrato.text) <> 0 then
+  if Length(edtcodigocontrato.Text) <> 0 then
   begin
     //buscar se contrato existe
-    DMcontratos.zt_contratos.Active:= true;
+    DMcontratos.zt_contratos.Active := True;
 
-    filtragem.filtrads('codigo_contrato = '''+edtcodigocontrato.text+'''', 'dscontratos');
+    filtragem.filtrads('codigo_contrato = ''' + edtcodigocontrato.Text + '''',
+      'dscontratos');
 
     //liberar novo contrato
     if DMcontratos.dsContratos.DataSet.RecordCount = 0 then
     begin
-      edtfuncionario.Enabled:=true;
-      sbtbuscarpessoa.Enabled:=true;
+      edtfuncionario.Enabled := True;
+      sbtbuscarpessoa.Enabled := True;
 
-      edtcodigocontrato.Enabled := false;
-      BtnCancelarContrato.Enabled:=true;
+      edtcodigocontrato.Enabled := False;
+      BtnCancelarContrato.Enabled := True;
       edtfuncionario.SetFocus;
 
-      BtnBuscaContrato.Enabled:=false;
+      BtnBuscaContrato.Enabled := False;
 
-      DMcontratos.zt_pessoas.Active:=true;
+      DMcontratos.zt_pessoas.Active := True;
     end
     else
-    //não liberar novo contrato
+      //não liberar novo contrato
     begin
-      ShowMessage('Código '+edtcodigocontrato.text + ' já existente!');
-      edtcodigocontrato.clear;
-      DMcontratos.zt_contratos.Active:= false;
-      DMcontratos.zt_pessoas.Active:= false;
+      ShowMessage('Código ' + edtcodigocontrato.Text + ' já existente!');
+      edtcodigocontrato.Clear;
+      DMcontratos.zt_contratos.Active := False;
+      DMcontratos.zt_pessoas.Active := False;
     end;
   end;
 end;
@@ -639,22 +667,22 @@ end;
 
 procedure TfrmContrato.edtlocalEditingDone(Sender: TObject);
 begin
-  if Length(edtlocal.text) <> 0 then
-    filtragem.filtrads('codigo_local_trabalho = '''+ edtlocal.text+'''','dslocaltrabalho');
+  if Length(edtlocal.Text) <> 0 then
+    filtragem.filtrads('codigo_local_trabalho = ''' +
+      edtlocal.Text + '''', 'dslocaltrabalho');
 end;
 
 procedure TfrmContrato.FormClose(Sender: TObject);
 begin
-  DeleteDirectory('c:\temp\',false);  //deleta pasta temporaria do contrato
+  DeleteDirectory('c:\temp\', False);  //deleta pasta temporaria do contrato
 
-  DMcontratos.free;  //fecha datamodule de controtos
+  DMcontratos.Free;  //fecha datamodule de controtos
 end;
 
 // FIM - frmcontrato close ------------------------------------------------------
 procedure TfrmContrato.BtnSairClick(Sender: TObject);
 begin
-  close;
+  Close;
 end;
 
 end.
-
