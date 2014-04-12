@@ -1,7 +1,7 @@
 object frmPesquisaPessoas: TfrmPesquisaPessoas
-  Left = 244
+  Left = 272
   Height = 435
-  Top = 83
+  Top = 163
   Width = 849
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog

@@ -90,11 +90,14 @@ begin
   if DMcontratos <> nil then
     filtragem.filtrads('codigo_pessoa = ''' + dsPessoas.DataSet.FieldByName('codigo_pessoa').AsString+'''', 'dspessoa');
 
-  self.Close;
+  Close;
 end;
 
 procedure TfrmPesquisaPessoas.DBGrid1DblClick(Sender: TObject);  // Duplo clique na grid
 begin
+  if DMcontratos <> nil then
+    filtragem.filtrads('codigo_pessoa = ''' + dsPessoas.DataSet.FieldByName('codigo_pessoa').AsString+'''', 'dspessoa');
+
   Close;
 end;
 
