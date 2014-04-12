@@ -278,6 +278,7 @@ begin
   edtcodigocontrato.Enabled := True;
   BtnCancelarContrato.Enabled := False;
   edtcodigocontrato.SetFocus;
+  lblFuncionario.Caption := 'Funcionário';
 
   edtfuncionario.Enabled := False;
   sbtbuscarpessoa.Enabled := False;
@@ -310,15 +311,13 @@ begin
   DBEdtcpftest2.Text := '';
 
   DMcontratos.dsContratos.DataSet.Cancel;
+  DMcontratos.dsContratos.DataSet.Filtered:= false;
+  DMcontratos.dsContratos.DataSet.Active:=false;
 
-  DMcontratos.zt_pessoas.Active := False;
-  DMcontratos.zt_contratos.Active := False;
-  DMcontratos.zt_cargos.Active := False;
-  DMcontratos.zt_cidades.Active := False;
-  DMcontratos.zt_contratos_cargos.Active := False;
-
-  //-- zera linhas
-  linhas := 1;
+  DMcontratos.dspessoa.DataSet.Active := False;
+  DMcontratos.dscargos.DataSet.Active := False;
+  DMcontratos.dscidades.DataSet.Active := False;
+  DMcontratos.dscontratoslocais.DataSet.Active := False;
 end;
 
 //limpar locais da grid locais -------------------------------------------------

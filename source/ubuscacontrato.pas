@@ -118,7 +118,11 @@ end;
 
 procedure Tfrmbuscacontrato.FormShow(Sender: TObject);
 begin
- DMcontratos.zt_contratos.Active:=true;
+ DMcontratos.dsContratos.DataSet.Active:= true;
+ DMcontratos.dspessoa.DataSet.Active := true;
+ DMcontratos.dscargos.DataSet.Active := true;
+ DMcontratos.dscidades.DataSet.Active := true;
+ DMcontratos.dscontratoslocais.DataSet.Active := true;
 end;
 
 procedure Tfrmbuscacontrato.btnGeracontratoClick(Sender: TObject);
