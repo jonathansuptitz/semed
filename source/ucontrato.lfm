@@ -852,7 +852,7 @@ object frmContrato: TfrmContrato
         DataField = 'ano_seletivo_contrato'
         DataSource = DMcontratos.dsContratos
         CharCase = ecNormal
-        MaxLength = 4
+        MaxLength = 0
         TabOrder = 2
         OnKeyPress = DBEdtAnoseletivoKeyPress
       end

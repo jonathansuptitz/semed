@@ -539,8 +539,7 @@ end;
 
 procedure TfrmContrato.DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
 begin
-  if not (Key in ['0'..'9', #8{backspace}]) then
-    Key := #0{nil};
+  Utilidades.MascAno(DBEdtAnoseletivo, Key);
 end;
 
 procedure TfrmContrato.DBEdtcargoKeyPress(Sender: TObject; var Key: char);
@@ -551,7 +550,7 @@ end;
 
 procedure TfrmContrato.DBEdtJornadaKeyPress(Sender: TObject; var Key: char);
 begin
-  if not (Key in ['0'..'9', #8{backspace}]) then
+  if not (Key in ['0'..'9', #8{backspace}]) or ((Length(DBEdtJornada.Text) = 2) and (Key <> #8)) then
     Key := #0{nil};
 end;
 
