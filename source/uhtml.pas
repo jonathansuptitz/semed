@@ -30,36 +30,38 @@ implementation
 procedure Thtml.editahtml;
 var
   textoref, textofinal : TStringList;
-  y, x : integer;
+  y{, x} : integer;
   varlocal, varhorario, vardistribui: string;
   savedlg : TSaveDialog;
 begin
+    //inicializa variaveis
+  varlocal:= '';
+  varhorario:= '';
+  vardistribui := '';
+
   //faz as filtragens necessarias
   filtragem.filtrads('codigo_cargo = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_cargo').AsString +'''', 'dscargos');
 
   filtragem.filtrads('codigo_pessoa = '''+DMcontratos.dsContratos.DataSet.FieldByName('codigo_pessoa').AsString +'''', 'dspessoa');
 
   filtragem.filtrads('codigo_cidade = '''+DMcontratos.dspessoa.DataSet.FieldByName('codigo_cidade').AsString +'''', 'dscidades');
-  //
 
-  //inicializa variaveis
-  varlocal:= '';
-  varhorario:= '';
-  vardistribui := '';
-
-  //atribui os locais e horarios nas variaveis
   filtragem.filtrads('codigo_contrato = '+ DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').AsString, 'dscontratoslocais');
+  //
 
   with DMcontratos.dscontratoslocais.DataSet do
   begin
-    for x := 1 to RecordCount do
-    begin
-      filtragem.filtrads('codigo_local_trabalho = '+ FieldByName('codigo_local_trabalho').AsString, 'dslocaltrabalho');
+    filtragem.filtrads('codigo_local_trabalho = '+ FieldByName('codigo_local_trabalho').AsString, 'dslocaltrabalho');
 
-      varlocal := varlocal+ DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').AsString+ ', ';
+    varlocal := DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').AsString;
+    //^ saiu do loop
 
-      //adiciona horarios -----
-      if FieldByName('maturino').Value = true then
+    {for x := 1 to RecordCount do
+    begin  desabilitado para apenas um local
+    }
+      //adiciona horarios
+      //* true = 0; false = 1
+      if FieldByName('matutino').Value = true then
         varhorario := varhorario
         + DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').AsString + ', ';
       if FieldByName('vespertino').Value = true then
@@ -69,14 +71,17 @@ begin
         varhorario := varhorario
         + DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_noturno_trabalho').AsString + ', ';
 
-      vardistribui := vardistribui
-        +DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').AsString
-        +' ' + varhorario + ', ';
+      vardistribui := varlocal+' '+varhorario;
+
+      {vardistribui := vardistribui
+        +DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').AsString + varhorario;
+        //desabilitado varios locais
+        }
 
        //  ----
 
-      Next;
-    end;
+     { Next;
+    end;   desabilitado}
    end;
   //----
 
@@ -150,8 +155,8 @@ begin
       begin
         if DMcontratos.dsContratos.DataSet.FieldByName('obs_contrato').AsString = '' then
           textofinal.Add(StringReplace(textoref.Strings[y],'varobs',
-          '________________________________________________________________________________'+ LineEnding+
-          '_____________________________________________________________________________________'+ LineEnding+
+          '________________________________________________________________________________'+ '<br>'+
+          '_____________________________________________________________________________________'+ '<br>'+
           '_____________________________________________________________________________________',[rfIgnoreCase]))
         else
           textofinal.Add(StringReplace(textoref.Strings[y],'varobs',DMcontratos.dsContratos.DataSet.FieldByName('obs_contrato').AsString,[rfIgnoreCase]));

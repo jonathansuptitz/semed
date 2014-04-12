@@ -104,6 +104,7 @@ type
     procedure sbtbuscarcargoClick(Sender: TObject);
     procedure sbtJornadaSemanalClick(Sender: TObject);
     procedure sbtlocalClick(Sender: TObject);
+    procedure limparCampos;
 
   private
     { private declarations }
@@ -127,7 +128,7 @@ uses
 var
   linhas: byte;
   horarios: array[1..3] of integer;
-  numlocal : array[1..3] of integer;
+  numlocal : integer;
 
 {$R *.lfm}
 
@@ -148,7 +149,7 @@ begin
 
   for x := 1 to 3 do
   begin
-    numlocal[x] := 0;
+    numlocal := 0;
     horarios[x]:= 0;
   end;
   //--
@@ -229,36 +230,38 @@ begin
       //
         Post; //posta
 
-        DMcontratos.dscontratoslocais.DataSet.Active:=true;
         //salva locais do contrato
-        for i := 1 to linhas -1 do
+        with DMcontratos.dscontratoslocais.DataSet do
         begin
-          with DMcontratos.dscontratoslocais.DataSet do
+          Active:=true;
+          insert;
+
+          FieldByName('codigo_contrato').value := DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').value;
+          FieldByName('codigo_local_trabalho').value := numlocal;
+
+          // 0 = false/ 1 = true
+          FieldByName('matutino').value := 0;
+          FieldByName('vespertino').value := 0;
+          FieldByName('noturno').value := 0;
+
+          for i := 0 to linhas-1 do
           begin
-            insert;
-
-            FieldByName('codigo_contrato').value := DMcontratos.dscontratos.DataSet.FieldByName('codigo_contrato').value;
-
-            FieldByName('codigo_local_trabalho').value := numlocal[i];
-
             //defini os horaios para false para setar true nos que foram selecionados
-            FieldByName('matutino').value := false;
-            FieldByName('vespertino').value := false;
-            FieldByName('noturno').value := false;
-
             case horarios[i] of
-              1: FieldByName('matutino').value := true;
-              2: FieldByName('vespertino').value := true;
-              3: FieldByName('noturno').value := true;
+              1: FieldByName('matutino').value := 1;
+              2: FieldByName('vespertino').value := 1;
+              3: FieldByName('noturno').value := 1;
             end;
-            //----------
-            post;
+
           end;
+          //fim for ----
+          post;
         end;
-        //
+        //fim with ----
       end;
     finally
       html.editahtml; //chama o preenchimento do html
+      limparCampos;
     end;
   end;
 end
@@ -269,8 +272,13 @@ end;
 // Botão Cancelar Contrato -----------------------------------------------------
 
 procedure TfrmContrato.BtnCancelarContratoClick(Sender: TObject);
+begin
+  limparCampos;
+end;
+
+procedure TfrmContrato.limparCampos;
 var
-  x: integer;
+  h: integer;
 begin
   edtcodigocontrato.Text:='';
   edtcodigocontrato.Enabled := true;
@@ -296,10 +304,11 @@ begin
   //Limpa grid ---
   linhas:=1;
   StringGrid1.Clean(0,1,1,3,[gznormal]);
-  for x := 1 to 3 do
+
+  for h := 1 to 3 do
   begin
-    numlocal[x] := 0;
-    horarios[x]:= 0;
+    numlocal := 0;
+    horarios[h]:= 0;
   end;
   //---
 
@@ -328,6 +337,9 @@ begin
   DMcontratos.zt_cargos.Active:=false;
   DMcontratos.zt_cidades.Active:=false;
   DMcontratos.zt_contratos_cargos.Active:=false;
+
+  //-- zera linhas
+  linhas := 1;
 end;
 
 //limpar locais da grid locais -------------------------------------------------
@@ -335,13 +347,13 @@ procedure TfrmContrato.btnlimparlocaisClick(Sender: TObject);
 var
   x:integer;
 begin
-  linhas:=1;
+  linhas := 1;
 
   StringGrid1.Clean(0,1,1,3,[gznormal]);
 
   for x := 1 to 3 do
   begin
-    numlocal[x] := 0;
+    numlocal := 0;
     horarios[x]:= 0;
   end;
 end;
@@ -355,7 +367,7 @@ begin
     StringGrid1.Cells[0,linhas] := DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').value;
     StringGrid1.Cells[1,linhas] := DBEdthorario.text;
 
-    numlocal[linhas]:= DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').value;
+    numlocal:= DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').value;
 
     inc(linhas);
   end;
@@ -441,13 +453,6 @@ begin
 
   edtlocal.Text := DMcontratos.dslocaltrabalho.DataSet.FieldByName('codigo_local_trabalho').AsString;
 
-  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').value = ' - ' then
-    rgHorarios.Items[0] := ' - ';
-  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_vespertino_trabalho').value = ' - ' then
-    rgHorarios.Items[1] := ' - ';
-  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_noturno_trabalho').value = ' - ' then
-    rgHorarios.Items[2] := ' - ';
-
   DBEdthorario.SetFocus;
 end;
 
@@ -469,6 +474,13 @@ end;
 procedure TfrmContrato.edtlocalExit(Sender: TObject);               // Locais de Trabalho
 begin
   verificarCodigo(edtlocal, lblLocalTrabalho, 'tb_local_trabalho', 'codigo_local_trabalho', 'nome_local_trabalho');
+
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').value = ' - ' then
+    rgHorarios.Items[0] := ' - ';
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_vespertino_trabalho').value = ' - ' then
+    rgHorarios.Items[1] := ' - ';
+  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_noturno_trabalho').value = ' - ' then
+    rgHorarios.Items[2] := ' - ';
 end;
 
 // Verificadores e marcaras

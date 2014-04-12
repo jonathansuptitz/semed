@@ -1,7 +1,7 @@
 object frmbuscacontrato: Tfrmbuscacontrato
   Left = 402
   Height = 443
-  Top = 112
+  Top = 113
   Width = 724
   Caption = 'Buscar Contrato'
   ClientHeight = 443
@@ -50,7 +50,7 @@ object frmbuscacontrato: Tfrmbuscacontrato
         FieldName = 'tipo_contratacao_contrato'
       end>
     DataSource = DMcontratos.dsContratos
-    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgAutoSizeColumns]
     TabOrder = 0
     OnDblClick = DBGrid1DblClick
   end
