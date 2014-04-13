@@ -464,6 +464,9 @@ begin
   edtlocal.Text := DMcontratos.dslocaltrabalho.DataSet.FieldByName(
     'codigo_local_trabalho').AsString;
 
+  verificarCodigo(edtlocal, lblLocalTrabalho, 'tb_local_trabalho',
+    'codigo_local_trabalho', 'nome_local_trabalho');
+
   if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').Value =
     ' - ' then
     rgHorarios.Items[0] := ' - ';
@@ -474,7 +477,7 @@ begin
     ' - ' then
     rgHorarios.Items[2] := ' - ';
 
-  edtlocal.SetFocus;
+  DBEdthorario.SetFocus;
 end;
 
 //sbtJornadaSemanal ------------------------------------------------------------
@@ -496,18 +499,22 @@ procedure TfrmContrato.edtlocalExit(Sender: TObject);               // Locais de
 begin
   limpaLocal;
 
-  verificarCodigo(edtlocal, lblLocalTrabalho, 'tb_local_trabalho',
-    'codigo_local_trabalho', 'nome_local_trabalho');
+  if (Length(edtlocal.Text) <> 0) and (verificarCodigo(edtlocal, lblLocalTrabalho, 'tb_local_trabalho',
+    'codigo_local_trabalho', 'nome_local_trabalho')) then
+  begin
+    filtragem.filtrads('codigo_local_trabalho = ''' +
+      edtlocal.Text + '''', 'dslocaltrabalho');
 
-  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').Value =
-    ' - ' then
-    rgHorarios.Items[0] := ' - ';
-  if DMcontratos.dslocaltrabalho.DataSet.FieldByName(
-    'horario_vespertino_trabalho').Value = ' - ' then
-    rgHorarios.Items[1] := ' - ';
-  if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_noturno_trabalho').Value =
-    ' - ' then
-    rgHorarios.Items[2] := ' - ';
+    if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_matutino_trabalho').Value =
+      ' - ' then
+      rgHorarios.Items[0] := ' - ';
+    if DMcontratos.dslocaltrabalho.DataSet.FieldByName(
+      'horario_vespertino_trabalho').Value = ' - ' then
+      rgHorarios.Items[1] := ' - ';
+    if DMcontratos.dslocaltrabalho.DataSet.FieldByName('horario_noturno_trabalho').Value =
+      ' - ' then
+      rgHorarios.Items[2] := ' - ';
+  end;
 end;
 
 // Verificadores e marcaras
@@ -600,9 +607,10 @@ begin
 
 
       //ativa tabelas
-      DMcontratos.zt_cargos.Active := True;
-      DMcontratos.zt_cidades.Active := True;
-      DMcontratos.zt_contratos_cargos.Active := True;
+      DMcontratos.dscargos.DataSet.Active := True;
+      DMcontratos.dscidades.DataSet.Active := True;
+      DMcontratos.dscontratocargos.DataSet.Active := True;
+      DMcontratos.dslocaltrabalho.DataSet.Active := true;
 
       filtragem.filtrads('codigo_cidade = ''' + DMcontratos.dspessoa.DataSet.FieldByName(
         'codigo_cidade').AsString + '''', 'dscidades');
@@ -668,9 +676,7 @@ end;
 
 procedure TfrmContrato.edtlocalEditingDone(Sender: TObject);
 begin
-  if Length(edtlocal.Text) <> 0 then
-    filtragem.filtrads('codigo_local_trabalho = ''' +
-      edtlocal.Text + '''', 'dslocaltrabalho');
+
 end;
 
 procedure TfrmContrato.FormClose(Sender: TObject);

@@ -321,7 +321,8 @@ end;
 procedure TfrmCadastroLocalTrabalho.BtnSelecionarClick(Sender: TObject);  // Selecionar
 begin
   //filtra table locais do dmcontratos
-  filtragem.filtrads('codigo_local_trabalho = ''' + DBEdit1.text+ '''', 'dslocaltrabalho');
+
+  filtragem.filtrads('codigo_local_trabalho = ' + dsLocal_trabalho.DataSet.FieldByName('codigo_local_trabalho').AsString, 'dslocaltrabalho');
 
   Close;
 end;

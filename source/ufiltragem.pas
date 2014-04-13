@@ -37,6 +37,7 @@ begin
   ds := TDataSource(DMcontratos.FindComponent(dsnome));
 
   ds.dataset.active:= true;
+  ds.DataSet.Refresh;
 
   ds.dataset.filter := parametro;
   ds.DataSet.Filtered:=true;
