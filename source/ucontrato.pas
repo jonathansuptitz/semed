@@ -206,9 +206,6 @@ begin
     (Length(DBEdttest2.Text) <> 0) and (Length(DBEdtcpfteste1.Text) <> 0) and
     (Length(DBEdtcpftest2.Text) <> 0) and (StringGrid1.Rows[1].Text <> '') then
   begin
-    if Application.MessageBox('Tem certeza que os campos estão corretos?', 'Finalizar',
-      MB_OKCANCEL) = idOk then
-    begin
       try
         //adiciona demais campos tabela contrato
         with udmcontratos.dmcontratos.zt_contratos do
@@ -221,7 +218,7 @@ begin
           FieldByName('periodo_final_contrato').Value := DateEditfinal.Text;
           FieldByName('data_contrato').Value := DateToStr(date);
           FieldByName('salario_contrato').Value :=
-            DMcontratos.dscargos.DataSet.FieldByName('salario_hora_cargo').Value;
+          DMcontratos.dscargos.DataSet.FieldByName('salario_hora_cargo').Value;
 
           Post; //posta
 
@@ -259,7 +256,6 @@ begin
         html.editahtml; //chama o preenchimento do html
         limparCampos;
       end;
-    end;
   end
   else
     ShowMessage('Preencha todos os campos!');

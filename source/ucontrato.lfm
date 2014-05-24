@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
-  Left = 240
+  Left = 8
   Height = 597
-  Top = 5
+  Top = 30
   Width = 1224
   Align = alClient
   BorderIcons = [biSystemMenu, biMaximize]
@@ -880,8 +880,8 @@ object frmContrato: TfrmContrato
         ItemHeight = 17
         Items.Strings = (
           'Seletivo'
-          'cadastro RH'
-          'Contratação direta'
+          'Cadastro no RH'
+          'Contratação Direta'
         )
         Style = csDropDownList
         TabOrder = 3

@@ -13,7 +13,7 @@ uses
 type
   Thtml = class
   private
-
+    procedure testContrato(var textofinal, textoref : TStringlist; y : integer);
   public
     procedure editahtml;
   end;
@@ -108,8 +108,6 @@ begin
         textofinal.Add(StringReplace(textoref.Strings[y],'varjornada',DMcontratos.dsContratos.DataSet.FieldByName('jornada_trabalho_contrato').AsString,[rfIgnoreCase]))
       else if Pos('vardata',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'vardata',DMcontratos.dsContratos.DataSet.FieldByName('data_contrato').AsString,[rfIgnoreCase]))
-      else if Pos('varanoseletivo',textoref.Strings[y]) <> 0 then
-        textofinal.Add(StringReplace(textoref.Strings[y],'varanoseletivo',DMcontratos.dsContratos.DataSet.FieldByName('ano_seletivo_contrato').AsString,[rfIgnoreCase]))
       else if Pos('varano',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'varano',FormatDateTime('yyyy',now),[rfIgnoreCase]))
       else if Pos('varcodigocontrato',textoref.Strings[y]) <> 0 then
@@ -150,6 +148,9 @@ begin
         textofinal.Add(StringReplace(textoref.Strings[y],'varhorario',varhorario,[rfIgnoreCase]))
       else if Pos('vardistribui',textoref.Strings[y]) <> 0 then
         textofinal.Add(StringReplace(textoref.Strings[y],'vardistribui',vardistribui,[rfIgnoreCase]))
+      else if Pos('varseletivo',textoref.Strings[y]) <> 0 then
+        textofinal.Add(StringReplace(textoref.Strings[y],'varseletivo',DMcontratos.dsContratos.DataSet.FieldByName('ano_seletivo_contrato').AsString,[rfIgnoreCase]))
+
       //observaçao contrato
       else if Pos('varobs',textoref.Strings[y]) <> 0 then
       begin
@@ -164,34 +165,11 @@ begin
 
       //tipo de contrataçao
       else if Pos('var1',textoref.Strings[y]) <> 0 then
-      begin
-        if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Seletivo' then
-          textofinal.Add(StringReplace(textoref.Strings[y],'var1','X',[rfIgnoreCase]))
-        else if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Contratação Direta' then
-          textofinal.Add(StringReplace(textoref.Strings[y],'var1','  ',[rfIgnoreCase]))
-        else if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Cadastro RH' then
-          textofinal.Add(StringReplace(textoref.Strings[y],'var1','  ',[rfIgnoreCase]));
-      end
-
+        testContrato(textofinal,textoref, y)
       else if Pos('var2',textoref.Strings[y]) <> 0 then
-      begin
-        if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Seletivo' then
-          textofinal.Add(StringReplace(textoref.Strings[y],'var2','  ',[rfIgnoreCase]))
-        else  if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Contratação Direta' then
-          textofinal.Add(StringReplace(textoref.Strings[y],'var2','  ',[rfIgnoreCase]))
-        else if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Cadastro RH' then
-          textofinal.Add(StringReplace(textoref.Strings[y],'var2','X',[rfIgnoreCase]));
-      end
-
+        testContrato(textofinal,textoref, y)
       else if Pos('var3',textoref.Strings[y]) <> 0 then
-      begin
-        if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Seletivo' then
-          textofinal.Add(StringReplace(textoref.Strings[y],'var3','  ',[rfIgnoreCase]))
-        else if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Contratação Direta' then
-          textofinal.Add(StringReplace(textoref.Strings[y],'var3','X',[rfIgnoreCase]))
-        else if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Cadastro RH' then
-          textofinal.Add(StringReplace(textoref.Strings[y],'var3','  ',[rfIgnoreCase]));
-      end
+        testContrato(textofinal,textoref, y)
 
       else
         textofinal.Add(textoref.Strings[y]);
@@ -210,7 +188,7 @@ begin
         textofinal.SaveToFile(savedlg.FileName);
       end;
 
-      OpenURL(expandLocalHtmlFileName(local+savedlg.FileName+'.html'));// abre o contrato html no navegador
+      OpenURL(expandLocalHtmlFileName(savedlg.FileName+'.html'));// abre o contrato html no navegador
     end
     else
       //abre contrato no navegador
@@ -221,6 +199,24 @@ begin
   end;
 end;
 // FIM -------------------------------------------------------------------------
+
+procedure Thtml.testContrato(var textofinal, textoref : Tstringlist; y : integer);
+var
+  texto : string;
+begin
+  if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Seletivo' then
+    texto := StringReplace(textoref.Strings[y],'var1','X',[rfIgnoreCase])
+  else  if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Contratação Direta' then
+    texto := StringReplace(textoref.Strings[y],'var3','X',[rfIgnoreCase])
+  else if DMcontratos.dsContratos.DataSet.FieldByName('tipo_contratacao_contrato').AsString = 'Cadastro no RH' then
+    texto := StringReplace(textoref.Strings[y],'var2','X',[rfIgnoreCase]);
+
+  texto := StringReplace(texto,'var1','&nbsp;&nbsp;',[rfIgnoreCase]);
+  texto := StringReplace(texto,'var2','&nbsp;&nbsp;',[rfIgnoreCase]);
+  texto := StringReplace(texto,'var3','&nbsp;&nbsp;',[rfIgnoreCase]);
+
+  textofinal.Add(texto);
+end;
 
 end.
 
