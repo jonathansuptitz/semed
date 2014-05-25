@@ -196,6 +196,14 @@ begin
   finally
     textoref.Free;
     textofinal.free;
+
+    //Desativa filtros de DMcontratos.DS
+    DMcontratos.dsContratos.DataSet.Filtered:=false;
+    DMcontratos.dspessoa.DataSet.Filtered:=false;
+    DMcontratos.dscargos.DataSet.Filtered:=false;
+    DMcontratos.dscidades.DataSet.Filtered:=false;
+    DMcontratos.dscontratoslocais.DataSet.Filtered:=false;
+    DMcontratos.dslocaltrabalho.DataSet.Filtered:=false;
   end;
 end;
 // FIM -------------------------------------------------------------------------
