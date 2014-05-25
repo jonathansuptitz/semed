@@ -90,13 +90,15 @@ type
     procedure DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
     procedure DBEdthorarioKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtJornadaKeyPress(Sender: TObject; var Key: char);
+    procedure edtcargoChange(Sender: TObject);
     procedure edtcargoEditingDone(Sender: TObject);
     procedure edtcargoExit(Sender: TObject);
     procedure edtcargoKeyPress(Sender: TObject; var Key: char);
     procedure edtcodigocontratoKeyPress(Sender: TObject; var Key: char);
+    procedure edtfuncionarioChange(Sender: TObject);
     procedure edtfuncionarioEditingDone(Sender: TObject);
     procedure edtfuncionarioKeyPress(Sender: TObject; var Key: char);
-    procedure edtlocalEditingDone(Sender: TObject);
+    procedure edtlocalChange(Sender: TObject);
     procedure edtlocalExit(Sender: TObject);
     procedure FormClose(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -487,6 +489,24 @@ end;
 
 // Ao sair dos campos codigo de algo
 
+procedure TfrmContrato.edtcargoChange(Sender: TObject);
+begin
+  if (edtcargo.Text = '') then
+    lblCargo.Caption := 'Cargo';
+end;
+
+procedure TfrmContrato.edtfuncionarioChange(Sender: TObject);
+begin
+  if (edtfuncionario.Text = '') then
+    lblFuncionario.Caption := 'Funcionário';
+end;
+
+procedure TfrmContrato.edtlocalChange(Sender: TObject);
+begin
+  if (edtlocal.Text = '') then
+    lblLocalTrabalho.Caption := 'Local de Trabalho';
+end;
+
 procedure TfrmContrato.edtcargoExit(Sender: TObject);               // Cargos
 begin
   verificarCodigo(edtcargo, lblCargo, 'tb_cargos', 'codigo_cargo', 'nome_cargo');
@@ -679,11 +699,6 @@ procedure TfrmContrato.edtfuncionarioKeyPress(Sender: TObject; var Key: char);
 begin
   if not (Key in ['0'..'9', #8{backspace}]) then
     Key := #0{nil};
-end;
-
-procedure TfrmContrato.edtlocalEditingDone(Sender: TObject);
-begin
-
 end;
 
 procedure TfrmContrato.FormClose(Sender: TObject);
