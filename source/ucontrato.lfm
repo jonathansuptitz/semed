@@ -854,6 +854,7 @@ object frmContrato: TfrmContrato
         CharCase = ecNormal
         MaxLength = 0
         TabOrder = 2
+        OnExit = DBEdtAnoseletivoExit
         OnKeyPress = DBEdtAnoseletivoKeyPress
       end
       object Label9: TLabel

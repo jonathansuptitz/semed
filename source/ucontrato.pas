@@ -76,6 +76,7 @@ type
     StringGrid1: TStringGrid;
     procedure BtnBuscaContratoClick(Sender: TObject);
     procedure BtnCancelarContratoClick(Sender: TObject);
+    procedure DBEdtAnoseletivoExit(Sender: TObject);
     procedure DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtcargoKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtCodcontratoExit(Sender: TObject);
@@ -514,6 +515,16 @@ begin
 end;
 
 // Verificadores e marcaras
+
+procedure TfrmContrato.DBEdtAnoseletivoExit(Sender: TObject);  //Ao sair do campo de ano do processo
+begin
+  if (Length(DBEdtAnoseletivo.Text) <> 4) then
+  begin
+    ShowMessage('Ano inválido!');
+    DBEdtAnoseletivo.SetFocus;
+  end;
+end;
+
 procedure TfrmContrato.DBEdtcpftest2Exit(Sender: TObject);  // CPF testemunha 2
 begin
   utilidades.VerifCPF(DBEdtcpftest2);
