@@ -328,6 +328,8 @@ var
   x: integer;
 begin
   //variavel se hora foi adicionada
+  DBEdthorario.DataField := '';
+
   m := false;
   v := false;
   n := false;
@@ -344,11 +346,9 @@ begin
     horarios[x] := 0;
   end;
 
-  // ---
-  rgHorarios.Items[0] := 'Maturino';
-  rgHorarios.Items[1] := 'Vespertino';
-  rgHorarios.Items[2] := 'Noturno';
-  //---
+
+
+  refhora:= '0';
 end;
 
 //adicionar locais a grid locais -----------------------------------------------
@@ -457,6 +457,11 @@ end;
 procedure TfrmContrato.sbtlocalClick(Sender: TObject);
 begin
   limpaLocal;
+    // ---
+  rgHorarios.Items[0] := 'Maturino';
+  rgHorarios.Items[1] := 'Vespertino';
+  rgHorarios.Items[2] := 'Noturno';
+  //---
 
   //chama a pesquisa de local
   DMcontratos.dslocaltrabalho.DataSet.Active := True;
