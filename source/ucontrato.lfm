@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
-  Left = 318
+  Left = 8
   Height = 597
-  Top = 33
+  Top = 30
   Width = 1224
   Align = alClient
   BorderIcons = [biSystemMenu, biMaximize]
@@ -284,7 +284,6 @@ object frmContrato: TfrmContrato
       Font.Name = 'Arial'
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
-      OnChange = edtfuncionarioChange
       OnEditingDone = edtfuncionarioEditingDone
       OnKeyPress = edtfuncionarioKeyPress
       ParentFont = False
@@ -460,7 +459,6 @@ object frmContrato: TfrmContrato
         Height = 25
         Top = 8
         Width = 130
-        OnChange = edtcargoChange
         OnEditingDone = edtcargoEditingDone
         OnExit = edtcargoExit
         OnKeyPress = edtcargoKeyPress
@@ -599,7 +597,7 @@ object frmContrato: TfrmContrato
         Height = 25
         Top = 8
         Width = 130
-        OnChange = edtlocalChange
+        OnEditingDone = edtlocalEditingDone
         OnExit = edtlocalExit
         TabOrder = 0
       end
@@ -856,7 +854,6 @@ object frmContrato: TfrmContrato
         CharCase = ecNormal
         MaxLength = 0
         TabOrder = 2
-        OnExit = DBEdtAnoseletivoExit
         OnKeyPress = DBEdtAnoseletivoKeyPress
       end
       object Label9: TLabel

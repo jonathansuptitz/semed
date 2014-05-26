@@ -76,7 +76,6 @@ type
     StringGrid1: TStringGrid;
     procedure BtnBuscaContratoClick(Sender: TObject);
     procedure BtnCancelarContratoClick(Sender: TObject);
-    procedure DBEdtAnoseletivoExit(Sender: TObject);
     procedure DBEdtAnoseletivoKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtcargoKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtCodcontratoExit(Sender: TObject);
@@ -90,15 +89,13 @@ type
     procedure DBEdtcpfteste1KeyPress(Sender: TObject; var Key: char);
     procedure DBEdthorarioKeyPress(Sender: TObject; var Key: char);
     procedure DBEdtJornadaKeyPress(Sender: TObject; var Key: char);
-    procedure edtcargoChange(Sender: TObject);
     procedure edtcargoEditingDone(Sender: TObject);
     procedure edtcargoExit(Sender: TObject);
     procedure edtcargoKeyPress(Sender: TObject; var Key: char);
     procedure edtcodigocontratoKeyPress(Sender: TObject; var Key: char);
-    procedure edtfuncionarioChange(Sender: TObject);
     procedure edtfuncionarioEditingDone(Sender: TObject);
     procedure edtfuncionarioKeyPress(Sender: TObject; var Key: char);
-    procedure edtlocalChange(Sender: TObject);
+    procedure edtlocalEditingDone(Sender: TObject);
     procedure edtlocalExit(Sender: TObject);
     procedure FormClose(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -135,6 +132,7 @@ var
   horarios: array[1..3] of integer;
   numlocal: integer;
   m,v,n : boolean;
+  refhora : char;
 
 {$R *.lfm}
 
@@ -358,7 +356,7 @@ procedure TfrmContrato.BtnadicionalocalClick(Sender: TObject);
 begin
   if (Length(edtlocal.Text) <> 0) and (Length(DBEdthorario.Text) <> 0) then
   begin
-    //adiociona mais locais de trabalho
+    //adiciona mais locais de trabalho
     StringGrid1.Cells[0, linhas] :=
       DMcontratos.dslocaltrabalho.DataSet.FieldByName('nome_local_trabalho').Value;
     StringGrid1.Cells[1, linhas] := DBEdthorario.Text;
@@ -368,6 +366,14 @@ begin
 
     Inc(linhas);
     DBedtHorario.Clear;
+
+    if refhora = 'v' then
+      v := true
+    else if refhora = 'n' then
+      n := true
+    else
+      m := true;
+
   end;
 end;
 
@@ -381,7 +387,7 @@ begin
       begin
         DBedtHorario.DataField := 'horario_matutino_trabalho';
         horarios[linhas] := 1;
-        m := true;
+        refhora := 'm';
       end
       else
         DBedtHorario.DataField := '';
@@ -393,7 +399,7 @@ begin
       begin
         DBedtHorario.DataField := 'horario_vespertino_trabalho';
         horarios[linhas] := 2;
-        v := true;
+        refhora := 'v';
       end
       else
         DBedtHorario.DataField := '';
@@ -405,7 +411,7 @@ begin
       begin
         DBedtHorario.DataField := 'horario_noturno_trabalho';
         horarios[linhas] := 3;
-        n := true;
+        refhora := 'n';
       end
       else
         DBedtHorario.DataField := '';
@@ -489,24 +495,6 @@ end;
 
 // Ao sair dos campos codigo de algo
 
-procedure TfrmContrato.edtcargoChange(Sender: TObject);
-begin
-  if (edtcargo.Text = '') then
-    lblCargo.Caption := 'Cargo';
-end;
-
-procedure TfrmContrato.edtfuncionarioChange(Sender: TObject);
-begin
-  if (edtfuncionario.Text = '') then
-    lblFuncionario.Caption := 'Funcionário';
-end;
-
-procedure TfrmContrato.edtlocalChange(Sender: TObject);
-begin
-  if (edtlocal.Text = '') then
-    lblLocalTrabalho.Caption := 'Local de Trabalho';
-end;
-
 procedure TfrmContrato.edtcargoExit(Sender: TObject);               // Cargos
 begin
   verificarCodigo(edtcargo, lblCargo, 'tb_cargos', 'codigo_cargo', 'nome_cargo');
@@ -535,16 +523,6 @@ begin
 end;
 
 // Verificadores e marcaras
-
-procedure TfrmContrato.DBEdtAnoseletivoExit(Sender: TObject);  //Ao sair do campo de ano do processo
-begin
-  if (Length(DBEdtAnoseletivo.Text) <> 4) then
-  begin
-    ShowMessage('Ano inválido!');
-    DBEdtAnoseletivo.SetFocus;
-  end;
-end;
-
 procedure TfrmContrato.DBEdtcpftest2Exit(Sender: TObject);  // CPF testemunha 2
 begin
   utilidades.VerifCPF(DBEdtcpftest2);
@@ -699,6 +677,11 @@ procedure TfrmContrato.edtfuncionarioKeyPress(Sender: TObject; var Key: char);
 begin
   if not (Key in ['0'..'9', #8{backspace}]) then
     Key := #0{nil};
+end;
+
+procedure TfrmContrato.edtlocalEditingDone(Sender: TObject);
+begin
+
 end;
 
 procedure TfrmContrato.FormClose(Sender: TObject);
