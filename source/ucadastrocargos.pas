@@ -237,8 +237,14 @@ procedure TfrmCadastroCargos.BtnApagarClick(Sender: TObject);       // Apagar
 begin
   if Application.MessageBox('Deseja realmente apagar o registro?','Apagar registro', MB_YESNO) = idYES then
   begin
-    dsCargos.DataSet.Delete;
+    try
+      dsCargos.DataSet.Delete;
+    except
+      on E : Exception do
+        ShowMessage('Não foi possível deletar o registro. '+E.ClassName);
+      end;
     ShowMessage('Registro apagado com sucesso!');
+
     EditOFF;
   end;
 end;

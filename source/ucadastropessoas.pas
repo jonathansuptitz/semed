@@ -384,9 +384,14 @@ procedure TfrmCadastroPessoas.BtnApagarClick(Sender: TObject);      // Apagar
 begin
   if Application.MessageBox('Deseja realmente apagar o registro?','Apagar registro', MB_YESNO) = idYES then
   begin
-    dsPessoas.DataSet.Delete;
-    ShowMessage('Registro apagado com sucesso!');
+    try
+      dsPessoas.DataSet.Delete;
+    except
+      on E : Exception do
+        ShowMessage('Não foi possível deletar o registro. '+E.ClassName);
+    end;
 
+    ShowMessage('Registro apagado com sucesso!');
     EditOff;
   end;
 end;
