@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
   Left = 8
   Height = 597
-  Top = 30
+  Top = 31
   Width = 1224
   Align = alClient
   BorderIcons = [biSystemMenu, biMaximize]

@@ -457,7 +457,7 @@ end;
 procedure TfrmContrato.sbtlocalClick(Sender: TObject);
 begin
   limpaLocal;
-    // ---
+  // ---
   rgHorarios.Items[0] := 'Maturino';
   rgHorarios.Items[1] := 'Vespertino';
   rgHorarios.Items[2] := 'Noturno';
@@ -693,7 +693,7 @@ procedure TfrmContrato.FormClose(Sender: TObject);
 begin
   DeleteDirectory('c:\temp\', False);  //deleta pasta temporaria do contrato
 
-  DMcontratos.Free;  //fecha datamodule de controtos
+  FreeAndNil(DMcontratos);  //fecha datamodule de controtos
 end;
 
 // FIM - frmcontrato close ------------------------------------------------------

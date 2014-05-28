@@ -41,7 +41,7 @@ var
 implementation
 
 uses
-  dmMain, uCadastroPessoas,udmcontratos, ufiltragem;
+  dmMain, ucontrato, uCadastroPessoas,udmcontratos, ufiltragem;
 
 // INICIO ----------------------------------------------------------------------
 procedure TfrmPesquisaPessoas.FormCreate(Sender: TObject);    // Atribui valor a var
@@ -95,7 +95,7 @@ end;
 
 procedure TfrmPesquisaPessoas.DBGrid1DblClick(Sender: TObject);  // Duplo clique na grid
 begin
-  if DMcontratos <> nil then
+  if frmContrato <> nil then
     filtragem.filtrads('codigo_pessoa = ''' + dsPessoas.DataSet.FieldByName('codigo_pessoa').AsString+'''', 'dspessoa');
 
   Close;
