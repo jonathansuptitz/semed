@@ -6,3 +6,6 @@ source/contratoteste.html
 sourceConfig/backup
 sourceConfig/lib
 sourceConfig/*.exe
+*/*.bak
+*/*.exe
+*temp*

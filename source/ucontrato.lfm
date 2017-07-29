@@ -1,7 +1,7 @@
 object frmContrato: TfrmContrato
-  Left = 8
+  Left = 408
   Height = 597
-  Top = 31
+  Top = 313
   Width = 1224
   Align = alClient
   BorderIcons = [biSystemMenu, biMaximize]
@@ -17,7 +17,7 @@ object frmContrato: TfrmContrato
   Font.Quality = fqDraft
   OnClose = FormClose
   OnShow = FormShow
-  LCLVersion = '1.0.14.0'
+  LCLVersion = '1.6.0.4'
   WindowState = wsMaximized
   object PanelBotoes: TPanel
     Left = 1094
@@ -183,9 +183,9 @@ object frmContrato: TfrmContrato
     TabOrder = 0
     object Label1: TLabel
       Left = 24
-      Height = 18
+      Height = 17
       Top = 22
-      Width = 111
+      Width = 110
       Caption = 'Código Contrato:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
@@ -198,9 +198,9 @@ object frmContrato: TfrmContrato
     end
     object Label2: TLabel
       Left = 24
-      Height = 18
+      Height = 17
       Top = 55
-      Width = 81
+      Width = 80
       Caption = 'Funcionário:'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
@@ -253,12 +253,11 @@ object frmContrato: TfrmContrato
         00000000000017161523655F58818B8279B0887E75B35D554E891816142F0000
         0000000000000000000000000000000000000000000000000000
       }
-      NumGlyphs = 0
       OnClick = sbtbuscarpessoaClick
     end
     object edtcodigocontrato: TEdit
       Left = 176
-      Height = 25
+      Height = 27
       Top = 15
       Width = 130
       Font.CharSet = ANSI_CHARSET
@@ -274,7 +273,7 @@ object frmContrato: TfrmContrato
     end
     object edtfuncionario: TEdit
       Left = 176
-      Height = 25
+      Height = 27
       Top = 48
       Width = 130
       Enabled = False
@@ -295,7 +294,7 @@ object frmContrato: TfrmContrato
       Top = 83
       Width = 493
       Caption = 'Informações do Contrato'
-      ClientHeight = 158
+      ClientHeight = 157
       ClientWidth = 489
       Enabled = False
       Font.CharSet = ANSI_CHARSET
@@ -308,7 +307,7 @@ object frmContrato: TfrmContrato
       TabOrder = 2
       object DBEdtJornada: TDBEdit
         Left = 163
-        Height = 25
+        Height = 27
         Top = 114
         Width = 130
         DataField = 'jornada_trabalho_contrato'
@@ -320,7 +319,7 @@ object frmContrato: TfrmContrato
       end
       object Label8: TLabel
         Left = 11
-        Height = 18
+        Height = 17
         Top = 121
         Width = 119
         Caption = 'Jornada Semanal:'
@@ -328,7 +327,7 @@ object frmContrato: TfrmContrato
       end
       object Label4: TLabel
         Left = 11
-        Height = 18
+        Height = 17
         Top = 87
         Width = 90
         Caption = 'Período Final:'
@@ -336,7 +335,7 @@ object frmContrato: TfrmContrato
       end
       object DateEditfinal: TDateEdit
         Left = 163
-        Height = 25
+        Height = 27
         Top = 80
         Width = 130
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -344,51 +343,14 @@ object frmContrato: TfrmContrato
         CancelCaption = 'Cancel'
         DateOrder = doNone
         ButtonWidth = 23
-        CharCase = ecNormal
         DirectInput = False
-        Glyph.Data = {
-          36040000424D3604000000000000360000002800000010000000100000000100
-          2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
-          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D69E
-          72C4D3996EF4D19668FFCE9263FFCB8E5EFFC98A5BFFC78756FFC38452FFC384
-          52FFC38452FFC38452FFC38452FFC38452FFBB7742B0FFFFFF00FFFFFF00D7A1
-          75FFF8F2EDFFF7F0EAFFF6EDE6FFF4EAE2FFF3E7DEFFF1E4DBFFF0E2D8FFEAD6
-          C8FFF2E5DCFFFAF4F1FFF9F3F0FFFAF5F2FFC58A5DFDFFFFFF00FFFFFF00D9A4
-          7AFFF9F3EEFFEBD2BEFFFFFFFFFFEBD3BFFFFFFFFFFFEBD3C0FFFFFFFFFFEAC7
-          ADFFECD9CDFFF1E4DBFFF9F3F0FFF9F2EFFFC68C5FFFFFFFFF00FFFFFF00DDA8
-          7EFFF9F3EFFFEBD0BAFFEBD0BBFF75B57AFF75B57AFF75B57AFFEBD1BDFFEACD
-          B5FFFAF4F0FFEBD9CCFFF1E4DBFFFAF4F1FFC68A5CFFFFFFFF00FFFFFF00DFAA
-          82FFF9F3EFFFEACEB7FFFFFFFFFF75B57AFF94D49BFF74B579FFFFFFFFFFEACF
-          BAFFFBF6F2FFFAF3F0FFEBD8CBFFF2E6DDFFC88D5FFFFFFFFF00FFFFFF00E1AE
-          87FFFAF4F0FFEACBB2FFEACCB3FF75B57AFF74B579FF73B478FFEACEB7FF70B3
-          75FF6FB274FF6EB172FFE8C8AEFFEAD7C9FFC48654FFFFFFFF00FFFFFF00E3B1
-          8CFFFAF6F1FFEAC9AEFFFFFFFFFFEAC9B0FFFFFFFFFFE9CBB3FFFFFFFFFF6FB1
-          73FF8ED295FF6BAF6FFFFFFFFFFFF1E5DBFFC68655FFFFFFFF00FFFFFF00E5B4
-          8FFFFAF6F2FFE9C6AAFFE9C6ACFFEAC7ACFFE9C7ADFFE9C9AEFFE9C9B0FF6CB0
-          71FF6AAF6EFF68AD6DFFE8CCB5FFF2E7DEFFC88A59FFFFFFFF00FFFFFF00E7B7
-          94FFFBF7F4FFE9C3A6FFFFFFFFFFE8C4A9FFFFFFFFFFE9C6AAFFFFFFFFFFE8C7
-          ACFFFFFFFFFFE8C8B0FFFFFFFFFFF7F1EBFFCB8F5FFFFFFFFF00FFFFFF00E9BA
-          98FFFBF7F4FF65A4FFFF64A3FFFF62A2FFFF61A1FFFF5F9FFFFF5C9DFFFF5A9A
-          FFFF5798FFFF5495FFFF5294FFFFFBF7F4FFCE9364FFFFFFFF00FFFFFF00EBBD
-          9BFFFBF7F4FF64A4FFFF79BDFFFF75BBFFFF71B9FFFF6DB8FFFF68B3FFFF61B0
-          FFFF5AABFFFF54A7FFFF3B7DFFFFFBF7F4FFD1976AFFFFFFFF00FFFFFF00ECBF
-          9EFFFBF7F4FF65A4FFFF64A3FFFF60A0FFFF5D9EFFFF5899FFFF5496FFFF4D90
-          FFFF478BFFFF4284FFFF3D7FFFFFFBF7F4FFD49B6FFFFFFFFF00FFFFFF00EEC1
-          A1EBFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7
-          F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFD7A074F8FFFFFF00FFFFFF00EFC2
-          A37EEFC1A2E3EDC09FFFEBBE9DFFEBBC9AFFE9BA96FFE7B793FFE6B590FFE4B2
-          8CFFE2AF88FFE0AC84FFDDA980FFDCA57DFFDAA37ACAFFFFFF00FFFFFF00FFFF
-          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
-        }
-        NumGlyphs = 0
+        NumGlyphs = 1
         MaxLength = 0
         TabOrder = 2
       end
       object DateEditinicial: TDateEdit
         Left = 163
-        Height = 25
+        Height = 27
         Top = 44
         Width = 130
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
@@ -396,67 +358,30 @@ object frmContrato: TfrmContrato
         CancelCaption = 'Cancel'
         DateOrder = doNone
         ButtonWidth = 23
-        CharCase = ecNormal
         DirectInput = False
-        Glyph.Data = {
-          36040000424D3604000000000000360000002800000010000000100000000100
-          2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
-          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00D69E
-          72C4D3996EF4D19668FFCE9263FFCB8E5EFFC98A5BFFC78756FFC38452FFC384
-          52FFC38452FFC38452FFC38452FFC38452FFBB7742B0FFFFFF00FFFFFF00D7A1
-          75FFF8F2EDFFF7F0EAFFF6EDE6FFF4EAE2FFF3E7DEFFF1E4DBFFF0E2D8FFEAD6
-          C8FFF2E5DCFFFAF4F1FFF9F3F0FFFAF5F2FFC58A5DFDFFFFFF00FFFFFF00D9A4
-          7AFFF9F3EEFFEBD2BEFFFFFFFFFFEBD3BFFFFFFFFFFFEBD3C0FFFFFFFFFFEAC7
-          ADFFECD9CDFFF1E4DBFFF9F3F0FFF9F2EFFFC68C5FFFFFFFFF00FFFFFF00DDA8
-          7EFFF9F3EFFFEBD0BAFFEBD0BBFF75B57AFF75B57AFF75B57AFFEBD1BDFFEACD
-          B5FFFAF4F0FFEBD9CCFFF1E4DBFFFAF4F1FFC68A5CFFFFFFFF00FFFFFF00DFAA
-          82FFF9F3EFFFEACEB7FFFFFFFFFF75B57AFF94D49BFF74B579FFFFFFFFFFEACF
-          BAFFFBF6F2FFFAF3F0FFEBD8CBFFF2E6DDFFC88D5FFFFFFFFF00FFFFFF00E1AE
-          87FFFAF4F0FFEACBB2FFEACCB3FF75B57AFF74B579FF73B478FFEACEB7FF70B3
-          75FF6FB274FF6EB172FFE8C8AEFFEAD7C9FFC48654FFFFFFFF00FFFFFF00E3B1
-          8CFFFAF6F1FFEAC9AEFFFFFFFFFFEAC9B0FFFFFFFFFFE9CBB3FFFFFFFFFF6FB1
-          73FF8ED295FF6BAF6FFFFFFFFFFFF1E5DBFFC68655FFFFFFFF00FFFFFF00E5B4
-          8FFFFAF6F2FFE9C6AAFFE9C6ACFFEAC7ACFFE9C7ADFFE9C9AEFFE9C9B0FF6CB0
-          71FF6AAF6EFF68AD6DFFE8CCB5FFF2E7DEFFC88A59FFFFFFFF00FFFFFF00E7B7
-          94FFFBF7F4FFE9C3A6FFFFFFFFFFE8C4A9FFFFFFFFFFE9C6AAFFFFFFFFFFE8C7
-          ACFFFFFFFFFFE8C8B0FFFFFFFFFFF7F1EBFFCB8F5FFFFFFFFF00FFFFFF00E9BA
-          98FFFBF7F4FF65A4FFFF64A3FFFF62A2FFFF61A1FFFF5F9FFFFF5C9DFFFF5A9A
-          FFFF5798FFFF5495FFFF5294FFFFFBF7F4FFCE9364FFFFFFFF00FFFFFF00EBBD
-          9BFFFBF7F4FF64A4FFFF79BDFFFF75BBFFFF71B9FFFF6DB8FFFF68B3FFFF61B0
-          FFFF5AABFFFF54A7FFFF3B7DFFFFFBF7F4FFD1976AFFFFFFFF00FFFFFF00ECBF
-          9EFFFBF7F4FF65A4FFFF64A3FFFF60A0FFFF5D9EFFFF5899FFFF5496FFFF4D90
-          FFFF478BFFFF4284FFFF3D7FFFFFFBF7F4FFD49B6FFFFFFFFF00FFFFFF00EEC1
-          A1EBFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7
-          F4FFFBF7F4FFFBF7F4FFFBF7F4FFFBF7F4FFD7A074F8FFFFFF00FFFFFF00EFC2
-          A37EEFC1A2E3EDC09FFFEBBE9DFFEBBC9AFFE9BA96FFE7B793FFE6B590FFE4B2
-          8CFFE2AF88FFE0AC84FFDDA980FFDCA57DFFDAA37ACAFFFFFF00FFFFFF00FFFF
-          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
-          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
-        }
-        NumGlyphs = 0
+        NumGlyphs = 1
         MaxLength = 0
         TabOrder = 1
       end
       object Label3: TLabel
         Left = 11
-        Height = 18
+        Height = 17
         Top = 51
-        Width = 95
+        Width = 96
         Caption = 'Período Inicial:'
         ParentColor = False
       end
       object Label6: TLabel
         Left = 11
-        Height = 18
+        Height = 17
         Top = 15
-        Width = 45
+        Width = 44
         Caption = 'Cargo:'
         ParentColor = False
       end
       object edtcargo: TEdit
         Left = 163
-        Height = 25
+        Height = 27
         Top = 8
         Width = 130
         OnEditingDone = edtcargoEditingDone
@@ -505,14 +430,13 @@ object frmContrato: TfrmContrato
           00000000000017161523655F58818B8279B0887E75B35D554E891816142F0000
           0000000000000000000000000000000000000000000000000000
         }
-        NumGlyphs = 0
         OnClick = sbtbuscarcargoClick
       end
       object lblCargo: TLabel
         Left = 319
-        Height = 18
+        Height = 17
         Top = 15
-        Width = 41
+        Width = 40
         Caption = 'Cargo'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
@@ -564,7 +488,6 @@ object frmContrato: TfrmContrato
           00000000000000000000FFFFFF11FFFFFF6FFFFFFFCCFFFFFFF7FFFFFFF7FFFF
           FFCBFFFFFF6FFFFFFF1100000000000000000000000000000000
         }
-        NumGlyphs = 0
         OnClick = sbtJornadaSemanalClick
       end
     end
@@ -574,7 +497,7 @@ object frmContrato: TfrmContrato
       Top = 265
       Width = 493
       Caption = 'Local de Trabalho'
-      ClientHeight = 246
+      ClientHeight = 245
       ClientWidth = 489
       Enabled = False
       Font.CharSet = ANSI_CHARSET
@@ -594,7 +517,7 @@ object frmContrato: TfrmContrato
       end
       object edtlocal: TEdit
         Left = 163
-        Height = 25
+        Height = 27
         Top = 8
         Width = 130
         OnEditingDone = edtlocalEditingDone
@@ -642,7 +565,6 @@ object frmContrato: TfrmContrato
           00000000000017161523655F58818B8279B0887E75B35D554E891816142F0000
           0000000000000000000000000000000000000000000000000000
         }
-        NumGlyphs = 0
         OnClick = sbtlocalClick
       end
       object rgHorarios: TRadioGroup
@@ -660,7 +582,7 @@ object frmContrato: TfrmContrato
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
-        ClientHeight = 30
+        ClientHeight = 29
         ClientWidth = 457
         Columns = 3
         Items.Strings = (
@@ -673,7 +595,7 @@ object frmContrato: TfrmContrato
       end
       object Label11: TLabel
         Left = 11
-        Height = 18
+        Height = 17
         Top = 104
         Width = 52
         Caption = 'Horário:'
@@ -681,7 +603,7 @@ object frmContrato: TfrmContrato
       end
       object DBEdthorario: TDBEdit
         Left = 75
-        Height = 25
+        Height = 27
         Top = 97
         Width = 130
         DataSource = DMcontratos.dslocaltrabalho
@@ -762,8 +684,8 @@ object frmContrato: TfrmContrato
         TitleFont.Quality = fqDraft
         TitleStyle = tsStandard
         ColWidths = (
-          228
           229
+          230
         )
         Cells = (
           2
@@ -777,9 +699,9 @@ object frmContrato: TfrmContrato
       end
       object lblLocalTrabalho: TLabel
         Left = 319
-        Height = 18
+        Height = 17
         Top = 15
-        Width = 117
+        Width = 116
         Caption = 'Local de Trabalho'
         Font.CharSet = ANSI_CHARSET
         Font.Color = clBlack
@@ -797,7 +719,7 @@ object frmContrato: TfrmContrato
       Top = 21
       Width = 548
       Caption = 'Informações Adicionais'
-      ClientHeight = 220
+      ClientHeight = 219
       ClientWidth = 544
       Enabled = False
       Font.CharSet = ANSI_CHARSET
@@ -820,7 +742,7 @@ object frmContrato: TfrmContrato
       end
       object Label7: TLabel
         Left = 11
-        Height = 18
+        Height = 17
         Top = 10
         Width = 85
         Caption = 'Observação:'
@@ -828,7 +750,7 @@ object frmContrato: TfrmContrato
       end
       object Label5: TLabel
         Left = 11
-        Height = 18
+        Height = 17
         Top = 80
         Width = 65
         Caption = 'Vacância:'
@@ -846,7 +768,7 @@ object frmContrato: TfrmContrato
       end
       object DBEdtAnoseletivo: TDBEdit
         Left = 152
-        Height = 25
+        Height = 27
         Top = 150
         Width = 130
         DataField = 'ano_seletivo_contrato'
@@ -858,26 +780,26 @@ object frmContrato: TfrmContrato
       end
       object Label9: TLabel
         Left = 11
-        Height = 18
+        Height = 17
         Top = 157
-        Width = 101
+        Width = 102
         Caption = 'Ano do Seletivo'
         ParentColor = False
       end
       object Label16: TLabel
         Left = 11
-        Height = 18
+        Height = 17
         Top = 192
-        Width = 133
+        Width = 132
         Caption = 'Tipo de Contratação'
         ParentColor = False
       end
       object cboxtipo: TComboBox
         Left = 152
-        Height = 25
+        Height = 31
         Top = 184
         Width = 130
-        ItemHeight = 17
+        ItemHeight = 0
         Items.Strings = (
           'Seletivo'
           'Cadastro no RH'
@@ -893,7 +815,7 @@ object frmContrato: TfrmContrato
       Top = 265
       Width = 547
       Caption = 'Testemunhas'
-      ClientHeight = 246
+      ClientHeight = 245
       ClientWidth = 543
       Enabled = False
       Font.CharSet = ANSI_CHARSET
@@ -910,12 +832,12 @@ object frmContrato: TfrmContrato
         Top = 14
         Width = 519
         Caption = 'Testemunha 1'
-        ClientHeight = 90
+        ClientHeight = 89
         ClientWidth = 515
         TabOrder = 0
         object DBEdtteste1: TDBEdit
           Left = 87
-          Height = 25
+          Height = 27
           Top = 11
           Width = 380
           DataField = 'testemunha_1_contrato'
@@ -926,7 +848,7 @@ object frmContrato: TfrmContrato
         end
         object Label12: TLabel
           Left = 11
-          Height = 18
+          Height = 17
           Top = 18
           Width = 44
           Caption = 'Nome:'
@@ -934,15 +856,15 @@ object frmContrato: TfrmContrato
         end
         object Label14: TLabel
           Left = 11
-          Height = 18
+          Height = 17
           Top = 54
-          Width = 35
+          Width = 34
           Caption = 'CPF:'
           ParentColor = False
         end
         object DBEdtcpfteste1: TDBEdit
           Left = 87
-          Height = 25
+          Height = 27
           Top = 47
           Width = 230
           DataField = 'cpf_teste_1_contrato'
@@ -960,12 +882,12 @@ object frmContrato: TfrmContrato
         Top = 126
         Width = 519
         Caption = 'Testemunha 2'
-        ClientHeight = 90
+        ClientHeight = 89
         ClientWidth = 515
         TabOrder = 1
         object DBEdttest2: TDBEdit
           Left = 87
-          Height = 25
+          Height = 27
           Top = 14
           Width = 380
           DataField = 'testemunha_2_contrato'
@@ -976,7 +898,7 @@ object frmContrato: TfrmContrato
         end
         object Label13: TLabel
           Left = 9
-          Height = 18
+          Height = 17
           Top = 21
           Width = 44
           Caption = 'Nome:'
@@ -984,15 +906,15 @@ object frmContrato: TfrmContrato
         end
         object Label15: TLabel
           Left = 11
-          Height = 18
+          Height = 17
           Top = 57
-          Width = 35
+          Width = 34
           Caption = 'CPF:'
           ParentColor = False
         end
         object DBEdtcpftest2: TDBEdit
           Left = 87
-          Height = 25
+          Height = 27
           Top = 50
           Width = 230
           DataField = 'cpf_teste_2_contrato'
@@ -1007,9 +929,9 @@ object frmContrato: TfrmContrato
     end
     object lblFuncionario: TLabel
       Left = 333
-      Height = 18
+      Height = 17
       Top = 55
-      Width = 77
+      Width = 76
       Caption = 'Funcionário'
       Font.CharSet = ANSI_CHARSET
       Font.Color = clBlack
@@ -1088,9 +1010,9 @@ object frmContrato: TfrmContrato
     object Label17: TLabel
       AnchorSideLeft.Control = Panel3
       Left = 116
-      Height = 34
+      Height = 32
       Top = 13
-      Width = 127
+      Width = 126
       BorderSpacing.Left = 115
       Caption = 'Contratos'
       Font.Color = clWhite

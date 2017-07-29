@@ -1,9 +1,9 @@
 object DMcontratos: TDMcontratos
   OldCreateOrder = False
   Height = 316
-  HorizontalOffset = 450
-  VerticalOffset = 236
-  Width = 616
+  HorizontalOffset = 763
+  VerticalOffset = 564
+  Width = 542
   object zt_cargos: TZTable
     Connection = contratoconection
     TableName = 'tb_cargos'
@@ -701,7 +701,6 @@ object DMcontratos: TDMcontratos
   end
   object zt_local_trabalho: TZTable
     Connection = contratoconection
-    Active = True
     TableName = 'tb_local_trabalho'
     left = 336
     top = 88
@@ -782,50 +781,49 @@ object DMcontratos: TDMcontratos
       Size = 60
     end
   end
-  object dspessoa: TDatasource
+  object dspessoa: TDataSource
     DataSet = zt_pessoas
     left = 240
     top = 16
   end
-  object dsContratos: TDatasource
+  object dsContratos: TDataSource
     DataSet = zt_contratos
     left = 240
     top = 160
   end
-  object dslocaltrabalho: TDatasource
+  object dslocaltrabalho: TDataSource
     DataSet = zt_local_trabalho
     left = 240
     top = 88
   end
-  object dscidades: TDatasource
+  object dscidades: TDataSource
     DataSet = zt_cidades
     left = 152
     top = 160
   end
-  object dscontratocargos: TDatasource
+  object dscontratocargos: TDataSource
     DataSet = zt_contratos_cargos
     left = 152
     top = 88
   end
-  object dscargos: TDatasource
+  object dscargos: TDataSource
     DataSet = zt_cargos
     left = 152
     top = 16
   end
   object contratoconection: TZConnection
     ControlsCodePage = cCP_UTF8
-    UTF8StringsAsWideField = False
     AutoEncodeStrings = False
     Properties.Strings = (
       'AutoEncodeStrings='
     )
-    Connected = True
     HostName = 'localhost'
     Port = 3306
     Database = 'semedcontratos'
     User = 'root'
-    Password = '12345678'
+    Password = 'root'
     Protocol = 'mysql'
+    LibraryLocation = '/usr/lib/x86_64-linux-gnu/libmysqlclient.so.20'
     left = 432
     top = 88
   end
@@ -835,7 +833,7 @@ object DMcontratos: TDMcontratos
     left = 50
     top = 247
   end
-  object dscontratoslocais: TDatasource
+  object dscontratoslocais: TDataSource
     DataSet = zt_contatros_locais
     left = 152
     top = 247

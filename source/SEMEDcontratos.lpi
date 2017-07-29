@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
     <Version Value="9"/>
@@ -57,7 +57,6 @@
       <Unit0>
         <Filename Value="SEMEDcontratos.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="SEMEDcontratos"/>
       </Unit0>
       <Unit1>
         <Filename Value="umain.pas"/>
@@ -73,7 +72,6 @@
         <ComponentName Value="frmContrato"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="ucontrato"/>
       </Unit2>
       <Unit3>
         <Filename Value="ucadastropessoas.pas"/>
@@ -162,12 +160,10 @@
         <ComponentName Value="frmUsuarios"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="uusuarios"/>
       </Unit14>
       <Unit15>
         <Filename Value="uhtml.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="uhtml"/>
       </Unit15>
       <Unit16>
         <Filename Value="ubuscacontrato.pas"/>
@@ -175,7 +171,6 @@
         <ComponentName Value="frmbuscacontrato"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="ubuscacontrato"/>
       </Unit16>
       <Unit17>
         <Filename Value="udmcontratos.pas"/>
@@ -183,12 +178,10 @@
         <ComponentName Value="DMcontratos"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
-        <UnitName Value="udmcontratos"/>
       </Unit17>
       <Unit18>
         <Filename Value="ufiltragem.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="ufiltragem"/>
       </Unit18>
     </Units>
   </ProjectOptions>
@@ -209,24 +202,5 @@
         </Win32>
       </Options>
     </Linking>
-    <Other>
-      <CompilerMessages>
-        <MsgFileName Value=""/>
-      </CompilerMessages>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
-  <Debugging>
-    <Exceptions Count="3">
-      <Item1>
-        <Name Value="EAbort"/>
-      </Item1>
-      <Item2>
-        <Name Value="ECodetoolError"/>
-      </Item2>
-      <Item3>
-        <Name Value="EFOpenError"/>
-      </Item3>
-    </Exceptions>
-  </Debugging>
 </CONFIG>
