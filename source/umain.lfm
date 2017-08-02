@@ -1,24 +1,23 @@
 object FrmMain: TFrmMain
-  Left = 216
+  Left = 516
   Height = 578
-  Top = 16
+  Top = 99
   Width = 1075
-  BorderStyle = bsSingle
   Caption = 'SEMED | Módulo de Contratos'
-  ClientHeight = 558
+  ClientHeight = 578
   ClientWidth = 1075
   Menu = MainMenu1
   OnClose = FormClose
   ShowInTaskBar = stAlways
-  LCLVersion = '1.0.14.0'
+  LCLVersion = '1.6.0.4'
   WindowState = wsMaximized
   object Panel1: TPanel
     Left = 0
-    Height = 535
+    Height = 557
     Top = 0
     Width = 194
     Align = alLeft
-    ClientHeight = 535
+    ClientHeight = 557
     ClientWidth = 194
     Color = 3893827
     ParentColor = False
@@ -236,7 +235,7 @@ object FrmMain: TFrmMain
     object BtnSair: TBitBtn
       Left = 8
       Height = 40
-      Top = 487
+      Top = 509
       Width = 176
       Anchors = [akLeft, akBottom]
       Caption = 'Sair'
@@ -285,11 +284,11 @@ object FrmMain: TFrmMain
   end
   object Panel2: TPanel
     Left = 194
-    Height = 535
+    Height = 557
     Top = 0
     Width = 881
     Align = alClient
-    ClientHeight = 535
+    ClientHeight = 557
     ClientWidth = 881
     Color = clNone
     ParentColor = False
@@ -301,7 +300,7 @@ object FrmMain: TFrmMain
       AnchorSideBottom.Control = Panel2
       AnchorSideBottom.Side = asrBottom
       Left = 554
-      Height = 328
+      Height = 350
       Top = 201
       Width = 319
       Anchors = [akTop, akRight, akBottom]
@@ -321,9 +320,9 @@ object FrmMain: TFrmMain
       AnchorSideBottom.Control = memoMural
       AnchorSideBottom.Side = asrBottom
       Left = 554
-      Height = 19
+      Height = 17
       Top = 181
-      Width = 128
+      Width = 130
       BorderSpacing.Top = 180
       Caption = 'Mural de Recados'
       Font.Height = -16
@@ -1324,8 +1323,8 @@ object FrmMain: TFrmMain
   end
   object StatusBar: TStatusBar
     Left = 0
-    Height = 23
-    Top = 535
+    Height = 21
+    Top = 557
     Width = 1075
     Panels = <    
       item
@@ -1394,7 +1393,7 @@ object FrmMain: TFrmMain
       OnClick = MenuSobreClick
     end
   end
-  object dsMural: TDatasource
+  object dsMural: TDataSource
     DataSet = DM1.tb_mural
     left = 704
     top = 200

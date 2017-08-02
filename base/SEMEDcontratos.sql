@@ -187,16 +187,6 @@ CREATE TABLE `tb_mural` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tb_mural`
---
-
-LOCK TABLES `tb_mural` WRITE;
-/*!40000 ALTER TABLE `tb_mural` DISABLE KEYS */;
-INSERT INTO `tb_mural` VALUES (1,'Roberto Luiz Debarba','21/2/2014 00:42:09','Recado de Teste'),(2,'Roberto Luiz Debarba','21/2/2014 00:42:23','teste 2'),(3,'Roberto','24/2/2014 13:50:05','teste 3'),(4,'roberto','24/2/2014 13:53:30','teste 4'),(5,'Roberto','24/2/2014 13:54:00','teste 5');
-/*!40000 ALTER TABLE `tb_mural` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `tb_pessoas`
 --
 
@@ -277,7 +267,7 @@ CREATE TABLE `tb_usuarios` (
 
 LOCK TABLES `tb_usuarios` WRITE;
 /*!40000 ALTER TABLE `tb_usuarios` DISABLE KEYS */;
-INSERT INTO `tb_usuarios` VALUES (1,'roberto.debarba','luiz5505','Roberto Luiz Debarba',1),(2,'1','1','Beta Tester',1);
+INSERT INTO `tb_usuarios` VALUES (1,'admin','admin','Roberto Luiz Debarba',1),(2,'1','1','Beta Tester',1);
 /*!40000 ALTER TABLE `tb_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
